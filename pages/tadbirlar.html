@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>SAHNA</title>
+</head>
+
+<body class="bg-black text-white">
+    <header class="w-full bg-[#0d0d0b] text-[#c2b293] px-6 py-4 border-b border-zinc-800/50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <!-- Chap tomon: Logo va Navigatsiya -->
+            <div class="flex items-center space-x-8 md:space-x-12">
+                <!-- Logo -->
+                <a href="../index.html" class="text-xl md:text-2xl font-serif tracking-widest text-[#f0d38d] font-bold">
+                    SAHNA
+                </a>
+
+                <!-- Menyular -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm md:text-base font-medium">
+                    <!-- Aktiv menu (Tadbirlar) -->
+                    <a href="../pages/tadbirlar.html" class="text-[#fce399] font-bold relative py-1 border-b-2 border-[#fce399]">
+                        Tadbirlar
+                    </a>
+                    <a href="../pages/tadbir.htm" class="hover:text-white transition-colors py-1">
+                        Teatrlar
+                    </a>
+                    <a href="../pages/chiptalarim.html" class="hover:text-white transition-colors py-1">
+                        Konsertlar
+                    </a>
+                    <a href="./tashkilotchilarim.html" class="hover:text-white transition-colors py-1">
+                        Kino
+                    </a>
+                </nav>
+            </div>
+
+            <!-- O'ng tomon: Qidiruv va Kirish tugmasi -->
+            <div class="flex items-center space-x-6">
+                <!-- Qidiruv ikonkasi -->
+                <button class="text-[#c2b293] hover:text-white transition-colors p-1" aria-label="Qidiruv">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+
+                <!-- Kirish Tugmasi -->
+                <button
+                    class="bg-[#fde18d] hover:bg-[#ebd07c] text-black font-medium px-6 py-2 rounded-full transition-all duration-200 shadow-md">
+                    Kirish
+                </button>
+            </div>
+
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-8">
+    
+    <!-- ================= CHAP SIDEBAR (FILTRLAR) ================= -->
+    <aside class="lg:col-span-1 space-y-6">
+      
+      <!-- Qidiruv inputi -->
+      <div class="relative">
+        <input 
+          type="text" 
+          id="search-input"
+          placeholder="Tadbir yoki ijrochi" 
+          class="w-full bg-[#141414] border border-neutral-800 rounded-xl px-4 py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#fde18d] transition-all text-white placeholder-neutral-500"
+        />
+        <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-neutral-500 text-sm"></i>
+      </div>
+
+      <!-- Sana Filtrlari -->
+      <div class="bg-[#121212] border border-neutral-800/80 rounded-2xl p-4 space-y-4">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Sana</h3>
+        
+        <!-- Kalendar haftaligi -->
+        <div class="grid grid-cols-7 gap-1 text-center text-xs">
+          <span class="text-neutral-500">DU</span>
+          <span class="text-neutral-500">SE</span>
+          <span class="text-neutral-500">CH</span>
+          <span class="text-neutral-[#fde18d]">PA</span>
+          <span class="text-neutral-500">JU</span>
+          <span class="text-neutral-500">SH</span>
+          <span class="text-neutral-500">YA</span>
+
+          <span class="py-1 text-neutral-600">28</span>
+          <span class="py-1 text-neutral-600">29</span>
+          <span class="py-1 text-neutral-600">30</span>
+          <button class="py-1 bg-[#fde18d] text-black font-bold rounded-lg shadow-sm">1</button>
+          <button class="py-1 hover:bg-neutral-800 rounded-lg transition-colors">2</button>
+          <button class="py-1 hover:bg-neutral-800 rounded-lg transition-colors">3</button>
+          <button class="py-1 hover:bg-neutral-800 rounded-lg transition-colors">4</button>
+        </div>
+
+        <!-- Tezkor sana tugmalari -->
+        <div class="flex flex-wrap gap-2 pt-2">
+          <button class="date-quick-btn bg-[#fde18d] text-black text-xs font-semibold px-3 py-1.5 rounded-lg">Bugun</button>
+          <button class="date-quick-btn bg-[#1c1c1c] hover:bg-neutral-800 text-neutral-300 text-xs px-3 py-1.5 rounded-lg transition-colors">Ertaga</button>
+          <button class="date-quick-btn bg-[#1c1c1c] hover:bg-neutral-800 text-neutral-300 text-xs px-3 py-1.5 rounded-lg transition-colors">Shu hafta</button>
+        </div>
+      </div>
+
+      <!-- Kategoriya -->
+      <div class="bg-[#121212] border border-neutral-800/80 rounded-2xl p-4 space-y-3">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Kategoriya</h3>
+        
+        <div class="space-y-2">
+          <label class="flex items-center justify-between cursor-pointer group">
+            <div class="flex items-center space-x-2.5">
+              <input type="checkbox" id="cat-konsert" checked class="w-4 h-4 accent-[#fde18d] rounded cursor-pointer">
+              <span class="text-sm text-neutral-200 group-hover:text-white transition-colors">Konsert</span>
+            </div>
+            <span class="text-xs text-neutral-500">184</span>
+          </label>
+
+          <label class="flex items-center justify-between cursor-pointer group">
+            <div class="flex items-center space-x-2.5">
+              <input type="checkbox" id="cat-teatr" class="w-4 h-4 accent-[#fde18d] rounded cursor-pointer">
+              <span class="text-sm text-neutral-400 group-hover:text-white transition-colors">Teatr</span>
+            </div>
+            <span class="text-xs text-neutral-500">93</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Narx Filtrlari -->
+      <div class="bg-[#121212] border border-neutral-800/80 rounded-2xl p-4 space-y-4">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-neutral-400">Narx</h3>
+        
+        <!-- Grafikli Vizual Slider Soni -->
+        <div class="h-10 flex items-end gap-1 px-2">
+          <div class="w-full bg-neutral-800 h-[20%] rounded-t"></div>
+          <div class="w-full bg-neutral-800 h-[40%] rounded-t"></div>
+          <div class="w-full bg-[#fde18d] h-[80%] rounded-t"></div>
+          <div class="w-full bg-[#fde18d] h-[100%] rounded-t"></div>
+          <div class="w-full bg-neutral-800 h-[30%] rounded-t"></div>
+          <div class="w-full bg-neutral-800 h-[10%] rounded-t"></div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button id="reset-filters" class="w-1/2 py-2 text-xs font-semibold text-neutral-400 hover:text-white bg-[#1a1a1a] hover:bg-neutral-800 rounded-xl transition-colors">
+            Tozalash
+          </button>
+          <button id="apply-filters" class="w-1/2 py-2 text-xs font-semibold text-black bg-[#fde18d] hover:bg-[#ebd07c] rounded-xl transition-colors shadow-md">
+            <span id="filtered-count">184 ta</span> tadbir
+          </button>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ================= O'NG TARAFI (KATALOG VA GRID) ================= -->
+    <section class="lg:col-span-3 space-y-6">
+      
+      <!-- Yo'lak va Sarlavha -->
+      <div>
+        <div class="text-xs text-neutral-500 space-x-1">
+          <span>Bosh sahifa</span> <span>/</span> <span>Tadbirlar</span> <span>/</span> <span class="text-[#fde18d]">Konsert</span>
+        </div>
+        <div class="flex items-center justify-between mt-2 flex-wrap gap-4">
+          <div>
+            <h1 class="text-2xl font-bold text-white tracking-wide">Konsertlar</h1>
+            <p class="text-xs text-neutral-400 mt-0.5">Toshkentda <span id="total-count">184 ta</span> tadbir topildi</p>
+          </div>
+
+          <!-- Saralash va Ko'rinish -->
+          <div class="flex items-center space-x-3">
+            <select class="bg-[#141414] border border-neutral-800 text-xs text-neutral-300 rounded-xl px-3 py-2 focus:outline-none">
+              <option>Saralash: Ommabop</option>
+              <option>Narx: Arzonroq</option>
+              <option>Narx: Qimmatroq</option>
+              <option>Yangi qo'shilganlar</option>
+            </select>
+
+            <div class="flex items-center bg-[#141414] border border-neutral-800 rounded-xl p-1 space-x-1">
+              <button class="p-1.5 rounded-lg bg-neutral-800 text-white text-xs"><i class="fa-solid fa-border-all"></i></button>
+              <button class="p-1.5 rounded-lg text-neutral-500 hover:text-white text-xs"><i class="fa-solid fa-list"></i></button>
+            </div>
+
+            <button class="flex items-center space-x-2 bg-[#141414] border border-neutral-800 hover:border-neutral-700 px-3 py-2 rounded-xl text-xs text-neutral-300 transition-colors">
+              <i class="fa-regular fa-calendar"></i>
+              <span>Kalendar ko'rinishi</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kunlik Slayder / Kunlar -->
+      <div class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
+        <button class="bg-[#1c1c1c] text-xs px-4 py-2 rounded-xl text-neutral-300 whitespace-nowrap hover:bg-neutral-800">Bugun</button>
+        <button class="bg-[#1c1c1c] text-xs px-4 py-2 rounded-xl text-neutral-300 whitespace-nowrap hover:bg-neutral-800">Ertaga</button>
+        <button class="bg-[#1c1c1c] text-xs px-4 py-2 rounded-xl text-neutral-300 whitespace-nowrap hover:bg-neutral-800">Dam olish kunlari</button>
+        <div class="h-6 w-[1px] bg-neutral-800 mx-2"></div>
+        
+        <!-- Kunlar ro'yxati -->
+        <button class="flex flex-col items-center bg-[#fde18d] text-black px-4 py-1.5 rounded-xl text-xs font-bold shrink-0">
+          <span class="text-[10px] uppercase opacity-70">PAY</span>
+          <span>1</span>
+        </button>
+        <button class="flex flex-col items-center bg-[#141414] border border-neutral-800 hover:border-neutral-700 px-4 py-1.5 rounded-xl text-xs shrink-0">
+          <span class="text-[10px] uppercase text-neutral-500">JUM</span>
+          <span>2</span>
+        </button>
+        <button class="flex flex-col items-center bg-[#141414] border border-neutral-800 hover:border-neutral-700 px-4 py-1.5 rounded-xl text-xs shrink-0">
+          <span class="text-[10px] uppercase text-neutral-500">SHA</span>
+          <span>3</span>
+        </button>
+        <button class="flex flex-col items-center bg-[#141414] border border-neutral-800 hover:border-neutral-700 px-4 py-1.5 rounded-xl text-xs shrink-0">
+          <span class="text-[10px] uppercase text-neutral-500">YAK</span>
+          <span>4</span>
+        </button>
+        <button class="flex flex-col items-center bg-[#141414] border border-neutral-800 hover:border-neutral-700 px-4 py-1.5 rounded-xl text-xs shrink-0">
+          <span class="text-[10px] uppercase text-neutral-500">DUSH</span>
+          <span>5</span>
+        </button>
+      </div>
+
+      <!-- Tanlangan teglar (Active Filters) -->
+      <div id="tags-container" class="flex flex-wrap items-center gap-2">
+        <span class="tag bg-[#1c1c1c] border border-neutral-800 text-xs px-3 py-1 rounded-lg flex items-center gap-2">
+          Konsert <i class="fa-solid fa-xmark text-neutral-500 hover:text-white cursor-pointer remove-tag"></i>
+        </span>
+        <span class="tag bg-[#1c1c1c] border border-neutral-800 text-xs px-3 py-1 rounded-lg flex items-center gap-2">
+          Toshkent <i class="fa-solid fa-xmark text-neutral-500 hover:text-white cursor-pointer remove-tag"></i>
+        </span>
+        <span class="tag bg-[#1c1c1c] border border-neutral-800 text-xs px-3 py-1 rounded-lg flex items-center gap-2">
+          150 — 300 ming so'm <i class="fa-solid fa-xmark text-neutral-500 hover:text-white cursor-pointer remove-tag"></i>
+        </span>
+        <button id="clear-all-tags" class="text-xs text-[#fde18d] hover:underline ml-2">Barchasini tozalash</button>
+      </div>
+
+      <!-- TADBIR KARTALARI (GRID) -->
+      <div id="events-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        
+        <!-- Kartochka 1 -->
+        <div class="event-card bg-[#121212] border border-neutral-800/80 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all flex flex-col justify-between">
+          <div class="relative  aspect-[4/3] overflow-hidden">
+            <img src="../images/card12.png" alt="Jazz" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-lg border border-white/10">24 MAY</span>
+          </div>
+          <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-[#fde18d] uppercase tracking-wider">JAZZ KECHASI</span>
+              <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#fde18d] transition-colors">Shaxnoz va Musiqa: Jazz simfoniyasi</h3>
+              <p class="text-xs text-neutral-400 mt-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-neutral-500"></i> Xalqlar Do'stligi Saroyi
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-neutral-800/60">
+              <div>
+                <span class="block text-[10px] text-neutral-500 uppercase">NARX</span>
+                <span class="text-sm font-bold text-white">150 000 so'm +</span>
+              </div>
+              <button class="bg-[#1a1a1a] hover:bg-[#fde18d] hover:text-black text-white border border-neutral-700 hover:border-[#fde18d] text-xs font-semibold px-4 py-2 rounded-xl transition-all">
+                Chipta
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartochka 2 -->
+        <div class="event-card bg-[#121212] border border-neutral-800/80 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all flex flex-col justify-between">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="../images/card13.png" alt="Estrada" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-lg border border-white/10">15 IYUN</span>
+            <span class="absolute top-3 right-3 bg-emerald-500/20 backdrop-blur-md text-emerald-400 text-[10px] font-bold p-1.5 rounded-full border border-emerald-500/30 flex items-center justify-center">
+              <i class="fa-solid fa-check"></i>
+            </span>
+          </div>
+          <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-[#fde18d] uppercase tracking-wider">ESTRADA</span>
+              <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#fde18d] transition-colors">Yulduzli kecha — Sevimli qo'shiqlar</h3>
+              <p class="text-xs text-neutral-400 mt-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-neutral-500"></i> Humo Arena
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-neutral-800/60">
+              <div>
+                <span class="block text-[10px] text-neutral-500 uppercase">NARX</span>
+                <span class="text-sm font-bold text-white">200 000 so'm +</span>
+              </div>
+              <button class="bg-[#1a1a1a] hover:bg-[#fde18d] hover:text-black text-white border border-neutral-700 hover:border-[#fde18d] text-xs font-semibold px-4 py-2 rounded-xl transition-all">
+                Chipta
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartochka 3 (Sotib bo'lingan) -->
+        <div class="event-card bg-[#121212] border border-neutral-800/80 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all flex flex-col justify-between opacity-80">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="../images/card14.png" alt="Klassika" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale" />
+            <div class="absolute inset-0 bg-red-950/40 flex items-center justify-center">
+              <span class="bg-red-600/90 text-white font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg transform -rotate-6">
+                SOTIB BO'LINDI
+              </span>
+            </div>
+          </div>
+          <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-neutral-500 uppercase tracking-wider">KLASSIKA</span>
+              <h3 class="text-base font-bold text-neutral-300 mt-1">Betxoven: 9-Simfoniya</h3>
+              <p class="text-xs text-neutral-500 mt-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-neutral-600"></i> Konservatoriya
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-neutral-800/60">
+              <div>
+                <span class="block text-[10px] text-neutral-600 uppercase">HOLAT</span>
+                <span class="text-xs font-semibold text-neutral-400">Tugagan</span>
+              </div>
+              <button disabled class="bg-neutral-900 text-neutral-600 border border-neutral-800 text-xs font-semibold px-4 py-2 rounded-xl cursor-not-allowed">
+                Yopiq
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartochka 4 -->
+        <div class="event-card bg-[#121212] border border-neutral-800/80 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all flex flex-col justify-between">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="../images/card15.png" alt="Rock" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-3 right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow">
+              Oz qoldi: 8 ta
+            </span>
+          </div>
+          <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-[#fde18d] uppercase tracking-wider">ROCK</span>
+              <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#fde18d] transition-colors">Sahnada Jonli Ijro</h3>
+              <p class="text-xs text-neutral-400 mt-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-neutral-500"></i> Turkiston Saroyi
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-neutral-800/60">
+              <div>
+                <span class="block text-[10px] text-neutral-500 uppercase">NARX</span>
+                <span class="text-sm font-bold text-white">85 000 so'm +</span>
+              </div>
+              <button class="bg-[#fde18d] hover:bg-[#ebd07c] text-black text-xs font-bold px-4 py-2 rounded-xl transition-all shadow-md">
+                Chipta
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartochka 5 -->
+        <div class="event-card bg-[#121212] border border-neutral-800/80 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all flex flex-col justify-between">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="../images/card16.png" alt="Modern" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-[#fde18d] uppercase tracking-wider">MODERN</span>
+              <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#fde18d] transition-colors">Raqs sehri: Yangi qadam</h3>
+              <p class="text-xs text-neutral-400 mt-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-neutral-500"></i> Yoshlar Teatri
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-neutral-800/60">
+              <div>
+                <span class="block text-[10px] text-neutral-500 uppercase">NARX</span>
+                <span class="text-sm font-bold text-white">50 000 so'm +</span>
+              </div>
+              <button class="bg-[#1a1a1a] hover:bg-[#fde18d] hover:text-black text-white border border-neutral-700 hover:border-[#fde18d] text-xs font-semibold px-4 py-2 rounded-xl transition-all">
+                Chipta
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kartochka 6 -->
+        <div class="event-card bg-[#121212] border border-neutral-800/80 rounded-2xl overflow-hidden group hover:border-neutral-700 transition-all flex flex-col justify-between">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="../images/card17.png" alt="Adabiyot" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-4 space-y-3 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-[#fde18d] uppercase tracking-wider">ADABIYOT</span>
+              <h3 class="text-base font-bold text-white mt-1 group-hover:text-[#fde18d] transition-colors">Nazm va navo kechasi</h3>
+              <p class="text-xs text-neutral-400 mt-2 flex items-center gap-1.5">
+                <i class="fa-solid fa-location-dot text-neutral-500"></i> Alisher Navoiy Kutubxonasi
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-neutral-800/60">
+              <div>
+                <span class="block text-[10px] text-neutral-500 uppercase">NARX</span>
+                <span class="text-sm font-bold text-emerald-400">Bepul</span>
+              </div>
+              <button class="bg-[#1a1a1a] hover:bg-neutral-800 text-white border border-neutral-700 text-xs font-semibold px-4 py-2 rounded-xl transition-all">
+                Ro'yxatdan o'tish
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Banner (Do'stlaringiz bilan borasizmi?) -->
+      <div class="bg-gradient-to-r from-[#171510] to-[#121212] border border-[#fde18d]/20 rounded-2xl p-5 flex items-center justify-between flex-wrap gap-4">
+        <div>
+          <h4 class="text-base font-bold text-white">Do'stlaringiz bilan borasizmi?</h4>
+          <p class="text-xs text-neutral-400 mt-1">Guruh xaridida har kim o'z chiptasini o'zi to'laydi.</p>
+        </div>
+        <a href="#" class="inline-flex items-center space-x-2 text-xs font-bold text-[#fde18d] hover:underline">
+          <span>Qanday ishlaydi?</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+  
+
+    </section>
+
+  </div>
+
+  <!-- INTERAKTIV JAVASCRIPT MANTIG'I -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      const eventCards = document.querySelectorAll('.event-card');
+      const removeTagBtns = document.querySelectorAll('.remove-tag');
+      const clearAllTagsBtn = document.getElementById('clear-all-tags');
+      const tagsContainer = document.getElementById('tags-container');
+
+      // 1. Qidiruv bo'yicha kartalarni real-vaqtda saralash
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        eventCards.forEach(card => {
+          const title = card.querySelector('h3').innerText.toLowerCase();
+          const location = card.querySelector('p').innerText.toLowerCase();
+          
+          if (title.includes(query) || location.includes(query)) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        document.getElementById('filtered-count').innerText = `${visibleCount} ta`;
+      });
+
+      // 2. Teglarni o'chirish funksiyasi
+      removeTagBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.target.closest('.tag').remove();
+        });
+      });
+
+      // 3. Barcha teglarni tozalash
+      clearAllTagsBtn.addEventListener('click', () => {
+        const tags = tagsContainer.querySelectorAll('.tag');
+        tags.forEach(tag => tag.remove());
+      });
+
+      // 4. Tezkor sana tugmalariga aktiv klass berish
+      const dateBtns = document.querySelectorAll('.date-quick-btn');
+      dateBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          dateBtns.forEach(b => {
+            b.classList.remove('bg-[#fde18d]', 'text-black', 'font-semibold');
+            b.classList.add('bg-[#1c1c1c]', 'text-neutral-300');
+          });
+          btn.classList.remove('bg-[#1c1c1c]', 'text-neutral-300');
+          btn.classList.add('bg-[#fde18d]', 'text-black', 'font-semibold');
+        });
+      });
+    });
+  </script>
+        </section>
+    </main>
+    <footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12">
+            
+            <!-- Col 1: Brand Info (4 cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Logo -->
+                <h1 class="text-3xl font-serif font-bold text-[#edd38d] tracking-widest uppercase">
+                    SAHNA
+                </h1>
+                
+                <!-- Description -->
+                <p class="text-sm text-[#8c8273] leading-relaxed max-w-sm">
+                    Sizning premium tadbirlar olamiga yo'llanmangiz. Har bir chipta — yangi sarguzasht.
+                </p>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="#" class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM440-162v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q41-45 62.5-100.5T800-480q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z"/></svg>
+                    </a>
+              <a href="https://t.me/username"
+   target="_blank"
+   class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+
+    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12C24 5.37 18.63 0 12 0zm5.56 8.16l-1.92 9.06c-.14.65-.53.81-1.08.5l-2.96-2.18-1.43 1.38c-.16.16-.29.29-.6.29l.21-3.02 5.5-4.97c.24-.21-.05-.33-.37-.12l-6.8 4.28-2.93-.92c-.64-.2-.65-.64.13-.95l11.45-4.41c.53-.19 1 .13.8 1.06z"/>
+    </svg>
+
+</a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-260q75 0 127.5-52.5T660-440q0-5-.5-10t-1.5-10h-80q2 5 2 10v10q0 42-29 71t-71 29H330q24 36 63.5 58t86.5 22ZM302-420h80q-2-5-2-10v-10q0-42 29-71t71-29h150q-24-36-63.5-58T480-620q-75 0-127.5 52.5T300-440q0 5 .5 10t1.5 10ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Kategoriyalar (2.5 cols) -->
+            <div class="lg:col-span-2 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Kategoriyalar
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Konsertlar</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Teatrlar</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Kino</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Sport</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Yordam (2.5 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Yordam
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Tez-tez beriladigan savollar</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Ommaviy oferta</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Maxfiylik siyosati</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Bog'lanish</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: App Download Buttons (3 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Ilovani yuklang
+                </h3>
+                <div class="space-y-3">
+                    <!-- App Store Button -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.37-.58.67-.99 1.74-.85 2.77 1.01.08 2.05-.54 2.57-1.29z"/>
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">AVAILABLE ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">App Store</span>
+                        </div>
+                    </a>
+
+                    <!-- Google Play Button -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.396.23-.746.609-.92zm11.3 9.072l2.609-2.608-11.83-6.83 9.221 9.438zm0 2.228l-9.221 9.438 11.83-6.83-2.609-2.608zm1.414-1.414l3.18 1.836c.646.373.646 1.127 0 1.5l-3.18 1.836-2.316-2.316 2.316-2.856z"/>
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">GET IT ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row: Copyright & Payment Badges -->
+        <div class="pt-8 border-t border-[#1a1612] flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <!-- Copyright -->
+            <p class="text-[#73685a]">
+                © 2026 SAHNA. Barcha huquqlar himoyalangan.
+            </p>
+
+            <!-- Payment Methods Badges -->
+            <div class="flex items-center gap-2">
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">CLICK</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">PAYME</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">UZUM</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">VISA</span>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+
+</html>
