@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-black text-white">
-    <header class="w-full bg-[#0d0d0b] text-[#c2b293] px-6 py-4 border-b border-zinc-800/50">
+      <header class="sticky w-full bg-[#0d0d0b] text-[#c2b293] px-6 py-4 border-b border-zinc-800/50">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
 
             <!-- Chap tomon: Logo va Navigatsiya -->
@@ -40,20 +40,54 @@
 
             <!-- O'ng tomon: Qidiruv va Kirish tugmasi -->
             <div class="flex items-center space-x-6">
-                <!-- Qidiruv ikonkasi -->
-                <button class="text-[#c2b293] hover:text-white transition-colors p-1" aria-label="Qidiruv">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </button>
+              <div class="flex justify-center relative items-center py-3">
 
+                <div
+                    class="w-full max-w-2xl flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-3 py-1 shadow-[0_10px_40px_rgba(0,0,0,.5)] hover:border-[#D4AF37]/50 transition-all duration-500">
+
+                    <!-- Search Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-6 h-6 text-zinc-400 ml-2 mr-3 shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 21l-4.35-4.35M16 10.5A5.5 5.5 0 115 10.5a5.5 5.5 0 0111 0z" />
+                    </svg>
+
+                    <!-- Input -->
+                    <input
+                        type="text"
+                        class="search-input flex-1 bg-transparent outline-none text-white placeholder:text-zinc-500 text-base sm:text-lg"
+                        placeholder="Mahsulot qidiring..." />
+
+                    <!-- Microphone -->
+                    <button
+                        class="micro w-10 h-10 rounded-full bg-gradient-to-r from-amber-500 to-[#D4AF37] flex justify-center items-center text-black shadow-lg hover:scale-110 hover:rotate-6 transition-all duration-300 active:scale-95 shrink-0 cursor-pointer">
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a1 1 0 112 0 7 7 0 01-6 6.92V21h3a1 1 0 110 2H8a1 1 0 010-2h3v-2.08A7 7 0 015 12a1 1 0 112 0 5 5 0 0010 0z" />
+                        </svg>
+
+                    </button>
+
+                </div>
+                <div class="search-cards hidden absolute top-full mt-2 left-0 w-full bg-zinc-900 border border-zinc-800 text-white rounded-2xl shadow-2xl z-50 p-3">
+                    <!-- Qidiruv natijalari -->
+                </div>
+
+            </div>
                 <!-- Kirish Tugmasi -->
-                <button
+                <a href="./profile.html"
                     class="bg-[#fde18d] hover:bg-[#ebd07c] text-black font-medium px-6 py-2 rounded-full transition-all duration-200 shadow-md">
                     Kirish
-                </button>
+                </a>
             </div>
 
         </div>
@@ -135,6 +169,46 @@
 
       </div>
     </aside>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. Sidebar Navigatsiya tugmalari uchun interaktivlik
+  const navLinks = document.querySelectorAll('aside nav a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault(); // Sahifa yuqoriga sakrab ketishining oldini oladi
+
+      // Barcha linklardan faol (active) stillarni olib tashlaymiz
+      navLinks.forEach(item => {
+        item.classList.remove('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
+        item.classList.add('text-gray-400');
+
+        // Ikonka rangini neytral holatga qaytarish
+        const icon = item.querySelector('i');
+        if (icon) {
+          icon.classList.remove('text-amber-400');
+        }
+      });
+
+      // Bosilgan linkka faol (active) stillarni qo'shamiz
+      link.classList.remove('text-gray-400');
+      link.classList.add('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
+
+      // Bosilgan link ichidagi ikonka rangini yangilaymiz
+      const activeIcon = link.querySelector('i');
+      if (activeIcon) {
+        activeIcon.classList.add('text-amber-400');
+      }
+
+      // Link nomiga qarab kerakli harakatni bajarish (Masalan, log chiqarish yoki sahifa almashtirish)
+      const tabName = link.querySelector('span')?.innerText;
+      console.log(`Tanlangan bo'lim: ${tabName}`);
+    });
+  });
+
+});
+</script>
 
     <!-- MAIN DASHBOARD CONTENT -->
     <div class="lg:col-span-3 space-y-8">
@@ -352,36 +426,150 @@
         </div>
       </div>
 
-      <!-- Video Message Promo Card -->
-      <div class="bg-[#141414] border border-amber-500/20 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-        <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400 flex-shrink-0">
-          <img src="../images/card29.png" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <i class="fa-solid fa-video text-amber-400 text-xl"></i>
-          </div>
-        </div>
+  <!-- Video Message Promo Card -->
+<div class="bg-[#141414] border border-amber-500/20 rounded-3xl p-6 md:p-8 space-y-6">
+  
+  <!-- Main Card Content -->
+  <div class="flex flex-col md:flex-row items-center gap-6">
+    <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400 flex-shrink-0">
+      <img src="../images/card29.png" class="w-full h-full object-cover" alt="Video promo">
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <i class="fa-solid fa-video text-amber-400 text-xl"></i>
+      </div>
+    </div>
 
-        <div class="space-y-2 text-center md:text-left flex-1">
-          <span class="text-[10px] text-amber-400 uppercase tracking-widest font-bold">REKLAMA</span>
-          <h3 class="text-xl font-serif font-bold text-white">Video xabaringiz</h3>
-          <p class="text-xs text-gray-400 italic">
-            "Video xabari bor tadbirlar <strong class="text-white">2.4 baravar ko'p chipta sotadi</strong>."
-          </p>
-          <div class="flex items-center justify-center md:justify-start space-x-6 text-xs text-gray-300 pt-1">
-            <div>KO'RILGAN: <strong class="text-white">8 420 marta</strong></div>
-            <div>O'RTACHA KO'RISH: <strong class="text-white">0:19</strong></div>
-          </div>
-        </div>
+    <div class="space-y-2 text-center md:text-left flex-1">
+      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-bold">REKLAMA</span>
+      <h3 class="text-xl font-serif font-bold text-white">Video xabaringiz</h3>
+      <p class="text-xs text-gray-400 italic">
+        "Video xabari bor tadbirlar <strong class="text-white">2.4 baravar ko'p chipta sotadi</strong>."
+      </p>
+      <div class="flex items-center justify-center md:justify-start space-x-6 text-xs text-gray-300 pt-1">
+        <div>KO'RILGAN: <strong class="text-white">8 420 marta</strong></div>
+        <div>O'RTACHA KO'RISH: <strong class="text-white">0:19</strong></div>
+      </div>
+    </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-          <button onclick="alert('Yangi video yozish ilovasi ochilmoqda...')" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
-            G'oya yozish
-          </button>
-          <button onclick="alert('Maslahat oynasi...')" class="px-4 py-2.5 rounded-xl border border-white/10 text-gray-300 hover:text-white text-xs transition">
-            Maslahatlarni ko'rish
-          </button>
+    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+      <button id="openIdeaFormBtn" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition flex items-center justify-center gap-2">
+        <i class="fa-solid fa-pen-to-square"></i> G'oya yozish
+      </button>
+      <button id="openTipsModalBtn" class="px-4 py-2.5 rounded-xl border border-white/10 text-gray-300 hover:text-white hover:bg-white/5 text-xs transition flex items-center justify-center gap-2">
+        <i class="fa-solid fa-lightbulb text-amber-400"></i> Maslahatlarni ko'rish
+      </button>
+    </div>
+  </div>
+
+  <!-- Hidden Idea Form Section (G'oya yozish bosilganda ochiladi) -->
+  <div id="ideaFormContainer" class="hidden pt-6 border-t border-white/10 space-y-4">
+    <div class="flex items-center justify-between">
+      <h4 class="text-sm font-bold text-white flex items-center gap-2">
+        <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> Video ssenariy g'oyasini tayyorlash
+      </h4>
+      <button id="closeIdeaFormBtn" class="text-gray-400 hover:text-white text-xs">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Quick Templates -->
+    <div class="flex flex-wrap gap-2 text-[11px]">
+      <span class="text-gray-400 self-center">Shablonlar:</span>
+      <button type="button" onclick="insertTemplate(1)" class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-amber-400 hover:border-amber-500/30 transition">
+        ⚡ Qisqa taklifnoma
+      </button>
+      <button type="button" onclick="insertTemplate(2)" class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-amber-400 hover:border-amber-500/30 transition">
+        🎁 Chegirma & Aksiya
+      </button>
+      <button type="button" onclick="insertTemplate(3)" class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-amber-400 hover:border-amber-500/30 transition">
+        ⭐ VIP Mehmonlar uchun
+      </button>
+    </div>
+
+    <!-- Textarea Input -->
+    <div class="relative">
+      <textarea id="ideaTextarea" rows="3" placeholder="Video uchun ssenariy yoki asosiy g'oyangizni yozing..." class="w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition resize-none"></textarea>
+      <span class="absolute bottom-3 right-3 text-[10px] text-gray-500" id="charCounter">0 / 300</span>
+    </div>
+
+    <div class="flex justify-end gap-3">
+      <button id="cancelIdeaBtn" class="px-4 py-2 rounded-xl text-gray-400 hover:text-white text-xs transition">
+        Bekor qilish
+      </button>
+      <button id="saveIdeaBtn" class="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition flex items-center gap-2">
+        <i class="fa-solid fa-paper-plane"></i> Saqlash va Davom etish
+      </button>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- MODAL: Maslahatlarni ko'rish -->
+<div id="tipsModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+  <div class="bg-[#181818] border border-amber-500/30 rounded-3xl max-w-md w-full p-6 space-y-6 shadow-2xl relative transform transition-all scale-95 opacity-0" id="tipsModalBox">
+    
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between pb-4 border-b border-white/10">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+          <i class="fa-solid fa-lightbulb text-amber-400 text-lg"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-white">Video taklifnoma maslahatlari</h3>
+          <p class="text-[10px] text-gray-400">Konversiyani 2.4x oshirish sirlari</p>
         </div>
       </div>
+      <button id="closeTipsModalBtn" class="text-gray-400 hover:text-white text-lg w-8 h-8 rounded-full bg-white/5 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body: Tips List -->
+    <div class="space-y-4 text-xs text-gray-300 max-h-80 overflow-y-auto pr-1">
+      
+      <div class="flex gap-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">1</span>
+        <div>
+          <strong class="text-white block mb-0.5">Birinchi 3 soniya hal qiluvchi!</strong>
+          Tomoshabin e'tiborini darhol ushlab qoling. Salomlashish o'rniga savol yoki qiziq fakt bilan boshlang.
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">2</span>
+        <div>
+          <strong class="text-white block mb-0.5">Optimal davomiylik: 15–30 soniya</strong>
+          Video qisqa va aniq bo'lsin. O'rtacha ko'rish vaqti 19 soniyani tashkil etadi, shuning uchun cho'zmang.
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">3</span>
+        <div>
+          <strong class="text-white block mb-0.5">Yoritish va Ovoz sifati</strong>
+          Yuzingizga yorug'lik tushib tursin va fondagi shovqinlarni kamaytiring. Yaxshi ovoz ishanch beradi.
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">4</span>
+        <div>
+          <strong class="text-white block mb-0.5">Aniq chorlov (Call to Action)</strong>
+          Videongiz oxirida mantiqiy yakun qiling: "Chiptani hoziroq band qiling", "Soni cheklangan!"
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="pt-2">
+      <button id="gotItBtn" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
+        Tushunarli, rahmat!
+      </button>
+    </div>
+
+  </div>
+</div>
 
       <!-- Guests & Finance Section (2 Columns) -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -627,19 +815,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 </script>
+<!-- Chart.js Kutubxonasi (agar hali ulamagan bo'lsangiz) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
    <footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
     <div class="max-w-7xl mx-auto">
-        
+
         <!-- Main Footer Content Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12">
-            
+
             <!-- Col 1: Brand Info (4 cols) -->
             <div class="lg:col-span-4 space-y-6">
                 <!-- Logo -->
                 <h1 class="text-3xl font-serif font-bold text-[#edd38d] tracking-widest uppercase">
                     SAHNA
                 </h1>
-                
+
                 <!-- Description -->
                 <p class="text-sm text-[#8c8273] leading-relaxed max-w-sm">
                     Sizning premium tadbirlar olamiga yo'llanmangiz. Har bir chipta — yangi sarguzasht.
@@ -647,20 +839,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <!-- Social Icons -->
                 <div class="flex items-center gap-3 pt-2">
-                    <a href="#" class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
-                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM440-162v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q41-45 62.5-100.5T800-480q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z"/></svg>
+                    <!-- Website / Veb sayt -->
+                    <a href="https://sahna.uz" target="_blank" rel="noopener noreferrer" title="Veb-sayt"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                            <path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM440-162v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q41-45 62.5-100.5T800-480q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z" />
+                        </svg>
                     </a>
-              <a href="https://t.me/username"
-   target="_blank"
-   class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
 
-    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12C24 5.37 18.63 0 12 0zm5.56 8.16l-1.92 9.06c-.14.65-.53.81-1.08.5l-2.96-2.18-1.43 1.38c-.16.16-.29.29-.6.29l.21-3.02 5.5-4.97c.24-.21-.05-.33-.37-.12l-6.8 4.28-2.93-.92c-.64-.2-.65-.64.13-.95l11.45-4.41c.53-.19 1 .13.8 1.06z"/>
-    </svg>
+                    <!-- Telegram -->
+                    <a href="https://t.me/sahna_uz" target="_blank" rel="noopener noreferrer" title="Telegram"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12C24 5.37 18.63 0 12 0zm5.56 8.16l-1.92 9.06c-.14.65-.53.81-1.08.5l-2.96-2.18-1.43 1.38c-.16.16-.29.29-.6.29l.21-3.02 5.5-4.97c.24-.21-.05-.33-.37-.12l-6.8 4.28-2.93-.92c-.64-.2-.65-.64.13-.95l11.45-4.41c.53-.19 1 .13.8 1.06z" />
+                        </svg>
+                    </a>
 
-</a>
-                    <a href="#" class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
-                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-260q75 0 127.5-52.5T660-440q0-5-.5-10t-1.5-10h-80q2 5 2 10v10q0 42-29 71t-71 29H330q24 36 63.5 58t86.5 22ZM302-420h80q-2-5-2-10v-10q0-42 29-71t71-29h150q-24-36-63.5-58T480-620q-75 0-127.5 52.5T300-440q0 5 .5 10t1.5 10ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z"/></svg>
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/sahna_uz" target="_blank" rel="noopener noreferrer" title="Instagram"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                            <path d="M480-260q75 0 127.5-52.5T660-440q0-5-.5-10t-1.5-10h-80q2 5 2 10v10q0 42-29 71t-71 29H330q24 36 63.5 58t86.5 22ZM302-420h80q-2-5-2-10v-10q0-42 29-71t71-29h150q-24-36-63.5-58T480-620q-75 0-127.5 52.5T300-440q0 5 .5 10t1.5 10ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z" />
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -671,10 +871,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     Kategoriyalar
                 </h3>
                 <ul class="space-y-3 text-sm">
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Konsertlar</a></li>
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Teatrlar</a></li>
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Kino</a></li>
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Sport</a></li>
+                    <li><a href="#concerts" class="hover:text-[#edd38d] transition-colors">Konsertlar</a></li>
+                    <li><a href="#theaters" class="hover:text-[#edd38d] transition-colors">Teatrlar</a></li>
+                    <li><a href="#cinema" class="hover:text-[#edd38d] transition-colors">Kino</a></li>
+                    <li><a href="#sports" class="hover:text-[#edd38d] transition-colors">Sport</a></li>
                 </ul>
             </div>
 
@@ -684,10 +884,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     Yordam
                 </h3>
                 <ul class="space-y-3 text-sm">
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Tez-tez beriladigan savollar</a></li>
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Ommaviy oferta</a></li>
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Maxfiylik siyosati</a></li>
-                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Bog'lanish</a></li>
+                    <li><a href="#faqAccordion" class="hover:text-[#edd38d] transition-colors">Tez-tez beriladigan savollar</a></li>
+                    <li><a href="#oferta" class="hover:text-[#edd38d] transition-colors">Ommaviy oferta</a></li>
+                    <li><a href="#privacy" class="hover:text-[#edd38d] transition-colors">Maxfiylik siyosati</a></li>
+                    <li><a href="#contact" class="hover:text-[#edd38d] transition-colors">Bog'lanish</a></li>
                 </ul>
             </div>
 
@@ -697,10 +897,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     Ilovani yuklang
                 </h3>
                 <div class="space-y-3">
-                    <!-- App Store Button -->
-                    <a href="#" class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] text-[#f3efe6] transition-all group">
+                    <!-- App Store Button (Ishtirok etadi va Ochiladi) -->
+                    <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] active:scale-95 text-[#f3efe6] transition-all group">
                         <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
-                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.37-.58.67-.99 1.74-.85 2.77 1.01.08 2.05-.54 2.57-1.29z"/>
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.37-.58.67-.99 1.74-.85 2.77 1.01.08 2.05-.54 2.57-1.29z" />
                         </svg>
                         <div class="text-left">
                             <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">AVAILABLE ON</span>
@@ -708,10 +909,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </a>
 
-                    <!-- Google Play Button -->
-                    <a href="#" class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] text-[#f3efe6] transition-all group">
+                    <!-- Google Play Button (Ishtirok etadi va Ochiladi) -->
+                    <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] active:scale-95 text-[#f3efe6] transition-all group">
                         <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
-                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.396.23-.746.609-.92zm11.3 9.072l2.609-2.608-11.83-6.83 9.221 9.438zm0 2.228l-9.221 9.438 11.83-6.83-2.609-2.608zm1.414-1.414l3.18 1.836c.646.373.646 1.127 0 1.5l-3.18 1.836-2.316-2.316 2.316-2.856z"/>
+                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.396.23-.746.609-.92zm11.3 9.072l2.609-2.608-11.83-6.83 9.221 9.438zm0 2.228l-9.221 9.438 11.83-6.83-2.609-2.608zm1.414-1.414l3.18 1.836c.646.373.646 1.127 0 1.5l-3.18 1.836-2.316-2.316 2.316-2.856z" />
                         </svg>
                         <div class="text-left">
                             <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">GET IT ON</span>
@@ -741,7 +943,149 @@ document.addEventListener('DOMContentLoaded', () => {
 
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  // 1. DATA HOLLATI (Boshlang'ich qiymatlar)
+  const ticketData = {
+    standard: { sold: 420, total: 500 },
+    premium: { sold: 180, total: 200 },
+    vip: { sold: 44, total: 50 }
+  };
+
+  // 2. CHART.JS SOZLAMALARI
+  const ctx = document.getElementById('salesChart');
+  let salesChart;
+
+  if (ctx) {
+    salesChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['18:00', '18:05', '18:10', '18:15', '18:20', '18:25'],
+        datasets: [{
+          label: 'Jonli sotuvlar',
+          data: [610, 618, 625, 632, 638, 644],
+          borderColor: '#f59e0b', // amber-500
+          borderWidth: 2.5,
+          backgroundColor: (context) => {
+            const chart = context.chart;
+            const { ctx, chartArea } = chart;
+            if (!chartArea) return null;
+            const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+            gradient.addColorStop(0, 'rgba(245, 158, 11, 0.35)');
+            gradient.addColorStop(1, 'rgba(245, 158, 11, 0.0)');
+            return gradient;
+          },
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: '#f59e0b',
+          pointBorderColor: '#141414',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+          pointHoverRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 800,
+          easing: 'easeOutQuart'
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1f1f1f',
+            titleColor: '#fff',
+            bodyColor: '#f59e0b',
+            borderColor: 'rgba(255,255,255,0.1)',
+            borderWidth: 1,
+            padding: 10,
+            displayColors: false,
+            callbacks: {
+              label: (context) => `${context.parsed.y} ta jami sotildi`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: '#888', font: { size: 10 } }
+          },
+          y: {
+            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+            ticks: { color: '#888', font: { size: 10 } }
+          }
+        }
+      }
+    });
+  }
+
+  // 3. PROGRESS BAR VA QIYMATLARNI YANGILASH FUNKSIYASI
+  function updateUI() {
+    // Standart
+    const stdPct = Math.min(100, Math.round((ticketData.standard.sold / ticketData.standard.total) * 100));
+    document.getElementById('std-count').innerText = `${ticketData.standard.sold} / ${ticketData.standard.total}`;
+    document.getElementById('std-pct').innerText = `(${stdPct}%)`;
+    document.getElementById('std-bar').style.width = `${stdPct}%`;
+
+    // Premium
+    const premPct = Math.min(100, Math.round((ticketData.premium.sold / ticketData.premium.total) * 100));
+    document.getElementById('prem-count').innerText = `${ticketData.premium.sold} / ${ticketData.premium.total}`;
+    document.getElementById('prem-pct').innerText = `(${premPct}%)`;
+    document.getElementById('prem-bar').style.width = `${premPct}%`;
+
+    // VIP
+    const vipPct = Math.min(100, Math.round((ticketData.vip.sold / ticketData.vip.total) * 100));
+    document.getElementById('vip-count').innerText = `${ticketData.vip.sold} / ${ticketData.vip.total}`;
+    document.getElementById('vip-pct').innerText = `(${vipPct}%)`;
+    document.getElementById('vip-bar').style.width = `${vipPct}%`;
+
+    // Jami bandlik
+    const totalSold = ticketData.standard.sold + ticketData.premium.sold + ticketData.vip.sold;
+    const totalCap = ticketData.standard.total + ticketData.premium.total + ticketData.vip.total;
+    const totalPct = ((totalSold / totalCap) * 100).toFixed(1);
+    document.getElementById('total-occupancy').innerText = `${totalPct}%`;
+
+    return totalSold;
+  }
+
+  // 4. JONLI SOTUV SIMULYATSIYASI (Har 3 soniyada)
+  setInterval(() => {
+    // Tasodifiy sotuv turi (0: Standard, 1: Premium, 2: VIP)
+    const rand = Math.random();
+    
+    if (rand < 0.6 && ticketData.standard.sold < ticketData.standard.total) {
+      ticketData.standard.sold += 1;
+    } else if (rand < 0.85 && ticketData.premium.sold < ticketData.premium.total) {
+      ticketData.premium.sold += 1;
+    } else if (ticketData.vip.sold < ticketData.vip.total) {
+      ticketData.vip.sold += 1;
+    }
+
+    const currentTotalSold = updateUI();
+
+    // Grafikka yangi nuqta berish va eskisini surish
+    if (salesChart) {
+      const now = new Date();
+      const timeLabel = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+      
+      salesChart.data.labels.push(timeLabel);
+      salesChart.data.labels.shift();
+
+      salesChart.data.datasets[0].data.push(currentTotalSold);
+      salesChart.data.datasets[0].data.shift();
+
+      salesChart.update();
+    }
+  }, 3000);
+
+});
+</script>
+
+<script src="../js/helo.js"></script>
 </body>
 
 </html>

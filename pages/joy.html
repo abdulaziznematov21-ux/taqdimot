@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAHNA - Joy Tanlash</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Playfair Display (dabdabali sarlavhalar uchun) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #080808;
+    }
+    .font-serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* oltin rangli gradient effektlar */
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, #fce08f 0%, #dfb559 50%, #a88132 100%);
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #fce08f 0%, #e5bd68 50%, #ba9243 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .border-gold {
+      border-color: #92753b;
+    }
+
+    /* Scrollbar stili */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #18181b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3f3f46;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body class="min-h-screen  p-4 text-gray-200 select-none">
+ <header class="sticky w-full bg-[#0d0d0b] text-[#c2b293] px-6 py-4 border-b border-zinc-800/50">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+            <!-- Chap tomon: Logo va Navigatsiya -->
+            <div class="flex items-center space-x-8 md:space-x-12">
+                <!-- Logo -->
+                <a href="../index.html" class="text-xl md:text-2xl font-serif tracking-widest text-[#f0d38d] font-bold">
+                    SAHNA
+                </a>
+
+                <!-- Menyular -->
+                <nav class="hidden md:flex items-center space-x-6 text-sm md:text-base font-medium">
+                    <!-- Aktiv menu (Tadbirlar) -->
+                    <a href="../pages/tadbirlar.html"
+                        class="text-[#fce399] font-bold relative py-1 border-b-2 border-[#fce399]">
+                        Tadbirlar
+                    </a>
+                    <a href="../pages/tadbir.htm" class="hover:text-white transition-colors py-1">
+                        Teatrlar
+                    </a>
+                    <a href="../pages/chiptalarim.html" class="hover:text-white transition-colors py-1">
+                        Konsertlar
+                    </a>
+                    <a href="./tashkilotchilarim.html" class="hover:text-white transition-colors py-1">
+                        Kino
+                    </a>
+                </nav>
+            </div>
+
+            <!-- O'ng tomon: Qidiruv va Kirish tugmasi -->
+            <div class="flex items-center space-x-6">
+              <div class="flex justify-center relative items-center py-3">
+
+                <div
+                    class="w-full max-w-2xl flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-3 py-1 shadow-[0_10px_40px_rgba(0,0,0,.5)] hover:border-[#D4AF37]/50 transition-all duration-500">
+
+                    <!-- Search Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-6 h-6 text-zinc-400 ml-2 mr-3 shrink-0"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 21l-4.35-4.35M16 10.5A5.5 5.5 0 115 10.5a5.5 5.5 0 0111 0z" />
+                    </svg>
+
+                    <!-- Input -->
+                    <input
+                        type="text"
+                        class="search-input flex-1 bg-transparent outline-none text-white placeholder:text-zinc-500 text-base sm:text-lg"
+                        placeholder="Mahsulot qidiring..." />
+
+                    <!-- Microphone -->
+                    <button
+                        class="micro w-10 h-10 rounded-full bg-gradient-to-r from-amber-500 to-[#D4AF37] flex justify-center items-center text-black shadow-lg hover:scale-110 hover:rotate-6 transition-all duration-300 active:scale-95 shrink-0 cursor-pointer">
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a1 1 0 112 0 7 7 0 01-6 6.92V21h3a1 1 0 110 2H8a1 1 0 010-2h3v-2.08A7 7 0 015 12a1 1 0 112 0 5 5 0 0010 0z" />
+                        </svg>
+
+                    </button>
+
+                </div>
+                <div class="search-cards hidden absolute top-full mt-2 left-0 w-full bg-zinc-900 border border-zinc-800 text-white rounded-2xl shadow-2xl z-50 p-3">
+                    <!-- Qidiruv natijalari -->
+                </div>
+
+            </div>
+               <!-- Kirish Tugmasi -->
+                <a href="./profile.html"
+                    class="bg-[#fde18d] hover:bg-[#ebd07c] text-black font-medium px-6 py-2 rounded-full transition-all duration-200 shadow-md">
+                    Kirish
+                </a>
+            </div>
+
+        </div>
+    </header>
+   <div class="flex items-center justify-center">
+     <!-- Modal Container -->
+  <div class="w-full max-w-6xl bg-[#121214] border border-[#26241e] rounded-2xl overflow-hidden shadow-2xl flex flex-col lg:flex-row min-h-[680px]">
+    
+    <!-- CHAP TOMON: SAHNA VA O'RINDIQLAR (MAP) -->
+    <div class="flex-1 p-6 md:p-8 flex flex-col justify-between relative bg-gradient-to-b from-[#181613] to-[#0f0e0d]">
+      
+      <!-- Sahna sarlovhasi -->
+      <div class="text-center mb-8">
+        <div class="w-48 h-[1px] bg-gradient-to-r from-transparent via-[#a88132] to-transparent mx-auto mb-2"></div>
+        <h2 class="font-serif-title tracking-[0.3em] text-[#dfb559] text-xl font-semibold uppercase">SAHNA</h2>
+      </div>
+
+      <!-- Zal sxemasi (Z-index va Zoom uchun wrapper) -->
+      <div class="overflow-auto py-4 flex-1 flex flex-col justify-center items-center">
+        <div id="seatMap" class="transition-transform duration-200 origin-center flex flex-col items-center gap-6">
+          
+          <!-- Balkon Qismi -->
+          <div class="flex flex-col items-center gap-2">
+            <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">BALKON</span>
+            <div id="balkonRows" class="flex gap-1.5 justify-center"></div>
+          </div>
+
+          <!-- Parter Qismi -->
+          <div class="flex flex-col items-center gap-2 mt-2">
+            <span class="text-xs uppercase tracking-widest text-gray-400 font-medium">PARTER</span>
+            <div id="parterRows" class="flex flex-col gap-1.5 items-center"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Pastki Legend va Zoom Boshqaruvi -->
+      <div class="mt-8 pt-4 border-t border-[#26241e] flex flex-wrap items-center justify-between gap-4 text-xs text-gray-400">
+        <!-- Legend turlari -->
+        <div class="flex flex-wrap items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span class="w-3.5 h-3.5 rounded-sm bg-gold-gradient block"></span>
+            <span>VIP 450k</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3.5 h-3.5 rounded-sm bg-[#8a7238] block"></span>
+            <span>Premium 320k</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3.5 h-3.5 rounded-sm border border-gray-500 block"></span>
+            <span>Standart 180k</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3.5 h-3.5 rounded-sm bg-[#222] border border-[#333] block"></span>
+            <span>Sotilgan</span>
+          </div>
+        </div>
+
+        <!-- Boshqaruv tugmalari (Qayta tiklash & Zoom) -->
+        <div class="flex items-center gap-4 ml-auto">
+          <button id="resetBtn" class="hover:text-amber-400 transition-colors font-medium">
+            Qayta tiklash
+          </button>
+          
+          <div class="flex items-center bg-[#1c1a17] border border-[#332e25] rounded-lg overflow-hidden">
+            <button id="zoomIn" class="px-3 py-1.5 hover:bg-[#2a2721] text-gray-300 font-bold border-r border-[#332e25]">+</button>
+            <button id="zoomOut" class="px-3 py-1.5 hover:bg-[#2a2721] text-gray-300 font-bold">&minus;</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- O'NG TOMON: TANLANGAN JOYLAR VA TO'LOV PANEL -->
+    <div class="w-full lg:w-[380px] bg-[#161513] border-t lg:border-t-0 lg:border-l border-[#26241e] p-6 flex flex-col justify-between">
+      
+      <!-- Panel Tepasi -->
+      <div>
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="font-serif-title text-2xl text-[#f3e1b6]">Tanlangan joylar</h3>
+          <button class="w-8 h-8 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-gray-500 transition-colors">
+            &times;
+          </button>
+        </div>
+
+        <!-- Tanlangan o'rindiqlar ro'yxati -->
+        <div id="selectedList" class="flex flex-col gap-3 max-h-[340px] overflow-y-auto pr-1">
+          <!-- JS orqali to'ldiriladi -->
+        </div>
+      </div>
+
+      <!-- Panel Pastki (Umumiy Summa va Davom Etish) -->
+      <div class="mt-6 pt-6 border-t border-[#26241e] flex flex-col gap-4">
+        <div class="flex items-end justify-between">
+          <div>
+            <span class="text-xs text-gray-400 block mb-0.5">Umumiy narx:</span>
+            <span class="text-[10px] text-gray-500 tracking-wider">O'ZBEK SO'MI</span>
+          </div>
+          <div class="text-right">
+            <span id="totalPrice" class="font-serif-title text-3xl font-semibold text-[#f2d080]">0</span>
+          </div>
+        </div>
+
+        <!-- Davom etish tugmasi -->
+        <a href="./tolov.html" id="checkoutBtn" disabled class="flex items-center justify-center w-full py-3.5 rounded-xl bg-gold-gradient text-black font-semibold text-sm hover:brightness-110 active:scale-[0.99] transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-amber-900/20">
+          Davom etish
+        </a>
+
+        <p class="text-[11px] text-gray-500 text-center italic">
+          &clock10; Joylar 10 daqiqa band turadi.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+ </div>
+  <footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12">
+            
+            <!-- Col 1: Brand Info (4 cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Logo -->
+                <h1 class="text-3xl font-serif font-bold text-[#edd38d] tracking-widest uppercase">
+                    SAHNA
+                </h1>
+                
+                <!-- Description -->
+                <p class="text-sm text-[#8c8273] leading-relaxed max-w-sm">
+                    Sizning premium tadbirlar olamiga yo'llanmangiz. Har bir chipta — yangi sarguzasht.
+                </p>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-3 pt-2">
+                    <a href="#" class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM440-162v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q41-45 62.5-100.5T800-480q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z"/></svg>
+                    </a>
+              <a href="https://t.me/username"
+   target="_blank"
+   class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+
+    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12C24 5.37 18.63 0 12 0zm5.56 8.16l-1.92 9.06c-.14.65-.53.81-1.08.5l-2.96-2.18-1.43 1.38c-.16.16-.29.29-.6.29l.21-3.02 5.5-4.97c.24-.21-.05-.33-.37-.12l-6.8 4.28-2.93-.92c-.64-.2-.65-.64.13-.95l11.45-4.41c.53-.19 1 .13.8 1.06z"/>
+    </svg>
+
+</a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-260q75 0 127.5-52.5T660-440q0-5-.5-10t-1.5-10h-80q2 5 2 10v10q0 42-29 71t-71 29H330q24 36 63.5 58t86.5 22ZM302-420h80q-2-5-2-10v-10q0-42 29-71t71-29h150q-24-36-63.5-58T480-620q-75 0-127.5 52.5T300-440q0 5 .5 10t1.5 10ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Kategoriyalar (2.5 cols) -->
+            <div class="lg:col-span-2 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Kategoriyalar
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Konsertlar</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Teatrlar</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Kino</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Sport</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Yordam (2.5 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Yordam
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Tez-tez beriladigan savollar</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Ommaviy oferta</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Maxfiylik siyosati</a></li>
+                    <li><a href="#" class="hover:text-[#edd38d] transition-colors">Bog'lanish</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: App Download Buttons (3 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Ilovani yuklang
+                </h3>
+                <div class="space-y-3">
+                    <!-- App Store Button -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.37-.58.67-.99 1.74-.85 2.77 1.01.08 2.05-.54 2.57-1.29z"/>
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">AVAILABLE ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">App Store</span>
+                        </div>
+                    </a>
+
+                    <!-- Google Play Button -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.396.23-.746.609-.92zm11.3 9.072l2.609-2.608-11.83-6.83 9.221 9.438zm0 2.228l-9.221 9.438 11.83-6.83-2.609-2.608zm1.414-1.414l3.18 1.836c.646.373.646 1.127 0 1.5l-3.18 1.836-2.316-2.316 2.316-2.856z"/>
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">GET IT ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row: Copyright & Payment Badges -->
+        <div class="pt-8 border-t border-[#1a1612] flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <!-- Copyright -->
+            <p class="text-[#73685a]">
+                © 2026 SAHNA. Barcha huquqlar himoyalangan.
+            </p>
+
+            <!-- Payment Methods Badges -->
+            <div class="flex items-center gap-2">
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">CLICK</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">PAYME</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">UZUM</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">VISA</span>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+  <!-- JAVASCRIPT LOGIKASI -->
+  <script>
+    // 1. ZAL NORMALLASHTIRILGAN DATA SXEMASI
+    const SEAT_TYPES = {
+      VIP: { price: 450000, name: 'VIP', class: 'bg-gold-gradient border-transparent' },
+      PREMIUM: { price: 320000, name: 'Premium', class: 'bg-[#8a7238] border-transparent' },
+      STANDART: { price: 280000, name: 'Standart', class: 'border border-[#555] bg-transparent' },
+      SOLD: { price: 0, name: 'Sotilgan', class: 'bg-[#1e1e1e] border border-[#2a2a2a] cursor-not-allowed opacity-40' }
+    };
+
+    // Balkon joylari (8 ta)
+    const balkonData = Array.from({ length: 8 }, (_, i) => ({
+      id: `balkon-1-${i + 1}`,
+      section: 'BALKON',
+      row: 1,
+      seat: i + 1,
+      type: 'STANDART',
+      price: 180000
+    }));
+
+    // Parter joylari (Har bir qatorda har xil sonli o'rindiqlar)
+    const parterRowsConfig = [
+      { row: 1, seats: 12, type: 'VIP', price: 450000 },
+      { row: 2, seats: 14, type: 'VIP', price: 450000 },
+      { row: 3, seats: 14, type: 'PREMIUM', price: 320000 },
+      { row: 4, seats: 16, type: 'PREMIUM', price: 280000 },
+      { row: 5, seats: 17, type: 'STANDART', price: 280000 },
+      { row: 6, seats: 18, type: 'STANDART', price: 280000 },
+      { row: 7, seats: 19, type: 'STANDART', price: 280000 },
+    ];
+
+    // Sotib bo'lingan o'rindiqlar (demo uchun)
+    const soldSeatIds = ['parter-3-1', 'parter-3-2', 'parter-6-17', 'parter-7-18', 'parter-7-19'];
+
+    // Tanlangan o'rindiqlarni saqlash ro'yxati
+    let selectedSeats = [];
+    let currentZoom = 1;
+
+    // 2. DOM ELEMENTLARI
+    const balkonContainer = document.getElementById('balkonRows');
+    const parterContainer = document.getElementById('parterRows');
+    const selectedListContainer = document.getElementById('selectedList');
+    const totalPriceEl = document.getElementById('totalPrice');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const seatMap = document.getElementById('seatMap');
+
+    // 3. XARITANI CHIZISH (RENDER)
+    function renderMap() {
+      // Balkon chizish
+      balkonContainer.innerHTML = '';
+      balkonData.forEach(seat => {
+        balkonContainer.appendChild(createSeatElement(seat));
+      });
+
+      // Parter chizish
+      parterContainer.innerHTML = '';
+      parterRowsConfig.forEach(rowConfig => {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'flex gap-1.5 justify-center';
+
+        for (let i = 1; i <= rowConfig.seats; i++) {
+          const seatId = `parter-${rowConfig.row}-${i}`;
+          const isSold = soldSeatIds.includes(seatId);
+
+          const seatObj = {
+            id: seatId,
+            section: 'PARTER',
+            row: rowConfig.row,
+            seat: i,
+            type: isSold ? 'SOLD' : rowConfig.type,
+            price: rowConfig.price
+          };
+
+          rowDiv.appendChild(createSeatElement(seatObj));
+        }
+        parterContainer.appendChild(rowDiv);
+      });
+    }
+
+    // Bitta o'rindiq elementini yaratuvchi yordamchi funksiya
+    function createSeatElement(seat) {
+      const btn = document.createElement('button');
+      const isSelected = selectedSeats.some(s => s.id === seat.id);
+      const isSold = seat.type === 'SOLD';
+
+      // Asosiy klasslar
+      btn.className = `w-5 h-5 md:w-6 md:h-6 rounded-[3px] flex items-center justify-center transition-all duration-150 text-[10px] font-bold ${
+        isSold ? SEAT_TYPES.SOLD.class : 
+        isSelected ? 'bg-gold-gradient border-amber-300 text-black shadow-md shadow-amber-500/30 ring-2 ring-amber-400 scale-105' : 
+        SEAT_TYPES[seat.type].class + ' hover:scale-110 hover:border-amber-400'
+      }`;
+
+      // Tanlangan bo'lsa checked belgisi
+      if (isSelected) {
+        btn.innerHTML = `
+          <svg class="w-3.5 h-3.5 text-black stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+          </svg>`;
+      }
+
+      // Klik event
+      if (!isSold) {
+        btn.onclick = () => toggleSeatSelection(seat);
+      } else {
+        btn.disabled = true;
+      }
+
+      return btn;
+    }
+
+    // 4. SELECTION LOGIC (TANLASH/BEKOR QILISH)
+    function toggleSeatSelection(seat) {
+      const index = selectedSeats.findIndex(s => s.id === seat.id);
+      
+      if (index > -1) {
+        selectedSeats.splice(index, 1);
+      } else {
+        selectedSeats.push(seat);
+      }
+
+      updateUI();
+    }
+
+    function removeSeat(seatId) {
+      selectedSeats = selectedSeats.filter(s => s.id !== seatId);
+      updateUI();
+    }
+
+    // 5. RE-RENDER O'NG PANEL VA SUMMA
+    function updateUI() {
+      // 1. Map-ni yangilash
+      renderMap();
+
+      // 2. O'ng tomondagi ro'yxatni yangilash
+      selectedListContainer.innerHTML = '';
+
+      if (selectedSeats.length === 0) {
+        selectedListContainer.innerHTML = `
+          <div class="text-center py-10 text-gray-600 text-xs">
+            Hali hech qanday joy tanlanmadi
+          </div>`;
+      } else {
+        selectedSeats.forEach(seat => {
+          const card = document.createElement('div');
+          card.className = 'bg-[#1f1d19] border border-[#2d2922] rounded-xl p-3.5 flex items-center justify-between text-xs tracking-wide animate-fadeIn';
+          
+          card.innerHTML = `
+            <div>
+              <div class="text-[10px] text-gray-400 uppercase font-semibold mb-1">
+                ${seat.section} &bull; QATOR ${seat.row}
+              </div>
+              <div class="text-gray-200 font-bold text-sm">
+                O'rindiq ${seat.seat}
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-semibold text-gray-300">
+                ${seat.price.toLocaleString('ru-RU')}
+              </span>
+              <button onclick="removeSeat('${seat.id}')" class="text-rose-500/80 hover:text-rose-400 p-1 text-base font-bold transition-colors">
+                &times;
+              </button>
+            </div>
+          `;
+          selectedListContainer.appendChild(card);
+        });
+      }
+
+      // 3. Umumiy narx va tugma holatini yangilash
+      const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
+      totalPriceEl.textContent = total.toLocaleString('ru-RU');
+
+      if (selectedSeats.length > 0) {
+        checkoutBtn.disabled = false;
+      } else {
+        checkoutBtn.disabled = true;
+      }
+    }
+
+    // 6. QAYTA TIKLASH VA ZOOM LOGIKASI
+    resetBtn.addEventListener('click', () => {
+      selectedSeats = [];
+      updateUI();
+    });
+
+    document.getElementById('zoomIn').addEventListener('click', () => {
+      if (currentZoom < 1.3) {
+        currentZoom += 0.1;
+        seatMap.style.transform = `scale(${currentZoom})`;
+      }
+    });
+
+    document.getElementById('zoomOut').addEventListener('click', () => {
+      if (currentZoom > 0.7) {
+        currentZoom -= 0.1;
+        seatMap.style.transform = `scale(${currentZoom})`;
+      }
+    });
+
+    // Boshlang'ich yuklash
+    updateUI();
+  </script>
+</body>
+</html>

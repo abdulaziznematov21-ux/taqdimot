@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chiptangiz tayyor! - SAHNA</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Playfair Display va Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #070707;
+    }
+    .font-serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* Oltin gradient uslublari */
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, #fae298 0%, #dfb559 50%, #b28836 100%);
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #fce08f 0%, #e2b95d 50%, #ba9243 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 text-gray-200 select-none">
+
+  <!-- MODAL CONTAINER (Aylanma va to'liq o'lchamli) -->
+  <div class="w-full max-w-[440px] bg-[#13110e] border border-[#2c261e] rounded-3xl p-6 sm:p-7 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
+    
+    <!-- 1. TEPADAGI MUVAFFAQIYAT BELGISI (CHECKMARK) -->
+    <div class="w-12 h-12 rounded-full bg-gold-gradient flex items-center justify-center shadow-lg shadow-amber-500/20 mb-4">
+      <svg class="w-6 h-6 text-black stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+      </svg>
+    </div>
+
+    <!-- 2. SARLAVHA VA SUBTITR -->
+    <h2 class="font-serif-title text-2xl font-semibold text-[#f5e6c8] mb-1">
+      Chiptangiz tayyor!
+    </h2>
+    <p class="text-xs text-gray-400 mb-5 max-w-[260px] leading-relaxed">
+      Telefoningizda saqlanadi — internet kerak emas.
+    </p>
+
+    <!-- 3. CHIPTA KARTASI (O'YIQLARI BILAN) -->
+    <div class="w-full bg-[#1a1713] border border-[#2d271e] rounded-2xl p-5 relative mb-4 flex flex-col items-center shadow-inner">
+      
+      <!-- Chiptaning chap va o'ng o'yiqlari (Ticket Cutouts) -->
+      <div class="absolute -left-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#13110e] border-r border-[#2d271e]"></div>
+      <div class="absolute -right-3 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-[#13110e] border-l border-[#2d271e]"></div>
+
+      <!-- Poster rasmi -->
+      <div class="w-24 h-32 rounded-lg overflow-hidden border border-[#3d3324] shadow-md mb-4 bg-black">
+        <img 
+          src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=400&auto=format&fit=crop" 
+          alt="Sharq taronalari Poster" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Tadbir nomi -->
+      <h3 class="font-serif-title text-base sm:text-lg font-semibold text-[#f3e1b6] mb-2.5">
+        Sharq taronalari: Simfonik oqshom
+      </h3>
+
+      <!-- Sana va Joy -->
+      <div class="flex flex-col gap-1 text-xs text-gray-300 mb-4">
+        <div class="flex items-center justify-center gap-1.5 text-[#dfb559] font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          <span>18 avgust, shanba &bull; 19:00</span>
+        </div>
+        <div class="flex items-center justify-center gap-1.5 text-gray-400">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <span>Turkiston saroyi, Toshkent</span>
+        </div>
+      </div>
+
+      <!-- Sektor va O'rindiq Badge -->
+      <div class="bg-[#24201a] border border-[#383024] rounded-full px-4 py-1.5 text-[11px] text-gray-300 font-medium tracking-wide">
+        Sektor B &bull; Qator 4 &bull; O'rindiq 12, 13
+      </div>
+    </div>
+
+    <!-- 4. CHIPTA SONI BADGE -->
+    <div class="inline-block border border-[#dfb559]/40 bg-[#1a1713]/50 rounded-full px-4 py-1 text-[10px] font-bold text-[#dfb559] tracking-widest uppercase mb-4">
+      2 TA CHIPTA
+    </div>
+
+    <!-- 5. ASOSIY TUGMA (Chiptalarimga saqlash) -->
+    <button id="saveTicketsBtn" class="w-full py-3.5 rounded-2xl bg-gold-gradient text-black font-semibold text-xs sm:text-sm hover:brightness-110 active:scale-[0.99] transition-all shadow-lg shadow-amber-900/20 mb-3">
+      Chiptalarimga saqlash
+    </button>
+
+    <!-- 6. QO'SHIMCHA TUGMALAR (3 QATORLI GRID - Mutloq joylashuvsiz) -->
+    <div class="grid grid-cols-3 gap-2 w-full mb-5">
+      
+      <!-- Kalendarga -->
+      <button onclick="addToCalendar()" class="py-2.5 px-1 bg-[#181512] border border-[#2b251d] hover:border-[#dfb559]/60 rounded-xl text-[11px] text-gray-300 font-medium flex items-center justify-center gap-1.5 transition-colors">
+        <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+        Kalendarga
+      </button>
+
+      <!-- Ulashish -->
+      <button onclick="shareTicket()" class="py-2.5 px-1 bg-[#181512] border border-[#2b251d] hover:border-[#dfb559]/60 rounded-xl text-[11px] text-[#dfb559] font-semibold flex items-center justify-center gap-1.5 transition-colors">
+        <svg class="w-3.5 h-3.5 text-[#dfb559]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+        Ulashish
+      </button>
+
+      <!-- PDF -->
+      <button onclick="downloadPDF()" class="py-2.5 px-1 bg-[#181512] border border-[#2b251d] hover:border-[#dfb559]/60 rounded-xl text-[11px] text-gray-300 font-medium flex items-center justify-center gap-1.5 transition-colors">
+        <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+        PDF
+      </button>
+
+    </div>
+
+    <!-- 7. FOOTER (ESLATMA VA ID) -->
+    <a href="../index.html" class="flex flex-col items-center gap-1 text-[11px] text-gray-500">
+      <p class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+        Tadbirdan 1 kun oldin eslatib qo'yamiz.
+      </p>
+      <span class="tracking-widest text-gray-600 font-mono text-[10px] mt-0.5">#SHN-48210</span>
+    </a>
+
+
+  </div>
+
+  <!-- JAVASCRIPT LOGIKASI -->
+  <script>
+    // Chiptani saqlash tugmasi
+    document.getElementById('saveTicketsBtn').addEventListener('click', function() {
+      this.textContent = "✓ Saqlandi";
+      this.classList.add('opacity-90');
+      setTimeout(() => {
+        alert("Chipta profilingizga muvaffaqiyatli saqlandi!");
+      }, 200);
+    });
+
+    // Kalendarga qo'shish
+    function addToCalendar() {
+      alert("Tadbir kalendaringizga qo'shildi (18-Avgust, 19:00).");
+    }
+
+    // Ulashish (Web Share API)
+    function shareTicket() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Sharq taronalari: Simfonik oqshom',
+          text: 'Mening SAHNA chiptam: #SHN-48210',
+          url: window.location.href,
+        }).catch(() => {});
+      } else {
+        alert("Nusxa olindi: #SHN-48210 - Sharq taronalari");
+      }
+    }
+
+    // PDF yuklab olish
+    function downloadPDF() {
+      alert("Chipta PDF shaklida yuklab olinmoqda...");
+    }
+  </script>
+</body>
+</html>
