@@ -4,7 +4,7 @@ let productss = [
   {
     id: 1,
     title: "Yulduzli kecha",
-    image: "../images/card23.png",
+    image: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1000&auto=format&fit=crop", // Yulduzli osmon va teatr atmosferasi
     date: "20-Jul, 19:00",
     venue: "Alisher Navoiy nomidagi teatr",
     tickets: "644 / 750",
@@ -15,7 +15,7 @@ let productss = [
   {
     id: 2,
     title: "Simfoniya Bahori",
-    image: "../images/card24.png",
+    image: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop", // Simfoniya va orkestr
     date: "22-Jul, 18:30",
     venue: "Konservatoriya Katta zali",
     tickets: "510 / 600",
@@ -26,7 +26,7 @@ let productss = [
   {
     id: 3,
     title: "Jazz & Wine Night",
-    image: "../images/card25.png",
+    image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop", // Saksafon va djaz kechasi
     date: "25-Jul, 20:00",
     venue: "Tashkent City Park",
     tickets: "300 / 300",
@@ -37,7 +37,7 @@ let productss = [
   {
     id: 4,
     title: "Otabek va Kumush (Drama)",
-    image: "../images/card26.png",
+    image: "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?q=80&w=1000&auto=format&fit=crop", // Teatr sahnalari va drama
     date: "28-Jul, 18:00",
     venue: "O'zbek Milliy Akademik Teatri",
     tickets: "420 / 500",
@@ -48,7 +48,7 @@ let productss = [
   {
     id: 5,
     title: "Retro Cinema Premier",
-    image: "../images/card27.png",
+    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1000&auto=format&fit=crop", // Retro kinoteatr proyektori
     date: "01-Aug, 21:00",
     venue: "Panorama Kinoteatri",
     tickets: "180 / 400",
@@ -59,7 +59,7 @@ let productss = [
   {
     id: 6,
     title: "Klassik Organ Musiqasi",
-    image: "../images/card28.png",
+    image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=1000&auto=format&fit=crop", // Organ va klassik musiqa
     date: "03-Aug, 19:00",
     venue: "Organ Zali",
     tickets: "120 / 250",
@@ -70,7 +70,7 @@ let productss = [
   {
     id: 7,
     title: "Rok Fest Tashkent",
-    image: "../images/card29.png",
+    image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop", // Rok konsert va sahna
     date: "08-Aug, 17:00",
     venue: "Humo Arena",
     tickets: "3200 / 5000",
@@ -81,15 +81,14 @@ let productss = [
   {
     id: 8,
     title: "Zamonaviy Raqs Shousi",
-    image: "../images/card30.png",
+    image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1000&auto=format&fit=crop", // Zamonaviy raqs shousi
     date: "12-Aug, 19:30",
     venue: "Turkiston San'at Saroyi",
     tickets: "750 / 800",
     revenue: "90.0 mln",
     status: "Kutilmoqda",
     statusType: "warning"
-  },
- 
+  }
 ];
 
 
