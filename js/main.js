@@ -2,6 +2,7 @@ let heroCards = document.querySelector(".hero-cards");
 let count = document.querySelector(".count");
 let cound = document.querySelector(".cound");
 
+
 let products = [
   {
     id: 1,
@@ -125,47 +126,56 @@ x.innerHTML += `
         </span>
     </div>
 
-    <!-- Rasm va Video Hover Overlay -->
-    <div class="relative z-10 overflow-hidden rounded-[30px] bg-zinc-900/40 border border-zinc-900/80 p-2 flex items-center justify-center group/img cursor-pointer" onclick="openVideoModal('${el.title}')">
+    <!-- Rasm -->
+    <div class="relative z-10 overflow-hidden rounded-[30px] bg-zinc-900/40 border border-zinc-900/80 p-2 flex items-center justify-center">
         <img
-            src="${el.image}"
+            src="${el.image || 'https://www.gazeta.uz/media/img/2019/03/QH3GPQ15526767897430_l.jpg'}"
             alt="${el.title}"
-            onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500'"
-            class="w-full h-[220px] object-cover rounded-[22px] transition duration-700 group-hover/img:scale-105"
+            onerror="this.src='https://www.gazeta.uz/media/img/2019/03/QH3GPQ15526767897430_l.jpg'"
+            class="w-full h-[220px] object-cover rounded-[22px] transition duration-700 group-hover:scale-105"
         />
-        
-        <!-- Hover bo'lganda chiquvchi "Videoni ko'rish" qatlami -->
-        <div class="absolute inset-2 bg-black/60 opacity-0 group-hover/img:opacity-100 transition-all duration-300 rounded-[22px] flex flex-col items-center justify-center gap-2 backdrop-blur-sm">
-            <div class="w-12 h-12 rounded-full bg-[#D4AF37] text-black flex items-center justify-center shadow-lg transform transition group-hover/img:scale-110">
-                <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-            </div>
-            <span class="text-white text-xs font-semibold tracking-wider uppercase">Videoni ko'rish</span>
-        </div>
     </div>
 
     <!-- Ma'lumotlar qismi -->
     <div class="relative z-10 pt-5 flex-1 flex flex-col justify-between">
         <div>
-            <!-- Sarlavha -->
-            <h2 class="text-xl font-serif font-bold text-white mb-2 tracking-wide transition-colors duration-300 group-hover:text-[#D4AF37] line-clamp-1">
-                ${el.title}
-            </h2>
+            <!-- Sarlavha va Play AI tugmasi -->
+            <div 
+                onclick="openVideoModal('${el.title}')" 
+                class="flex items-center justify-between gap-3 mb-3 cursor-pointer group/title"
+            >
+                <!-- Sarlavha matni -->
+                <h2 class="text-xl font-serif font-bold text-white tracking-wide transition-colors duration-300 group-hover/title:text-[#D4AF37] line-clamp-1 flex-1 text-left">
+                    ${el.title}
+                </h2>
+
+                <!-- Play AI Tugmasi -->
+                <div class="w-10 h-10 shrink-0 flex items-center justify-center relative">
+                    <div class="w-full h-full rounded-full p-0.5 bg-gradient-to-tr from-[#D4AF37] via-amber-200 to-amber-500 opacity-0 scale-75 transition-all duration-300 group-hover/title:opacity-100 group-hover/title:scale-100 shadow-[0_0_15px_rgba(212,175,55,0.5)] flex items-center justify-center">
+                        <div class="w-full h-full bg-black rounded-full p-1.5 flex items-center justify-center">
+                            <img 
+                                src="https://www.gazeta.uz/media/img/2019/03/QH3GPQ15526767897430_l.jpg" 
+                                alt="AI Play" 
+                                class="w-full h-full object-contain filter drop-shadow-[0_0_3px_#D4AF37]"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Joy va Sana -->
             <div class="space-y-1.5 mb-4">
                 <p class="text-zinc-400 text-xs font-light flex items-center gap-2">
                     <svg class="w-4 h-4 text-[#D4AF37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin-round stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin-round stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                     </svg>
                     <span class="truncate">${el.venue}</span>
                 </p>
 
                 <p class="text-zinc-400 text-xs font-light flex items-center gap-2">
                     <svg class="w-4 h-4 text-[#D4AF37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        <path stroke-linecap="round" stroke-linejoin-round stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
                     <span>${el.date}</span>
                 </p>
@@ -193,7 +203,7 @@ x.innerHTML += `
                 onclick="addToCart('${el.title}')"
                 class="mt-5 w-full py-3.5 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium tracking-wider flex items-center justify-center gap-2.5 transition duration-300 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:font-bold transform active:scale-95 shadow-lg cursor-pointer group/btn"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
                 <span>Sotib olish</span>
             </button>
         </div>

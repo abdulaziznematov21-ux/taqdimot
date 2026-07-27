@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <header x-data="{ mobileMenuOpen: false }" class="sticky  w-full bg-[#0d0d0b] text-[#c2b293] px-3 sm:px-6 py-3 sm:py-4 border-b border-zinc-800/50 overflow-x-hidden">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
+
+        <!-- Chap tomon: Logo va Desktop Navigatsiya -->
+        <div class="flex items-center space-x-4 lg:space-x-8 shrink-0">
+            <!-- Logo -->
+            <a href="../index.html" class="text-lg sm:text-xl md:text-2xl font-serif tracking-widest text-[#f0d38d] font-bold shrink-0">
+                SAHNA
+            </a>
+
+            <!-- Desktop Menyular (Faqat katta ekranda) -->
+            <nav class="hidden lg:flex items-center space-x-4 xl:space-x-6 text-sm md:text-base font-medium">
+                <a href="../pages/tadbirlar.html"
+                    class="text-[#fce399] font-bold relative py-1 border-b-2 border-[#fce399] whitespace-nowrap">
+                    Tadbirlar
+                </a>
+                <a href="../pages/tadbir.htm" class="hover:text-white transition-colors py-1 whitespace-nowrap">
+                    Teatrlar
+                </a>
+                <a href="../pages/chiptalarim.html" class="hover:text-white transition-colors py-1 whitespace-nowrap">
+                    Konsertlar
+                </a>
+                <a href="./tashkilotchilarim.html" class="hover:text-white transition-colors py-1 whitespace-nowrap">
+                    Kino
+                </a>
+            </nav>
+        </div>
+
+        <!-- O'ng tomon: Qidiruv va Harakatlar -->
+        <div class="flex items-center gap-2 sm:gap-4 flex-1 justify-end">
+            
+            <!-- Dynamic Qidiruv Paneli -->
+            <div class="relative w-full max-w-[160px] min-[400px]:max-w-[200px] sm:max-w-xs md:max-w-md">
+                <div class="w-full flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-2 sm:px-3 py-1 shadow-md hover:border-[#D4AF37]/50 transition-all duration-300">
+
+                    <!-- Search Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 ml-1 mr-1.5 sm:mr-3 shrink-0"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-4.35-4.35M16 10.5A5.5 5.5 0 115 10.5a5.5 5.5 0 0111 0z" />
+                    </svg>
+
+                    <!-- Input -->
+                    <input type="text"
+                        class="search-input w-full bg-transparent outline-none text-white placeholder:text-zinc-500 text-xs sm:text-sm py-0.5 sm:py-1"
+                        placeholder="Qidiring..." />
+
+                    <!-- Microphone -->
+                    <button class="micro w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-amber-500 to-[#D4AF37] flex justify-center items-center text-black shadow hover:scale-105 transition-all shrink-0 cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a1 1 0 112 0 7 7 0 01-6 6.92V21h3a1 1 0 110 2H8a1 1 0 010-2h3v-2.08A7 7 0 015 12a1 1 0 112 0 5 5 0 0010 0z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Dropdown Qidiruv Natijalari -->
+                <div class="search-cards hidden absolute top-full mt-2 left-0 w-full bg-zinc-900 border border-zinc-800 text-white rounded-xl shadow-2xl z-50 p-2 sm:p-3">
+                    <!-- Qidiruv natijalari -->
+                </div>
+            </div>
+
+            <!-- Desktop Kirish Tugmasi -->
+            <a href="./profile.html"
+                class="hidden sm:inline-flex bg-[#fde18d] hover:bg-[#ebd07c] text-black font-medium text-xs sm:text-sm px-4 sm:px-6 py-2 rounded-full transition-all duration-200 shadow-md shrink-0 whitespace-nowrap">
+                Kirish
+            </a>
+
+            <!-- Mobil Menyu Tugmasi (Burger) -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-[#f0d38d] p-1.5 focus:outline-none shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Mobil Menyu (Dropdown) -->
+    <div x-show="mobileMenuOpen" 
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-2" 
+         x-transition:enter-end="opacity-100 translate-y-0"
+         class="lg:hidden mt-3 pt-3 border-t border-zinc-800/80 flex flex-col gap-3">
+        
+        <nav class="flex flex-col gap-2 text-sm font-medium">
+            <a href="../pages/tadbirlar.html" class="text-[#fce399] font-bold py-1">Tadbirlar</a>
+            <a href="../pages/tadbir.htm" class="hover:text-white transition-colors py-1">Teatrlar</a>
+            <a href="../pages/chiptalarim.html" class="hover:text-white transition-colors py-1">Konsertlar</a>
+            <a href="./tashkilotchilarim.html" class="hover:text-white transition-colors py-1">Kino</a>
+        </nav>
+
+        <a href="./profile.html" class="sm:hidden w-full text-center bg-[#fde18d] hover:bg-[#ebd07c] text-black font-medium text-xs py-2 rounded-full transition-all shadow-md">
+            Kirish
+        </a>
+    </div>
+</header>
+   <section class="max-w-7xl mx-auto">
+     <div class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 bg-[#070604]" id="cards-container">
+    <!-- Kartochkalar JavaScript orqali shu yerga render bo'ladi -->
+</div>
+   </section>
+
+<script>
+    // 20 ta tadbir ma'lumotlari
+    const events = [
+        { title: "Yulduzli kecha", location: "Alisher Navoiy nomidagi teatr", date: "20-Jul, 19:00", tickets: "644 / 750", revenue: "76.4 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=500" },
+        { title: "Simfoniya Bahori", location: "Konservatoriya Katta zali", date: "22-Jul, 18:30", tickets: "510 / 600", revenue: "51.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=500" },
+        { title: "Jazz & Wine Night", location: "Tashkent City Park", date: "25-Jul, 20:00", tickets: "300 / 300", revenue: "45.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=500" },
+        { title: "Otabek va Kumush...", location: "O'zbek Milliy Akademik Teatri", date: "28-Jul, 18:00", tickets: "420 / 500", revenue: "33.6 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500" },
+        { title: "Rok Festival 2026", location: "Humo Arena", date: "30-Jul, 19:00", tickets: "2400 / 3000", revenue: "180.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500" },
+        { title: "Sharq Taronalari", location: "Registon Maydoni", date: "02-Aug, 20:30", tickets: "850 / 1000", revenue: "95.2 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500" },
+        { title: "Mocart va Salyeri", location: "Operasiya va Balet Teatri", date: "05-Aug, 17:00", tickets: "400 / 400", revenue: "40.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=500" },
+        { title: "Pianino Kechasi", location: "Organ Zali", date: "08-Aug, 19:00", tickets: "180 / 250", revenue: "18.5 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=500" },
+        { title: "Stand-Up Show: Toshkent", location: "Poytaxt Saroyi", date: "10-Aug, 21:00", tickets: "600 / 600", revenue: "60.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=500" },
+        { title: "Retro Disco 90-lar", location: "Muz Saroyi", date: "12-Aug, 18:00", tickets: "1200 / 1500", revenue: "96.0 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1545128485-c400e7702796?w=500" },
+        { title: "O'zbek Hip-Hop Fest", location: "Anhor Lokomotiv", date: "15-Aug, 19:30", tickets: "780 / 1000", revenue: "62.4 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500" },
+        { title: "Sohir Zamin Sadoalari", location: "Xalqlar Do'stligi", date: "18-Aug, 19:00", tickets: "3500 / 4000", revenue: "280.0 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1469488865564-c2de10f69f96?w=500" },
+        { title: "Sintez & Elektronika", location: "Ucell Arena", date: "20-Aug, 22:00", tickets: "500 / 500", revenue: "50.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500" },
+        { title: "Raqs Festivali: Bahor", location: "Turkiston Saroyi", date: "22-Aug, 16:00", tickets: "420 / 700", revenue: "29.4 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1508700915892-45ecd05ae2ad?w=500" },
+        { title: "Klassik Gitarist Kechasi", location: "Konservatoriya Kichik Zali", date: "25-Aug, 18:30", tickets: "150 / 200", revenue: "12.0 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=500" },
+        { title: "Balkon Konserti: Akustika", location: "Art House Tashkent", date: "27-Aug, 19:00", tickets: "80 / 80", revenue: "16.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" },
+        { title: "Opera va Simfoniya", location: "Alisher Navoiy nomidagi teatr", date: "29-Aug, 18:00", tickets: "600 / 750", revenue: "72.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=500" },
+        { title: "Lirik Poeziya Kechasi", location: "Yoshlar Teatri", date: "01-Sep, 17:30", tickets: "220 / 300", revenue: "15.4 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500" },
+        { title: "Mustaqillik Konserti", location: "Mustaqillik Maydoni", date: "03-Sep, 20:00", tickets: "5000 / 5000", revenue: "0.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500" },
+        { title: "Etnik Etudlar", location: "Muzey Binosi", date: "05-Sep, 19:00", tickets: "110 / 150", revenue: "11.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=500" }
+    ];
+
+    const container = document.getElementById('cards-container');
+
+    // Cardlarni HTML ga aylantirib render qilish
+    container.innerHTML = events.map(item => `
+        <div class="bg-[#121110] border border-[#211e19] hover:border-[#38332b] rounded-[28px] p-4 flex flex-col justify-between transition duration-300 group">
+            <div>
+                <!-- Rasm va Status Badge -->
+                <div class="relative aspect-square w-full rounded-2xl overflow-hidden mb-4">
+                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    <span class="absolute top-3 right-3 text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-full border backdrop-blur-md ${item.statusBg}">
+                        ${item.status}
+                    </span>
+                </div>
+
+                <!-- Sarlavha va Joylashuv -->
+                <h3 class="text-lg font-serif font-medium text-[#f3efe6] truncate mb-2">${item.title}</h3>
+                
+                <div class="space-y-1.5 mb-6 text-xs text-[#8c8273]">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin-round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span class="truncate">${item.location}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin-round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        <span>${item.date}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistika va Sotib olish tugmasi -->
+            <div>
+                <div class="flex justify-between items-end text-xs mb-4 pt-3 border-t border-[#1c1813]">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-wider text-[#8c8273] mb-1">Chiptalar</p>
+                        <p class="font-medium text-[#d1ccc4] text-sm">${item.tickets}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] uppercase tracking-wider text-[#8c8273] mb-1">Tushum</p>
+                        <p class="font-bold text-[#edd38d] text-base">${item.revenue}</p>
+                    </div>
+                </div>
+
+                <button class="w-full py-3 px-4 rounded-xl bg-[#1c1a17] hover:bg-[#282520] active:scale-[0.98] text-[#d1ccc4] hover:text-white transition flex items-center justify-center gap-2 text-sm font-medium border border-[#2b2620]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin-round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    <span>Sotib olish</span>
+                </button>
+            </div>
+        </div>
+    `).join('');
+</script>
+<footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12">
+
+            <!-- Col 1: Brand Info (4 cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Logo -->
+                <h1 class="text-3xl font-serif font-bold text-[#edd38d] tracking-widest uppercase">
+                    SAHNA
+                </h1>
+
+                <!-- Description -->
+                <p class="text-sm text-[#8c8273] leading-relaxed max-w-sm">
+                    Sizning premium tadbirlar olamiga yo'llanmangiz. Har bir chipta — yangi sarguzasht.
+                </p>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-3 pt-2">
+                    <!-- Website / Veb sayt -->
+                    <a href="https://sahna.uz" target="_blank" rel="noopener noreferrer" title="Veb-sayt"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                            <path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM440-162v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q41-45 62.5-100.5T800-480q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z" />
+                        </svg>
+                    </a>
+
+                    <!-- Telegram -->
+                    <a href="https://t.me/sahna_uz" target="_blank" rel="noopener noreferrer" title="Telegram"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12C24 5.37 18.63 0 12 0zm5.56 8.16l-1.92 9.06c-.14.65-.53.81-1.08.5l-2.96-2.18-1.43 1.38c-.16.16-.29.29-.6.29l.21-3.02 5.5-4.97c.24-.21-.05-.33-.37-.12l-6.8 4.28-2.93-.92c-.64-.2-.65-.64.13-.95l11.45-4.41c.53-.19 1 .13.8 1.06z" />
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/sahna_uz" target="_blank" rel="noopener noreferrer" title="Instagram"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                            <path d="M480-260q75 0 127.5-52.5T660-440q0-5-.5-10t-1.5-10h-80q2 5 2 10v10q0 42-29 71t-71 29H330q24 36 63.5 58t86.5 22ZM302-420h80q-2-5-2-10v-10q0-42 29-71t71-29h150q-24-36-63.5-58T480-620q-75 0-127.5 52.5T300-440q0 5 .5 10t1.5 10ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Kategoriyalar (2.5 cols) -->
+            <div class="lg:col-span-2 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Kategoriyalar
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#concerts" class="hover:text-[#edd38d] transition-colors">Konsertlar</a></li>
+                    <li><a href="#theaters" class="hover:text-[#edd38d] transition-colors">Teatrlar</a></li>
+                    <li><a href="#cinema" class="hover:text-[#edd38d] transition-colors">Kino</a></li>
+                    <li><a href="#sports" class="hover:text-[#edd38d] transition-colors">Sport</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Yordam (2.5 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Yordam
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#faqAccordion" class="hover:text-[#edd38d] transition-colors">Tez-tez beriladigan savollar</a></li>
+                    <li><a href="#oferta" class="hover:text-[#edd38d] transition-colors">Ommaviy oferta</a></li>
+                    <li><a href="#privacy" class="hover:text-[#edd38d] transition-colors">Maxfiylik siyosati</a></li>
+                    <li><a href="#contact" class="hover:text-[#edd38d] transition-colors">Bog'lanish</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: App Download Buttons (3 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Ilovani yuklang
+                </h3>
+                <div class="space-y-3">
+                    <!-- App Store Button (Ishtirok etadi va Ochiladi) -->
+                    <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] active:scale-95 text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.37-.58.67-.99 1.74-.85 2.77 1.01.08 2.05-.54 2.57-1.29z" />
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">AVAILABLE ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">App Store</span>
+                        </div>
+                    </a>
+
+                    <!-- Google Play Button (Ishtirok etadi va Ochiladi) -->
+                    <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] active:scale-95 text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.396.23-.746.609-.92zm11.3 9.072l2.609-2.608-11.83-6.83 9.221 9.438zm0 2.228l-9.221 9.438 11.83-6.83-2.609-2.608zm1.414-1.414l3.18 1.836c.646.373.646 1.127 0 1.5l-3.18 1.836-2.316-2.316 2.316-2.856z" />
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">GET IT ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row: Copyright & Payment Badges -->
+        <div class="pt-8 border-t border-[#1a1612] flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <!-- Copyright -->
+            <p class="text-[#73685a]">
+                © 2026 SAHNA. Barcha huquqlar himoyalangan.
+            </p>
+
+            <!-- Payment Methods Badges -->
+            <div class="flex items-center gap-2">
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">CLICK</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">PAYME</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">UZUM</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">VISA</span>
+            </div>
+        </div>
+
+    </div>
+</footer>
+</body>
+</html>

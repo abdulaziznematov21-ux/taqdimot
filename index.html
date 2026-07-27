@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-black text-white">
-  <header class="top-0 left-0 w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl overflow-x-hidden">
+ <header class="sticky top-0 left-0 w-full max-w-full z-30 bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
     
     <!-- Top Bar -->
     <div class="w-full bg-[#0b0b0b] border-b border-white/10 text-[#b8b8b8] text-[11px] sm:text-xs py-2 sm:py-0 sm:h-10">
@@ -72,7 +72,7 @@
             </a>
         </nav>
 
-        <!-- Search Container -->
+        <!-- Search Container (Desktop) -->
         <div id="search-btn" class="relative hidden min-[480px]:block w-full max-w-[200px] sm:max-w-xs md:max-w-md xl:max-w-xl">
             <div class="w-full flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 shadow-md hover:border-[#D4AF37]/50 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 ml-1 mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,18 +107,18 @@
 
         <!-- Mobile & Tablet Controls -->
         <div class="flex xl:hidden items-center gap-1.5 sm:gap-3 shrink-0">
-               <a href="./pages/cart.html" class="relative w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-[#D4AF37] hover:text-[#D4AF37] flex items-center justify-center transition-all duration-300 group cursor-pointer">
+            <a href="./pages/cart.html" class="relative w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-[#D4AF37] hover:text-[#D4AF37] flex items-center justify-center transition-all duration-300 group cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e3e3e3"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
                 <span class="count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D4AF37] text-black text-[9px] font-bold flex items-center justify-center border border-black shadow-md">0</span>
             </a>
 
-            <!-- Menu Toggle Button (JS uchun ID berildi) -->
+            <!-- Menu Toggle Button -->
             <button id="menu-toggle-btn" class="text-white p-1 focus:outline-none">
                 <!-- Hamburger Icon -->
                 <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-                <!-- Close Icon (Boshida hidden) -->
+                <!-- Close Icon -->
                 <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -127,12 +127,11 @@
 
     </div>
 
-    <!-- Mobile / Tablet Dropdown Menu (Boshida hidden va transition qo'shildi) -->
+    <!-- Mobile / Tablet Dropdown Menu -->
     <div id="mobile-menu" class="hidden xl:hidden bg-[#15110d] border-b border-[#c9b07b] px-4 pt-3 pb-6 space-y-4 shadow-2xl transition-all duration-300">
 
         <!-- Mobile Search -->
         <div class="relative min-[480px]:hidden w-full">
-           <div id="search-btn" class="relative hidden min-[480px]:block w-full max-w-[200px] sm:max-w-xs md:max-w-md xl:max-w-xl">
             <div class="w-full flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 shadow-md hover:border-[#D4AF37]/50 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 ml-1 mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16 10.5A5.5 5.5 0 115 10.5a5.5 5.5 0 0111 0z" />
@@ -145,7 +144,6 @@
                 </button>
             </div>
             <div class="search-cards hidden absolute top-full mt-2 left-0 w-full bg-zinc-900/95 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl z-50 max-h-[350px] overflow-y-auto p-2 divide-y divide-zinc-800/60"></div>
-        </div>
         </div>
 
         <!-- Links -->
@@ -204,19 +202,62 @@
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
 
-                <!-- Date (TEGILSAMAGAN QATOR) -->
-                <div class="flex items-center gap-3 px-5 py-4 rounded-2xl border border-white/5 bg-white/5">
-                    <div class="w-11 h-11 rounded-xl bg-[#e7c56b]/15 border border-[#e7c56b]/30 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#e7c56b]" viewBox="0 -960 960 960" fill="currentColor">
-                            <path d="M289-329q-29-29-29-71t29-71q29-29 71-29t71 29q29 29 29 71t-29 71q-29 29-71 29t-71-29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z" />
-                        </svg>
-                    </div>
+        <!-- Date Filter -->
+<div id="date-trigger" class="relative cursor-pointer flex items-center gap-3 px-5 py-4 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 transition">
+    <!-- Kalendar ikonkasi (Oltin tusli stil) -->
+    <div class="w-11 h-11 rounded-xl bg-[#e7c56b]/15 border border-[#e7c56b]/30 flex items-center justify-center pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#e7c56b]" viewBox="0 -960 960 960" fill="currentColor">
+            <path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm240 240q-17 0-28.5-11.5T400-440q0-17 11.5-28.5T440-480q17 0 28.5 11.5T480-440q0 17-11.5 28.5T440-400Zm-160 0q-17 0-28.5-11.5T240-440q0-17 11.5-28.5T280-480q17 0 28.5 11.5T320-440q0 17-11.5 28.5T280-400Zm320 0q-17 0-28.5-11.5T560-440q0-17 11.5-28.5T600-480q17 0 28.5 11.5T640-440q0 17-11.5 28.5T600-400Zm-320 160q-17 0-28.5-11.5T240-280q0-17 11.5-28.5T280-320q17 0 28.5 11.5T320-280q0 17-11.5 28.5T280-240Zm160 0q-17 0-28.5-11.5T400-280q0-17 11.5-28.5T440-320q17 0 28.5 11.5T480-280q0 17-11.5 28.5T440-240Zm160 0q-17 0-28.5-11.5T560-280q0-17 11.5-28.5T600-320q17 0 28.5 11.5T640-280q0 17-11.5 28.5T600-240Z"/>
+        </svg>
+    </div>
 
-                    <div>
-                        <p class="text-[11px] uppercase tracking-[0.25em] text-white/40">Qachon</p>
-                        <a href="#herooo" class="text-white text-lg font-medium">Sana tanlang</a>
-                    </div>
-                </div>
+    <!-- Yozuvlar -->
+    <div class="pointer-events-none">
+        <p class="text-[11px] uppercase tracking-[0.25em] text-white/40">Qachon</p>
+        <p id="date-value" class="text-white text-lg font-medium">Sana tanlang</p>
+    </div>
+
+    <!-- Yashirin native date picker -->
+    <input 
+        type="date" 
+        id="date-input" 
+        class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10 [color-scheme:dark]"
+    />
+</div>
+
+<!-- JavaScript skripti -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dateInput = document.getElementById('date-input');
+        const dateValue = document.getElementById('date-value');
+        const dateTrigger = document.getElementById('date-trigger');
+
+        // Blok ustiga bosilganda date picker-ni ochish (mobil va ba'zi brauzerlar uchun qulaylik)
+        dateTrigger.addEventListener('click', () => {
+            if ('showPicker' in HTMLInputElement.prototype) {
+                dateInput.showPicker();
+            }
+        });
+
+        // Sana tanlanganda ishlaydigan funksiya
+        dateInput.addEventListener('change', (e) => {
+            const val = e.target.value;
+            if (val) {
+                const date = new Date(val);
+                // Sanani chiroyli formatga o'tkazish (masalan: 12-may, 2024)
+                const formattedDate = date.toLocaleDateString('uz-UZ', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                });
+                
+                dateValue.textContent = formattedDate;
+            } else {
+                dateValue.textContent = 'Sana tanlang';
+            }
+        });
+    });
+</script>
 
                 <!-- Category -->
                 <div id="category-trigger" class="relative cursor-pointer flex items-center gap-3 px-5 py-4 rounded-2xl border border-white/5 bg-white/5 hover:bg-white/10 transition">
@@ -264,7 +305,7 @@
                 </div>
 
                 <!-- Search Button -->
-                <a href="#search-btn" id="search-btn" class="h-full min-h-[72px] rounded-2xl bg-gradient-to-r from-[#c89f35] to-[#f0d37a] text-black font-semibold text-lg shadow-[0_10px_30px_rgba(231,197,107,.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3">
+                <a href="./pages/cart.html" id="search-btn" class="h-full min-h-[72px] rounded-2xl bg-gradient-to-r from-[#c89f35] to-[#f0d37a] text-black font-semibold text-lg shadow-[0_10px_30px_rgba(231,197,107,.35)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3">
                     Qidirish
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -273,6 +314,7 @@
 
             </div>
         </div>
+        
 
         <!-- Quick Filters -->
         <div id="quick-filters" class="mt-8 flex flex-wrap items-center gap-3 text-sm">
@@ -485,38 +527,46 @@
             <div class="max-w-7xl mx-auto">
 
                 <!-- Header Section -->
-                <div
-                    class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-[#1c1813] pb-4">
-                    <div>
-                        <!-- Title -->
-                        <h2 class="text-3xl sm:text-4xl font-serif text-[#f3efe6] tracking-wide mb-6">
-                            Shu hafta
-                        </h2>
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 border-b border-[#1c1813] pb-4">
+            <div>
+                <!-- Title -->
+                <h2 class="text-3xl sm:text-4xl font-serif text-[#f3efe6] tracking-wide mb-6">
+                    Shu hafta
+                </h2>
 
-                        <!-- Filter Tabs -->
-                        <div class="flex items-center gap-6 sm:gap-8 text-sm">
-                            <button class="text-[#edd38d] font-medium relative pb-4">
-                                Hammasi
-                                <!-- Active indicator bar -->
-                                <span class="absolute bottom-0 left-0 w-full h-[2px] bg-[#edd38d] rounded-full"></span>
-                            </button>
-                            <button class="text-[#8c8273] hover:text-[#d1ccc4] transition-colors pb-4">Bugun</button>
-                            <button class="text-[#8c8273] hover:text-[#d1ccc4] transition-colors pb-4">Ertaga</button>
-                            <button class="text-[#8c8273] hover:text-[#d1ccc4] transition-colors pb-4">Dam olish
-                                kunlari</button>
-                        </div>
-                    </div>
-
-                    <!-- "Barcha tadbirlar" Link -->
-                    <a href="#"
-                        class="inline-flex items-center gap-2 text-xs sm:text-sm text-[#edd38d] hover:underline pb-4 shrink-0">
-                        <span>Barcha tadbirlar</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin-round" stroke-width="1.5"
-                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </a>
+                <!-- Filter Tabs -->
+                <div id="filter-tabs" class="flex items-center gap-6 sm:gap-8 text-sm">
+                    <!-- Hammasi (Default Active) -->
+                    <button data-filter="all" class="tab-btn text-[#edd38d] font-medium relative pb-4 transition-colors">
+                        Hammasi
+                        <span class="indicator absolute bottom-0 left-0 w-full h-[2px] bg-[#edd38d] rounded-full"></span>
+                    </button>
+                    <!-- Bugun -->
+                    <button data-filter="today" class="tab-btn text-[#8c8273] hover:text-[#d1ccc4] relative pb-4 transition-colors">
+                        Bugun
+                        <span class="indicator hidden absolute bottom-0 left-0 w-full h-[2px] bg-[#edd38d] rounded-full"></span>
+                    </button>
+                    <!-- Ertaga -->
+                    <button data-filter="tomorrow" class="tab-btn text-[#8c8273] hover:text-[#d1ccc4] relative pb-4 transition-colors">
+                        Ertaga
+                        <span class="indicator hidden absolute bottom-0 left-0 w-full h-[2px] bg-[#edd38d] rounded-full"></span>
+                    </button>
+                    <!-- Dam olish kunlari -->
+                    <button data-filter="weekend" class="tab-btn text-[#8c8273] hover:text-[#d1ccc4] relative pb-4 transition-colors">
+                        Dam olish kunlari
+                        <span class="indicator hidden absolute bottom-0 left-0 w-full h-[2px] bg-[#edd38d] rounded-full"></span>
+                    </button>
                 </div>
+            </div>
+
+            <!-- "Barcha tadbirlar" Link -->
+            <a href="./pages/card.html" class="inline-flex items-center gap-2 text-xs sm:text-sm text-[#edd38d] hover:underline pb-4 shrink-0">
+                <span>Barcha tadbirlar</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin-round stroke-width="1.5" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+            </a>
+        </div>
 
                 <!-- Cards Grid -->
                 <div class="grid grid-cols-1 hero-cards sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -536,12 +586,48 @@
 
         <!-- Video pleyer -->
         <div class="relative aspect-video w-full overflow-hidden rounded-2xl bg-black">
-           <iframe width="560" height="315" src="https://www.youtube.com/embed/eEqau7Rnbmk?si=FgXruilKA_9Gurfa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> <iframe id="modalVideo" class="w-full h-full" src="" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         <iframe width="700" height="415" src="https://www.youtube.com/embed/PB1Zbmwl3rU?si=c8BAzn71LGj30o7i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> <iframe id="modalVideo" class="w-full h-full" src="" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 </div>
             </div>
         </section>
+        <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.tab-btn');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 1. Barcha tablardan faol stilingizni olib tashlash
+                tabs.forEach(t => {
+                    t.classList.remove('text-[#edd38d]', 'font-medium');
+                    t.classList.add('text-[#8c8273]');
+                    
+                    const indicator = t.querySelector('.indicator');
+                    if (indicator) indicator.classList.add('hidden');
+                });
+
+                // 2. Bosilgan tabga faol holat elementlarini qo'shish
+                tab.classList.remove('text-[#8c8273]');
+                tab.classList.add('text-[#edd38d]', 'font-medium');
+
+                const activeIndicator = tab.querySelector('.indicator');
+                if (activeIndicator) activeIndicator.classList.remove('hidden');
+
+                // 3. Tanlangan filter qiymatini olish
+                const filterValue = tab.getAttribute('data-filter');
+                filterCards(filterValue);
+            });
+        });
+
+        // Kartochkalarni saralash (Filtrlash) funksiyasi
+        function filterCards(filter) {
+            console.log("Tanlangan filter:", filter);
+            // Bu yerda o'zingizning kartochkalarni saralash kodingizni yozishingiz mumkin.
+            // Masalan: .hero-cards ichidagi kartalarni `.filter()` qilish.
+        }
+    });
+</script>
         <style>
     /* Halqa va rasmlarning silliq aylanishi uchun qo'shimcha stil */
     .rotate-on-hover {
@@ -1981,6 +2067,7 @@
     <script src="./js/vido.js"></script>
     <script src="./js/hero.js"></script>
     <script src="./js/home.js"></script>
+    <script></script>
 
 </body>
 

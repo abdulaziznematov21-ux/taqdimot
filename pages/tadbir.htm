@@ -9,46 +9,44 @@
 </head>
 
 <body class="bg-black text-white">
-    <header x-data="{ mobileMenuOpen: false }" class="w-full bg-[#0a0a0a] border-b border-white/10 sticky ">
-    
-    <!-- HEADER MAIN BAR -->
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-4 flex items-center justify-between gap-2 sm:gap-4">
+   <header x-data="{ mobileMenuOpen: false }" class="sticky  w-full bg-[#0d0d0b] text-[#c2b293] px-3 sm:px-6 py-3 sm:py-4 border-b border-zinc-800/50 overflow-x-hidden">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
 
         <!-- Chap tomon: Logo va Desktop Navigatsiya -->
-        <div class="flex items-center space-x-4 lg:space-x-12 shrink-0">
+        <div class="flex items-center space-x-4 lg:space-x-8 shrink-0">
             <!-- Logo -->
             <a href="../index.html" class="text-lg sm:text-xl md:text-2xl font-serif tracking-widest text-[#f0d38d] font-bold shrink-0">
                 SAHNA
             </a>
 
-            <!-- Desktop Menyular -->
-            <nav class="hidden lg:flex items-center space-x-6 text-sm md:text-base font-medium">
+            <!-- Desktop Menyular (Faqat katta ekranda) -->
+            <nav class="hidden lg:flex items-center space-x-4 xl:space-x-6 text-sm md:text-base font-medium">
                 <a href="../pages/tadbirlar.html"
                     class="text-[#fce399] font-bold relative py-1 border-b-2 border-[#fce399] whitespace-nowrap">
                     Tadbirlar
                 </a>
-                <a href="../pages/tadbir.htm" class="hover:text-white transition-colors py-1 whitespace-nowrap text-zinc-300">
+                <a href="../pages/tadbir.htm" class="hover:text-white transition-colors py-1 whitespace-nowrap">
                     Teatrlar
                 </a>
-                <a href="../pages/chiptalarim.html" class="hover:text-white transition-colors py-1 whitespace-nowrap text-zinc-300">
+                <a href="../pages/chiptalarim.html" class="hover:text-white transition-colors py-1 whitespace-nowrap">
                     Konsertlar
                 </a>
-                <a href="./tashkilotchilarim.html" class="hover:text-white transition-colors py-1 whitespace-nowrap text-zinc-300">
+                <a href="./tashkilotchilarim.html" class="hover:text-white transition-colors py-1 whitespace-nowrap">
                     Kino
                 </a>
             </nav>
         </div>
 
-        <!-- O'ng tomon: Qidiruv va Kirish -->
+        <!-- O'ng tomon: Qidiruv va Harakatlar -->
         <div class="flex items-center gap-2 sm:gap-4 flex-1 justify-end">
             
             <!-- Dynamic Qidiruv Paneli -->
-            <div class="relative w-full max-w-[140px] min-[400px]:max-w-[180px] sm:max-w-xs md:max-w-sm">
-                <div class="w-full flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-2.5 sm:px-3 py-1 shadow-md hover:border-[#D4AF37]/50 transition-all duration-300">
+            <div class="relative w-full max-w-[160px] min-[400px]:max-w-[200px] sm:max-w-xs md:max-w-md">
+                <div class="w-full flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-2 sm:px-3 py-1 shadow-md hover:border-[#D4AF37]/50 transition-all duration-300">
 
                     <!-- Search Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4 text-zinc-400 ml-0.5 sm:ml-1 mr-1.5 sm:mr-3 shrink-0"
+                        class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 ml-1 mr-1.5 sm:mr-3 shrink-0"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-4.35-4.35M16 10.5A5.5 5.5 0 115 10.5a5.5 5.5 0 0111 0z" />
@@ -79,8 +77,8 @@
                 Kirish
             </a>
 
-            <!-- Mobil Menyu Tugmasi -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-[#f0d38d] p-1 focus:outline-none shrink-0" aria-label="Toggle Menu">
+            <!-- Mobil Menyu Tugmasi (Burger) -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-[#f0d38d] p-1.5 focus:outline-none shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -91,43 +89,24 @@
 
     </div>
 
-    <!-- Mobil Dropdown Menyu -->
+    <!-- Mobil Menyu (Dropdown) -->
     <div x-show="mobileMenuOpen" 
          x-transition:enter="transition ease-out duration-200"
          x-transition:enter-start="opacity-0 -translate-y-2" 
          x-transition:enter-end="opacity-100 translate-y-0"
-         class="lg:hidden px-4 pb-4 pt-2 border-t border-zinc-800/80 bg-[#0a0a0a] flex flex-col gap-3">
+         class="lg:hidden mt-3 pt-3 border-t border-zinc-800/80 flex flex-col gap-3">
         
         <nav class="flex flex-col gap-2 text-sm font-medium">
-            <a href="../pages/tadbirlar.html" class="text-[#fce399] font-bold py-1.5 border-b border-zinc-800/50">Tadbirlar</a>
-            <a href="../pages/tadbir.htm" class="text-zinc-300 hover:text-white py-1.5 border-b border-zinc-800/50">Teatrlar</a>
-            <a href="../pages/chiptalarim.html" class="text-zinc-300 hover:text-white py-1.5 border-b border-zinc-800/50">Konsertlar</a>
-            <a href="./tashkilotchilarim.html" class="text-zinc-300 hover:text-white py-1.5">Kino</a>
+            <a href="../pages/tadbirlar.html" class="text-[#fce399] font-bold py-1">Tadbirlar</a>
+            <a href="../pages/tadbir.htm" class="hover:text-white transition-colors py-1">Teatrlar</a>
+            <a href="../pages/chiptalarim.html" class="hover:text-white transition-colors py-1">Konsertlar</a>
+            <a href="./tashkilotchilarim.html" class="hover:text-white transition-colors py-1">Kino</a>
         </nav>
 
-        <a href="./profile.html" class="sm:hidden w-full text-center bg-[#fde18d] hover:bg-[#ebd07c] text-black font-medium text-xs py-2.5 rounded-full transition-all shadow-md mt-1">
+        <a href="./profile.html" class="sm:hidden w-full text-center bg-[#fde18d] hover:bg-[#ebd07c] text-black font-medium text-xs py-2 rounded-full transition-all shadow-md">
             Kirish
         </a>
     </div>
-
-    <!-- BREADCRUMB BAR -->
-<div class="bg-[#050505] border-t border-white/5 py-2.5 sm:py-3 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6">
-        <nav aria-label="Breadcrumb" class="flex items-center space-x-2 text-[10px] sm:text-[11px] tracking-wider uppercase font-medium whitespace-nowrap min-w-max">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-150">BOSH SAHIFA</a>
-            <span class="text-gray-600 select-none">/</span>
-            
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-150">TADBIRLAR</a>
-            <span class="text-gray-600 select-none">/</span>
-            
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-150">KONSERT</a>
-            <span class="text-gray-600 select-none">/</span>
-            
-            <span class="text-[#f0d38d] font-semibold" aria-current="page">YULDUZLI KECHA</span>
-        </nav>
-    </div>
-</div>
-
 </header>
    
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 md:space-y-16">
