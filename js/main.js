@@ -139,18 +139,21 @@ x.innerHTML += `
     <!-- Ma'lumotlar qismi -->
     <div class="relative z-10 pt-5 flex-1 flex flex-col justify-between">
         <div>
-            <!-- Sarlavha va Play AI tugmasi -->
-            <div 
-                onclick="openVideoModal('${el.title}')" 
-                class="flex items-center justify-between gap-3 mb-3 cursor-pointer group/title"
-            >
+            <!-- Sarlavha va Play tugmasi -->
+            <div class="flex items-center justify-between gap-3 mb-3 group/title">
                 <!-- Sarlavha matni -->
                 <h2 class="text-xl font-serif font-bold text-white tracking-wide transition-colors duration-300 group-hover/title:text-[#D4AF37] line-clamp-1 flex-1 text-left">
                     ${el.title}
                 </h2>
 
-                <!-- Play AI Tugmasi -->
-                <div class="w-10 h-10 shrink-0 flex items-center justify-center relative">
+                <!-- Play AI Tugmasi (To'g'ridan-to'g'ri videoga o'tadi) -->
+                <a 
+                    href="${el.videoUrl || 'https://www.youtube.com/watch?v=PB1Zbmwl3rU'}" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    title="Videoni tomosha qilish"
+                    class="w-10 h-10 shrink-0 flex items-center justify-center relative cursor-pointer"
+                >
                     <div class="w-full h-full rounded-full p-0.5 bg-gradient-to-tr from-[#D4AF37] via-amber-200 to-amber-500 opacity-0 scale-75 transition-all duration-300 group-hover/title:opacity-100 group-hover/title:scale-100 shadow-[0_0_15px_rgba(212,175,55,0.5)] flex items-center justify-center">
                         <div class="w-full h-full bg-black rounded-full p-1.5 flex items-center justify-center">
                             <img 
@@ -160,7 +163,7 @@ x.innerHTML += `
                             />
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             <!-- Joy va Sana -->

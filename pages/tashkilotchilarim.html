@@ -111,638 +111,514 @@
     <!-- Chart.js for smooth interactive sales chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 font-sans">
   <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
     
     <!-- LEFT SIDEBAR -->
     <aside class="lg:col-span-1">
-      <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-6 sticky top-6">
+      <div class="bg-[#141414] border border-white/10 rounded-3xl p-6 space-y-6 sticky top-6 shadow-2xl backdrop-blur-md">
         
         <!-- Profile Info -->
-        <div class="flex flex-col items-center text-center space-y-3 pb-6 border-b border-white/5">
-          <div class="relative w-20 h-20 rounded-full overflow-hidden border-2 border-amber-500/50">
-            <img src="../images/card28.png" alt="Dilshod Rahimov" class="w-full h-full object-cover">
+        <div class="flex flex-col items-center text-center space-y-3 pb-6 border-b border-white/10">
+          <div class="relative w-20 h-20 rounded-full overflow-hidden border-2 border-amber-500/80 shadow-lg shadow-amber-500/20">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Dilshod Rahimov" class="w-full h-full object-cover">
           </div>
           <div>
-            <h2 class="text-base font-serif font-bold text-white">Dilshod Rahimov</h2>
-            <p class="text-[10px] text-gray-400 mt-0.5"><i class="fa-solid fa-check-circle text-amber-400 mr-1"></i>TASHKILOTCHI</p>
-            <button onclick="alert('Video xabar yozish oynasi ochilmoqda...')" class="mt-3 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white text-[11px] font-medium transition w-full">
+            <h2 class="text-base font-serif font-bold text-white tracking-wide">Dilshod Rahimov</h2>
+            <p class="text-[10px] text-amber-400 mt-0.5 font-medium flex items-center justify-center gap-1">
+              <i class="fa-solid fa-circle-check"></i> TASHKILOTCHI
+            </p>
+            <button onclick="switchTab('settings')" class="mt-3 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 text-[11px] font-medium transition w-full">
               Video xabar yozish
             </button>
           </div>
         </div>
 
         <!-- Sidebar Navigation -->
-        <nav class="space-y-1 text-xs">
-          <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-amber-500/10 text-amber-400 font-semibold border border-amber-500/20 transition">
-            <i class="fa-solid fa-chart-pie text-amber-400"></i>
+        <nav class="space-y-1.5 text-xs">
+          <a href="#" data-tab="dashboard" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-xl bg-amber-500/10 text-amber-400 font-semibold border border-amber-500/20 transition">
+            <i class="fa-solid fa-chart-pie"></i>
             <span>Umumiy</span>
           </a>
 
-          <a href="#" class="flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
+          <a href="#" data-tab="events" class="nav-link flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
             <div class="flex items-center space-x-3">
               <i class="fa-solid fa-calendar-days"></i>
               <span>Tadbirlarim</span>
             </div>
-            <span class="w-5 h-5 rounded-full bg-white/10 text-white font-bold text-[10px] flex items-center justify-center">03</span>
+            <span class="w-5 h-5 rounded-full bg-amber-500/20 text-amber-400 font-bold text-[10px] flex items-center justify-center">03</span>
           </a>
 
-          <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
+          <a href="#" data-tab="sales" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
             <i class="fa-solid fa-ticket"></i>
             <span>Sotuvlar</span>
           </a>
 
-          <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
+          <a href="#" data-tab="analytics" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
             <i class="fa-solid fa-chart-line"></i>
             <span>Statistika</span>
           </a>
 
-          <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
+          <a href="#" data-tab="qr" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
             <i class="fa-solid fa-qrcode"></i>
             <span>QR skaner</span>
           </a>
 
-          <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
+          <a href="#" data-tab="guests" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
             <i class="fa-solid fa-users"></i>
             <span>Mehmonlar</span>
           </a>
 
-          <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
+          <a href="#" data-tab="wallet" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
             <i class="fa-solid fa-wallet"></i>
             <span>Hisobim</span>
           </a>
 
-          <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
+          <a href="#" data-tab="settings" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition">
             <i class="fa-solid fa-gear"></i>
             <span>Sozlamalar</span>
           </a>
         </nav>
 
         <!-- New Event Button -->
-        <button onclick="alert('Yangi tadbir yaratish sahifasiga o\'tilmoqda...')" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-wider shadow-lg transition active:scale-[0.98]">
+        <button onclick="switchTab('events')" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-black font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 transition active:scale-[0.98]">
           + Yangi tadbir
         </button>
 
       </div>
     </aside>
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. Sidebar Navigatsiya tugmalari uchun interaktivlik
-  const navLinks = document.querySelectorAll('aside nav a');
+    <!-- RIGHT MAIN CONTENT CONTAINER -->
+    <div class="lg:col-span-3">
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault(); // Sahifa yuqoriga sakrab ketishining oldini oladi
-
-      // Barcha linklardan faol (active) stillarni olib tashlaymiz
-      navLinks.forEach(item => {
-        item.classList.remove('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
-        item.classList.add('text-gray-400');
-
-        // Ikonka rangini neytral holatga qaytarish
-        const icon = item.querySelector('i');
-        if (icon) {
-          icon.classList.remove('text-amber-400');
-        }
-      });
-
-      // Bosilgan linkka faol (active) stillarni qo'shamiz
-      link.classList.remove('text-gray-400');
-      link.classList.add('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
-
-      // Bosilgan link ichidagi ikonka rangini yangilaymiz
-      const activeIcon = link.querySelector('i');
-      if (activeIcon) {
-        activeIcon.classList.add('text-amber-400');
-      }
-
-      // Link nomiga qarab kerakli harakatni bajarish (Masalan, log chiqarish yoki sahifa almashtirish)
-      const tabName = link.querySelector('span')?.innerText;
-      console.log(`Tanlangan bo'lim: ${tabName}`);
-    });
-  });
-
-});
-</script>
-
-    <!-- MAIN DASHBOARD CONTENT -->
-    <div class="lg:col-span-3 space-y-8">
-      
-      <!-- Welcome Header -->
-      <div>
-        <h1 class="text-3xl font-serif font-bold text-white">Xush kelibsiz, Dilshod</h1>
-        <p class="text-xs text-gray-400 mt-1">Bugun 18-iyul, 2026-yil. Dashboard so'nggi 24 soat ichida yangilandi.</p>
-      </div>
-
-      <!-- Stats Cards Grid (4 Cards) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        
-        <!-- Card 1 -->
-        <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2">
-          <div class="flex items-center justify-between text-gray-400">
-            <i class="fa-solid fa-ticket text-amber-400"></i>
-            <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">+18% ↑</span>
-          </div>
-          <p class="text-[10px] text-gray-400 uppercase tracking-wider">SOTILGAN CHIPTALAR</p>
-          <h3 class="text-2xl font-bold text-white">1 284</h3>
-          <p class="text-[9px] text-gray-500">O'tgan haftaga nisbatan</p>
+      <!-- ================= 1. UMUMIY (DASHBOARD) ================= -->
+      <div id="tab-content-dashboard" class="tab-content space-y-8">
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-white">Xush kelibsiz, Dilshod</h1>
+          <p class="text-xs text-gray-400 mt-1">Bugun 18-iyul, 2026-yil. Dashboard so'nggi 24 soat ichida yangilandi.</p>
         </div>
 
-        <!-- Card 2 -->
-        <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2">
-          <div class="flex items-center justify-between text-gray-400">
-            <i class="fa-solid fa-wallet text-amber-400"></i>
-            <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">+12% ↑</span>
+        <!-- Stats Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2 hover:border-amber-500/30 transition">
+            <div class="flex items-center justify-between text-gray-400">
+              <i class="fa-solid fa-ticket text-amber-400"></i>
+              <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">+18% ↑</span>
+            </div>
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">SOTILGAN CHIPTALAR</p>
+            <h3 class="text-2xl font-bold text-white">1 284</h3>
+            <p class="text-[9px] text-gray-500">O'tgan haftaga nisbatan</p>
           </div>
-          <p class="text-[10px] text-gray-400 uppercase tracking-wider">DAROMAD</p>
-          <h3 class="text-2xl font-bold text-white">184 500 000 <span class="text-xs font-normal text-gray-400">so'm</span></h3>
-          <p class="text-[9px] text-gray-500">O'tgan haftaga nisbatan</p>
+
+          <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2 hover:border-amber-500/30 transition">
+            <div class="flex items-center justify-between text-gray-400">
+              <i class="fa-solid fa-wallet text-amber-400"></i>
+              <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">+12% ↑</span>
+            </div>
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">DAROMAD</p>
+            <h3 class="text-2xl font-bold text-white">184.5 <span class="text-xs font-normal text-gray-400">mln so'm</span></h3>
+            <p class="text-[9px] text-gray-500">O'tgan haftaga nisbatan</p>
+          </div>
+
+          <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2 hover:border-amber-500/30 transition">
+            <div class="flex items-center justify-between text-gray-400">
+              <i class="fa-solid fa-rocket text-amber-400"></i>
+              <span class="text-[10px] text-gray-400 font-bold bg-white/5 px-1.5 py-0.5 rounded">0%</span>
+            </div>
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">FAOL TADBIRLAR</p>
+            <h3 class="text-2xl font-bold text-white">3</h3>
+            <p class="text-[9px] text-gray-500">Kutilayotgan bosqichda</p>
+          </div>
+
+          <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2 hover:border-amber-500/30 transition">
+            <div class="flex items-center justify-between text-gray-400">
+              <i class="fa-solid fa-star text-amber-400"></i>
+              <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">+0.2 ↑</span>
+            </div>
+            <p class="text-[10px] text-gray-400 uppercase tracking-wider">O'RTACHA REYTING</p>
+            <h3 class="text-2xl font-bold text-white">4.9 <span class="text-amber-400 text-lg">★</span></h3>
+            <p class="text-[9px] text-gray-500">1.2k fikrlar asosida</p>
+          </div>
         </div>
 
-        <!-- Card 3 -->
-        <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2">
-          <div class="flex items-center justify-between text-gray-400">
-            <i class="fa-solid fa-rocket text-amber-400"></i>
-            <span class="text-[10px] text-gray-400 font-bold bg-white/5 px-1.5 py-0.5 rounded">0%</span>
-          </div>
-          <p class="text-[10px] text-gray-400 uppercase tracking-wider">FAOL TADBIRLAR</p>
-          <h3 class="text-2xl font-bold text-white">3</h3>
-          <p class="text-[9px] text-gray-500">Kutilayotgani bosqichda</p>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-2">
-          <div class="flex items-center justify-between text-gray-400">
-            <i class="fa-solid fa-star text-amber-400"></i>
-            <span class="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">+0.2 ↑</span>
-          </div>
-          <p class="text-[10px] text-gray-400 uppercase tracking-wider">O'RTACHA REYTING</p>
-          <h3 class="text-2xl font-bold text-white">4.9 <span class="text-amber-400 text-lg">★</span></h3>
-          <p class="text-[9px] text-gray-500">1.2k ta fikrlar asosida</p>
-        </div>
-
-      </div>
-
-      <!-- Chart & Live Sales Widget Section -->
-      <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 md:p-8 space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <span class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">AMALDAGI SOTUVLAR</span>
-            <h2 class="text-xl font-serif font-bold text-white mt-1">Yulduzli kecha — jonli sotuv</h2>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="px-2.5 py-1 rounded-full bg-red-500/20 text-red-400 text-[10px] font-semibold border border-red-500/30 flex items-center gap-1.5">
+        <!-- Live Sales Progress Widget -->
+        <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 md:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[10px] text-amber-400 font-bold uppercase tracking-widest">AMALDAGI SOTUVLAR</span>
+              <h2 class="text-xl font-serif font-bold text-white mt-1">Yulduzli kecha — jonli sotuv</h2>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-red-500/20 text-red-400 text-[10px] font-semibold border border-red-500/30 flex items-center gap-1.5 w-max">
               <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span> 12 kun qoldi
             </span>
-            <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-          
-          <!-- Interactive Chart -->
-          <div class="lg:col-span-2 h-64 relative">
-            <canvas id="salesChart"></canvas>
           </div>
 
-          <!-- Ticket Types Progress Breakdown -->
-          <div class="space-y-4 bg-white/5 p-5 rounded-2xl border border-white/5">
-            
-            <!-- Standard -->
-            <div class="space-y-1">
-              <div class="flex justify-between text-xs">
-                <span class="text-gray-400 font-semibold">STANDART</span>
-                <span class="text-white font-bold">420 / 500 <span class="text-gray-500 text-[10px]">(84%)</span></span>
-              </div>
-              <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden">
-                <div class="h-full bg-amber-400 rounded-full" style="width: 84%"></div>
-              </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+            <div class="lg:col-span-2 h-56 bg-black/40 rounded-2xl border border-white/5 p-4">
+              <canvas id="salesChart"></canvas>
             </div>
 
-            <!-- Premium -->
-            <div class="space-y-1">
-              <div class="flex justify-between text-xs">
-                <span class="text-gray-400 font-semibold">PREMIUM</span>
-                <span class="text-white font-bold">180 / 200 <span class="text-gray-500 text-[10px]">(90%)</span></span>
+            <div class="space-y-4 bg-white/5 p-5 rounded-2xl border border-white/5">
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span class="text-gray-400 font-semibold">STANDART</span>
+                  <span class="text-white font-bold">420 / 500 <span class="text-gray-500 text-[10px]">(84%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden">
+                  <div class="h-full bg-amber-400 rounded-full" style="width: 84%"></div>
+                </div>
               </div>
-              <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden">
-                <div class="h-full bg-amber-500 rounded-full" style="width: 90%"></div>
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span class="text-gray-400 font-semibold">PREMIUM</span>
+                  <span class="text-white font-bold">180 / 200 <span class="text-gray-500 text-[10px]">(90%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden">
+                  <div class="h-full bg-amber-500 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <div class="flex justify-between text-xs">
+                  <span class="text-gray-400 font-semibold">VIP</span>
+                  <span class="text-white font-bold">44 / 50 <span class="text-gray-500 text-[10px]">(88%)</span></span>
+                </div>
+                <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden">
+                  <div class="h-full bg-amber-300 rounded-full" style="width: 88%"></div>
+                </div>
               </div>
             </div>
-
-            <!-- VIP -->
-            <div class="space-y-1">
-              <div class="flex justify-between text-xs">
-                <span class="text-gray-400 font-semibold">VIP</span>
-                <span class="text-white font-bold">44 / 50 <span class="text-gray-500 text-[10px]">(88%)</span></span>
-              </div>
-              <div class="w-full h-2 bg-black/40 rounded-full overflow-hidden">
-                <div class="h-full bg-amber-300 rounded-full" style="width: 88%"></div>
-              </div>
-            </div>
-
-            <!-- Total Capacity -->
-            <div class="pt-3 border-t border-white/10 flex justify-between items-center text-xs">
-              <span class="text-gray-400 font-medium">Jami bandlik:</span>
-              <span class="text-lg font-bold text-amber-400">86.2%</span>
-            </div>
-
           </div>
-
         </div>
       </div>
 
-      <!-- Events List Table (Tadbirlarim) -->
-      <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 md:p-8 space-y-6">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-serif font-bold text-white">Tadbirlarim</h3>
-          <button id="btn-toggle-all-events" class="px-3 py-1.5 rounded-xl border border-white/10 text-xs font-medium text-gray-300 hover:text-white transition">
-            Saralash <i class="fa-solid fa-sliders ml-1"></i>
+      <!-- ================= 2. TADBIRLARIM ================= -->
+      <div id="tab-content-events" class="tab-content hidden space-y-8">
+        <div class="flex justify-between items-center">
+          <div>
+            <h1 class="text-3xl font-serif font-bold text-white">Tadbirlarim</h1>
+            <p class="text-xs text-gray-400 mt-1">Barcha faol va rejalashtirilgan konsertlar ro'yxati.</p>
+          </div>
+          <button class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
+            + Yangi tadbir
           </button>
         </div>
 
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-white/5 text-[10px] uppercase text-gray-500 tracking-wider">
-                <th class="py-3 px-2">TADBIR</th>
-                <th class="py-3 px-2">VAQT</th>
-                <th class="py-3 px-2">JOY</th>
-                <th class="py-3 px-2">SOTILGAN / JAMI</th>
-                <th class="py-3 px-2">DAROMAD</th>
-                <th class="py-3 px-2">HOLAT</th>
-                <th class="py-3 px-2 text-right">AMALLAR</th>
-              </tr>
-            </thead>
-            <tbody class="text-xs divide-y divide-white/5">
-              
-              <!-- Event Row 1 -->
-              <tr class="hover:bg-white/[0.02] transition">
-                <td class="py-4 px-2 font-bold text-white flex items-center space-x-3">
-                  <img src="../images/card23.png" class="w-10 h-10 rounded-lg object-cover">
-                  <span>Yulduzli kecha</span>
-                </td>
-                <td class="py-4 px-2 text-gray-300">20-jul, 19:00</td>
-                <td class="py-4 px-2 text-gray-300">Alisher Navoiy nomidagi teatr</td>
-                <td class="py-4 px-2 font-bold text-white">644 / 750</td>
-                <td class="py-4 px-2 font-bold text-amber-400">76.4 mln</td>
-                <td class="py-4 px-2">
-                  <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] font-semibold border border-emerald-500/20">Jonli</span>
-                </td>
-                <td class="py-4 px-2 text-right">
-                  <button onclick="alert('Tadbir sozlamalari ochilmoqda...')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 text-[11px] transition">Boshqarish</button>
-                </td>
-              </tr>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-[#141414] border border-white/5 rounded-3xl overflow-hidden hover:border-amber-500/30 transition group">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emerald-500/80 text-white text-[10px] font-bold backdrop-blur-md">Jonli</span>
+            </div>
+            <div class="p-5 space-y-3">
+              <h3 class="text-base font-bold text-white">Yulduzli kecha — Konsert</h3>
+              <p class="text-xs text-gray-400"><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i>Alisher Navoiy teatri</p>
+              <div class="flex justify-between text-xs pt-2 border-t border-white/5">
+                <span class="text-gray-400">Sotildi: <strong class="text-white">644 / 750</strong></span>
+                <span class="text-amber-400 font-bold">76.4 mln so'm</span>
+              </div>
+            </div>
+          </div>
 
-              <!-- Event Row 2 -->
-              <tr class="hover:bg-white/[0.02] transition">
-                <td class="py-4 px-2 font-bold text-white flex items-center space-x-3">
-                  <img src="../images/baner.png" class="w-10 h-10 rounded-lg object-cover">
-                  <span>Pianino simfoniyasi</span>
-                </td>
-                <td class="py-4 px-2 text-gray-300">15-avg, 18:00</td>
-                <td class="py-4 px-2 text-gray-300">Konservatoriya zali</td>
-                <td class="py-4 px-2 font-bold text-white">400 / 400</td>
-                <td class="py-4 px-2 font-bold text-amber-400">50.0 mln</td>
-                <td class="py-4 px-2">
-                  <span class="px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-semibold border border-blue-500/20">Yakunlangan</span>
-                </td>
-                <td class="py-4 px-2 text-right">
-                  <button onclick="alert('Hisobot ochilmoqda...')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 text-[11px] transition">Boshqarish</button>
-                </td>
-              </tr>
+          <!-- Card 2 -->
+          <div class="bg-[#141414] border border-white/5 rounded-3xl overflow-hidden hover:border-amber-500/30 transition group">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-blue-500/80 text-white text-[10px] font-bold backdrop-blur-md">Yakunlangan</span>
+            </div>
+            <div class="p-5 space-y-3">
+              <h3 class="text-base font-bold text-white">Pianino simfoniyasi</h3>
+              <p class="text-xs text-gray-400"><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i>Konservatoriya zali</p>
+              <div class="flex justify-between text-xs pt-2 border-t border-white/5">
+                <span class="text-gray-400">Sotildi: <strong class="text-white">400 / 400</strong></span>
+                <span class="text-amber-400 font-bold">50.0 mln so'm</span>
+              </div>
+            </div>
+          </div>
 
-              <!-- Event Row 3 (Hidden initially) -->
-              <tr class="extra-event hidden hover:bg-white/[0.02] transition">
-                <td class="py-4 px-2 font-bold text-white flex items-center space-x-3">
-                  <img src="../images/baner1.png" class="w-10 h-10 rounded-lg object-cover">
-                  <span>O'zbek raqsi Festivall</span>
-                </td>
-                <td class="py-4 px-2 text-gray-300">Belgilanmagan</td>
-                <td class="py-4 px-2 text-gray-300">Humo Arena</td>
-                <td class="py-4 px-2 font-bold text-white">0 / 2500</td>
-                <td class="py-4 px-2 font-bold text-amber-400">0</td>
-                <td class="py-4 px-2">
-                  <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 text-[10px] font-semibold border border-amber-500/20">Qoralama</span>
-                </td>
-                <td class="py-4 px-2 text-right">
-                  <button onclick="alert('Tahrirlash oyna...')" class="px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-gray-300 text-[11px] transition">Boshqarish</button>
-                </td>
-              </tr>
+          <!-- Card 3 -->
+          <div class="bg-[#141414] border border-white/5 rounded-3xl overflow-hidden hover:border-amber-500/30 transition group">
+            <div class="relative h-44 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-amber-500/80 text-black text-[10px] font-bold backdrop-blur-md">Qoralama</span>
+            </div>
+            <div class="p-5 space-y-3">
+              <h3 class="text-base font-bold text-white">O'zbek Raqsi Festivali</h3>
+              <p class="text-xs text-gray-400"><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i>Humo Arena</p>
+              <div class="flex justify-between text-xs pt-2 border-t border-white/5">
+                <span class="text-gray-400">Sotildi: <strong class="text-white">0 / 2500</strong></span>
+                <span class="text-amber-400 font-bold">0 so'm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            </tbody>
-          </table>
+      <!-- ================= 3. SOTUVLAR ================= -->
+      <div id="tab-content-sales" class="tab-content hidden space-y-8">
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-white">Sotuvlar tarixi</h1>
+          <p class="text-xs text-gray-400 mt-1">Real vaqtdagi xaridlar monitroingi.</p>
         </div>
 
-        <div class="text-center pt-2">
-          <button id="btn-show-more-events" class="text-xs text-amber-400 hover:underline font-medium">
-            Barchasini ko'rish ↓
+        <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-4">
+          <div class="flex justify-between items-center text-xs pb-4 border-b border-white/5">
+            <span class="text-gray-400">Jami sotuv amallari: <strong class="text-white">1,284 ta</strong></span>
+            <input type="text" placeholder="Qidiruv..." class="bg-black/40 border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-500">
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-3.5 bg-white/5 rounded-2xl text-xs hover:bg-white/10 transition">
+              <div class="flex items-center space-x-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <p class="font-bold text-white">Jahongir Aliyev (#TK-8842)</p>
+                  <p class="text-[10px] text-gray-400">Yulduzli kecha — VIP sektor</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-amber-400">+ 350 000 so'm</p>
+                <p class="text-[10px] text-gray-500">Bugun, 12:44</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between p-3.5 bg-white/5 rounded-2xl text-xs hover:bg-white/10 transition">
+              <div class="flex items-center space-x-3">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <p class="font-bold text-white">Malika Karimova (#TK-8841)</p>
+                  <p class="text-[10px] text-gray-400">Yulduzli kecha — Standart</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-amber-400">+ 120 000 so'm</p>
+                <p class="text-[10px] text-gray-500">Bugun, 11:20</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 4. STATISTIKA ================= -->
+      <div id="tab-content-analytics" class="tab-content hidden space-y-8">
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-white">Statistika va Analitika</h1>
+          <p class="text-xs text-gray-400 mt-1">Haftalik sotuv grafiklari va auditoriya ko'rsatkichlari.</p>
+        </div>
+
+        <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-4">
+          <h3 class="text-sm font-bold text-white">Haftalik daromad ko'rsatkichi</h3>
+          <div class="h-64 bg-black/40 rounded-2xl p-4">
+            <canvas id="analyticsBarChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 5. QR SKANER ================= -->
+      <div id="tab-content-qr" class="tab-content hidden space-y-8">
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-white">QR Skaner Validator</h1>
+          <p class="text-xs text-gray-400 mt-1">Kamera orqali elektron chiptalarni tezkor tekshirish.</p>
+        </div>
+
+        <div class="bg-[#141414] border border-white/5 rounded-3xl p-8 text-center space-y-6 max-w-lg mx-auto">
+          <div class="relative w-40 h-40 mx-auto rounded-3xl overflow-hidden border-2 border-amber-500/50 flex items-center justify-center bg-black/60 shadow-xl shadow-amber-500/10">
+            <i class="fa-solid fa-qrcode text-6xl text-amber-400"></i>
+            <div class="absolute inset-0 border-t-2 border-amber-400 animate-pulse"></div>
+          </div>
+          <p class="text-xs text-gray-300">Chipta validation jarayonini boshlash uchun kameraga ruxsat bering.</p>
+          <button onclick="alert('Kamera skaneri yoqilmoqda...')" class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-wider transition">
+            Kamerani yoqish
           </button>
         </div>
       </div>
 
-  <!-- Video Message Promo Card -->
-<div class="bg-[#141414] border border-amber-500/20 rounded-3xl p-6 md:p-8 space-y-6">
-  
-  <!-- Main Card Content -->
-  <div class="flex flex-col md:flex-row items-center gap-6">
-    <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-amber-400 flex-shrink-0">
-      <img src="../images/card29.png" class="w-full h-full object-cover" alt="Video promo">
-      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-        <i class="fa-solid fa-video text-amber-400 text-xl"></i>
-      </div>
-    </div>
-
-    <div class="space-y-2 text-center md:text-left flex-1">
-      <span class="text-[10px] text-amber-400 uppercase tracking-widest font-bold">REKLAMA</span>
-      <h3 class="text-xl font-serif font-bold text-white">Video xabaringiz</h3>
-      <p class="text-xs text-gray-400 italic">
-        "Video xabari bor tadbirlar <strong class="text-white">2.4 baravar ko'p chipta sotadi</strong>."
-      </p>
-      <div class="flex items-center justify-center md:justify-start space-x-6 text-xs text-gray-300 pt-1">
-        <div>KO'RILGAN: <strong class="text-white">8 420 marta</strong></div>
-        <div>O'RTACHA KO'RISH: <strong class="text-white">0:19</strong></div>
-      </div>
-    </div>
-
-    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-      <button id="openIdeaFormBtn" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition flex items-center justify-center gap-2">
-        <i class="fa-solid fa-pen-to-square"></i> G'oya yozish
-      </button>
-      <button id="openTipsModalBtn" class="px-4 py-2.5 rounded-xl border border-white/10 text-gray-300 hover:text-white hover:bg-white/5 text-xs transition flex items-center justify-center gap-2">
-        <i class="fa-solid fa-lightbulb text-amber-400"></i> Maslahatlarni ko'rish
-      </button>
-    </div>
-  </div>
-
-  <!-- Hidden Idea Form Section (G'oya yozish bosilganda ochiladi) -->
-  <div id="ideaFormContainer" class="hidden pt-6 border-t border-white/10 space-y-4">
-    <div class="flex items-center justify-between">
-      <h4 class="text-sm font-bold text-white flex items-center gap-2">
-        <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> Video ssenariy g'oyasini tayyorlash
-      </h4>
-      <button id="closeIdeaFormBtn" class="text-gray-400 hover:text-white text-xs">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-    </div>
-
-    <!-- Quick Templates -->
-    <div class="flex flex-wrap gap-2 text-[11px]">
-      <span class="text-gray-400 self-center">Shablonlar:</span>
-      <button type="button" onclick="insertTemplate(1)" class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-amber-400 hover:border-amber-500/30 transition">
-        ⚡ Qisqa taklifnoma
-      </button>
-      <button type="button" onclick="insertTemplate(2)" class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-amber-400 hover:border-amber-500/30 transition">
-        🎁 Chegirma & Aksiya
-      </button>
-      <button type="button" onclick="insertTemplate(3)" class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-amber-400 hover:border-amber-500/30 transition">
-        ⭐ VIP Mehmonlar uchun
-      </button>
-    </div>
-
-    <!-- Textarea Input -->
-    <div class="relative">
-      <textarea id="ideaTextarea" rows="3" placeholder="Video uchun ssenariy yoki asosiy g'oyangizni yozing..." class="w-full bg-black/40 border border-white/10 rounded-2xl p-4 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-500 transition resize-none"></textarea>
-      <span class="absolute bottom-3 right-3 text-[10px] text-gray-500" id="charCounter">0 / 300</span>
-    </div>
-
-    <div class="flex justify-end gap-3">
-      <button id="cancelIdeaBtn" class="px-4 py-2 rounded-xl text-gray-400 hover:text-white text-xs transition">
-        Bekor qilish
-      </button>
-      <button id="saveIdeaBtn" class="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition flex items-center gap-2">
-        <i class="fa-solid fa-paper-plane"></i> Saqlash va Davom etish
-      </button>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- MODAL: Maslahatlarni ko'rish -->
-<div id="tipsModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-  <div class="bg-[#181818] border border-amber-500/30 rounded-3xl max-w-md w-full p-6 space-y-6 shadow-2xl relative transform transition-all scale-95 opacity-0" id="tipsModalBox">
-    
-    <!-- Modal Header -->
-    <div class="flex items-center justify-between pb-4 border-b border-white/10">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
-          <i class="fa-solid fa-lightbulb text-amber-400 text-lg"></i>
-        </div>
+      <!-- ================= 6. MEHMONLAR ================= -->
+      <div id="tab-content-guests" class="tab-content hidden space-y-8">
         <div>
-          <h3 class="text-base font-bold text-white">Video taklifnoma maslahatlari</h3>
-          <p class="text-[10px] text-gray-400">Konversiyani 2.4x oshirish sirlari</p>
+          <h1 class="text-3xl font-serif font-bold text-white">Mehmonlar bazasi</h1>
+          <p class="text-xs text-gray-400 mt-1">Tadbirlaringizga chipta xarid qilgan unikal foydalanuvchilar.</p>
         </div>
-      </div>
-      <button id="closeTipsModalBtn" class="text-gray-400 hover:text-white text-lg w-8 h-8 rounded-full bg-white/5 flex items-center justify-center transition">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
 
-    <!-- Modal Body: Tips List -->
-    <div class="space-y-4 text-xs text-gray-300 max-h-80 overflow-y-auto pr-1">
-      
-      <div class="flex gap-3">
-        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">1</span>
-        <div>
-          <strong class="text-white block mb-0.5">Birinchi 3 soniya hal qiluvchi!</strong>
-          Tomoshabin e'tiborini darhol ushlab qoling. Salomlashish o'rniga savol yoki qiziq fakt bilan boshlang.
-        </div>
-      </div>
-
-      <div class="flex gap-3">
-        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">2</span>
-        <div>
-          <strong class="text-white block mb-0.5">Optimal davomiylik: 15–30 soniya</strong>
-          Video qisqa va aniq bo'lsin. O'rtacha ko'rish vaqti 19 soniyani tashkil etadi, shuning uchun cho'zmang.
-        </div>
-      </div>
-
-      <div class="flex gap-3">
-        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">3</span>
-        <div>
-          <strong class="text-white block mb-0.5">Yoritish va Ovoz sifati</strong>
-          Yuzingizga yorug'lik tushib tursin va fondagi shovqinlarni kamaytiring. Yaxshi ovoz ishanch beradi.
-        </div>
-      </div>
-
-      <div class="flex gap-3">
-        <span class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center flex-shrink-0">4</span>
-        <div>
-          <strong class="text-white block mb-0.5">Aniq chorlov (Call to Action)</strong>
-          Videongiz oxirida mantiqiy yakun qiling: "Chiptani hoziroq band qiling", "Soni cheklangan!"
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Modal Footer -->
-    <div class="pt-2">
-      <button id="gotItBtn" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
-        Tushunarli, rahmat!
-      </button>
-    </div>
-
-  </div>
-</div>
-
-      <!-- Guests & Finance Section (2 Columns) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Guests Demographics Widget -->
         <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-6">
-          <div class="flex justify-between items-center">
-            <h3 class="text-base font-serif font-bold text-white">Mehmonlaringiz</h3>
-            <span class="text-[10px] text-gray-500">SO'NGGI 30 KUN</span>
+          <div class="flex justify-between items-center text-xs">
+            <h3 class="text-base font-serif font-bold text-white">Hududiy taqsimot</h3>
+            <span class="text-amber-400 font-bold">1,284 Mehmon</span>
           </div>
-
-          <div class="flex items-center justify-between">
-            <div class="relative w-24 h-24 rounded-full border-4 border-amber-500/80 flex items-center justify-center flex-shrink-0">
-              <div class="text-center">
-                <span class="text-xl font-bold text-white block">34%</span>
-                <span class="text-[8px] text-gray-400">Qaytgan</span>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs text-gray-400 mb-1">
+                <span>Toshkent</span>
+                <span class="text-white font-bold">52%</span>
+              </div>
+              <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-amber-400 rounded-full" style="width: 52%"></div>
               </div>
             </div>
-
-            <div class="space-y-3 text-xs flex-1 ml-6">
-              <div class="space-y-1">
-                <div class="flex justify-between text-[10px] text-gray-400">
-                  <span>TOSHKENT</span>
-                  <span>52%</span>
-                </div>
-                <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                  <div class="h-full bg-amber-400 rounded-full" style="width: 52%"></div>
-                </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-400 mb-1">
+                <span>Samarqand</span>
+                <span class="text-white font-bold">18%</span>
               </div>
-
-              <div class="space-y-1">
-                <div class="flex justify-between text-[10px] text-gray-400">
-                  <span>SAMARQAND</span>
-                  <span>18%</span>
-                </div>
-                <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                  <div class="h-full bg-amber-500 rounded-full" style="width: 18%"></div>
-                </div>
-              </div>
-
-              <div class="space-y-1">
-                <div class="flex justify-between text-[10px] text-gray-400">
-                  <span>BUXORO</span>
-                  <span>12%</span>
-                </div>
-                <div class="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-                  <div class="h-full bg-amber-600 rounded-full" style="width: 12%"></div>
-                </div>
+              <div class="w-full h-2 bg-white/5 rounded-full overflow-hidden">
+                <div class="h-full bg-amber-500 rounded-full" style="width: 18%"></div>
               </div>
             </div>
-          </div>
-
-          <div class="pt-3 border-t border-white/5 text-[10px] text-gray-400 flex justify-between">
-            <span>YOSH TARKIBI:</span>
-            <span class="text-white font-bold">18-24 (35%) | 25-34 (48%)</span>
           </div>
         </div>
+      </div>
 
-        <!-- Wallet / Payout Widget -->
+      <!-- ================= 7. HISOBIM (WALLET) ================= -->
+      <div id="tab-content-wallet" class="tab-content hidden space-y-8">
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-white">Moliya va Balans</h1>
+          <p class="text-xs text-gray-400 mt-1">Mablag'larni yechib olish va o'tkazmalar tarixi.</p>
+        </div>
+
         <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-6">
           <div class="flex justify-between items-center">
             <span class="text-[10px] text-gray-400 uppercase tracking-widest">YECHIB OLISH MUMKIN MABLAG'</span>
-            <button onclick="alert('Pul yechish so\'rovi yuborildi!')" class="px-3 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
+            <button onclick="alert('Pul yechish so\'rovi yuborildi!')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
               Pul yechish
             </button>
           </div>
-
-          <h3 class="text-3xl font-serif font-bold text-white">
+          <h3 class="text-4xl font-serif font-bold text-white">
             42 800 000 <span class="text-sm font-normal text-gray-400">so'm</span>
           </h3>
-
-          <div class="bg-white/5 border border-white/5 rounded-2xl p-3 flex items-center space-x-3 text-xs text-gray-300">
-            <i class="fa-regular fa-calendar-check text-amber-400 text-lg"></i>
-            <div>
-              <p class="text-[10px] text-gray-400">Keyingi avtomatik to'lov</p>
-              <p class="font-bold text-white">22-iyul, 2026</p>
-            </div>
-          </div>
-
-          <div class="space-y-2 pt-2 border-t border-white/5">
-            <p class="text-[10px] text-gray-400 uppercase tracking-widest">SO'NGGI TRANSAKSIYALAR</p>
-            <div class="flex justify-between text-xs py-1">
-              <span class="text-gray-300">17.07 • Yulduzli kecha</span>
-              <span class="font-bold text-emerald-400">+ 4 500 000</span>
-            </div>
-            <div class="flex justify-between text-xs py-1">
-              <span class="text-gray-300">15.07 • Pianino simfoniyasi</span>
-              <span class="font-bold text-emerald-400">+ 12 200 000</span>
-            </div>
-          </div>
         </div>
-
       </div>
 
-      <!-- FAQ Accordion for Organizers -->
-      <div class="space-y-4">
-        <h3 class="text-lg font-serif font-bold text-white">Tashkilotchilar uchun</h3>
+      <!-- ================= 8. SOZLAMALAR ================= -->
+      <div id="tab-content-settings" class="tab-content hidden space-y-8">
+        <div>
+          <h1 class="text-3xl font-serif font-bold text-white">Sozlamalar</h1>
+          <p class="text-xs text-gray-400 mt-1">Tashkilotchi profili va xavfsizlik sozlamalari.</p>
+        </div>
 
-        <div id="dashboard-faq" class="space-y-3">
-          
-          <div class="faq-item bg-[#141414] border border-white/5 rounded-2xl overflow-hidden">
-            <button class="faq-btn w-full p-4 text-left flex justify-between items-center text-xs font-semibold text-white">
-              <span>Tadbirni qanday yarataman?</span>
-              <i class="fa-solid fa-plus text-amber-400"></i>
-            </button>
-            <div class="faq-content hidden px-4 pb-4 text-xs text-gray-400 border-t border-white/5 pt-3">
-              Kabinetingizdagi "+ Yangi tadbir" tugmasini bosing va barcha maydonlarni (sana, joy, tariflar va rasm) to'ldirib tasdiqlang.
-            </div>
+        <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-4 max-w-xl">
+          <div class="space-y-2">
+            <label class="block text-xs text-gray-400">Tashkilotchi nomi</label>
+            <input type="text" value="Dilshod Rahimov" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
           </div>
-
-          <div class="faq-item bg-[#141414] border border-white/5 rounded-2xl overflow-hidden">
-            <button class="faq-btn w-full p-4 text-left flex justify-between items-center text-xs font-semibold text-white">
-              <span>Komissiya qancha?</span>
-              <i class="fa-solid fa-plus text-amber-400"></i>
-            </button>
-            <div class="faq-content hidden px-4 pb-4 text-xs text-gray-400 border-t border-white/5 pt-3">
-              Platforma komissiyasi har bir sotilgan chiptadan 7% ni tashkil qiladi. Qolgan mablag' avtomatik hisobingizga o'tkaziladi.
-            </div>
+          <div class="space-y-2">
+            <label class="block text-xs text-gray-400">E-mail pochta</label>
+            <input type="email" value="dilshod@sahna.uz" class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500">
           </div>
-
-          <div class="faq-item bg-[#141414] border border-white/5 rounded-2xl overflow-hidden">
-            <button class="faq-btn w-full p-4 text-left flex justify-between items-center text-xs font-semibold text-white">
-              <span>Pulni qachon olaman?</span>
-              <i class="fa-solid fa-plus text-amber-400"></i>
-            </button>
-            <div class="faq-content hidden px-4 pb-4 text-xs text-gray-400 border-t border-white/5 pt-3">
-              Mablag'larni har hafta rejalashtirilgan to'lov kunlarida yoki "Pul yechish" tugmasini bosib darhol kartangizga yechib olishingiz mumkin.
-            </div>
-          </div>
-
-          <div class="faq-item bg-[#141414] border border-white/5 rounded-2xl overflow-hidden">
-            <button class="faq-btn w-full p-4 text-left flex justify-between items-center text-xs font-semibold text-white">
-              <span>QR skaner qanday ishlaydi?</span>
-              <i class="fa-solid fa-plus text-amber-400"></i>
-            </button>
-            <div class="faq-content hidden px-4 pb-4 text-xs text-gray-400 border-t border-white/5 pt-3">
-              Telefoningiz kamerasidan foydalanib, tadbirga kelgan mehmonlarning elektron chiptasidagi QR-kodni skanerlaysiz.
-            </div>
-          </div>
-
-          <div class="faq-item bg-[#141414] border border-white/5 rounded-2xl overflow-hidden">
-            <button class="faq-btn w-full p-4 text-left flex justify-between items-center text-xs font-semibold text-white">
-              <span>Video xabar qanday yoziladi?</span>
-              <i class="fa-solid fa-plus text-amber-400"></i>
-            </button>
-            <div class="faq-content hidden px-4 pb-4 text-xs text-gray-400 border-t border-white/5 pt-3">
-              "Video xabar yozish" tugmasini bosing va 30 soniyalik qisqa taklif videosini yuklang.
-            </div>
-          </div>
-
+          <button onclick="alert('Sozlamalar saqlandi!')" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs transition">
+            Saqlash
+          </button>
         </div>
       </div>
 
     </div>
-
   </div>
 </main>
+
+<!-- Chart.js Kutubxonasi -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  let salesChartInstance = null;
+  let analyticsChartInstance = null;
+
+  // Chart.js Grafiklarni yaratish
+  function initCharts() {
+    const ctx1 = document.getElementById('salesChart')?.getContext('2d');
+    if (ctx1 && !salesChartInstance) {
+      salesChartInstance = new Chart(ctx1, {
+        type: 'line',
+        data: {
+          labels: ['1-Iyul', '5-Iyul', '10-Iyul', '15-Iyul', '20-Iyul'],
+          datasets: [{
+            label: 'Sotilgan chiptalar',
+            data: [120, 300, 450, 800, 1284],
+            borderColor: '#f59e0b',
+            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } },
+            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#6b7280', font: { size: 10 } } }
+          }
+        }
+      });
+    }
+
+    const ctx2 = document.getElementById('analyticsBarChart')?.getContext('2d');
+    if (ctx2 && !analyticsChartInstance) {
+      analyticsChartInstance = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: ['Dush', 'Sesh', 'Chor', 'Pay', 'Jum', 'Shan', 'Yak'],
+          datasets: [{
+            label: 'Daromad (mln)',
+            data: [12, 19, 15, 25, 22, 30, 45],
+            backgroundColor: '#f59e0b',
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false }, ticks: { color: '#6b7280', font: { size: 10 } } },
+            y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#6b7280', font: { size: 10 } } }
+          }
+        }
+      });
+    }
+  }
+
+  // Bo'limlarni bir-biriga almashtirish funksiyasi
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.classList.add('hidden');
+    });
+
+    const targetContent = document.getElementById(`tab-content-${tabId}`);
+    if (targetContent) {
+      targetContent.classList.remove('hidden');
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const isTarget = link.getAttribute('data-tab') === tabId;
+
+      if (isTarget) {
+        link.classList.remove('text-gray-400');
+        link.classList.add('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
+      } else {
+        link.classList.remove('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
+        link.classList.add('text-gray-400');
+      }
+    });
+
+    // Chart.js grafiklarini qayta yuklash (tab o'zgarganda to'g'ri ko'rinishi uchun)
+    setTimeout(() => {
+      initCharts();
+    }, 100);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabId = link.getAttribute('data-tab');
+        if (tabId) {
+          switchTab(tabId);
+        }
+      });
+    });
+
+    initCharts();
+  });
+</script>
 
 <!-- JAVASCRIPT CODE -->
 <script>
