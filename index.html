@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-black text-white">
- <header class="sticky top-0 left-0 w-full max-w-full z-30 bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
+ <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
     
     <!-- Top Bar -->
     <div class="w-full bg-[#0b0b0b] border-b border-white/10 text-[#b8b8b8] text-[11px] sm:text-xs py-2 sm:py-0 sm:h-10">
@@ -101,7 +101,7 @@
                 </svg>
             </button>
 
-            <a href="./pages/profile.html" class="flex items-center px-4 h-9 rounded-full border border-[#d5b971] text-white text-xs 2xl:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition whitespace-nowrap cursor-pointer">Kirish</a>
+            <a href="./pages/profile.html" id="login-btn-desktop" class="flex items-center px-4 h-9 rounded-full border border-[#d5b971] text-white text-xs 2xl:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition whitespace-nowrap cursor-pointer">Kirish</a>
             <a href="./pages/joy.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Joy Tanlash</a>
         </div>
 
@@ -156,7 +156,7 @@
 
         <!-- Buttons -->
         <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row gap-2.5">
-            <button class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition">
+            <button id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition">
                 Kirish
             </button>
             <button class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs sm:text-sm font-bold shadow-lg">
@@ -165,6 +165,218 @@
         </div>
     </div>
 </header>
+
+<!-- ============================= -->
+<!-- LOGIN / PROFILE MODAL -->
+<!-- ============================= -->
+<div id="auth-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center px-4">
+    <!-- Backdrop -->
+    <div id="auth-modal-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+
+    <!-- Modal Box -->
+    <div class="relative w-full max-w-md bg-[#15110d] border border-[#c9b07b]/40 rounded-2xl shadow-2xl p-6 sm:p-8">
+
+        <!-- Close button -->
+        <button id="auth-modal-close" class="absolute top-4 right-4 text-zinc-400 hover:text-[#e8c56b] transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <h2 class="text-[#e8c56b] font-serif text-2xl mb-6">Profilni yaratish</h2>
+
+        <form id="auth-form" class="space-y-4">
+
+            <!-- Avatar upload -->
+            <div class="flex flex-col items-center gap-3 mb-2">
+                <label for="auth-photo" class="cursor-pointer relative w-20 h-20 rounded-full border-2 border-dashed border-[#c9b07b]/50 flex items-center justify-center overflow-hidden hover:border-[#e8c56b] transition">
+                    <img id="auth-photo-preview" src="" class="hidden w-full h-full object-cover" />
+                    <svg id="auth-photo-icon" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16l4-4a3 3 0 014 0l5 5m-3-3l1-1a3 3 0 014 0l1 1M4 8h16M4 8a2 2 0 012-2h1l1-2h8l1 2h1a2 2 0 012 2v9a2 2 0 01-2 2H6a2 2 0 01-2-2V8z" />
+                    </svg>
+                    <input type="file" id="auth-photo" accept="image/*" class="hidden" />
+                </label>
+                <span class="text-[11px] text-zinc-500">Rasm yuklash</span>
+            </div>
+
+            <!-- Ism -->
+            <div>
+                <label class="block text-xs text-zinc-400 mb-1.5">Ism</label>
+                <input type="text" id="auth-ism" required
+                    class="w-full bg-zinc-900/70 border border-zinc-800 focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-zinc-600"
+                    placeholder="Ismingiz" />
+            </div>
+
+            <!-- Familya -->
+            <div>
+                <label class="block text-xs text-zinc-400 mb-1.5">Familya</label>
+                <input type="text" id="auth-familya" required
+                    class="w-full bg-zinc-900/70 border border-zinc-800 focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-zinc-600"
+                    placeholder="Familiyangiz" />
+            </div>
+
+            <!-- Gmail -->
+            <div>
+                <label class="block text-xs text-zinc-400 mb-1.5">Gmail</label>
+                <input type="email" id="auth-gmail" required pattern=".+@gmail\.com"
+                    class="w-full bg-zinc-900/70 border border-zinc-800 focus:border-[#D4AF37] rounded-lg px-3.5 py-2.5 text-sm text-white outline-none transition placeholder:text-zinc-600"
+                    placeholder="misol@gmail.com" />
+            </div>
+
+            <p id="auth-error" class="hidden text-xs text-red-400 pt-1"></p>
+
+            <button type="submit"
+                class="w-full mt-2 h-11 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-sm font-bold shadow hover:scale-[1.02] transition">
+                Saqlash
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- ============================= -->
+<!-- HEADER + MODAL JS -->
+<!-- ============================= -->
+<script>
+(function () {
+    // ---- Mobil menyu ochish/yopish (agar loyihada allaqachon bo'lmasa) ----
+    const menuToggleBtn = document.getElementById('menu-toggle-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+
+    if (menuToggleBtn && mobileMenu) {
+        menuToggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+    }
+
+    // ---- Login / Profile Modal ----
+    const modal = document.getElementById('auth-modal');
+    const backdrop = document.getElementById('auth-modal-backdrop');
+    const closeBtn = document.getElementById('auth-modal-close');
+    const form = document.getElementById('auth-form');
+    const errorEl = document.getElementById('auth-error');
+
+    const photoInput = document.getElementById('auth-photo');
+    const photoPreview = document.getElementById('auth-photo-preview');
+    const photoIcon = document.getElementById('auth-photo-icon');
+
+    const loginBtnDesktop = document.getElementById('login-btn-desktop');
+    const loginBtnMobile = document.getElementById('login-btn-mobile');
+
+    let userPhotoData = null;
+
+    function openModal() {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    function bindLoginClick(btn) {
+        if (!btn) return;
+        btn.addEventListener('click', (e) => {
+            // Agar profil rejimida bo'lsa (data-logged-in), oddiy havola sifatida ishlaydi
+            if (btn.dataset.loggedIn === 'true') return;
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    bindLoginClick(loginBtnDesktop);
+    bindLoginClick(loginBtnMobile);
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+
+    // Rasm tanlash -> preview
+    photoInput.addEventListener('change', () => {
+        const file = photoInput.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            userPhotoData = e.target.result;
+            photoPreview.src = userPhotoData;
+            photoPreview.classList.remove('hidden');
+            photoIcon.classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+    });
+
+    // Formani yuborish
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const ism = document.getElementById('auth-ism').value.trim();
+        const familya = document.getElementById('auth-familya').value.trim();
+        const gmail = document.getElementById('auth-gmail').value.trim();
+
+        if (!ism || !familya || !gmail) {
+            errorEl.textContent = "Barcha maydonlarni to'ldiring.";
+            errorEl.classList.remove('hidden');
+            return;
+        }
+
+        if (!gmail.toLowerCase().endsWith('@gmail.com')) {
+            errorEl.textContent = "Iltimos, to'g'ri Gmail manzil kiriting.";
+            errorEl.classList.remove('hidden');
+            return;
+        }
+
+        errorEl.classList.add('hidden');
+
+        const userData = { ism, familya, gmail, rasim: userPhotoData };
+
+        localStorage.setItem('sahna_user', JSON.stringify(userData));
+
+        renderProfileButtons(userData);
+        closeModal();
+        form.reset();
+        photoPreview.classList.add('hidden');
+        photoIcon.classList.remove('hidden');
+        userPhotoData = null;
+    });
+
+    // Kirish tugmasini profil ko'rinishiga aylantirish
+    function renderProfileButtons(user) {
+        const avatarUrl = user.rasim
+            ? user.rasim
+            : 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.ism + ' ' + user.familya) + '&background=D4AF37&color=000';
+
+        const innerHTML = `
+            <span class="flex items-center gap-2">
+                <img src="${avatarUrl}" class="w-6 h-6 rounded-full object-cover" />
+                <span>${user.ism}</span>
+            </span>
+        `;
+
+        [loginBtnDesktop, loginBtnMobile].forEach(btn => {
+            if (!btn) return;
+            btn.innerHTML = innerHTML;
+            btn.dataset.loggedIn = 'true';
+            if (btn.tagName === 'A') {
+                btn.setAttribute('href', './pages/profile.html');
+            } else {
+                // button bo'lsa, bosilganda profile.html ga yo'naltiramiz
+                btn.onclick = () => { window.location.href = './pages/profile.html'; };
+            }
+        });
+    }
+
+    // Sahifa yuklanganda avval saqlangan foydalanuvchi bo'lsa - profilni ko'rsatish
+    const saved = localStorage.getItem('sahna_user');
+    if (saved) {
+        try {
+            renderProfileButtons(JSON.parse(saved));
+        } catch (e) {}
+    }
+})();
+</script>
 
 
     <main>
@@ -744,6 +956,7 @@
     }
 </style>
 
+<!-- ==================== AFZALLIKLAR SEKSIYASI ==================== -->
 <section class="w-full bg-[#0d0b09] text-[#d1ccc4] py-20 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden">
 
     <!-- Orqa fondagi xira tilla nurlanish -->
@@ -763,12 +976,10 @@
         <!-- 4 ta Kartochka (Grid) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
 
-            <!-- KARTA 1: Raqamli chiptalar -->
+            <!-- KARTA 1 -->
             <div class="card-hover-effect bg-[#181410] border border-[#2d241c] hover:border-[#dca842]/50 rounded-2xl p-7 flex flex-col justify-between min-h-[230px] relative overflow-hidden group cursor-pointer">
-                <!-- Hover vaqtidagi gradient porlash -->
                 <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#dca842]/10 blur-2xl rounded-full group-hover:bg-[#dca842]/20 transition-all duration-500"></div>
 
-                <!-- SVG Icon -->
                 <div class="relative mb-6">
                     <div class="icon-box w-14 h-14 rounded-xl bg-[#261f17] border border-[#3d3123] group-hover:border-[#dca842]/60 flex items-center justify-center text-[#edd38d] shadow-inner">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 -960 960 960" fill="currentColor">
@@ -778,18 +989,16 @@
                 </div>
 
                 <div>
-                    <!-- Muammo -->
                     <p class="text-xs sm:text-sm text-[#8c7d6b] line-through decoration-[#a85858] mb-1.5 font-normal">
                         Qog'oz chiptalar va navbatlar
                     </p>
-                    <!-- Yechim -->
                     <h3 class="text-base font-semibold text-[#f5f0eb] group-hover:text-[#edd38d] transition-colors duration-300 leading-snug">
                         100% Raqamli va tezkor kirish
                     </h3>
                 </div>
             </div>
 
-            <!-- KARTA 2: Video-tasdiq -->
+            <!-- KARTA 2 -->
             <div class="card-hover-effect bg-[#181410] border border-[#2d241c] hover:border-[#dca842]/50 rounded-2xl p-7 flex flex-col justify-between min-h-[230px] relative overflow-hidden group cursor-pointer">
                 <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#dca842]/10 blur-2xl rounded-full group-hover:bg-[#dca842]/20 transition-all duration-500"></div>
 
@@ -811,7 +1020,7 @@
                 </div>
             </div>
 
-            <!-- KARTA 3: Halol narx -->
+            <!-- KARTA 3 -->
             <div class="card-hover-effect bg-[#181410] border border-[#2d241c] hover:border-[#dca842]/50 rounded-2xl p-7 flex flex-col justify-between min-h-[230px] relative overflow-hidden group cursor-pointer">
                 <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#dca842]/10 blur-2xl rounded-full group-hover:bg-[#dca842]/20 transition-all duration-500"></div>
 
@@ -833,7 +1042,7 @@
                 </div>
             </div>
 
-            <!-- KARTA 4: Blockchain -->
+            <!-- KARTA 4 -->
             <div class="card-hover-effect bg-[#181410] border border-[#2d241c] hover:border-[#dca842]/50 rounded-2xl p-7 flex flex-col justify-between min-h-[230px] relative overflow-hidden group cursor-pointer">
                 <div class="absolute -right-10 -top-10 w-24 h-24 bg-[#dca842]/10 blur-2xl rounded-full group-hover:bg-[#dca842]/20 transition-all duration-500"></div>
 
@@ -858,26 +1067,32 @@
         </div>
     </div>
 </section>
-        <section class="w-full bg-black py-10 px-4 sm:px-6 lg:px-8 font-sans">
+
+<!-- ==================== BANNER SEKSIYASI ==================== -->
+<section class="w-full bg-black py-10 px-4 sm:px-6 lg:px-8 font-sans">
     <div class="max-w-7xl mx-auto">
 
         <!-- Main Featured Banner Container -->
-        <div class="relative w-full overflow-hidden min-h-[500px] sm:min-h-[550px] flex items-end p-6 sm:p-10 lg:p-14 border border-[#26201a] rounded-3xl">
+        <div class="relative w-full overflow-hidden min-h-[500px] sm:min-h-[550px] flex items-end p-6 sm:p-10 lg:p-14 border border-[#26201a] rounded-3xl bg-black">
 
             <!-- Background Image -->
-            <img src="./images/baner.png" alt="Xalqaro Jazz Festivali" class="absolute inset-0 w-full h-full object-cover object-center" />
+            <img id="bannerBgImg" src="./images/baner.png" alt="Xalqaro Jazz Festivali" class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500 z-0" />
 
-            <!-- Dark Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0806] via-[#0a0806]/70 to-transparent"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-[#0a0806]/90 via-[#0a0806]/40 to-transparent"></div>
+            <!-- Background Video Frame (YouTube Iframe API id="ytPlayer") -->
+            <div id="bannerVideoContainer" class="absolute inset-0 w-full h-full opacity-0 pointer-events-none transition-opacity duration-500 z-0 overflow-hidden">
+                <div id="ytPlayer" class="w-full h-[140%] -translate-y-[15%] pointer-events-none"></div>
+            </div>
 
-            <!-- Content Grid/Flex -->
-            <div class="relative z-10 w-full flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+            <!-- Dark Gradient Overlays -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0806] via-[#0a0806]/70 to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0a0806]/90 via-[#0a0806]/40 to-transparent z-10"></div>
+
+            <!-- Content Area -->
+            <div class="relative z-20 w-full flex flex-col lg:flex-row lg:items-end justify-between gap-8">
 
                 <!-- Left Details Area -->
                 <div class="max-w-2xl">
 
-                    <!-- Avatar & Category Badge Row -->
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-0.5 bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-lg shrink-0">
                             <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806]">
@@ -892,49 +1107,42 @@
                         </div>
                     </div>
 
-                    <!-- Main Title -->
                     <h2 class="text-3xl sm:text-5xl lg:text-6xl font-serif text-[#f5f0eb] tracking-wide mb-4 leading-tight">
                         Xalqaro Jazz Festivali
                     </h2>
 
-                    <!-- Description -->
                     <p class="text-sm sm:text-base text-[#c2bbaa] leading-relaxed mb-8 max-w-xl font-normal">
                         Dunyodagi eng sara jazz ijrochilarining Toshkentdagi ilk chiqishi. 3 kunlik unutilmas musiqa bayrami.
                     </p>
 
                     <!-- CTA Buttons -->
                     <div class="flex flex-wrap items-center gap-4">
-                        <!-- Primary Button -->
-                        <button class="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#edd38d] via-[#deab4a] to-[#c99430] text-[#1c1203] font-semibold text-sm sm:text-base transition-all hover:brightness-110 shadow-lg hover:shadow-xl shrink-0">
+                        <button class="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#edd38d] via-[#deab4a] to-[#c99430] text-[#1c1203] font-semibold text-sm sm:text-base transition-all hover:brightness-110 shadow-lg hover:shadow-xl shrink-0 cursor-pointer">
                             Chipta Band Qilish
                         </button>
 
-                        <!-- Secondary Button (Video modalini ochadi) -->
-                        <button id="openVideoBtn" onclick="openVideoModal()" class="px-8 py-3.5 rounded-full bg-[#1c1814]/80 text-[#f5f0eb] hover:bg-[#28221c] hover:border-[#edd38d]/50 border border-[#382f25] font-medium text-sm sm:text-base transition-all backdrop-blur-md shrink-0 flex items-center gap-2.5 group cursor-pointer">
+                        <!-- Video yoqish/o'chirish tugmasi -->
+                        <button id="toggleBannerVideoBtn" onclick="toggleBannerVideo()" class="px-8 py-3.5 rounded-full bg-[#1c1814]/80 text-[#f5f0eb] hover:bg-[#28221c] hover:border-[#edd38d]/50 border border-[#382f25] font-medium text-sm sm:text-base transition-all backdrop-blur-md shrink-0 flex items-center gap-2.5 group cursor-pointer">
                             <span class="w-7 h-7 rounded-full bg-[#edd38d]/20 text-[#edd38d] flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <svg class="w-3.5 h-3.5 fill-current translate-x-0.5" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </span>
-                            Video ko'rish
+                            <span id="bannerBtnText">Video ko'rish</span>
+                        </button>
+
+                        <!-- Ovozni yoqish / o'chirish tugmasi (Standart holatda yashirin, video yonishi bilan chiqadi) -->
+                        <button id="toggleAudioBtn" onclick="toggleAudio()" class="hidden px-5 py-3.5 rounded-full bg-[#1c1814]/80 text-[#edd38d] hover:bg-[#28221c] border border-[#edd38d]/40 font-medium text-sm sm:text-base transition-all backdrop-blur-md shrink-0 items-center gap-2 cursor-pointer">
+                            <svg id="audioIconMuted" class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73 4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                            </svg>
+                            <svg id="audioIconUnmuted" class="w-5 h-5 fill-current hidden" viewBox="0 0 24 24">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                            </svg>
+                            <span id="audioBtnText">Ovozni yoqish</span>
                         </button>
                     </div>
 
-                </div>
-
-                <!-- Right Navigation Arrows -->
-                <div class="flex items-center gap-3 shrink-0 self-end lg:self-end">
-                    <button class="w-12 h-12 rounded-full bg-[#16120e]/80 border border-[#332a21] text-[#f5f0eb] flex items-center justify-center hover:bg-[#edd38d] hover:text-[#1c1203] hover:border-[#edd38d] transition-all backdrop-blur-md">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                        </svg>
-                    </button>
-
-                    <button class="w-12 h-12 rounded-full bg-[#16120e]/80 border border-[#332a21] text-[#f5f0eb] flex items-center justify-center hover:bg-[#edd38d] hover:text-[#1c1203] hover:border-[#edd38d] transition-all backdrop-blur-md">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                    </button>
                 </div>
 
             </div>
@@ -944,93 +1152,119 @@
     </div>
 </section>
 
-<!-- ==================== VIDEO MODAL ==================== -->
-<div id="videoModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-md p-4 transition-all duration-300">
-    
-    <!-- Modal Backdrop Click Area -->
-    <div class="absolute inset-0" onclick="closeVideoModal()"></div>
+<!-- YouTube Iframe API Javascript -->
+<script src="https://www.youtube.com/iframe_api"></script>
 
-    <!-- Modal Content Box -->
-    <div class="relative w-full max-w-4xl bg-[#14100c] border border-[#3d3123] rounded-2xl overflow-hidden shadow-2xl z-10">
-        
-        <!-- Modal Header -->
-        <div class="flex items-center justify-between px-6 py-4 border-b border-[#26201a] bg-[#1a1510]">
-            <h3 class="text-base sm:text-lg font-medium text-[#edd38d] flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#edd38d] animate-pulse"></span>
-                Xalqaro Jazz Festivali — Video
-            </h3>
-            <!-- Close Button -->
-            <button onclick="closeVideoModal()" class="w-9 h-9 rounded-full bg-[#26201a] text-[#c2bbaa] hover:text-white hover:bg-[#3d3123] flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-
-        <!-- Video Player Frame -->
-        <div class="relative w-full aspect-video bg-black">
-            <iframe id="videoIframe" class="w-full h-full border-0" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-            </iframe>
-        </div>
-
-    </div>
-</div>
-
-<!-- ==================== JAVASCRIPT ==================== -->
 <script>
-    // Siz taqdim etgan YouTube video havolasi
-    const youtubeVideoUrl = "https://www.youtube.com/embed/FwPNGxTV794?si=ixGZPSafGxmnFQr_&autoplay=1"; 
+    let player;
+    let isVideoPlaying = false;
 
-    function openVideoModal() {
-        const modal = document.getElementById('videoModal');
-        const iframe = document.getElementById('videoIframe');
-        
-        iframe.src = youtubeVideoUrl; // Video yuklanadi va autoplay orqali ijro etiladi
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden'; // Sahifa scrollini to'xtatish
+    // YouTube API tayyor bo'lgach player yaratiladi
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('ytPlayer', {
+            videoId: 'FwPNGxTV794',
+            playerVars: {
+                'autoplay': 0,
+                'controls': 0,
+                'mute': 1, // Dastlab ovoz o'chiq holatda boshlanadi
+                'loop': 1,
+                'playlist': 'FwPNGxTV794',
+                'playsinline': 1,
+                'rel': 0
+            }
+        });
     }
 
-    function closeVideoModal() {
-        const modal = document.getElementById('videoModal');
-        const iframe = document.getElementById('videoIframe');
-        
-        iframe.src = ""; // Modal yopilganda video o'chiriladi
-        modal.classList.remove('flex');
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto'; // Sahifa scrollini tiklash
-    }
+    // Video ko'rish / to'xtatish tugmasi
+    function toggleBannerVideo() {
+        const bgImg = document.getElementById('bannerBgImg');
+        const videoContainer = document.getElementById('bannerVideoContainer');
+        const btnText = document.getElementById('bannerBtnText');
+        const audioBtn = document.getElementById('toggleAudioBtn');
 
-    // Esc tugmasi bosilganda yopish
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeVideoModal();
+        if (!isVideoPlaying) {
+            if (player && player.playVideo) {
+                player.playVideo();
+                player.mute(); // Kutilmagan ovoz balandligining oldini olish uchun mute
+            }
+
+            bgImg.classList.add('opacity-0');
+            videoContainer.classList.remove('opacity-0', 'pointer-events-none');
+            videoContainer.classList.add('opacity-100');
+
+            btnText.innerText = "Videoni to'xtatish";
+            audioBtn.classList.remove('hidden');
+            audioBtn.classList.add('flex');
+            
+            // Ovoz tugmasini dastlab "Ovozni yoqish" holatida saqlash
+            updateAudioUI(true);
+            isVideoPlaying = true;
+        } else {
+            if (player && player.pauseVideo) {
+                player.pauseVideo();
+            }
+
+            videoContainer.classList.remove('opacity-100');
+            videoContainer.classList.add('opacity-0', 'pointer-events-none');
+            bgImg.classList.remove('opacity-0');
+
+            btnText.innerText = "Video ko'rish";
+            audioBtn.classList.remove('flex');
+            audioBtn.classList.add('hidden');
+            isVideoPlaying = false;
         }
-    });
+    }
+
+    // Ovozni yoqish / o'chirish tugmasi
+    function toggleAudio() {
+        if (!player) return;
+
+        if (player.isMuted()) {
+            player.unMute();
+            updateAudioUI(false);
+        } else {
+            player.mute();
+            updateAudioUI(true);
+        }
+    }
+
+    function updateAudioUI(isMuted) {
+        const mutedIcon = document.getElementById('audioIconMuted');
+        const unmutedIcon = document.getElementById('audioIconUnmuted');
+        const audioBtnText = document.getElementById('audioBtnText');
+
+        if (isMuted) {
+            mutedIcon.classList.remove('hidden');
+            unmutedIcon.classList.add('hidden');
+            audioBtnText.innerText = "Ovozni yoqish";
+        } else {
+            mutedIcon.classList.add('hidden');
+            unmutedIcon.classList.remove('hidden');
+            audioBtnText.innerText = "Ovozni o'chirish";
+        }
+    }
 </script>
-        <section id="herooo" class="w-full bg-[#120f0c] text-[#d1ccc4] py-12 sm:py-16 px-4 sm:px-6 lg:px-8 font-sans">
-            <div class="max-w-7xl mx-auto">
+       <section class="w-full bg-[#120f0c] text-[#d1ccc4] py-12 sm:py-16 px-4 sm:px-6 lg:px-8 font-sans">
+    <div class="max-w-7xl mx-auto">
 
-                <!-- Header Row -->
-                <div class="flex flex-row items-center justify-between gap-4 mb-6 sm:mb-8">
-                    <h2 class="text-xl xs:text-2xl sm:text-4xl font-serif text-[#f3efe6] tracking-wide">
-                        Tez orada boshlanadi
-                    </h2>
+        <!-- Header Row -->
+        <div class="flex flex-row items-center justify-between gap-4 mb-6 sm:mb-8">
+            <h2 class="text-xl xs:text-2xl sm:text-4xl font-serif text-[#f3efe6] tracking-wide">
+                Tez orada boshlanadi
+            </h2>
 
-                    <div
-                        class="flex items-center gap-1.5 sm:gap-2 text-[#e5534b] font-semibold text-[10px] sm:text-xs tracking-wider uppercase shrink-0">
-                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current animate-pulse" viewBox="0 0 24 24">
-                            <path
-                                d="M12 20a8 8 0 100-16 8 8 0 000 16zm0 2C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm1-10h4v2h-6V7h2v5zM9 1h6v2H9V1z" />
-                        </svg>
-                        <span>Oxirgi chiptalar</span>
-                    </div>
-                </div>
+            <div class="flex items-center gap-1.5 sm:gap-2 text-[#e5534b] font-semibold text-[10px] sm:text-xs tracking-wider uppercase shrink-0">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current animate-pulse" viewBox="0 0 24 24">
+                    <path d="M12 20a8 8 0 100-16 8 8 0 000 16zm0 2C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm1-10h4v2h-6V7h2v5zM9 1h6v2H9V1z" />
+                </svg>
+                <span>Oxirgi chiptalar</span>
+            </div>
+        </div>
 
-                <!-- Cards Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
 
-                    <!-- CARD 1 -->
+             <!-- CARD 1 -->
                     <div
                         class="bg-[#14110e] border border-[#2e261f] rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative min-h-[280px]">
                         <div class="flex items-start justify-between gap-3 mb-4 sm:mb-6">
@@ -1078,142 +1312,171 @@
                             </div>
                         </div>
 
-                        <button
-                            class="w-full py-3 sm:py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#edd38d] via-[#deab4a] to-[#c99430] text-[#1c1203] font-semibold text-xs sm:text-sm transition-all hover:brightness-110 active:scale-95 shadow-md mt-2">
+                        <a href="./pages/joy.html"
+                            class="w-full text-center py-3 sm:py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#edd38d] via-[#deab4a] to-[#c99430] text-[#1c1203] font-semibold text-xs sm:text-sm transition-all hover:brightness-110 active:scale-95 shadow-md mt-2">
                             Hozir band qilish
-                        </button>
+                        </a>
                     </div>
 
-                    <!-- CARD 2 -->
-                    <div
-                        class="bg-[#14110e] border border-[#2e261f] rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative min-h-[280px]">
-                        <div class="mb-4 sm:mb-6">
-                            <h3 class="text-base sm:text-xl font-serif text-[#f3efe6] leading-snug">
-                                Art Night Out
-                            </h3>
-                        </div>
+            <!-- CARD 2 -->
+            <div class="bg-[#14110e] border border-[#2e261f] rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative min-h-[300px]">
+                <div class="mb-4 sm:mb-6">
+                    <h3 class="text-base sm:text-xl font-serif text-[#f3efe6] leading-snug">
+                        Art Night Out
+                    </h3>
+                </div>
 
-                        <!-- Timer Section (CARD 2) -->
-                        <div
-                            class="flex items-baseline justify-center sm:justify-start gap-1.5 xs:gap-2.5 sm:gap-3 my-4">
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="days-2"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">05</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">KUN</span>
-                            </div>
-                            <span
-                                class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="hours-2"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">08</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SOAT</span>
-                            </div>
-                            <span
-                                class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="minutes-2"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">20</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">MIN</span>
-                            </div>
-                            <span
-                                class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="seconds-2"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">00</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SON</span>
-                            </div>
+                <!-- Timer Section (CARD 2) -->
+                <div id="timer-view-2" class="flex flex-col justify-between flex-1">
+                    <div class="flex items-baseline justify-center sm:justify-start gap-1.5 xs:gap-2.5 sm:gap-3 my-auto py-4">
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="days-2" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">05</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">KUN</span>
                         </div>
-
-                        <button
-                            class="w-full py-3 sm:py-3.5 px-6 rounded-2xl bg-[#211c17] text-[#d1ccc4] font-medium text-xs sm:text-sm hover:bg-[#2b241e] hover:text-white border border-[#2e261f] active:scale-95 transition-all mt-2">
-                            Ko'rish
-                        </button>
+                        <span class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="hours-2" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">08</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SOAT</span>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="minutes-2" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">20</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">MIN</span>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="seconds-2" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">00</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SON</span>
+                        </div>
                     </div>
 
-                    <!-- CARD 3 -->
-                    <div
-                        class="bg-[#14110e] border border-[#2e261f] rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative min-h-[280px]">
-                        <div class="mb-4 sm:mb-6">
-                            <h3 class="text-base sm:text-xl font-serif text-[#f3efe6] leading-snug">
-                                Stand Up Comedy: Fresh
-                            </h3>
-                        </div>
+                    <button onclick="toggleCard(2)"
+                        class="w-full py-3 sm:py-3.5 px-6 rounded-2xl bg-[#211c17] text-[#d1ccc4] font-medium text-xs sm:text-sm hover:bg-[#2b241e] hover:text-white border border-[#2e261f] active:scale-95 transition-all mt-2">
+                        Ko'rish
+                    </button>
+                </div>
 
-                        <!-- Timer Section (CARD 3) -->
-                        <div
-                            class="flex items-baseline justify-center sm:justify-start gap-1.5 xs:gap-2.5 sm:gap-3 my-4">
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="days-3"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">01</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">KUN</span>
-                            </div>
-                            <span
-                                class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="hours-3"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">02</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SOAT</span>
-                            </div>
-                            <span
-                                class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="minutes-3"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">10</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">MIN</span>
-                            </div>
-                            <span
-                                class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
-                            <div class="text-center min-w-[40px] xs:min-w-[48px]">
-                                <span id="seconds-3"
-                                    class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">00</span>
-                                <span
-                                    class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SON</span>
-                            </div>
-                        </div>
-
-                        <button
-                            class="w-full py-3 sm:py-3.5 px-6 rounded-2xl bg-[#211c17] text-[#d1ccc4] font-medium text-xs sm:text-sm hover:bg-[#2b241e] hover:text-white border border-[#2e261f] active:scale-95 transition-all mt-2">
-                            Ko'rish
-                        </button>
+                <!-- Info Card Section (CARD 2) -->
+                <div id="details-view-2" class="hidden flex-col justify-between flex-1 bg-[#1a1612] border border-[#382e25] rounded-2xl p-4 my-auto">
+                    <div class="space-y-2 text-xs text-[#b8b0a2] mb-4">
+                        <p class="text-[#edd38d] font-semibold">📍 Joy: Zamonaviy San'at Galereyasi</p>
+                        <p>🕒 Vaqt: 20:00</p>
+                        <p>🎟 Narxi: 80 000 so'm</p>
+                        <p class="text-[11px] text-[#8c8273]">Tungi rasm chizish, musiqiy muhit va ijodiy uchrashuv.</p>
                     </div>
 
+                    <button onclick="toggleCard(2)"
+                        class="w-full py-2.5 px-4 rounded-xl bg-[#28211b] text-[#edd38d] hover:bg-[#332a22] font-medium text-xs border border-[#42352a] transition-all flex items-center justify-center gap-2 active:scale-95">
+                        <span>← Qaytish</span>
+                    </button>
                 </div>
             </div>
-        </section>
 
-        <!-- Timerni orqaga aylantiruvchi JavaScript -->
-        <script>
-            function startTimer(cardId, days, hours, minutes, seconds) {
-                let totalSeconds = (days * 86400) + (hours * 3600) + (minutes * 60) + seconds;
+            <!-- CARD 3 -->
+            <div class="bg-[#14110e] border border-[#2e261f] rounded-3xl p-5 sm:p-8 flex flex-col justify-between relative min-h-[300px]">
+                <div class="mb-4 sm:mb-6">
+                    <h3 class="text-base sm:text-xl font-serif text-[#f3efe6] leading-snug">
+                        Stand Up Comedy: Fresh
+                    </h3>
+                </div>
 
-                setInterval(() => {
-                    if (totalSeconds <= 0) return;
-                    totalSeconds--;
+                <!-- Timer Section (CARD 3) -->
+                <div id="timer-view-3" class="flex flex-col justify-between flex-1">
+                    <div class="flex items-baseline justify-center sm:justify-start gap-1.5 xs:gap-2.5 sm:gap-3 my-auto py-4">
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="days-3" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">01</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">KUN</span>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="hours-3" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">02</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SOAT</span>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="minutes-3" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">10</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">MIN</span>
+                        </div>
+                        <span class="text-xl sm:text-2xl font-serif text-[#edd38d] opacity-60 self-start mt-0.5">:</span>
+                        <div class="text-center min-w-[40px] xs:min-w-[48px]">
+                            <span id="seconds-3" class="block text-2xl xs:text-3xl sm:text-4xl font-serif font-bold text-[#edd38d] leading-none">00</span>
+                            <span class="text-[9px] sm:text-[10px] font-mono text-[#8c8273] uppercase tracking-wider mt-1.5 block">SON</span>
+                        </div>
+                    </div>
 
-                    const d = Math.floor(totalSeconds / 86400);
-                    const h = Math.floor((totalSeconds % 86400) / 3600);
-                    const m = Math.floor((totalSeconds % 3600) / 60);
-                    const s = totalSeconds % 60;
+                    <button onclick="toggleCard(3)"
+                        class="w-full py-3 sm:py-3.5 px-6 rounded-2xl bg-[#211c17] text-[#d1ccc4] font-medium text-xs sm:text-sm hover:bg-[#2b241e] hover:text-white border border-[#2e261f] active:scale-95 transition-all mt-2">
+                        Ko'rish
+                    </button>
+                </div>
 
-                    document.getElementById(`days-${cardId}`).innerText = String(d).padStart(2, '0');
-                    document.getElementById(`hours-${cardId}`).innerText = String(h).padStart(2, '0');
-                    document.getElementById(`minutes-${cardId}`).innerText = String(m).padStart(2, '0');
-                    document.getElementById(`seconds-${cardId}`).innerText = String(s).padStart(2, '0');
-                }, 1000);
-            }
+                <!-- Info Card Section (CARD 3) -->
+                <div id="details-view-3" class="hidden flex-col justify-between flex-1 bg-[#1a1612] border border-[#382e25] rounded-2xl p-4 my-auto">
+                    <div class="space-y-2 text-xs text-[#b8b0a2] mb-4">
+                        <p class="text-[#edd38d] font-semibold">📍 Joy: Comedy Club Tashkent</p>
+                        <p>🕒 Vaqt: 19:30</p>
+                        <p>🎟 Narxi: 100 000 so'm</p>
+                        <p class="text-[11px] text-[#8c8273]">Yangi va sara hazillar to'plami bilan kulgi kechasi.</p>
+                    </div>
 
-            // Har bir karta uchun vaqtlarni ishga tushirish (Kun, Soat, Daqiqa, Soniya)
-            startTimer(1, 2, 14, 45, 0);
-            startTimer(2, 5, 8, 20, 0);
-            startTimer(3, 1, 2, 10, 0);
-        </script>
+                    <button onclick="toggleCard(3)"
+                        class="w-full py-2.5 px-4 rounded-xl bg-[#28211b] text-[#edd38d] hover:bg-[#332a22] font-medium text-xs border border-[#42352a] transition-all flex items-center justify-center gap-2 active:scale-95">
+                        <span>← Qaytish</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+    // Taymerni ishga tushirish funksiyasi
+    function startTimer(cardId, days, hours, minutes, seconds) {
+        let totalSeconds = (days * 86400) + (hours * 3600) + (minutes * 60) + seconds;
+
+        setInterval(() => {
+            if (totalSeconds <= 0) return;
+            totalSeconds--;
+
+            const d = Math.floor(totalSeconds / 86400);
+            const h = Math.floor((totalSeconds % 86400) / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const s = totalSeconds % 60;
+
+            document.getElementById(`days-${cardId}`).innerText = String(d).padStart(2, '0');
+            document.getElementById(`hours-${cardId}`).innerText = String(h).padStart(2, '0');
+            document.getElementById(`minutes-${cardId}`).innerText = String(m).padStart(2, '0');
+            document.getElementById(`seconds-${cardId}`).innerText = String(s).padStart(2, '0');
+        }, 1000);
+    }
+
+    // Ko'rish va Qaytish holatini almashtirish funksiyasi
+    function toggleCard(cardId) {
+        const timerView = document.getElementById(`timer-view-${cardId}`);
+        const detailsView = document.getElementById(`details-view-${cardId}`);
+
+        if (timerView.classList.contains('hidden')) {
+            // Taymerni ko'rsatish, detal oynani yashirish
+            timerView.classList.remove('hidden');
+            timerView.classList.add('flex');
+            detailsView.classList.add('hidden');
+            detailsView.classList.remove('flex');
+        } else {
+            // Taymerni yashirish, detal oynani ko'rsatish
+            timerView.classList.add('hidden');
+            timerView.classList.remove('flex');
+            detailsView.classList.remove('hidden');
+            detailsView.classList.add('flex');
+        }
+    }
+
+    // Har bir karta uchun vaqtlarni ishga tushirish
+    startTimer(1, 2, 14, 45, 0);
+    startTimer(2, 5, 8, 20, 0);
+    startTimer(3, 1, 2, 10, 0);
+</script>
         <section class="w-full bg-[#0a0806] text-[#d1ccc4] py-12 px-4 sm:px-6 lg:px-8 font-sans">
     <div class="max-w-7xl mx-auto">
 
@@ -1353,177 +1616,229 @@
     renderCalendar();
 </script>
        <section class="w-full bg-[#0a0806] text-[#d1ccc4] py-16 px-4 sm:px-6 lg:px-8 font-sans">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto relative">
 
         <!-- Section Title -->
         <h2 class="text-3xl sm:text-4xl font-serif text-[#edd38d] opacity-90 tracking-wide mb-12">
             Mashhur tashkilotchilar
         </h2>
 
-        <!-- Organizers List / Grid (6 ta tashkilotchi) -->
-        <div class="flex items-center gap-6 sm:gap-8 md:gap-10 overflow-x-auto pb-4 no-scrollbar">
+        <!-- Organizers Container -->
+        <div id="organizers-container" class="flex items-center gap-6 sm:gap-8 md:gap-10 overflow-x-auto pb-10 pt-6 no-scrollbar relative">
+            <!-- JS dynamic cards shu yerga generatsiya qilinadi -->
+        </div>
 
-            <!-- ORGANIZER 1 (Verified) -->
-            <div class="flex flex-col items-center text-center group cursor-pointer shrink-0">
-                <div class="relative mb-4">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-[0_0_20px_rgba(220,168,66,0.15)] group-hover:scale-105 transition-transform duration-300">
-                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806] relative">
-                            <img src="./images/card8.png" alt="ArtUz Event" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                            
-                            <!-- RASM USTIDAN CHIQADIGAN OVERLAY -->
-                            <div class="absolute inset-0 bg-[#0a0806]/90 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                                <p class="text-[10px] sm:text-xs text-[#edd38d] font-bold">★ 4.9</p>
-                                <p class="text-[9px] sm:text-[10px] text-[#d1ccc4] line-clamp-2 mt-0.5 px-1 leading-tight">Konsert va shoular</p>
-                                <span class="mt-1.5 px-2 py-0.5 bg-[#dca842] text-[#0a0806] text-[8px] sm:text-[9px] font-extrabold rounded-full uppercase">Batafsil</span>
-                            </div>
-                        </div>
+        <!-- HOVER DETAIL CARD (JS orqali ko'rsatiladi va joylashuvi boshqariladi) -->
+        <div id="hover-detail-card" 
+             class="fixed z-50 w-72 p-4 rounded-2xl bg-[#120f0b]/95 border border-[#dca842]/40 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(220,168,66,0.2)] opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2 scale-95">
+            
+            <div class="flex items-center gap-3 mb-3">
+                <img id="detail-img" src="" alt="" class="w-12 h-12 rounded-full object-cover border border-[#dca842]">
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <h4 id="detail-name" class="font-serif text-lg text-[#edd38d] font-semibold leading-tight"></h4>
+                        <span id="detail-badge" class="hidden text-[#dca842]">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </span>
                     </div>
-
-                    <!-- Verified Badge -->
-                    <div class="absolute bottom-0 right-1 w-7 h-7 rounded-full bg-[#0a0806] border-2 border-[#dca842] flex items-center justify-center text-[#dca842] shadow-md z-10">
-                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                </div>
-
-                <h3 class="text-base sm:text-lg font-medium text-[#e0d6c3] group-hover:text-[#edd38d] transition-colors mb-1">
-                    ArtUz Event
-                </h3>
-                <span class="text-xs font-mono uppercase tracking-wider text-[#73685a]">
-                    24 TADBIR
-                </span>
-            </div>
-
-            <!-- ORGANIZER 2 -->
-            <div class="flex flex-col items-center text-center group cursor-pointer shrink-0">
-                <div class="relative mb-4">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-[0_0_20px_rgba(220,168,66,0.15)] group-hover:scale-105 transition-transform duration-300">
-                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806] relative">
-                            <img src="./images/card9.png" alt="Milliy Teatr" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                            
-                            <!-- RASM USTIDAN CHIQADIGAN OVERLAY -->
-                            <div class="absolute inset-0 bg-[#0a0806]/90 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                                <p class="text-[10px] sm:text-xs text-[#edd38d] font-bold">★ 4.8</p>
-                                <p class="text-[9px] sm:text-[10px] text-[#d1ccc4] line-clamp-2 mt-0.5 px-1 leading-tight">Teatr va spektakl</p>
-                                <span class="mt-1.5 px-2 py-0.5 bg-[#dca842] text-[#0a0806] text-[8px] sm:text-[9px] font-extrabold rounded-full uppercase">Batafsil</span>
-                            </div>
-                        </div>
+                    <div class="flex items-center gap-2 mt-0.5">
+                        <span id="detail-rating" class="text-xs font-bold text-[#edd38d] bg-[#dca842]/10 px-1.5 py-0.5 rounded border border-[#dca842]/30"></span>
+                        <span id="detail-[#73685a]" class="text-xs text-[#a39582] font-mono"></span>
                     </div>
                 </div>
-
-                <h3 class="text-base sm:text-lg font-medium text-[#e0d6c3] group-hover:text-[#edd38d] transition-colors mb-1">
-                    Milliy Teatr
-                </h3>
-                <span class="text-xs font-mono uppercase tracking-wider text-[#73685a]">
-                    12 TADBIR
-                </span>
             </div>
 
-            <!-- ORGANIZER 3 -->
-            <div class="flex flex-col items-center text-center group cursor-pointer shrink-0">
-                <div class="relative mb-4">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-[0_0_20px_rgba(220,168,66,0.15)] group-hover:scale-105 transition-transform duration-300">
-                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806] relative">
-                            <img src="./images/card10.png" alt="Jazz Foundation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                            
-                            <!-- RASM USTIDAN CHIQADIGAN OVERLAY -->
-                            <div class="absolute inset-0 bg-[#0a0806]/90 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                                <p class="text-[10px] sm:text-xs text-[#edd38d] font-bold">★ 5.0</p>
-                                <p class="text-[9px] sm:text-[10px] text-[#d1ccc4] line-clamp-2 mt-0.5 px-1 leading-tight">Jonli jazz musiqasi</p>
-                                <span class="mt-1.5 px-2 py-0.5 bg-[#dca842] text-[#0a0806] text-[8px] sm:text-[9px] font-extrabold rounded-full uppercase">Batafsil</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <p id="detail-desc" class="text-xs text-[#d1ccc4] leading-relaxed mb-3"></p>
 
-                <h3 class="text-base sm:text-lg font-medium text-[#e0d6c3] group-hover:text-[#edd38d] transition-colors mb-1">
-                    Jazz Foundation
-                </h3>
-                <span class="text-xs font-mono uppercase tracking-wider text-[#73685a]">
-                    8 TADBIR
-                </span>
-            </div>
+            <div id="detail-tags" class="flex flex-wrap gap-1.5 mb-4"></div>
 
-            <!-- ORGANIZER 4 -->
-            <div class="flex flex-col items-center text-center group cursor-pointer shrink-0">
-                <div class="relative mb-4">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-[0_0_20px_rgba(220,168,66,0.15)] group-hover:scale-105 transition-transform duration-300">
-                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806] relative">
-                            <img src="./images/card11.png" alt="Business Hub" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                            
-                            <!-- RASM USTIDAN CHIQADIGAN OVERLAY -->
-                            <div class="absolute inset-0 bg-[#0a0806]/90 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                                <p class="text-[10px] sm:text-xs text-[#edd38d] font-bold">★ 4.7</p>
-                                <p class="text-[9px] sm:text-[10px] text-[#d1ccc4] line-clamp-2 mt-0.5 px-1 leading-tight">Biznes forumlar</p>
-                                <span class="mt-1.5 px-2 py-0.5 bg-[#dca842] text-[#0a0806] text-[8px] sm:text-[9px] font-extrabold rounded-full uppercase">Batafsil</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="text-base sm:text-lg font-medium text-[#e0d6c3] group-hover:text-[#edd38d] transition-colors mb-1">
-                    Business Hub
-                </h3>
-                <span class="text-xs font-mono uppercase tracking-wider text-[#73685a]">
-                    15 TADBIR
-                </span>
-            </div>
-
-            <!-- ORGANIZER 5 -->
-            <div class="flex flex-col items-center text-center group cursor-pointer shrink-0">
-                <div class="relative mb-4">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-[0_0_20px_rgba(220,168,66,0.15)] group-hover:scale-105 transition-transform duration-300">
-                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806] relative">
-                            <img src="./images/card12.png" alt="IT Community" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                            
-                            <!-- RASM USTIDAN CHIQADIGAN OVERLAY -->
-                            <div class="absolute inset-0 bg-[#0a0806]/90 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                                <p class="text-[10px] sm:text-xs text-[#edd38d] font-bold">★ 4.9</p>
-                                <p class="text-[9px] sm:text-[10px] text-[#d1ccc4] line-clamp-2 mt-0.5 px-1 leading-tight">IT va Xakatonlar</p>
-                                <span class="mt-1.5 px-2 py-0.5 bg-[#dca842] text-[#0a0806] text-[8px] sm:text-[9px] font-extrabold rounded-full uppercase">Batafsil</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="text-base sm:text-lg font-medium text-[#e0d6c3] group-hover:text-[#edd38d] transition-colors mb-1">
-                    IT Community
-                </h3>
-                <span class="text-xs font-mono uppercase tracking-wider text-[#73685a]">
-                    19 TADBIR
-                </span>
-            </div>
-
-            <!-- ORGANIZER 6 -->
-            <div class="flex flex-col items-center text-center group cursor-pointer shrink-0">
-                <div class="relative mb-4">
-                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-[0_0_20px_rgba(220,168,66,0.15)] group-hover:scale-105 transition-transform duration-300">
-                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806] relative">
-                            <img src="./images/card13.png" alt="Cinema Club" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                            
-                            <!-- RASM USTIDAN CHIQADIGAN OVERLAY -->
-                            <div class="absolute inset-0 bg-[#0a0806]/90 flex flex-col items-center justify-center p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center">
-                                <p class="text-[10px] sm:text-xs text-[#edd38d] font-bold">★ 4.6</p>
-                                <p class="text-[9px] sm:text-[10px] text-[#d1ccc4] line-clamp-2 mt-0.5 px-1 leading-tight">Kino va Muhokamalar</p>
-                                <span class="mt-1.5 px-2 py-0.5 bg-[#dca842] text-[#0a0806] text-[8px] sm:text-[9px] font-extrabold rounded-full uppercase">Batafsil</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="text-base sm:text-lg font-medium text-[#e0d6c3] group-hover:text-[#edd38d] transition-colors mb-1">
-                    Cinema Club
-                </h3>
-                <span class="text-xs font-mono uppercase tracking-wider text-[#73685a]">
-                    6 TADBIR
-                </span>
-            </div>
-
+            <button class="w-full py-2 px-4 rounded-xl bg-gradient-to-r from-[#dca842] to-[#735114] text-[#0a0806] font-extrabold text-xs uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-md">
+                Tashkilotchilar
+            </button>
         </div>
 
     </div>
 </section>
+
+<!-- JavaScript qismi -->
+<script>
+    // Tashkilotchilar ma'lumotlar bazasi (Data)
+    const organizers = [
+        {
+            id: 1,
+            name: "ArtUz Event",
+            verified: true,
+            rating: "★ 4.9",
+            eventsCount: "24 TADBIR",
+            category: "Konsert va shoular",
+            description: "O'zbekistondagi eng yirik konsertlar, shou-dasturlar va madaniy tadbirlarni professional tashkil etuvchi jamoa.",
+            tags: ["Konsert", "Show", "Musiqa"],
+            image: "./images/card8.png"
+        },
+        {
+            id: 2,
+            name: "Milliy Teatr",
+            verified: false,
+            rating: "★ 4.8",
+            eventsCount: "12 TADBIR",
+            category: "Teatr va spektakl",
+            description: "Klassik va zamonaviy teatr spektakllari hamda dramatik sahna asarlarini tomoshabinlarga ulashadi.",
+            tags: ["Teatr", "Drama", "San'at"],
+            image: "./images/card9.png"
+        },
+        {
+            id: 3,
+            name: "Jazz Foundation",
+            verified: false,
+            rating: "★ 5.0",
+            eventsCount: "8 TADBIR",
+            category: "Jonli jazz musiqasi",
+            description: "Xalqaro va mahalliy jazz ijrochilarining jonli ijrodagi unutilmas kechalarini taqdim etuvchi fond.",
+            tags: ["Jazz", "Live Sound", "Relax"],
+            image: "./images/card10.png"
+        },
+        {
+            id: 4,
+            name: "Business Hub",
+            verified: false,
+            rating: "★ 4.7",
+            eventsCount: "15 TADBIR",
+            category: "Biznes forumlar",
+            description: "Tadbirkorlar, startapchilar va investorlar uchun xalqaro darajadagi biznes forumlar va networking uchrashuvlar.",
+            tags: ["Biznes", "Forum", "Networking"],
+            image: "./images/card11.png"
+        },
+        {
+            id: 5,
+            name: "IT Community",
+            verified: false,
+            rating: "★ 4.9",
+            eventsCount: "19 TADBIR",
+            category: "IT va Xakatonlar",
+            description: "Dasturchilar va IT mutaxassislari uchun konferensiyalar, xakatonlar va mahorat darslari (meetup).",
+            tags: ["IT", "Hackathon", "Meetup"],
+            image: "./images/card12.png"
+        },
+        {
+            id: 6,
+            name: "Cinema Club",
+            verified: false,
+            rating: "★ 4.6",
+            eventsCount: "6 TADBIR",
+            category: "Kino va Muhokamalar",
+            description: "Mualliflik kinolari namoyishi va kinoijodkorlar bilan qizg'in bahs-munozaralar maydoni.",
+            tags: ["Kino", "Movie", "Discussion"],
+            image: "./images/card13.png"
+        }
+    ];
+
+    const container = document.getElementById('organizers-container');
+    const hoverCard = document.getElementById('hover-detail-card');
+
+    // 1. Kartalarni dinamik HTML ga joylash
+    function renderCards() {
+        container.innerHTML = organizers.map(org => `
+            <div class="organizer-item flex flex-col items-center text-center group cursor-pointer shrink-0 relative" data-id="${org.id}">
+                <div class="relative mb-4">
+                    <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] bg-gradient-to-b from-[#f3e0aa] via-[#dca842] to-[#735114] shadow-[0_0_20px_rgba(220,168,66,0.15)] group-hover:shadow-[0_0_25px_rgba(220,168,66,0.35)] group-hover:scale-105 transition-all duration-300">
+                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-[#0a0806] relative">
+                            <img src="${org.image}" alt="${org.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                        </div>
+                    </div>
+
+                    ${org.verified ? `
+                        <div class="absolute bottom-0 right-1 w-7 h-7 rounded-full bg-[#0a0806] border-2 border-[#dca842] flex items-center justify-center text-[#dca842] shadow-md z-10">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    ` : ''}
+                </div>
+
+                <h3 class="text-base sm:text-lg font-medium text-[#e0d6c3] group-hover:text-[#edd38d] transition-colors mb-1">
+                    ${org.name}
+                </h3>
+                <span class="text-xs font-mono uppercase tracking-wider text-[#73685a] group-hover:text-[#a39582] transition-colors">
+                    ${org.eventsCount}
+                </span>
+            </div>
+        `).join('');
+    }
+
+    renderCards();
+
+    // 2. Hover Event Handlers
+    let activeTimer = null;
+
+    document.querySelectorAll('.organizer-item').forEach(item => {
+        item.addEventListener('mouseenter', (e) => {
+            clearTimeout(activeTimer);
+            const id = parseInt(item.getAttribute('data-id'));
+            const data = organizers.find(o => o.id === id);
+
+            if (!data) return;
+
+            // Popup ma'lumotlarini to'ldirish
+            document.getElementById('detail-img').src = data.image;
+            document.getElementById('detail-name').innerText = data.name;
+            document.getElementById('detail-rating').innerText = data.rating;
+            document.getElementById('detail-desc').innerText = data.description;
+
+            // Verified belgisini ko'rsatish/yashirish
+            const badge = document.getElementById('detail-badge');
+            if (data.verified) badge.classList.remove('hidden');
+            else badge.classList.add('hidden');
+
+            // Taglarni joylash
+            const tagsContainer = document.getElementById('detail-tags');
+            tagsContainer.innerHTML = data.tags.map(tag => 
+                `<span class="text-[10px] px-2 py-0.5 rounded-full bg-[#dca842]/10 text-[#edd38d] border border-[#dca842]/20">#${tag}</span>`
+            ).join('');
+
+            // Positsiyani hisoblash va ko'rsatish
+            const rect = item.getBoundingClientRect();
+            const cardWidth = 288; // w-72 (18rem)
+
+            let left = rect.left + (rect.width / 2) - (cardWidth / 2);
+            let top = rect.top - 180; // Kartadan biroz teparoqda
+
+            // Ekran chegarasidan chiqib ketmasligini tekshirish
+            if (left < 10) left = 10;
+            if (left + cardWidth > window.innerWidth - 10) {
+                left = window.innerWidth - cardWidth - 10;
+            }
+
+            hoverCard.style.left = `${left}px`;
+            hoverCard.style.top = `${top}px`;
+
+            // Animatsiyani yoqish
+            hoverCard.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2', 'scale-95');
+            hoverCard.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+        });
+
+        item.addEventListener('mouseleave', () => {
+            activeTimer = setTimeout(() => {
+                hideHoverCard();
+            }, 100);
+        });
+    });
+
+    // Hover karta ustiga o'tganda yo'qolib qolmasligi uchun
+    hoverCard.addEventListener('mouseenter', () => {
+        clearTimeout(activeTimer);
+    });
+
+    hoverCard.addEventListener('mouseleave', () => {
+        hideHoverCard();
+    });
+
+    function hideHoverCard() {
+        hoverCard.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2', 'scale-95');
+        hoverCard.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+    }
+</script>
        <!-- CTA SECTION -->
 <section class="w-full bg-[#0a0806] py-12 px-4 sm:px-6 lg:px-8 font-sans">
     <div class="max-w-7xl mx-auto">

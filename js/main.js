@@ -116,13 +116,8 @@ count.innerHTML = res.length;
 function showProducts(x, y) {
     for (let el of y) {
 
-        // Har bir card o'zining product id'siga bog'lanadi (unikal, hech qachon takrorlanmaydi)
-        // MUHIM: innerHTML += o'rniga insertAdjacentHTML ishlatilmoqda — chunki
-        // innerHTML += har safar KONTEYNERNING BUTUN ICHINI qayta yaratadi va shu bilan
-        // oldingi cardlarga o'rnatilgan barcha hover/mic/drag listener'larni buzadi
-        // (faqat oxirgi card ishlab qolardi). insertAdjacentHTML esa faqat yangi
-        // qismni qo'shadi, mavjud elementlarni tegmaydi.
-        x.insertAdjacentHTML("beforeend", `
+        
+x.insertAdjacentHTML("beforeend", `
 <div class="group relative overflow-hidden rounded-[40px] border border-zinc-900 bg-gradient-to-br from-zinc-950 via-black to-zinc-950 p-6 shadow-[0_25px_70px_rgba(0,0,0,.85)] transition-all duration-500 hover:-translate-y-3 hover:border-[#D4AF37]/30 hover:shadow-[0_30px_90px_rgba(212,175,55,0.1)] flex flex-col justify-between" id="card-${el.id}">
 
     <!-- Fondagi neon yorug'liklar -->
@@ -151,7 +146,7 @@ function showProducts(x, y) {
             class="w-full h-[220px] object-cover rounded-[22px] transition duration-700 group-hover:scale-105"
         />
 
-        <!-- Dumaloq hover video (hover bo'lsa paydo bo'ladi, autoplay + muted) -->
+        <!-- Dumaloq hover video -->
         <div id="videocircle-${el.id}" class="absolute z-20 w-28 h-28 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-[0_10px_35px_rgba(0,0,0,0.6)] cursor-grab active:cursor-grabbing opacity-0 scale-[0.6] pointer-events-none transition-all duration-500" style="top:20px;left:20px;">
             <video
                 id="video-${el.id}"
@@ -163,7 +158,7 @@ function showProducts(x, y) {
                 autoplay
             ></video>
 
-            <!-- Mikrofon tugmasi: bossa unmute, yana bossa mute -->
+            <!-- Mikrofon tugmasi -->
             <button
                 id="mic-${el.id}"
                 title="Ovozni yoqish"
@@ -221,7 +216,7 @@ function showProducts(x, y) {
             </div>
         </div>
 
-        <!-- Chipta va Tushum -->
+        <!-- Chipta, Tushum va Tugmalar -->
         <div class="pt-3 border-t border-zinc-900/80">
             <div class="flex items-center justify-between">
                 <div>
@@ -237,18 +232,32 @@ function showProducts(x, y) {
                 </div>
             </div>
 
-            <!-- Button -->
-            <button
-                onclick="addToCart(${el.id})"
-                class="mt-5 w-full py-3.5 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium tracking-wider flex items-center justify-center gap-2.5 transition duration-300 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:font-bold transform active:scale-95 shadow-lg cursor-pointer group/btn"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
-                <span>Sotib olish</span>
-            </button>
+            <!-- ALOHIDA TUGMALAR GURUHI -->
+            <div class="mt-5 flex items-center gap-3">
+                <!-- 1. Sevimlilar / Like Button (Faqat SVG Icon) -->
+                <button
+                    onclick="addToCart(${el.id})"
+                    title="Tanlanganlarga qo'shish"
+                    class="w-12 h-12 shrink-0 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center transition duration-300 hover:text-rose-500 hover:border-rose-500/50 hover:bg-rose-500/10 active:scale-90 cursor-pointer shadow-lg"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="currentColor"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+                </button>
+
+                <!-- 2. Sotib Olish Button (Matn bilan) -->
+                <a href="./pages/joy.html"
+                    
+                    class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium tracking-wider flex items-center justify-center gap-2 transition duration-300 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:font-bold transform active:scale-95 shadow-lg cursor-pointer"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t-1 41.5L706-492q-14 24-37.5 38T616-440H310l-40 72q-6 11-1 24.5t18 13.5h473v80H280q-50 0-77-41t-5-83l48-87-142-300H40v-80h114l54 113Z"/></svg>
+                    <span>Sotib olish</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>
-`);
+`
+
+);
 
         // --- Hover, mikrofon va drag & drop mantig'i (har bir card qo'shilgandan keyin darhol chaqiriladi) ---
         (function initCardVideoBehavior(id) {
