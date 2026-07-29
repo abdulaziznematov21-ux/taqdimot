@@ -2,11 +2,19 @@ let heroCards = document.querySelector(".hero-cards");
 let count = document.querySelector(".count");
 let cound = document.querySelector(".cound");
 
+const dateFilterButtons = document.querySelectorAll(".tab-btn");
+const categoryButtons = document.querySelectorAll(".category-btn");
+
+// Faol filtr holatlarini saqlash uchun o'zgaruvchilar
+let activeDateFilter = "all";
+let activeCategoryFilter = "all";
 
 let products = [
   {
     id: 1,
     title: "Yulduzli kecha",
+    dateType: "today",       // Bugun, Ertaga, Dam olish kunlari
+    category: "concerts",    // concerts, theaters, cinema, sports, exhibitions, business
     image: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
     date: "20-Jul, 19:00",
@@ -19,6 +27,8 @@ let products = [
   {
     id: 2,
     title: "Simfoniya Bahori",
+    dateType: "tomorrow",
+    category: "concerts",
     image: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4",
     date: "22-Jul, 18:30",
@@ -31,6 +41,8 @@ let products = [
   {
     id: 3,
     title: "Jazz & Wine Night",
+    dateType: "weekend",
+    category: "concerts",
     image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
     date: "25-Jul, 20:00",
@@ -43,6 +55,8 @@ let products = [
   {
     id: 4,
     title: "Otabek va Kumush (Drama)",
+    dateType: "today",
+    category: "theaters",
     image: "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4",
     date: "28-Jul, 18:00",
@@ -55,6 +69,8 @@ let products = [
   {
     id: 5,
     title: "Retro Cinema Premier",
+    dateType: "tomorrow",
+    category: "cinema",
     image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
     date: "01-Aug, 21:00",
@@ -67,6 +83,8 @@ let products = [
   {
     id: 6,
     title: "Klassik Organ Musiqasi",
+    dateType: "weekend",
+    category: "concerts",
     image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4",
     date: "03-Aug, 19:00",
@@ -79,6 +97,8 @@ let products = [
   {
     id: 7,
     title: "Rok Fest Tashkent",
+    dateType: "weekend",
+    category: "concerts",
     image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
     date: "08-Aug, 17:00",
@@ -91,6 +111,8 @@ let products = [
   {
     id: 8,
     title: "Zamonaviy Raqs Shousi",
+    dateType: "today",
+    category: "theaters",
     image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1000&auto=format&fit=crop",
     video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/friday.mp4",
     date: "12-Aug, 19:30",
@@ -106,18 +128,24 @@ let savat = [];
 let res;
 
 if (localStorage.getItem("savat")) {
-    res = JSON.parse(localStorage.getItem("savat"));
+  res = JSON.parse(localStorage.getItem("savat"));
 } else {
-    res = savat;
+  res = savat;
 }
 
-count.innerHTML = res.length;
+if (count) count.innerHTML = res.length;
 
+// Kartochkalarni chiqaruvchi asosiy funksiya
 function showProducts(x, y) {
-    for (let el of y) {
+  x.innerHTML = "";
 
-        
-x.insertAdjacentHTML("beforeend", `
+  if (y.length === 0) {
+    x.innerHTML = `<div class="col-span-full text-center py-16 text-zinc-500 font-medium text-lg">Ushbu bo'limda hech qanday tadbir topilmadi.</div>`;
+    return;
+  }
+
+  for (let el of y) {
+    x.insertAdjacentHTML("beforeend", `
 <div class="group relative overflow-hidden rounded-[40px] border border-zinc-900 bg-gradient-to-br from-zinc-950 via-black to-zinc-950 p-6 shadow-[0_25px_70px_rgba(0,0,0,.85)] transition-all duration-500 hover:-translate-y-3 hover:border-[#D4AF37]/30 hover:shadow-[0_30px_90px_rgba(212,175,55,0.1)] flex flex-col justify-between" id="card-${el.id}">
 
     <!-- Fondagi neon yorug'liklar -->
@@ -172,7 +200,6 @@ x.insertAdjacentHTML("beforeend", `
     <!-- Ma'lumotlar qismi -->
     <div class="relative z-10 pt-5 flex-1 flex flex-col justify-between">
         <div>
-            <!-- Sarlavha va Play tugmasi -->
             <div class="flex items-center justify-between gap-3 mb-3 group/title">
                 <h2 class="text-xl font-serif font-bold text-white tracking-wide transition-colors duration-300 group-hover/title:text-[#D4AF37] line-clamp-1 flex-1 text-left">
                     ${el.title}
@@ -197,7 +224,6 @@ x.insertAdjacentHTML("beforeend", `
                 </a>
             </div>
 
-            <!-- Joy va Sana -->
             <div class="space-y-1.5 mb-4">
                 <p class="text-zinc-400 text-xs font-light flex items-center gap-2">
                     <svg class="w-4 h-4 text-[#D4AF37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -216,7 +242,6 @@ x.insertAdjacentHTML("beforeend", `
             </div>
         </div>
 
-        <!-- Chipta, Tushum va Tugmalar -->
         <div class="pt-3 border-t border-zinc-900/80">
             <div class="flex items-center justify-between">
                 <div>
@@ -232,9 +257,7 @@ x.insertAdjacentHTML("beforeend", `
                 </div>
             </div>
 
-            <!-- ALOHIDA TUGMALAR GURUHI -->
             <div class="mt-5 flex items-center gap-3">
-                <!-- 1. Sevimlilar / Like Button (Faqat SVG Icon) -->
                 <button
                     onclick="addToCart(${el.id})"
                     title="Tanlanganlarga qo'shish"
@@ -243,9 +266,7 @@ x.insertAdjacentHTML("beforeend", `
                     <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="currentColor"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
                 </button>
 
-                <!-- 2. Sotib Olish Button (Matn bilan) -->
                 <a href="./pages/joy.html"
-                    
                     class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium tracking-wider flex items-center justify-center gap-2 transition duration-300 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:font-bold transform active:scale-95 shadow-lg cursor-pointer"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t-1 41.5L706-492q-14 24-37.5 38T616-440H310l-40 72q-6 11-1 24.5t18 13.5h473v80H280q-50 0-77-41t-5-83l48-87-142-300H40v-80h114l54 113Z"/></svg>
@@ -255,114 +276,158 @@ x.insertAdjacentHTML("beforeend", `
         </div>
     </div>
 </div>
-`
+`);
 
-);
+    // --- Hover va Video hodisalari ---
+    (function initCardVideoBehavior(id) {
+      const card = document.getElementById(`card-${id}`);
+      const imgWrap = document.getElementById(`imgwrap-${id}`);
+      const circle = document.getElementById(`videocircle-${id}`);
+      const video = document.getElementById(`video-${id}`);
+      const mic = document.getElementById(`mic-${id}`);
 
-        // --- Hover, mikrofon va drag & drop mantig'i (har bir card qo'shilgandan keyin darhol chaqiriladi) ---
-        (function initCardVideoBehavior(id) {
-            const card = document.getElementById(`card-${id}`);
-            const imgWrap = document.getElementById(`imgwrap-${id}`);
-            const circle = document.getElementById(`videocircle-${id}`);
-            const video = document.getElementById(`video-${id}`);
-            const mic = document.getElementById(`mic-${id}`);
+      if (!card || !circle || !video || !mic) return;
 
-            if (!card || !circle || !video || !mic) return;
+      card.addEventListener('mouseenter', () => {
+        circle.classList.remove('opacity-0', 'scale-[0.6]', 'pointer-events-none');
+        circle.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
 
-            // Card hover: dumaloq video ko'rinadi va autoplay (muted) boshlanadi
-            card.addEventListener('mouseenter', () => {
-                circle.classList.remove('opacity-0', 'scale-[0.6]', 'pointer-events-none');
-                circle.classList.add('opacity-100', 'scale-100', 'pointer-events-auto');
-                video.currentTime = 0;
-                video.play().catch(() => {});
-            });
+      card.addEventListener('mouseleave', () => {
+        circle.classList.add('opacity-0', 'scale-[0.6]', 'pointer-events-none');
+        circle.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
+        video.pause();
+        video.muted = true;
+        mic.style.background = '';
+        mic.style.color = '';
+        mic.title = 'Ovozni yoqish';
+      });
 
-            // Hover tugasa: video to'xtaydi, muted ga qaytadi, dumaloq video yashiriladi
-            card.addEventListener('mouseleave', () => {
-                circle.classList.add('opacity-0', 'scale-[0.6]', 'pointer-events-none');
-                circle.classList.remove('opacity-100', 'scale-100', 'pointer-events-auto');
-                video.pause();
-                video.muted = true;
-                mic.style.background = '';
-                mic.style.color = '';
-                mic.title = 'Ovozni yoqish';
-            });
+      mic.addEventListener('click', (e) => {
+        e.stopPropagation();
+        video.muted = !video.muted;
+        if (!video.muted) {
+          mic.style.background = '#D4AF37';
+          mic.style.color = '#000';
+          mic.title = "Ovozni o'chirish";
+        } else {
+          mic.style.background = '';
+          mic.style.color = '';
+          mic.title = 'Ovozni yoqish';
+        }
+      });
 
-            // Mikrofon: bosilsa unmute/mute almashadi
-            mic.addEventListener('click', (e) => {
-                e.stopPropagation();
-                video.muted = !video.muted;
-                if (!video.muted) {
-                    mic.style.background = '#D4AF37';
-                    mic.style.color = '#000';
-                    mic.title = "Ovozni o'chirish";
-                } else {
-                    mic.style.background = '';
-                    mic.style.color = '';
-                    mic.title = 'Ovozni yoqish';
-                }
-            });
+      let isDragging = false;
+      let offsetX = 0, offsetY = 0;
 
-            // Drag & drop: dumaloq videoni faqat rasm konteyneri ichida surish mumkin
-            let isDragging = false;
-            let offsetX = 0, offsetY = 0;
+      function startDrag(clientX, clientY) {
+        isDragging = true;
+        circle.style.transition = 'none';
+        const rect = circle.getBoundingClientRect();
+        offsetX = clientX - rect.left;
+        offsetY = clientY - rect.top;
+      }
 
-            function startDrag(clientX, clientY) {
-                isDragging = true;
-                circle.style.transition = 'none';
-                const rect = circle.getBoundingClientRect();
-                offsetX = clientX - rect.left;
-                offsetY = clientY - rect.top;
-            }
+      function moveDrag(clientX, clientY) {
+        if (!isDragging) return;
+        const bounds = imgWrap.getBoundingClientRect();
+        const size = circle.offsetWidth;
 
-            function moveDrag(clientX, clientY) {
-                if (!isDragging) return;
-                const bounds = imgWrap.getBoundingClientRect();
-                const size = circle.offsetWidth;
+        let newLeft = clientX - bounds.left - offsetX;
+        let newTop = clientY - bounds.top - offsetY;
 
-                let newLeft = clientX - bounds.left - offsetX;
-                let newTop = clientY - bounds.top - offsetY;
+        newLeft = Math.max(0, Math.min(newLeft, bounds.width - size));
+        newTop = Math.max(0, Math.min(newTop, bounds.height - size));
 
-                newLeft = Math.max(0, Math.min(newLeft, bounds.width - size));
-                newTop = Math.max(0, Math.min(newTop, bounds.height - size));
+        circle.style.left = `${newLeft}px`;
+        circle.style.top = `${newTop}px`;
+      }
 
-                circle.style.left = `${newLeft}px`;
-                circle.style.top = `${newTop}px`;
-            }
+      function endDrag() {
+        isDragging = false;
+        circle.style.transition = '';
+      }
 
-            function endDrag() {
-                isDragging = false;
-                circle.style.transition = '';
-            }
+      circle.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        startDrag(e.clientX, e.clientY);
+      });
+      window.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
+      window.addEventListener('mouseup', endDrag);
 
-            circle.addEventListener('mousedown', (e) => {
-                e.preventDefault();
-                startDrag(e.clientX, e.clientY);
-            });
-            window.addEventListener('mousemove', (e) => moveDrag(e.clientX, e.clientY));
-            window.addEventListener('mouseup', endDrag);
-
-            circle.addEventListener('touchstart', (e) => {
-                const t = e.touches[0];
-                startDrag(t.clientX, t.clientY);
-            }, { passive: true });
-            window.addEventListener('touchmove', (e) => {
-                const t = e.touches[0];
-                moveDrag(t.clientX, t.clientY);
-            }, { passive: true });
-            window.addEventListener('touchend', endDrag);
-        })(el.id);
-    }
+      circle.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        startDrag(t.clientX, t.clientY);
+      }, { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        const t = e.touches[0];
+        moveDrag(t.clientX, t.clientY);
+      }, { passive: true });
+      window.addEventListener('touchend', endDrag);
+    })(el.id);
+  }
 }
 
+// Barcha filtrlarni birgalikda ishlatish funksiyasi
+function filterAndRender() {
+  let filtered = products.filter((item) => {
+    const matchDate = activeDateFilter === "all" || item.dateType === activeDateFilter;
+    const matchCategory = activeCategoryFilter === "all" || item.category === activeCategoryFilter;
+    return matchDate && matchCategory;
+  });
+
+  showProducts(heroCards, filtered);
+}
+
+// Dastlabki yuklanish
 showProducts(heroCards, products);
 
+// 1. SANA FILTR TUGMALARI (Hammasi, Bugun, Ertaga, Dam olish kunlari)
+dateFilterButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    activeDateFilter = btn.getAttribute("data-filter");
+
+    dateFilterButtons.forEach((b) => {
+      b.classList.remove("text-[#edd38d]", "font-medium");
+      b.classList.add("text-[#8c8273]");
+      const indicator = b.querySelector(".indicator");
+      if (indicator) indicator.classList.add("hidden");
+    });
+
+    btn.classList.remove("text-[#8c8273]");
+    btn.classList.add("text-[#edd38d]", "font-medium");
+    const activeIndicator = btn.querySelector(".indicator");
+    if (activeIndicator) activeIndicator.classList.remove("hidden");
+
+    filterAndRender();
+  });
+});
+
+// 2. KATEGORIYA TUGMALARI (Hammasi, Konsertlar, Teatrlar, Kino...)
+categoryButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    activeCategoryFilter = btn.getAttribute("data-category");
+
+    // Barcha kategoriya tugmalarining stilini oddiy holatga qaytarish
+    categoryButtons.forEach((b) => {
+      b.className = "category-btn flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-[#181512] text-[#d1ccc4] hover:bg-[#25201a] hover:text-white font-medium text-sm sm:text-base border border-[#302820] transition-all duration-300 shrink-0";
+    });
+
+    // Bosilgan kategoriyaga Oltin (Gold) gradient stil berish
+    btn.className = "category-btn active flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#edd38d] via-[#deab4a] to-[#c99430] text-[#1c1203] font-semibold text-sm sm:text-base transition-all duration-300 hover:brightness-110 shrink-0 shadow-md hover:shadow-lg";
+
+    filterAndRender();
+  });
+});
+
 function addToCart(productId) {
-    let item = products.find((el) => el.id === productId);
+  let item = products.find((el) => el.id === productId);
 
-    res.push(item);
+  res.push(item);
 
-    count.innerHTML = res.length;
+  if (count) count.innerHTML = res.length;
 
-    localStorage.setItem("savat", JSON.stringify(res));
+  localStorage.setItem("savat", JSON.stringify(res));
 }
