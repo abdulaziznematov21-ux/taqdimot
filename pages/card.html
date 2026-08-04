@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-black">
-    <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
+      <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
     
     <!-- Top Bar -->
     <div class="w-full bg-[#0b0b0b] border-b border-white/10 text-[#b8b8b8] text-[11px] sm:text-xs py-2 sm:py-0 sm:h-10">
@@ -55,20 +55,21 @@
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden xl:flex items-center gap-5 2xl:gap-8 ml-2">
-            <a href="../pages/tadbirlar.html" class="relative text-[#e8c56b] font-semibold text-sm 2xl:text-base whitespace-nowrap after:absolute after:left-0 after:-bottom-4 after:w-full after:h-[2px] after:bg-[#e8c56b]">
-                Tadbirlar
-            </a>
-            <a href="../pages/chiptalarim.html" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Kategoriyalar
-            </a>
-            <a href="../pages/tadbir.htm" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Kalendar
-            </a>
-            <a href="../pages/tashkilotchilarim.html" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Tashkilotchilar
-            </a>
-        </nav>
+<nav class="hidden xl:flex items-center gap-5 2xl:gap-8 ml-2">
+    <a href="../pages/tadbirlar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tadbirlar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    <a href="../pages/chiptalarim.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Kategoriyalar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    
+    <a href="../pages/tashkilotchilar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tashkilotchilar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+</nav>
 
         <!-- Search Container (Desktop) -->
         <div id="search-btn" class="relative hidden min-[480px]:block w-full max-w-[200px] sm:max-w-xs md:max-w-md xl:max-w-xl">
@@ -93,14 +94,10 @@
                 <span class="count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D4AF37] text-black text-[9px] font-bold flex items-center justify-center border border-black shadow-md">0</span>
             </a>
 
-            <button class="text-white hover:text-[#e8c56b] transition p-1.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 -960 960 960" fill="currentColor">
-                    <path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm0-160q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm0-160q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm320 440H160q-33 0-56.5-23.5T80-240v-160q33 0 56.5-23.5T160-480q0-33-23.5-56.5T80-560v-160q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v160q-33 0-56.5 23.5T800-480q0 33 23.5 56.5T880-400v160q0 33-23.5 56.5T800-160Zm0-80v-102q-37-22-58.5-58.5T720-480q0-43 21.5-79.5T800-618v-102H160v102q37 22 58.5 58.5T240-480q0 43-21.5 79.5T160-342v102h640Z" />
-                </svg>
-            </button>
+        
 
             <a href="../pages/profile.html" id="login-btn-desktop" class="flex items-center px-4 h-9 rounded-full border border-[#d5b971] text-white text-xs 2xl:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition whitespace-nowrap cursor-pointer">Kirish</a>
-            <a href="../pages/joy.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Joy Tanlash</a>
+            <a href="../pages/cart.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Tadbir yaratish</a>
         </div>
 
         <!-- Mobile & Tablet Controls -->
@@ -148,21 +145,22 @@
         <div class="flex flex-col gap-2.5 pt-1 text-sm sm:text-base">
             <a href="../pages/tadbirlar.html" class="text-[#e8c56b] font-semibold py-1">Tadbirlar</a>
             <a href="../pages/chiptalarim.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Kategoriyalar</a>
-            <a href="../pages/tadbir.htm" class="text-white/80 hover:text-[#e8c56b] transition py-1">Kalendar</a>
-            <a href="../pages/tashkilotchilarim.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Tashkilotchilar</a>
+         
+            <a href="../pages/tashkilotchilar.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Tashkilotchilar</a>
         </div>
 
         <!-- Buttons -->
         <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row gap-2.5">
-            <a href="./profile.html" id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition">
+            <a href="./profile.html" id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition  flex justify-center  items-center">
                 Kirish
             </a>
             <button class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs sm:text-sm font-bold shadow-lg">
-                + Joy Tanlash 
+                + Tadbir yaratish 
             </button>
         </div>
     </div>
 </header>
+
 
 <!-- ============================= -->
 <!-- LOGIN / PROFILE MODAL -->
@@ -377,86 +375,591 @@
 </script>
     <!-- Chart.js for smooth interactive sales chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <section class="max-w-7xl mx-auto">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 " id="cards-container">
-    <!-- Kartochkalar JavaScript orqali shu yerga render bo'ladi -->
+ <section class="max-w-7xl mx-auto p-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="cards-container">
+    <!-- Kartochkalar JavaScript orqali render bo'ladi -->
   </div>
 </section>
 
 <script>
-    // 20 ta tadbir ma'lumotlari
-    const events = [
-        { title: "Yulduzli kecha", location: "Alisher Navoiy nomidagi teatr", date: "20-Jul, 19:00", tickets: "644 / 750", revenue: "76.4 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=500" },
-        { title: "Simfoniya Bahori", location: "Konservatoriya Katta zali", date: "22-Jul, 18:30", tickets: "510 / 600", revenue: "51.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=500" },
-        { title: "Jazz & Wine Night", location: "Tashkent City Park", date: "25-Jul, 20:00", tickets: "300 / 300", revenue: "45.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?w=500" },
-        { title: "Otabek va Kumush...", location: "O'zbek Milliy Akademik Teatri", date: "28-Jul, 18:00", tickets: "420 / 500", revenue: "33.6 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500" },
-        { title: "Rok Festival 2026", location: "Humo Arena", date: "30-Jul, 19:00", tickets: "2400 / 3000", revenue: "180.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=500" },
-        { title: "Sharq Taronalari", location: "Registon Maydoni", date: "02-Aug, 20:30", tickets: "850 / 1000", revenue: "95.2 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500" },
-        { title: "Mocart va Salyeri", location: "Operasiya va Balet Teatri", date: "05-Aug, 17:00", tickets: "400 / 400", revenue: "40.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=500" },
-        { title: "Pianino Kechasi", location: "Organ Zali", date: "08-Aug, 19:00", tickets: "180 / 250", revenue: "18.5 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=500" },
-        { title: "Stand-Up Show: Toshkent", location: "Poytaxt Saroyi", date: "10-Aug, 21:00", tickets: "600 / 600", revenue: "60.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?w=500" },
-        { title: "Retro Disco 90-lar", location: "Muz Saroyi", date: "12-Aug, 18:00", tickets: "1200 / 1500", revenue: "96.0 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1545128485-c400e7702796?w=500" },
-        { title: "O'zbek Hip-Hop Fest", location: "Anhor Lokomotiv", date: "15-Aug, 19:30", tickets: "780 / 1000", revenue: "62.4 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=500" },
-        { title: "Sohir Zamin Sadoalari", location: "Xalqlar Do'stligi", date: "18-Aug, 19:00", tickets: "3500 / 4000", revenue: "280.0 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1469488865564-c2de10f69f96?w=500" },
-        { title: "Sintez & Elektronika", location: "Ucell Arena", date: "20-Aug, 22:00", tickets: "500 / 500", revenue: "50.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=500" },
-        { title: "Raqs Festivali: Bahor", location: "Turkiston Saroyi", date: "22-Aug, 16:00", tickets: "420 / 700", revenue: "29.4 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1508700915892-45ecd05ae2ad?w=500" },
-        { title: "Klassik Gitarist Kechasi", location: "Konservatoriya Kichik Zali", date: "25-Aug, 18:30", tickets: "150 / 200", revenue: "12.0 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=500" },
-        { title: "Balkon Konserti: Akustika", location: "Art House Tashkent", date: "27-Aug, 19:00", tickets: "80 / 80", revenue: "16.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" },
-        { title: "Opera va Simfoniya", location: "Alisher Navoiy nomidagi teatr", date: "29-Aug, 18:00", tickets: "600 / 750", revenue: "72.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=500" },
-        { title: "Lirik Poeziya Kechasi", location: "Yoshlar Teatri", date: "01-Sep, 17:30", tickets: "220 / 300", revenue: "15.4 mln", status: "KUTILMOQDA", statusBg: "bg-amber-950/80 text-amber-400 border-amber-800/40", img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=500" },
-        { title: "Mustaqillik Konserti", location: "Mustaqillik Maydoni", date: "03-Sep, 20:00", tickets: "5000 / 5000", revenue: "0.0 mln", status: "SOTILDI", statusBg: "bg-rose-950/80 text-rose-400 border-rose-800/40", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500" },
-        { title: "Etnik Etudlar", location: "Muzey Binosi", date: "05-Sep, 19:00", tickets: "110 / 150", revenue: "11.0 mln", status: "JONLI", statusBg: "bg-emerald-950/80 text-emerald-400 border-emerald-800/40", img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=500" }
-    ];
+  // DOM Elementlari
+  const container = document.getElementById("cards-container");
+  const count = document.querySelector(".count");
+  const dateFilterButtons = document.querySelectorAll(".tab-btn");
+  const categoryButtons = document.querySelectorAll(".category-btn");
 
-    const container = document.getElementById('cards-container');
+  // Filtr holatlari
+  let activeDateFilter = "all";
+  let activeCategoryFilter = "all";
 
-    // Cardlarni HTML ga aylantirib render qilish
-    container.innerHTML = events.map(item => `
-        <div class="bg-[#121110] border border-[#211e19] hover:border-[#38332b] rounded-[28px] p-4 flex flex-col justify-between transition duration-300 group">
-            <div>
-                <!-- Rasm va Status Badge -->
-                <div class="relative aspect-square w-full rounded-2xl overflow-hidden mb-4">
-                    <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                    <span class="absolute top-3 right-3 text-[10px] font-bold tracking-widest px-2.5 py-1 rounded-full border backdrop-blur-md ${item.statusBg}">
-                        ${item.status}
-                    </span>
-                </div>
+  // 20 TA TADBIR MA'LUMOTLARI
+  const products = [
+    {
+      id: 1,
+      title: "Yulduzli kecha",
+      dateType: "today",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/35340079/14973729_1080_1920_60fps.mp4",
+      date: "20-Jul, 19:00",
+      venue: "Alisher Navoiy nomidagi teatr",
+      tickets: "644 / 750",
+      revenue: "76.4 mln",
+      status: "JONLI",
+      statusType: "success"
+    },
+    {
+      id: 2,
+      title: "Simfoniya Bahori",
+      dateType: "tomorrow",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/7095842/7095842-uhd_2732_1440_25fps.mp4",
+      date: "22-Jul, 18:30",
+      venue: "Konservatoriya Katta zali",
+      tickets: "510 / 600",
+      revenue: "51.0 mln",
+      status: "JONLI",
+      statusType: "success"
+    },
+    {
+      id: 3,
+      title: "Jazz & Wine Night",
+      dateType: "weekend",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/9418692/9418692-uhd_2732_1440_25fps.mp4",
+      date: "25-Jul, 20:00",
+      venue: "Tashkent City Park",
+      tickets: "300 / 300",
+      revenue: "45.0 mln",
+      status: "SOTILDI",
+      statusType: "danger"
+    },
+    {
+      id: 4,
+      title: "Otabek va Kumush",
+      dateType: "today",
+      category: "theaters",
+      image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/6899904/6899904-uhd_2732_1440_25fps.mp4",
+      date: "28-Jul, 18:00",
+      venue: "O'zbek Milliy Akademik Teatri",
+      tickets: "420 / 500",
+      revenue: "33.6 mln",
+      status: "KUTILMOQDA",
+      statusType: "warning"
+    },
+    {
+      id: 5,
+      title: "Rok Festival 2026",
+      dateType: "weekend",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/30618930/13107474_2560_1440_24fps.mp4",
+      date: "30-Jul, 19:00",
+      venue: "Humo Arena",
+      tickets: "2400 / 3000",
+      revenue: "180.0 mln",
+      status: "JONLI",
+      statusType: "success"
+    },
+    {
+      id: 6,
+      title: "Sharq Taronalari",
+      dateType: "tomorrow",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/7095057/7095057-uhd_1440_2732_25fps.mp4",
+      date: "02-Aug, 20:30",
+      venue: "Registon Maydoni",
+      tickets: "850 / 1000",
+      revenue: "95.2 mln",
+      status: "KUTILMOQDA",
+      statusType: "warning"
+    },
+    {
+      id: 7,
+      title: "Mocart va Salyeri",
+      dateType: "weekend",
+      category: "theaters",
+      image: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/6899953/6899953-uhd_2732_1440_25fps.mp4",
+      date: "05-Aug, 17:00",
+      venue: "Operasiya va Balet Teatri",
+      tickets: "400 / 400",
+      revenue: "40.0 mln",
+      status: "SOTILDI",
+      statusType: "danger"
+    },
+    {
+      id: 8,
+      title: "Pianino Kechasi",
+      dateType: "today",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/35340079/14973729_1080_1920_60fps.mp4",
+      date: "08-Aug, 19:00",
+      venue: "Organ Zali",
+      tickets: "180 / 250",
+      revenue: "18.5 mln",
+      status: "JONLI",
+      statusType: "success"
+    },
+    {
+      id: 9,
+      title: "Stand-Up Show",
+      dateType: "tomorrow",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/7989390/7989390-uhd_2732_1440_25fps.mp4",
+      date: "10-Aug, 21:00",
+      venue: "Poytaxt Saroyi",
+      tickets: "600 / 600",
+      revenue: "60.0 mln",
+      status: "SOTILDI",
+      statusType: "danger"
+    },
+    {
+      id: 10,
+      title: "Retro Disco 90-lar",
+      dateType: "weekend",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1545128485-c400e7702796?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/9418692/9418692-uhd_2732_1440_25fps.mp4",
+      date: "12-Aug, 18:00",
+      venue: "Muz Saroyi",
+      tickets: "1200 / 1500",
+      revenue: "96.0 mln",
+      status: "KUTILMOQDA",
+      statusType: "warning"
+    },
+    {
+      id: 11,
+      title: "O'zbek Hip-Hop Fest",
+      dateType: "today",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/30618930/13107474_2560_1440_24fps.mp4",
+      date: "15-Aug, 19:30",
+      venue: "Anhor Lokomotiv",
+      tickets: "780 / 1000",
+      revenue: "62.4 mln",
+      status: "JONLI",
+      statusType: "success"
+    },
+    {
+      id: 12,
+      title: "Sohir Zamin Sadoalari",
+      dateType: "tomorrow",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1469488865564-c2de10f69f96?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/7095842/7095842-uhd_2732_1440_25fps.mp4",
+      date: "18-Aug, 19:00",
+      venue: "Xalqlar Do'stligi",
+      tickets: "3500 / 4000",
+      revenue: "280.0 mln",
+      status: "KUTILMOQDA",
+      statusType: "warning"
+    },
+    {
+      id: 13,
+      title: "Sintez & Elektronika",
+      dateType: "weekend",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/35340079/14973729_1080_1920_60fps.mp4",
+      date: "20-Aug, 22:00",
+      venue: "Ucell Arena",
+      tickets: "500 / 500",
+      revenue: "50.0 mln",
+      status: "SOTILDI",
+      statusType: "danger"
+    },
+    {
+      id: 14,
+      title: "Raqs Festivali: Bahor",
+      dateType: "today",
+      category: "theaters",
+      image: "https://images.unsplash.com/photo-1508700915892-45ecd05ae2ad?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/6899953/6899953-uhd_2732_1440_25fps.mp4",
+      date: "22-Aug, 16:00",
+      venue: "Turkiston Saroyi",
+      tickets: "420 / 700",
+      revenue: "29.4 mln",
+      status: "JONLI",
+      statusType: "success"
+    },
+    {
+      id: 15,
+      title: "Klassik Gitarist Kechasi",
+      dateType: "tomorrow",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/7095057/7095057-uhd_1440_2732_25fps.mp4",
+      date: "25-Aug, 18:30",
+      venue: "Konservatoriya Kichik Zali",
+      tickets: "150 / 200",
+      revenue: "12.0 mln",
+      status: "KUTILMOQDA",
+      statusType: "warning"
+    },
+    {
+      id: 16,
+      title: "Balkon Konserti: Akustika",
+      dateType: "weekend",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/9418692/9418692-uhd_2732_1440_25fps.mp4",
+      date: "27-Aug, 19:00",
+      venue: "Art House Tashkent",
+      tickets: "80 / 80",
+      revenue: "16.0 mln",
+      status: "SOTILDI",
+      statusType: "danger"
+    },
+    {
+      id: 17,
+      title: "Opera va Simfoniya",
+      dateType: "today",
+      category: "theaters",
+      image: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/6899904/6899904-uhd_2732_1440_25fps.mp4",
+      date: "29-Aug, 18:00",
+      venue: "Alisher Navoiy nomidagi teatr",
+      tickets: "600 / 750",
+      revenue: "72.0 mln",
+      status: "JONLI",
+      statusType: "success"
+    },
+    {
+      id: 18,
+      title: "Lirik Poeziya Kechasi",
+      dateType: "tomorrow",
+      category: "theaters",
+      image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/7989390/7989390-uhd_2732_1440_25fps.mp4",
+      date: "01-Sep, 17:30",
+      venue: "Yoshlar Teatri",
+      tickets: "220 / 300",
+      revenue: "15.4 mln",
+      status: "KUTILMOQDA",
+      statusType: "warning"
+    },
+    {
+      id: 19,
+      title: "Mustaqillik Konserti",
+      dateType: "weekend",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/30618930/13107474_2560_1440_24fps.mp4",
+      date: "03-Sep, 20:00",
+      venue: "Mustaqillik Maydoni",
+      tickets: "5000 / 5000",
+      revenue: "0.0 mln",
+      status: "SOTILDI",
+      statusType: "danger"
+    },
+    {
+      id: 20,
+      title: "Etnik Etudlar",
+      dateType: "today",
+      category: "concerts",
+      image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop",
+      video: "https://videos.pexels.com/video-files/35340079/14973729_1080_1920_60fps.mp4",
+      date: "05-Sep, 19:00",
+      venue: "Muzey Binosi",
+      tickets: "110 / 150",
+      revenue: "11.0 mln",
+      status: "JONLI",
+      statusType: "success"
+    }
+  ];
 
-                <!-- Sarlavha va Joylashuv -->
-                <h3 class="text-lg font-serif font-medium text-[#f3efe6] truncate mb-2">${item.title}</h3>
-                
-                <div class="space-y-1.5 mb-6 text-xs text-[#8c8273]">
-                    <div class="flex items-center gap-2">
-                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin-round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <span class="truncate">${item.location}</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin-round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        <span>${item.date}</span>
-                    </div>
+  // Savat sozlamalari
+  let res = JSON.parse(localStorage.getItem("savat")) || [];
+  if (count) count.innerHTML = res.length;
+
+  function updateCartCount() {
+    if (count) count.innerHTML = res.length;
+    localStorage.setItem("savat", JSON.stringify(res));
+  }
+
+  function addToCart(productId) {
+    const item = products.find((el) => el.id === productId);
+    if (item) {
+      res.push(item);
+      updateCartCount();
+    }
+  }
+
+  // Kartochkalarni chiqarish
+  function showProducts(targetContainer, items) {
+    if (!targetContainer) return;
+    targetContainer.innerHTML = "";
+
+    if (items.length === 0) {
+      targetContainer.innerHTML = `<div class="col-span-full text-center py-16 text-zinc-500 font-medium text-lg">Ushbu bo'limda hech qanday tadbir topilmadi.</div>`;
+      return;
+    }
+
+    items.forEach((el) => {
+      const cardHTML = `
+        <div class="group relative overflow-hidden rounded-[40px] border border-zinc-900 bg-gradient-to-br from-zinc-950 via-black to-zinc-950 p-6 shadow-[0_25px_70px_rgba(0,0,0,.85)] transition-all duration-500 hover:-translate-y-3 hover:border-[#D4AF37]/30 hover:shadow-[0_30px_90px_rgba(212,175,55,0.1)] flex flex-col justify-between" id="card-${el.id}">
+
+            <div class="absolute -top-24 -left-20 w-60 h-60 bg-[#D4AF37]/5 blur-[100px] rounded-full pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-20 w-60 h-60 bg-zinc-800/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+            <div class="absolute top-5 right-5 z-30 pointer-events-none">
+                <span class="px-3 py-1 rounded-full border text-[10px] font-bold tracking-[1.5px] uppercase ${
+                  el.statusType === 'success'
+                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
+                    : el.statusType === 'danger'
+                    ? 'border-rose-500/30 bg-rose-500/10 text-rose-400'
+                    : 'border-amber-500/30 bg-amber-500/10 text-amber-400'
+                }">
+                    ${el.status}
+                </span>
+            </div>
+
+            <div class="relative z-10 overflow-hidden rounded-[30px] bg-zinc-900/40 border border-zinc-900/80 p-2 flex items-center justify-center" id="imgwrap-${el.id}">
+                <img
+                    src="${el.image || 'https://www.gazeta.uz/media/img/2019/03/QH3GPQ15526767897430_l.jpg'}"
+                    alt="${el.title}"
+                    onerror="this.src='https://www.gazeta.uz/media/img/2019/03/QH3GPQ15526767897430_l.jpg'"
+                    class="w-full h-[220px] object-cover rounded-[22px] transition duration-700 group-hover:scale-105"
+                />
+
+                <div id="videocircle-${el.id}" class="absolute z-20 w-28 h-28 rounded-full overflow-hidden border-2 border-[#D4AF37] shadow-[0_10px_35px_rgba(0,0,0,0.6)] cursor-grab active:cursor-grabbing opacity-0 scale-[0.6] pointer-events-none transition-all duration-500 bg-black" style="top:20px;left:20px;">
+                    <video
+                        id="video-${el.id}"
+                        data-src="${el.video || ''}"
+                        class="w-full h-full object-cover pointer-events-none bg-black"
+                        muted
+                        loop
+                        playsinline
+                        preload="none"
+                    ></video>
+
+                    <button
+                        id="mic-${el.id}"
+                        title="Ovozni yoqish"
+                        class="absolute bottom-1.5 right-1.5 w-8 h-8 rounded-full bg-black/70 border border-[#D4AF37]/60 text-[#D4AF37] flex items-center justify-center backdrop-blur-sm z-30 transition-colors duration-200"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="16" height="16" fill="currentColor"><path d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm-40 320v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-280q83 0 141.5-58.5T680-480h80q0 105-68 184t-172 93v123h-80Z"/></svg>
+                    </button>
                 </div>
             </div>
 
-            <!-- Statistika va Sotib olish tugmasi -->
-            <div>
-                <div class="flex justify-between items-end text-xs mb-4 pt-3 border-t border-[#1c1813]">
-                    <div>
-                        <p class="text-[10px] uppercase tracking-wider text-[#8c8273] mb-1">Chiptalar</p>
-                        <p class="font-medium text-[#d1ccc4] text-sm">${item.tickets}</p>
+            <div class="relative z-10 pt-5 flex-1 flex flex-col justify-between">
+                <div>
+                    <div class="mb-3">
+                        <a href="../pages/single.html?eventId=${el.id}" class="text-xl font-serif font-bold text-white tracking-wide transition-colors duration-300 hover:text-[#D4AF37] line-clamp-1 text-left">
+                            ${el.title}
+                        </a>
                     </div>
-                    <div class="text-right">
-                        <p class="text-[10px] uppercase tracking-wider text-[#8c8273] mb-1">Tushum</p>
-                        <p class="font-bold text-[#edd38d] text-base">${item.revenue}</p>
+
+                    <div class="space-y-1.5 mb-4">
+                        <p class="text-zinc-400 text-xs font-light flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#D4AF37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span class="truncate">${el.venue}</span>
+                        </p>
+
+                        <p class="text-zinc-400 text-xs font-light flex items-center gap-2">
+                            <svg class="w-4 h-4 text-[#D4AF37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            <span>${el.date}</span>
+                        </p>
                     </div>
                 </div>
 
-                <button class="w-full py-3 px-4 rounded-xl bg-[#1c1a17] hover:bg-[#282520] active:scale-[0.98] text-[#d1ccc4] hover:text-white transition flex items-center justify-center gap-2 text-sm font-medium border border-[#2b2620]">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin-round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                    <span>Sotib olish</span>
-                </button>
+                <div class="pt-3 border-t border-zinc-900/80">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-zinc-500 text-[10px] uppercase tracking-[2px]">Chiptalar</p>
+                            <p class="text-sm text-zinc-300 font-medium">${el.tickets}</p>
+                        </div>
+
+                        <div class="text-right">
+                            <p class="text-zinc-500 text-[10px] uppercase tracking-[2px]">Tushum</p>
+                            <h3 class="text-lg font-serif font-bold bg-gradient-to-r from-white via-zinc-300 to-[#D4AF37] bg-clip-text text-transparent">
+                                ${el.revenue}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 flex items-center gap-3">
+                        <button
+                            onclick="addToCart(${el.id})"
+                            title="Tanlanganlarga qo'shish"
+                            class="group/heart w-12 h-12 shrink-0 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center transition-all duration-300 hover:border-rose-500/50 hover:bg-rose-500/10 active:scale-90 cursor-pointer shadow-lg"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" class="fill-zinc-500 transition-all duration-300 group-hover/heart:fill-rose-500 group-hover/heart:scale-110">
+                                <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/>
+                            </svg>
+                        </button>
+
+                        <a href="./pages/joy.html" class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium tracking-wider flex items-center justify-center gap-2 transition duration-300 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:font-bold transform active:scale-95 shadow-lg cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t-1 41.5L706-492q-14 24-37.5 38T616-440H310l-40 72q-6 11-1 24.5t18 13.5h473v80H280q-50 0-77-41t-5-83l48-87-142-300H40v-80h114l54 113Z"/></svg>
+                            <span>Sotib olish</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    `).join('');
+      `;
+      targetContainer.insertAdjacentHTML("beforeend", cardHTML);
+      initCardVideoBehavior(el.id);
+    });
+  }
+
+  // Hover & Drag video doira mantiqi
+  function initCardVideoBehavior(id) {
+    const card = document.getElementById(`card-${id}`);
+    const imgWrap = document.getElementById(`imgwrap-${id}`);
+    const circle = document.getElementById(`videocircle-${id}`);
+    const video = document.getElementById(`video-${id}`);
+    const mic = document.getElementById(`mic-${id}`);
+
+    if (!card || !circle || !video || !mic) return;
+
+    let videoLoaded = false;
+    function ensureVideoLoaded() {
+      if (videoLoaded) return;
+      const src = video.getAttribute("data-src");
+      if (src) video.src = src;
+      videoLoaded = true;
+    }
+
+    video.addEventListener("error", () => {
+      circle.classList.add("opacity-0", "scale-[0.6]", "pointer-events-none");
+      circle.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+    });
+
+    card.addEventListener("mouseenter", () => {
+      ensureVideoLoaded();
+      circle.classList.remove("opacity-0", "scale-[0.6]", "pointer-events-none");
+      circle.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+      if (video.paused) video.play().catch(() => {});
+    });
+
+    card.addEventListener("mouseleave", () => {
+      circle.classList.add("opacity-0", "scale-[0.6]", "pointer-events-none");
+      circle.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+      video.pause();
+      video.muted = true;
+      mic.style.background = "";
+      mic.style.color = "";
+      mic.title = "Ovozni yoqish";
+    });
+
+    mic.addEventListener("click", (e) => {
+      e.stopPropagation();
+      video.muted = !video.muted;
+      if (!video.muted) {
+        mic.style.background = "#D4AF37";
+        mic.style.color = "#000";
+        mic.title = "Ovozni o'chirish";
+      } else {
+        mic.style.background = "";
+        mic.style.color = "";
+        mic.title = "Ovozni yoqish";
+      }
+    });
+
+    let isDragging = false;
+    let offsetX = 0, offsetY = 0;
+
+    function startDrag(clientX, clientY) {
+      isDragging = true;
+      circle.style.transition = "none";
+      const rect = circle.getBoundingClientRect();
+      offsetX = clientX - rect.left;
+      offsetY = clientY - rect.top;
+    }
+
+    function moveDrag(clientX, clientY) {
+      if (!isDragging) return;
+      const bounds = imgWrap.getBoundingClientRect();
+      const size = circle.offsetWidth;
+
+      let newLeft = clientX - bounds.left - offsetX;
+      let newTop = clientY - bounds.top - offsetY;
+
+      newLeft = Math.max(0, Math.min(newLeft, bounds.width - size));
+      newTop = Math.max(0, Math.min(newTop, bounds.height - size));
+
+      circle.style.left = `${newLeft}px`;
+      circle.style.top = `${newTop}px`;
+    }
+
+    function endDrag() {
+      isDragging = false;
+      circle.style.transition = "";
+    }
+
+    circle.addEventListener("mousedown", (e) => { e.preventDefault(); startDrag(e.clientX, e.clientY); });
+    window.addEventListener("mousemove", (e) => moveDrag(e.clientX, e.clientY));
+    window.addEventListener("mouseup", endDrag);
+
+    circle.addEventListener("touchstart", (e) => startDrag(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+    window.addEventListener("touchmove", (e) => moveDrag(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+    window.addEventListener("touchend", endDrag);
+  }
+
+  // Filtr va Render funksiyasi
+  function filterAndRender() {
+    let filtered = products.filter((item) => {
+      const matchDate = activeDateFilter === "all" || item.dateType === activeDateFilter;
+      const matchCategory = activeCategoryFilter === "all" || item.category === activeCategoryFilter;
+      return matchDate && matchCategory;
+    });
+
+    showProducts(container, filtered);
+  }
+
+  // 1. Sana bo'yicha filter knopkalari
+  dateFilterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeDateFilter = btn.getAttribute("data-filter");
+
+      dateFilterButtons.forEach((b) => {
+        b.classList.remove("text-[#edd38d]", "font-medium");
+        b.classList.add("text-[#8c8273]");
+        const indicator = b.querySelector(".indicator");
+        if (indicator) indicator.classList.add("hidden");
+      });
+
+      btn.classList.remove("text-[#8c8273]");
+      btn.classList.add("text-[#edd38d]", "font-medium");
+      const activeIndicator = btn.querySelector(".indicator");
+      if (activeIndicator) activeIndicator.classList.remove("hidden");
+
+      filterAndRender();
+    });
+  });
+
+  // 2. Kategoriya bo'yicha filter knopkalari
+  categoryButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      activeCategoryFilter = btn.getAttribute("data-category");
+
+      categoryButtons.forEach((b) => {
+        b.className = "category-btn flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-[#181512] text-[#d1ccc4] hover:bg-[#25201a] hover:text-white font-medium text-sm sm:text-base border border-[#302820] transition-all duration-300 shrink-0";
+      });
+
+      btn.className = "category-btn active flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#edd38d] via-[#deab4a] to-[#c99430] text-[#1c1203] font-semibold text-sm sm:text-base transition-all duration-300 hover:brightness-110 shrink-0 shadow-md hover:shadow-lg";
+
+      filterAndRender();
+    });
+  });
+
+  // Boshlang'ich render (Barcha 20 ta element chiqariladi)
+  showProducts(container, products);
 </script>
 <footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
     <div class="max-w-7xl mx-auto">
@@ -583,7 +1086,6 @@
     </div>
 </footer>
 <script src="../js/main.js"></script>
-    <script src="../js/profile.js"></script>
     <script src="../js/micro.js"></script>
 </body>
 </html>

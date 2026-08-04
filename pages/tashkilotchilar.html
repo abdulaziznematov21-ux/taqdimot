@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-black text-white">
-       <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
+    <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
     
     <!-- Top Bar -->
     <div class="w-full bg-[#0b0b0b] border-b border-white/10 text-[#b8b8b8] text-[11px] sm:text-xs py-2 sm:py-0 sm:h-10">
@@ -377,622 +377,262 @@
 </script>
     <!-- Chart.js for smooth interactive sales chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- MAIN LAYOUT -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-      
-      <!-- LEFT SIDEBAR -->
-      <aside class="lg:col-span-1">
-        <div class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-6">
-          
-          <div class="flex flex-col items-center text-center space-y-3 pb-6 border-b border-white/5">
-            <div id="user-avatar" class="relative w-20 h-20 rounded-full bg-zinc-800 border-2 border-amber-400/50 overflow-hidden flex items-center justify-center text-2xl text-amber-400 font-bold">
-              IK
-            </div>
-            <div>
-              <h2 id="user-name-display" class="text-lg font-serif font-bold text-white">Islom Karimov</h2>
-              <p id="user-phone-display" class="text-xs text-gray-400 mt-0.5">+998 90 123 45 67</p>
-              <span class="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-[10px] border border-amber-500/20 font-medium">
-                <i class="fa-solid fa-gem text-[9px]"></i> FAOL MEHMON
-              </span>
-            </div>
-          </div>
 
-          <!-- DYNAMIC MENU BUTTONS -->
-          <nav id="sidebar-menu" class="space-y-1 text-xs">
-            <button data-target="chiptalarim" class="menu-btn w-full flex items-center justify-between px-4 py-3 rounded-xl bg-amber-500/10 text-amber-400 font-semibold border border-amber-500/20 transition cursor-pointer">
-              <div class="flex items-center space-x-3">
-                <i class="fa-solid fa-ticket"></i>
-                <span>Chiptalarim</span>
-              </div>
-              <span id="badge-tickets-count" class="w-5 h-5 rounded-full bg-amber-500 text-black font-bold text-[10px] flex items-center justify-center">2</span>
-            </button>
-            
-            <button data-target="kelayotgan" class="menu-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition cursor-pointer">
-              <i class="fa-regular fa-calendar-check"></i>
-              <span>Kelayotgan tadbirlar</span>
-            </button>
+<section class="w-full py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto relative">
 
-            <button data-target="otgan" class="menu-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition cursor-pointer">
-              <i class="fa-regular fa-clock"></i>
-              <span>O'tgan tadbirlar</span>
-            </button>
+        <h2 class="text-3xl sm:text-4xl font-serif text-[#edd38d] opacity-90 tracking-wide mb-12">
+            Mashhur tashkilotchilar
+        </h2>
 
-            <button data-target="sevimlilar" class="menu-btn w-full flex items-center justify-between px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition cursor-pointer">
-              <div class="flex items-center space-x-3">
-                <i class="fa-regular fa-heart"></i>
-                <span>Sevimli taronalar</span>
-              </div>
-              <span id="badge-favorites-count" class="text-gray-500 text-[11px]">2</span>
-            </button>
-
-            <button data-target="dostlar" class="menu-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition cursor-pointer">
-              <i class="fa-solid fa-user-group"></i>
-              <span>Do'stlar taklifi</span>
-            </button>
-
-            <button data-target="bildirishnomalar" class="menu-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition cursor-pointer">
-              <i class="fa-regular fa-bell"></i>
-              <span>Bildirishnomalar</span>
-            </button>
-
-            <button data-target="sozlamalar" class="menu-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition cursor-pointer">
-              <i class="fa-solid fa-gear"></i>
-              <span>Sozlamalar</span>
-            </button>
-
-            <div class="pt-4 border-t border-white/5">
-              <button id="btn-logout" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition cursor-pointer">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <span>Chiqish</span>
-              </button>
-            </div>
-          </nav>
-
+        <!-- 20 TA KARD JOYLASHADIGAN KONTEYNER -->
+        <div id="organizers-container" class="flex items-center gap-6 sm:gap-8 overflow-x-auto pb-10 pt-6 no-scrollbar relative">
         </div>
-      </aside>
-
-      <!-- RIGHT MAIN CONTENT -->
-      <div class="lg:col-span-3 space-y-10">
-        
-        <!-- PAGE 1: CHIPTALARIM -->
-        <div id="page-chiptalarim" class="page-content space-y-10">
-          <div>
-            <h1 class="text-3xl font-serif font-bold text-white">Salom, <span class="user-first-name">Islom</span></h1>
-            <p class="text-xs text-gray-400 mt-1">Sizda <span class="active-tickets-count">2</span> ta yaqinlashayotgan tadbir bor</p>
-          </div>
-
-          <!-- Featured Ticket Card -->
-          <div class="relative bg-[#141414] border border-amber-500/20 rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-              
-              <div class="bg-black/60 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center text-center space-y-3">
-                <div class="w-32 h-32 bg-white p-2 rounded-xl flex items-center justify-center shadow-lg">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=3HN-48210" alt="QR Code" class="w-full h-full">
-                </div>
-                <div class="space-y-1">
-                  <p class="text-[10px] text-gray-400 tracking-wider uppercase">Chipta raqami</p>
-                  <p class="text-xs font-mono font-bold text-amber-400">#3HN-48210</p>
-                  <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 text-[10px] font-semibold">12 KUN QOLDI</span>
-                </div>
-                <button data-code="3HN-48210" data-title="Yulduzli kecha" class="btn-show-ticket w-full py-2 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl transition cursor-pointer">
-                  Chiptani ko'rsatish
-                </button>
-              </div>
-
-              <div class="md:col-span-2 space-y-4">
-                <span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-semibold border border-amber-500/30">
-                  OPERA VA BALET
-                </span>
-                <h2 class="text-2xl font-serif font-bold text-white">Yulduzli kecha</h2>
-                <div class="space-y-2 text-xs text-gray-300">
-                  <div class="flex items-center space-x-2">
-                    <i class="fa-regular fa-calendar text-amber-400"></i>
-                    <span>18 avgust, 19:00</span>
-                  </div>
-                  <div class="flex items-center space-x-2">
-                    <i class="fa-solid fa-location-dot text-amber-400"></i>
-                    <span>Alisher Navoiy nomidagi teatr</span>
-                  </div>
-                </div>
-
-                <div class="flex gap-4 pt-2 border-t border-white/5 text-xs">
-                  <div>
-                    <span class="text-gray-400 block text-[10px]">SEKTOR</span>
-                    <span class="font-bold text-white">B</span>
-                  </div>
-                  <div>
-                    <span class="text-gray-400 block text-[10px]">QATOR</span>
-                    <span class="font-bold text-white">4</span>
-                  </div>
-                  <div>
-                    <span class="text-gray-400 block text-[10px]">O'RINDAN</span>
-                    <span class="font-bold text-amber-400">12, 13</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Ticket Filter List -->
-          <div class="space-y-4">
-            <div id="filter-tabs" class="flex space-x-6 border-b border-white/10 pb-3 text-xs font-medium">
-              <button data-filter="upcoming" class="tab-filter text-amber-400 border-b-2 border-amber-400 pb-3 -mb-3 transition cursor-pointer">Kelayotgan (2)</button>
-              <button data-filter="past" class="tab-filter text-gray-400 hover:text-white transition cursor-pointer">O'tgan (2)</button>
-              <button data-filter="canceled" class="tab-filter text-gray-400 hover:text-white transition cursor-pointer">Bekor qilingan (1)</button>
-            </div>
-
-            <!-- Dynamic Ticket Container -->
-            <div id="ticket-list" class="space-y-3">
-              <!-- Elements rendered via JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- PAGE 2: KELAYOTGAN TADBIRLAR -->
-        <div id="page-kelayotgan" class="page-content hidden space-y-6">
-          <h2 class="text-2xl font-serif font-bold text-white">Kelayotgan Tadbirlar</h2>
-          <div class="bg-[#141414] border border-white/5 rounded-2xl p-6 text-sm text-gray-300">
-            Siz xarid qilgan barcha yaqinlashib kelayotgan tadbirlaringiz shu yerda jamlangan.
-          </div>
-        </div>
-
-        <!-- PAGE 3: O'TGAN TADBIRLAR -->
-        <div id="page-otgan" class="page-content hidden space-y-6">
-          <h2 class="text-2xl font-serif font-bold text-white">O'tgan Tadbirlar</h2>
-          <div class="bg-[#141414] border border-white/5 rounded-2xl p-6 text-sm text-gray-300">
-            Siz tashrif buyurgan avvalgi madaniy tadbirlar tarixi.
-          </div>
-        </div>
-
-        <!-- PAGE 4: SEVIMLILAR -->
-        <div id="page-sevimlilar" class="page-content hidden space-y-6">
-          <h2 class="text-2xl font-serif font-bold text-white">Sevimli Taronalar va Spektakllar</h2>
-          <div id="favorites-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-3 relative group">
-              <span class="text-[10px] text-amber-400 font-semibold">SIMFONIK KONSERT</span>
-              <h4 class="text-sm font-bold text-white">Bahor taronalari</h4>
-              <p class="text-xs text-gray-400">150 000 UZS</p>
-              <button class="btn-remove-fav text-red-400 hover:text-red-300 text-xs flex items-center gap-1 transition cursor-pointer pt-2">
-                <i class="fa-solid fa-trash-can"></i> O'chirish
-              </button>
-            </div>
-            <div class="bg-[#141414] border border-white/5 rounded-2xl p-4 space-y-3 relative group">
-              <span class="text-[10px] text-amber-400 font-semibold">TEATR</span>
-              <h4 class="text-sm font-bold text-white">Hamlet: Yangi talqin</h4>
-              <p class="text-xs text-gray-400">85 000 UZS</p>
-              <button class="btn-remove-fav text-red-400 hover:text-red-300 text-xs flex items-center gap-1 transition cursor-pointer pt-2">
-                <i class="fa-solid fa-trash-can"></i> O'chirish
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- PAGE 5: DO'STLAR TAKLIFI -->
-        <div id="page-dostlar" class="page-content hidden space-y-6">
-          <h2 class="text-2xl font-serif font-bold text-white">Do'stlar Taklifi</h2>
-          <div id="invite-card" class="bg-[#141414] border border-white/5 rounded-3xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold text-amber-400">"Ota-ona" spektakliga guruh</h3>
-              <p class="text-xs text-gray-400 mt-1">Do'stingiz Sizni guruh bo'lib borishga taklif qildi.</p>
-            </div>
-            <button id="btn-accept-invite" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl transition cursor-pointer shrink-0">
-              Taklifni qabul qilish
-            </button>
-          </div>
-        </div>
-
-        <!-- PAGE 6: BILDIRISHNOMALAR -->
-        <div id="page-bildirishnomalar" class="page-content hidden space-y-6">
-          <h2 class="text-2xl font-serif font-bold text-white">Bildirishnomalar</h2>
-          <div class="space-y-3">
-            <div class="bg-[#141414] border border-white/5 rounded-xl p-4 text-xs text-gray-300 flex items-center justify-between">
-              <span>🔔 "Yulduzli kecha" tadbiriga 12 kun qoldi. Chiptangiz faol!</span>
-              <span class="text-[10px] text-gray-500">Bugun</span>
-            </div>
-            <div class="bg-[#141414] border border-white/5 rounded-xl p-4 text-xs text-gray-300 flex items-center justify-between">
-              <span>🎉 Profilingiz faollashtirildi. Xush kelibsiz!</span>
-              <span class="text-[10px] text-gray-500">Kecha</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- PAGE 7: SOZLAMALAR -->
-        <div id="page-sozlamalar" class="page-content hidden space-y-6">
-          <h2 class="text-2xl font-serif font-bold text-white">Sozlamalar</h2>
-          <form id="settings-form" class="bg-[#141414] border border-white/5 rounded-3xl p-6 space-y-4 max-w-md">
-            <div>
-              <label class="block text-xs text-gray-400 mb-1">Ism va Familiyangiz</label>
-              <input type="text" id="input-name" value="Islom Karimov" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-white text-xs outline-none focus:border-amber-400 transition">
-            </div>
-            <div>
-              <label class="block text-xs text-gray-400 mb-1">Telefon raqamingiz</label>
-              <input type="text" id="input-phone" value="+998 90 123 45 67" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3.5 py-2.5 text-white text-xs outline-none focus:border-amber-400 transition">
-            </div>
-            <button type="submit" class="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl transition cursor-pointer shadow-md">
-              Saqlash
-            </button>
-          </form>
-        </div>
-
-        <!-- FAQ Accordion -->
-        <div class="space-y-4 pt-6 border-t border-white/5">
-          <h3 class="text-lg font-serif font-bold text-white">Yordam kerakmi?</h3>
-          <div id="faq-accordion" class="space-y-3">
-            <div class="faq-item bg-[#141414] border border-white/5 rounded-2xl overflow-hidden transition">
-              <button class="faq-btn w-full p-4 text-left flex justify-between items-center text-xs font-semibold text-white cursor-pointer">
-                <span>Chiptani qanday qaytarish mumkin?</span>
-                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-200"></i>
-              </button>
-              <div class="faq-content hidden px-4 pb-4 text-xs text-gray-400 leading-relaxed border-t border-white/5 pt-3">
-                Tadbir boshlanishiga 24 soat qolgunga qadar chiptangizni shaxsiy kabinetingiz orqali 100% summasi bilan qaytarishingiz mumkin.
-              </div>
-            </div>
-            <div class="faq-item bg-[#141414] border border-white/5 rounded-2xl overflow-hidden transition">
-              <button class="faq-btn w-full p-4 text-left flex justify-between items-center text-xs font-semibold text-white cursor-pointer">
-                <span>Chiptani QR-kodini qayerda ko'rish mumkin?</span>
-                <i class="fa-solid fa-chevron-down text-gray-400 transition-transform duration-200"></i>
-              </button>
-              <div class="faq-content hidden px-4 pb-4 text-xs text-gray-400 leading-relaxed border-t border-white/5 pt-3">
-                Chiptalarim bo'limida tegishli chiptaning "Chiptani ko'rsatish" tugmasini bosing. Ekranda maxsus QR-kod paydo bo'ladi.
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
 
     </div>
-  </main>
+</section>
 
-  <!-- 1. LOGIN MODAL -->
-  <div id="login-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-    <div class="bg-[#141414] border border-amber-500/30 rounded-3xl p-6 sm:p-8 max-w-sm w-full space-y-5 text-center relative shadow-2xl">
-      <button id="close-login-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-      
-      <div>
-        <h3 class="text-xl font-serif font-bold text-[#f0d38d]">Tizimga Kirish</h3>
-        <p class="text-xs text-gray-400 mt-1">SAHNA platformasiga xush kelibsiz</p>
-      </div>
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
 
-      <form id="login-form" class="space-y-4 text-left">
-        <div id="phone-step">
-          <label class="block text-xs text-gray-400 mb-1">Telefon raqamingiz</label>
-          <input type="tel" id="login-phone-input" required placeholder="+998 (90) 123-45-67" class="w-full bg-zinc-900 border border-zinc-800 focus:border-amber-400 rounded-xl px-4 py-2.5 text-white text-xs outline-none transition">
-        </div>
-        <div id="otp-step" class="hidden space-y-2">
-          <label class="block text-xs text-gray-400 mb-1">SMS Kodni kiriting (1234)</label>
-          <input type="text" id="login-otp-input" placeholder="____" maxlength="4" class="w-full text-center tracking-widest text-lg bg-zinc-900 border border-zinc-800 focus:border-amber-400 rounded-xl px-4 py-2 text-white outline-none transition">
-        </div>
-        <button type="submit" id="btn-login-submit" class="w-full py-2.5 bg-[#fde18d] hover:bg-[#ebd07c] text-black font-bold text-xs rounded-xl transition shadow-md cursor-pointer">
-          Kod yuborish
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- 2. QR CHIPTA MODAL -->
-  <div id="ticket-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-    <div class="bg-[#141414] border border-white/10 rounded-3xl p-6 max-w-sm w-full space-y-4 text-center relative shadow-2xl">
-      <button id="close-ticket-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-      <h3 id="modal-ticket-title" class="text-lg font-serif font-bold text-amber-400">Elektron Chipta</h3>
-      <div class="bg-white p-4 rounded-2xl mx-auto w-48 h-48 flex items-center justify-center shadow-inner">
-        <img id="modal-qr-img" src="" alt="QR" class="w-full h-full">
-      </div>
-      <p id="modal-ticket-code" class="text-xs font-mono font-bold text-gray-300"></p>
-      <p class="text-[11px] text-gray-400">Kirish joyida ushbu QR-kodni nazoratchiga ko'rsating</p>
-    </div>
-  </div>
-
-  <!-- COMPLETE APPLICATION LOGIC JS -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-      // --- MOCK TICKET DATA ---
-      const ticketsData = [
-        { id: '3HN-48210', title: 'Yulduzli kecha', date: '18 avgust, 19:00', type: 'upcoming', category: 'OPERA', status: 'FAOL' },
-        { id: '3HN-90112', title: "Oqqush ko'li (Balet)", date: '22 SHANBA • 19:30', type: 'upcoming', category: 'BALET', status: 'FAOL' },
-        { id: '3HN-11029', title: 'Romeo va Julyetta', date: '10 may, 18:00', type: 'past', category: 'TEATR', status: 'YAKUNLANGAN' },
-        { id: '3HN-00921', title: 'Simfonik Garmoniya', date: '02 aprel, 19:00', type: 'past', category: 'KONSERT', status: 'YAKUNLANGAN' },
-        { id: '3HN-55412', title: 'Jaz Kechasi', date: '15 mart, 20:00', type: 'canceled', category: 'KONSERT', status: 'BEKOR QILINGAN' }
-      ];
-
-      // --- 0. LOAD SAVED PROFILE (login modaldan kelgan ism/familya/gmail/rasm) ---
-      const userAvatarEl = document.getElementById('user-avatar');
-      const userNameDisplayEl = document.getElementById('user-name-display');
-      const userPhoneDisplayEl = document.getElementById('user-phone-display');
-      const inputNameEl = document.getElementById('input-name');
-      const inputPhoneEl = document.getElementById('input-phone');
-
-      function applyAvatar(fullName, photoDataUrl) {
-        if (photoDataUrl) {
-          userAvatarEl.innerHTML = `<img src="${photoDataUrl}" class="w-full h-full object-cover rounded-full" />`;
-        } else {
-          const parts = fullName.trim().split(/\s+/);
-          const initials = parts.length > 1
-            ? (parts[0][0] + parts[1][0]).toUpperCase()
-            : (parts[0] ? parts[0][0].toUpperCase() : '?');
-          userAvatarEl.innerHTML = initials;
+<script>
+    const organizers = [
+        {
+            id: 1,
+            name: "Grand Events Tashkent",
+            img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.9",
+            eventsCount: "120+ tadbir",
+            verified: true,
+            desc: "O'zbekistondagi eng yirik korporativ tadbirlar, to'ylar va taqdimotlar tashkilotchisi.",
+            tags: ["VIP", "To'y", "Korporativ"]
+        },
+        {
+            id: 2,
+            name: "IT & Tech Summits",
+            img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.8",
+            eventsCount: "85+ tadbir",
+            verified: true,
+            desc: "Xalqaro IT konferensiyalar, hakatonlar va texnologik ko'rgazmalar festivali.",
+            tags: ["IT", "Konferensiya", "Tech"]
+        },
+        {
+            id: 3,
+            name: "Silk Road Concerts",
+            img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.7",
+            eventsCount: "210+ tadbir",
+            verified: true,
+            desc: "Jonli estrada, shou-dasturlar va estrada yulduzlarining ochiq havodagi konsertlari.",
+            tags: ["Konsert", "Show", "Music"]
+        },
+        {
+            id: 4,
+            name: "Fashion Week Uzbekistan",
+            img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.9",
+            eventsCount: "45+ tadbir",
+            verified: true,
+            desc: "Milliy va zamonaviy liboslar namoyishi, dizaynerlar uchrashuvi hamda modalat ko'rgazmalari.",
+            tags: ["Fashion", "Model", "VIP"]
+        },
+        {
+            id: 5,
+            name: "Art & Culture Hub",
+            img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.6",
+            eventsCount: "60+ tadbir",
+            verified: false,
+            desc: "San'at galereyalari, rasmlar ko'rgazmasi va mahorat darslarini tashkil etish agentligi.",
+            tags: ["Korgazma", "Art", "Madaniyat"]
+        },
+        {
+            id: 6,
+            name: "Business Forum Group",
+            img: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.8",
+            eventsCount: "130+ tadbir",
+            verified: true,
+            desc: "Investitsiya forumlari, B2B uchrashuvlar va biznes treninlarga ixtisoslashgan.",
+            tags: ["Biznes", "Forum", "B2B"]
+        },
+        {
+            id: 7,
+            name: "Auto & Speed Show",
+            img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.5",
+            eventsCount: "35+ tadbir",
+            verified: false,
+            desc: "Tuning mashinalar ko'rgazmasi, poygalar va avtosanoat taqdimotlari.",
+            tags: ["Auto", "Drive", "Show"]
+        },
+        {
+            id: 8,
+            name: "Youth Expo Tashkent",
+            img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.7",
+            eventsCount: "95+ tadbir",
+            verified: true,
+            desc: "Yoshlar festivallari, ta'lim ko'rgazmalari va talabalar uchun ochiq osmon tadbirlari.",
+            tags: ["Ta'lim", "Yoshlar", "Fest"]
+        },
+        {
+            id: 9,
+            name: "Gastronomy & Food Fest",
+            img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.9",
+            eventsCount: "50+ tadbir",
+            verified: true,
+            desc: "Milliy va xalqaro taomlar festlari, oshpazlar bellashuvi va dequstatsiya kechalari.",
+            tags: ["Food", "Festival", "Chef"]
+        },
+        {
+            id: 10,
+            name: "Cinema & Movie Nights",
+            img: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.6",
+            eventsCount: "140+ tadbir",
+            verified: false,
+            desc: "Kino premyeralari, ochiq havodagi kinosayohatlar va rejissyorlar bilan muloqot kechalari.",
+            tags: ["Kino", "Cinema", "Night"]
+        },
+        {
+            id: 11,
+            name: "Sport & Marathon Org",
+            img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.9",
+            eventsCount: "75+ tadbir",
+            verified: true,
+            desc: "Shahar marafonlari, cyklistlar bellashuvi va sog'lom turmush tarzi sport festivallari.",
+            tags: ["Sport", "Marathon", "Health"]
+        },
+        {
+            id: 12,
+            name: "Magic Kids Parties",
+            img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.8",
+            eventsCount: "300+ tadbir",
+            verified: true,
+            desc: "Bolalar uchun tug'ilgan kunlar, animatorlar shousi va interaktiv o'yinlar.",
+            tags: ["Kids", "Party", "Show"]
+        },
+        {
+            id: 13,
+            name: "Eco & Green World",
+            img: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.4",
+            eventsCount: "40+ tadbir",
+            verified: false,
+            desc: "Ekologik loyihalar, daraxt ekish aksiyalari va \"Green Expo\" ko'rgazmalari.",
+            tags: ["Eco", "Green", "Nature"]
+        },
+        {
+            id: 14,
+            name: "Wedding Luxury Agency",
+            img: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 5.0",
+            eventsCount: "180+ tadbir",
+            verified: true,
+            desc: "Premium klassdagi to'ylar va dabdabali oilaviy tantanalar tashkil etish.",
+            tags: ["VIP", "Wedding", "Luxury"]
+        },
+        {
+            id: 15,
+            name: "CyberSport UZ",
+            img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.7",
+            eventsCount: "110+ tadbir",
+            verified: true,
+            desc: "CS:GO, Dota 2 va FIFA bo'yicha Respublika kibersport turnirlari va LAN finallar.",
+            tags: ["Cyber", "Game", "Tournament"]
+        },
+        {
+            id: 16,
+            name: "Book & Literature Club",
+            img: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.5",
+            eventsCount: "65+ tadbir",
+            verified: false,
+            desc: "Kitob yarmarkalari, yozuvchilar bilan taqdimotlar hamda adabiy munozaralar.",
+            tags: ["Book", "Read", "Edu"]
+        },
+        {
+            id: 17,
+            name: "Charity & Hope Foundation",
+            img: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb0?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.9",
+            eventsCount: "90+ tadbir",
+            verified: true,
+            desc: "Xayriya konsertlari, auksionlar va ijtimoiy yordam loyihalarini tashkil etish.",
+            tags: ["Xayriya", "Help", "Social"]
+        },
+        {
+            id: 18,
+            name: "Science & Robofest",
+            img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.8",
+            eventsCount: "55+ tadbir",
+            verified: true,
+            desc: "Robototexnika musobaqalari, ilmiy tajribalar va ixtirochilar ko'rgazmasi.",
+            tags: ["Robots", "Science", "Tech"]
+        },
+        {
+            id: 19,
+            name: "Travel & OpenAir Camp",
+            img: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.6",
+            eventsCount: "160+ tadbir",
+            verified: false,
+            desc: "Tog' va tabiat qo'ynidagi kempinglar, etno-festivallar va sayohat tadbirlari.",
+            tags: ["Travel", "Camp", "Nature"]
+        },
+        {
+            id: 20,
+            name: "StandUp & Comedy Night",
+            img: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=300&q=80",
+            rating: "⭐ 4.7",
+            eventsCount: "220+ tadbir",
+            verified: true,
+            desc: "Kulguli Stand-up shoular, yumoristlar bellashuvi va ochiq mikrofon kechalari.",
+            tags: ["Comedy", "StandUp", "Show"]
         }
-      }
+    ];
 
-      function loadSavedProfile() {
-        const raw = localStorage.getItem('sahna_user');
-        if (!raw) return;
+    const container = document.getElementById("organizers-container");
 
-        let user;
-        try {
-          user = JSON.parse(raw);
-        } catch (e) {
-          return;
-        }
+    organizers.forEach((org) => {
+        const cardLink = document.createElement("a");
+        cardLink.href = `./tashkilotchilarim.html?id=${org.id}`;
+        cardLink.className = "group relative flex-shrink-0 flex flex-col items-center justify-between w-44 sm:w-48 h-56 p-4 rounded-3xl bg-[#14100c] border border-[#2b2218] hover:border-[#dca842]/70 transition-all duration-300 cursor-pointer";
 
-        const fullName = [user.ism, user.familya].filter(Boolean).join(' ').trim();
-
-        if (fullName) {
-          userNameDisplayEl.innerText = fullName;
-          document.querySelectorAll('.user-first-name').forEach(el => el.innerText = user.ism || fullName.split(' ')[0]);
-          if (inputNameEl) inputNameEl.value = fullName;
-        }
-
-        // Telefon o'rniga gmail bo'lsa, shuni ko'rsatamiz
-        if (user.gmail) {
-          userPhoneDisplayEl.innerText = user.gmail;
-        }
-
-        applyAvatar(fullName || 'Mehmon', user.rasim);
-      }
-
-      loadSavedProfile();
-
-      // --- 1. MODAL CONTROLLERS ---
-      const loginModal = document.getElementById('login-modal');
-      const ticketModal = document.getElementById('ticket-modal');
-
-      const openModal = (modal) => {
-        modal.classList.remove('hidden');
-        setTimeout(() => modal.classList.remove('opacity-0'), 10);
-      };
-
-      const closeModal = (modal) => {
-        modal.classList.add('opacity-0');
-        setTimeout(() => modal.classList.add('hidden'), 300);
-      };
-
-      // Login Modals Triggers
-      ['btn-login-desktop', 'btn-login-mobile'].forEach(id => {
-        document.getElementById(id)?.addEventListener('click', () => openModal(loginModal));
-      });
-      document.getElementById('close-login-modal')?.addEventListener('click', () => closeModal(loginModal));
-      loginModal?.addEventListener('click', (e) => e.target === loginModal && closeModal(loginModal));
-
-      // QR Ticket Modal
-      document.getElementById('close-ticket-modal')?.addEventListener('click', () => closeModal(ticketModal));
-      ticketModal?.addEventListener('click', (e) => e.target === ticketModal && closeModal(ticketModal));
-
-      const showQrCode = (code, title) => {
-        document.getElementById('modal-ticket-title').innerText = title || 'Elektron Chipta';
-        document.getElementById('modal-ticket-code').innerText = '#' + code;
-        document.getElementById('modal-qr-img').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${code}`;
-        openModal(ticketModal);
-      };
-
-      // Attach QR click event globally using delegation
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn-show-ticket');
-        if (btn) {
-          const code = btn.getAttribute('data-code') || '3HN-48210';
-          const title = btn.getAttribute('data-title') || 'Chipta';
-          showQrCode(code, title);
-        }
-      });
-
-      // --- 2. SIDEBAR TAB NAVIGATION ---
-      const menuBtns = document.querySelectorAll('.menu-btn');
-      const pages = document.querySelectorAll('.page-content');
-
-      menuBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const target = btn.getAttribute('data-target');
-
-          menuBtns.forEach(b => {
-            b.classList.remove('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
-            b.classList.add('text-gray-400');
-          });
-
-          btn.classList.remove('text-gray-400');
-          btn.classList.add('bg-amber-500/10', 'text-amber-400', 'font-semibold', 'border', 'border-amber-500/20');
-
-          pages.forEach(p => p.classList.add('hidden'));
-          const targetPage = document.getElementById(`page-${target}`);
-          if (targetPage) targetPage.classList.remove('hidden');
+        // Kard bosilganda ma'lumotni localStorage-ga saqlaymiz
+        cardLink.addEventListener("click", () => {
+            localStorage.setItem("selectedOrganizer", JSON.stringify(org));
         });
-      });
 
-      // --- 3. DYNAMIC TICKET FILTERING ---
-      const ticketListContainer = document.getElementById('ticket-list');
-      const renderTickets = (filter) => {
-        ticketListContainer.innerHTML = '';
-        const filtered = ticketsData.filter(t => t.type === filter);
-
-        if (filtered.length === 0) {
-          ticketListContainer.innerHTML = `<p class="text-xs text-gray-500 text-center py-4">Sizda ushbu toifada chiptalar mavjud emas.</p>`;
-          return;
-        }
-
-        filtered.forEach(t => {
-          const statusBg = t.type === 'upcoming' ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 
-                          t.type === 'canceled' ? 'bg-red-500/10 text-red-400 border-red-500/20' : 'bg-zinc-800 text-gray-400 border-zinc-700';
-
-          const card = document.createElement('div');
-          card.className = 'ticket-card bg-[#141414] border border-white/5 rounded-2xl p-4 flex items-center justify-between hover:border-white/20 transition';
-          card.innerHTML = `
-            <div class="flex items-center space-x-4">
-              <div class="w-16 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center text-amber-400 font-bold text-[10px] tracking-wider">${t.category}</div>
-              <div>
-                <p class="text-[10px] text-gray-400 uppercase">${t.date}</p>
-                <h4 class="text-sm font-bold text-white">${t.title}</h4>
-              </div>
+        cardLink.innerHTML = `
+            <div class="relative w-20 h-20 rounded-full p-1 bg-gradient-to-b from-[#dca842] via-[#735114] to-[#2b2218] group-hover:scale-105 transition-transform">
+                <img src="${org.img}" alt="${org.name}" class="w-full h-full rounded-full object-cover border-2 border-[#14100c]">
             </div>
-            <div class="flex items-center space-x-4 sm:space-x-6">
-              <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold border ${statusBg}">${t.status}</span>
-              <button data-code="${t.id}" data-title="${t.title}" class="btn-show-ticket text-gray-400 hover:text-white text-xs cursor-pointer p-1">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
+
+            <div class="text-center w-full mt-2">
+                <h3 class="font-serif text-sm text-[#edd38d] font-semibold truncate group-hover:text-white">
+                    ${org.name}
+                </h3>
+                <p class="text-[11px] text-[#a39582] font-mono mt-0.5">${org.eventsCount}</p>
             </div>
-          `;
-          ticketListContainer.appendChild(card);
-        });
-      };
 
-      // Filter Tabs Handler
-      const filterTabs = document.querySelectorAll('.tab-filter');
-      filterTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const filter = tab.getAttribute('data-filter');
+            <span class="w-full py-1.5 rounded-xl bg-[#231b13] group-hover:bg-[#dca842] text-[#a39582] group-hover:text-[#0a0806] font-bold text-[10px] uppercase tracking-wider text-center transition-all">
+                Ko'rish
+            </span>
+        `;
 
-          filterTabs.forEach(t => {
-            t.classList.remove('text-amber-400', 'border-b-2', 'border-amber-400', '-mb-3');
-            t.classList.add('text-gray-400');
-          });
-
-          tab.classList.remove('text-gray-400');
-          tab.classList.add('text-amber-400', 'border-b-2', 'border-amber-400', '-mb-3');
-
-          renderTickets(filter);
-        });
-      });
-
-      // Initial ticket render
-      renderTickets('upcoming');
-
-      // --- 4. PROFILE SETTINGS SYNC ---
-      const settingsForm = document.getElementById('settings-form');
-      settingsForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const newName = document.getElementById('input-name').value.trim();
-        const newPhone = document.getElementById('input-phone').value.trim();
-
-        if (newName) {
-          document.getElementById('user-name-display').innerText = newName;
-          document.querySelectorAll('.user-first-name').forEach(el => el.innerText = newName.split(' ')[0]);
-
-          // Update Initials/Photo Avatar
-          const raw = localStorage.getItem('sahna_user');
-          let existing = {};
-          try { existing = raw ? JSON.parse(raw) : {}; } catch (e) { existing = {}; }
-          applyAvatar(newName, existing.rasim);
-
-          // localStorage'ni ham yangilab qo'yamiz (ism/familyani ajratib)
-          const nameParts = newName.split(/\s+/);
-          existing.ism = nameParts[0] || '';
-          existing.familya = nameParts.slice(1).join(' ') || '';
-          localStorage.setItem('sahna_user', JSON.stringify(existing));
-        }
-
-        if (newPhone) {
-          document.getElementById('user-phone-display').innerText = newPhone;
-        }
-
-        alert("Sozlamalar va profil ma'lumotlari muvaffaqiyatli saqlandi!");
-      });
-
-      // --- 5. REMOVE FAVORITES LOGIC ---
-      const favGrid = document.getElementById('favorites-grid');
-      const favBadge = document.getElementById('badge-favorites-count');
-
-      favGrid?.addEventListener('click', (e) => {
-        const removeBtn = e.target.closest('.btn-remove-fav');
-        if (removeBtn) {
-          const card = removeBtn.closest('.group');
-          card.remove();
-          const currentCount = parseInt(favBadge.innerText) || 0;
-          const newCount = Math.max(0, currentCount - 1);
-          favBadge.innerText = newCount;
-
-          if (newCount === 0) {
-            favGrid.innerHTML = `<p class="text-xs text-gray-500 col-span-full">Sevimli taronalar ro'yxati bo'sh.</p>`;
-          }
-        }
-      });
-
-      // --- 6. ACCORDION FAQ TOGGLE ---
-      document.querySelectorAll('#faq-accordion .faq-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const content = btn.nextElementSibling;
-          const icon = btn.querySelector('i');
-          const isHidden = content.classList.contains('hidden');
-
-          document.querySelectorAll('#faq-accordion .faq-content').forEach(c => c.classList.add('hidden'));
-          document.querySelectorAll('#faq-accordion .faq-btn i').forEach(i => i.classList.remove('rotate-180'));
-
-          if (isHidden) {
-            content.classList.remove('hidden');
-            icon.classList.add('rotate-180');
-          }
-        });
-      });
-
-      // --- 7. ACCEPT FRIEND INVITE ---
-      document.getElementById('btn-accept-invite')?.addEventListener('click', function() {
-        this.disabled = true;
-        this.classList.replace('bg-amber-500', 'bg-zinc-800');
-        this.classList.replace('text-black', 'text-amber-400');
-        this.innerText = "Qabul qilindi";
-        alert("Siz guruh taklifini qabul qildingiz!");
-      });
-
-      // --- 8. OTP LOGIN SYSTEM SIMULATION ---
-      let otpStepActive = false;
-      const loginForm = document.getElementById('login-form');
-      loginForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const phoneStep = document.getElementById('phone-step');
-        const otpStep = document.getElementById('otp-step');
-        const submitBtn = document.getElementById('btn-login-submit');
-
-        if (!otpStepActive) {
-          phoneStep.classList.add('hidden');
-          otpStep.classList.remove('hidden');
-          submitBtn.innerText = "Tasdiqlash";
-          otpStepActive = true;
-        } else {
-          const otpVal = document.getElementById('login-otp-input').value;
-          if (otpVal.length === 4) {
-            alert("Tizimga muvaffaqiyatli kirdingiz!");
-            closeModal(loginModal);
-            // Reset modal state
-            setTimeout(() => {
-              phoneStep.classList.remove('hidden');
-              otpStep.classList.add('hidden');
-              submitBtn.innerText = "Kod yuborish";
-              otpStepActive = false;
-            }, 300);
-          } else {
-            alert("Iltimos, 4 xonali SMS kodni to'liq kiriting.");
-          }
-        }
-      });
-
-      // --- 9. LOGOUT ACTION ---
-      document.getElementById('btn-logout')?.addEventListener('click', () => {
-        if (confirm("Tizimdan chiqishni xohlaysizmi?")) {
-          // Saqlangan profil ma'lumotlarini butunlay tozalaymiz
-          localStorage.removeItem('sahna_user');
-
-          // Sahifa kontentini butunlay tozalab, bosh sahifaga (Kirish tugmasi bor joyga) qaytaramiz
-          document.body.innerHTML = '';
-          window.location.href = '../index.html';
-        }
-      });
-
+        container.appendChild(cardLink);
     });
-  </script>
+</script>
     <footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
     <div class="max-w-7xl mx-auto">
 
@@ -1120,6 +760,7 @@
 <script src="../js/main.js"></script>
     <script src="../js/profile.js"></script>
     <script src="../js/micro.js"></script>
+
 </body>
 
 </html>

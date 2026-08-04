@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-black text-white">
-  <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
+     <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
     
     <!-- Top Bar -->
     <div class="w-full bg-[#0b0b0b] border-b border-white/10 text-[#b8b8b8] text-[11px] sm:text-xs py-2 sm:py-0 sm:h-10">
@@ -57,20 +57,21 @@
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden xl:flex items-center gap-5 2xl:gap-8 ml-2">
-            <a href="../pages/tadbirlar.html" class="relative text-[#e8c56b] font-semibold text-sm 2xl:text-base whitespace-nowrap after:absolute after:left-0 after:-bottom-4 after:w-full after:h-[2px] after:bg-[#e8c56b]">
-                Tadbirlar
-            </a>
-            <a href="../pages/chiptalarim.html" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Kategoriyalar
-            </a>
-            <a href="../pages/tadbir.htm" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Kalendar
-            </a>
-            <a href="../pages/tashkilotchilarim.html" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Tashkilotchilar
-            </a>
-        </nav>
+<nav class="hidden xl:flex items-center gap-5 2xl:gap-8 ml-2">
+    <a href="../pages/tadbirlar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tadbirlar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    <a href="../pages/chiptalarim.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Kategoriyalar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    
+    <a href="../pages/tashkilotchilar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tashkilotchilar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+</nav>
 
         <!-- Search Container (Desktop) -->
         <div id="search-btn" class="relative hidden min-[480px]:block w-full max-w-[200px] sm:max-w-xs md:max-w-md xl:max-w-xl">
@@ -95,14 +96,10 @@
                 <span class="count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D4AF37] text-black text-[9px] font-bold flex items-center justify-center border border-black shadow-md">0</span>
             </a>
 
-            <button class="text-white hover:text-[#e8c56b] transition p-1.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 -960 960 960" fill="currentColor">
-                    <path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm0-160q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm0-160q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm320 440H160q-33 0-56.5-23.5T80-240v-160q33 0 56.5-23.5T160-480q0-33-23.5-56.5T80-560v-160q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v160q-33 0-56.5 23.5T800-480q0 33 23.5 56.5T880-400v160q0 33-23.5 56.5T800-160Zm0-80v-102q-37-22-58.5-58.5T720-480q0-43 21.5-79.5T800-618v-102H160v102q37 22 58.5 58.5T240-480q0 43-21.5 79.5T160-342v102h640Z" />
-                </svg>
-            </button>
+        
 
             <a href="../pages/profile.html" id="login-btn-desktop" class="flex items-center px-4 h-9 rounded-full border border-[#d5b971] text-white text-xs 2xl:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition whitespace-nowrap cursor-pointer">Kirish</a>
-            <a href="../pages/joy.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Joy Tanlash</a>
+            <a href="../pages/cart.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Tadbir yaratish</a>
         </div>
 
         <!-- Mobile & Tablet Controls -->
@@ -150,21 +147,22 @@
         <div class="flex flex-col gap-2.5 pt-1 text-sm sm:text-base">
             <a href="../pages/tadbirlar.html" class="text-[#e8c56b] font-semibold py-1">Tadbirlar</a>
             <a href="../pages/chiptalarim.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Kategoriyalar</a>
-            <a href="../pages/tadbir.htm" class="text-white/80 hover:text-[#e8c56b] transition py-1">Kalendar</a>
-            <a href="../pages/tashkilotchilarim.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Tashkilotchilar</a>
+         
+            <a href="../pages/tashkilotchilar.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Tashkilotchilar</a>
         </div>
 
         <!-- Buttons -->
         <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row gap-2.5">
-            <a href="./profile.html" id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition">
+            <a href="./profile.html" id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition  flex justify-center  items-center">
                 Kirish
             </a>
             <button class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs sm:text-sm font-bold shadow-lg">
-                + Joy Tanlash 
+                + Tadbir yaratish 
             </button>
         </div>
     </div>
 </header>
+
 
 <!-- ============================= -->
 <!-- LOGIN / PROFILE MODAL -->

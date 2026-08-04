@@ -59,7 +59,7 @@
 </head>
 <body>
 
-  <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
+    <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
     
     <!-- Top Bar -->
     <div class="w-full bg-[#0b0b0b] border-b border-white/10 text-[#b8b8b8] text-[11px] sm:text-xs py-2 sm:py-0 sm:h-10">
@@ -107,20 +107,21 @@
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden xl:flex items-center gap-5 2xl:gap-8 ml-2">
-            <a href="../pages/tadbirlar.html" class="relative text-[#e8c56b] font-semibold text-sm 2xl:text-base whitespace-nowrap after:absolute after:left-0 after:-bottom-4 after:w-full after:h-[2px] after:bg-[#e8c56b]">
-                Tadbirlar
-            </a>
-            <a href="../pages/chiptalarim.html" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Kategoriyalar
-            </a>
-            <a href="../pages/tadbir.htm" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Kalendar
-            </a>
-            <a href="../pages/tashkilotchilarim.html" class="text-white/80 hover:text-[#e8c56b] transition text-sm 2xl:text-base whitespace-nowrap">
-                Tashkilotchilar
-            </a>
-        </nav>
+<nav class="hidden xl:flex items-center gap-5 2xl:gap-8 ml-2">
+    <a href="../pages/tadbirlar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tadbirlar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    <a href="../pages/chiptalarim.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Kategoriyalar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    
+    <a href="../pages/tashkilotchilar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tashkilotchilar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+</nav>
 
         <!-- Search Container (Desktop) -->
         <div id="search-btn" class="relative hidden min-[480px]:block w-full max-w-[200px] sm:max-w-xs md:max-w-md xl:max-w-xl">
@@ -145,14 +146,10 @@
                 <span class="count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D4AF37] text-black text-[9px] font-bold flex items-center justify-center border border-black shadow-md">0</span>
             </a>
 
-            <button class="text-white hover:text-[#e8c56b] transition p-1.5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 -960 960 960" fill="currentColor">
-                    <path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm0-160q17 0 28.5-11.5T520-480q0-17-11.5-28.5T480-520q-17 0-28.5 11.5T440-480q0 17 11.5 28.5T480-440Zm0-160q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm320 440H160q-33 0-56.5-23.5T80-240v-160q33 0 56.5-23.5T160-480q0-33-23.5-56.5T80-560v-160q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v160q-33 0-56.5 23.5T800-480q0 33 23.5 56.5T880-400v160q0 33-23.5 56.5T800-160Zm0-80v-102q-37-22-58.5-58.5T720-480q0-43 21.5-79.5T800-618v-102H160v102q37 22 58.5 58.5T240-480q0 43-21.5 79.5T160-342v102h640Z" />
-                </svg>
-            </button>
+        
 
             <a href="../pages/profile.html" id="login-btn-desktop" class="flex items-center px-4 h-9 rounded-full border border-[#d5b971] text-white text-xs 2xl:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition whitespace-nowrap cursor-pointer">Kirish</a>
-            <a href="../pages/joy.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Joy Tanlash</a>
+            <a href="../pages/cart.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Tadbir yaratish</a>
         </div>
 
         <!-- Mobile & Tablet Controls -->
@@ -200,21 +197,22 @@
         <div class="flex flex-col gap-2.5 pt-1 text-sm sm:text-base">
             <a href="../pages/tadbirlar.html" class="text-[#e8c56b] font-semibold py-1">Tadbirlar</a>
             <a href="../pages/chiptalarim.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Kategoriyalar</a>
-            <a href="../pages/tadbir.htm" class="text-white/80 hover:text-[#e8c56b] transition py-1">Kalendar</a>
-            <a href="../pages/tashkilotchilarim.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Tashkilotchilar</a>
+         
+            <a href="../pages/tashkilotchilar.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Tashkilotchilar</a>
         </div>
 
         <!-- Buttons -->
         <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row gap-2.5">
-            <a href="./profile.html" id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition">
+            <a href="./profile.html" id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition  flex justify-center  items-center">
                 Kirish
             </a>
             <button class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs sm:text-sm font-bold shadow-lg">
-                + Joy Tanlash 
+                + Tadbir yaratish 
             </button>
         </div>
     </div>
 </header>
+
 
 <!-- ============================= -->
 <!-- LOGIN / PROFILE MODAL -->
@@ -430,7 +428,65 @@
     <!-- Chart.js for smooth interactive sales chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <main class="max-w-6xl mx-auto relative px-4 py-9">
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tadbirlar — Toshkent</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: "#0f0d0a",
+          panel: "#1a1611",
+          panel2: "#221d16",
+          cream: "#f5efe3",
+          muted: "#a89c86",
+          gold: "#d4af37",
+          "gold-light": "#e8cd77",
+          "gold-soft": "#b9975a",
+          rose: "#b23a48",
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  body { background-color: #0f0d0a; }
+  .snap-row { scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; }
+  .snap-row::-webkit-scrollbar { display: none; }
+  .snap-card { scroll-snap-align: start; }
+  .ticket-btn {
+    background: linear-gradient(135deg, #e8cd77, #d4af37);
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 9999px;
+    background-color: rgba(232, 205, 119, 0.25);
+    transition: all .3s ease;
+    cursor: pointer;
+  }
+  .dot.active {
+    width: 22px;
+    background-color: #e8cd77;
+  }
+</style>
+</head>
+<body class="font-sans bg-ink text-cream min-h-screen">
+
+<header class="max-w-6xl mx-auto px-4 pt-10">
+  <h1 class="font-serif text-3xl sm:text-4xl text-cream font-semibold">Yaqin kunlardagi tadbirlar</h1>
+  <p class="text-muted text-sm mt-2">Toshkentdagi eng saralangan konsert, teatr, festival va boshqa tadbirlar — barchasi uchun bitta joydan chipta oling.</p>
+</header>
+
+<main class="max-w-6xl mx-auto relative px-4 py-9">
 
     <!-- Arrows -->
     <button id="prevBtn" aria-label="Oldingi" class="arrow-btn hidden md:flex items-center justify-center absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-panel2 border border-gold-soft/30 text-gold-light hover:bg-panel transition-all focus:outline-none">
@@ -549,7 +605,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Kirish</div>
           <div class="font-serif text-base text-gold-light font-medium">Tekin</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Ro'yxatdan o'tish</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -585,7 +641,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Narxi</div>
           <div class="font-serif text-base text-gold-light font-medium">50 000 so'm</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Joyni band qilish</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -619,7 +675,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Ishtirok</div>
           <div class="font-serif text-base text-gold-light font-medium">Bepul</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Ro'yxatdan o'tish</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -764,7 +820,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Narxi</div>
           <div class="font-serif text-base text-gold-light font-medium">70 000 so'm</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Qatnashish</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -838,7 +894,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Narxi</div>
           <div class="font-serif text-base text-gold-light font-medium">250 000 so'm</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Bron qilish</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -874,7 +930,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Kirish</div>
           <div class="font-serif text-base text-gold-light font-medium">Bepul</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Joyni band qilish</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -982,7 +1038,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Narxi</div>
           <div class="font-serif text-base text-gold-light font-medium">350 000 so'm</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Taklifnoma</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -1054,7 +1110,7 @@
           <div class="text-[9px] tracking-widest text-muted uppercase">Kirish</div>
           <div class="font-serif text-base text-gold-light font-medium">Bepul</div>
         </div>
-        <button class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Ro'yxatdan o'tish</button>
+        <a href="./joy.html" class="ticket-btn text-ink text-xs font-semibold px-4 py-2 rounded-full hover:brightness-110 transition-all">Chipta olish</a>
       </div>
     </div>
   </div>
@@ -1101,6 +1157,67 @@
     <div id="dots" class="flex items-center justify-center gap-2 mt-6"></div>
 
   </main>
+
+
+<footer class="max-w-6xl mx-auto px-4 py-10 text-center text-muted text-xs">
+  &copy; 2026 Tadbirlar Toshkent
+</footer>
+
+<script>
+  const track = document.getElementById('track');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsContainer = document.getElementById('dots');
+  const cards = Array.from(track.querySelectorAll('.snap-card'));
+
+  // Build dots
+  cards.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Kartaga o\'tish ${i + 1}`);
+    dot.addEventListener('click', () => {
+      cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    });
+    dotsContainer.appendChild(dot);
+  });
+  const dots = Array.from(dotsContainer.children);
+
+  function updateActiveDot() {
+    const trackRect = track.getBoundingClientRect();
+    let closestIndex = 0;
+    let closestDist = Infinity;
+    cards.forEach((card, i) => {
+      const cardRect = card.getBoundingClientRect();
+      const dist = Math.abs(cardRect.left - trackRect.left);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestIndex = i;
+      }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closestIndex));
+  }
+
+  let scrollTimeout;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(updateActiveDot, 80);
+  });
+
+  function scrollByCard(direction) {
+    const card = cards[0];
+    const gap = 24; // matches gap-6
+    const cardWidth = card.getBoundingClientRect().width + gap;
+    track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+  }
+
+  prevBtn?.addEventListener('click', () => scrollByCard(-1));
+  nextBtn?.addEventListener('click', () => scrollByCard(1));
+
+  updateActiveDot();
+</script>
+
+</body>
+</html>
 
   <footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
     <div class="max-w-7xl mx-auto">
