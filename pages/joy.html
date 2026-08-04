@@ -20,22 +20,32 @@
 </head>
 <body class="bg-[#0a0908] text-[#d1ccc4] font-sans min-h-screen p-4 sm:p-8">
 
-  <div class="max-w-5xl mx-auto">
-    <!-- ASOSIY SARLAVHA -->
-    <header class="text-center my-6">
+  <!-- ASOSIY SAHIFA: 8 TA KARTOCHKA RO'YXATI -->
+  <div class="max-w-7xl mx-auto">
+    <header class="text-center my-8">
       <a href="../index.html" class="font-serif text-3xl md:text-5xl text-[#dfb559] font-bold tracking-widest uppercase">SAHNA</a>
-      <p class="text-zinc-500 text-xs md:text-sm mt-2">Joylarni tanlang va chiptani band qiling</p>
+      <p class="text-zinc-500 text-xs md:text-sm mt-2">Tadbirlarni tanlang va joylarni band qiling</p>
     </header>
 
-    <!-- 3 BOSQICHLI JOY TANLASH VA TO'LOV TIZIMI -->
-    <div class="w-full bg-[#121214] border border-[#26241e] rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(168,129,50,0.15)] min-h-[620px] relative my-auto">
+    <!-- 8 ta Card joylashadigan Grid -->
+    <div id="heroCards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </div>
+
+
+  <!-- MODAL: 3 BOSQICHLI JOY TANLASH VA TO'LOV OYNASI -->
+  <div id="bookingModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center p-2 sm:p-4 z-50 overflow-y-auto">
+    
+    <div class="w-full max-w-5xl bg-[#121214] border border-[#26241e] rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(168,129,50,0.15)] min-h-[620px] relative my-auto">
       
+      <!-- YOPISH TUGMASI -->
+      <button onclick="closeModal()" class="absolute top-4 right-5 text-zinc-400 hover:text-white text-2xl font-bold z-30">&times;</button>
+
       <!-- BOSQICH METRICASI (STEP INDICATOR) -->
       <div class="flex items-center justify-between border-b border-[#26241e] px-6 sm:px-8 py-4 bg-[#0f0e0d]">
         <div class="flex items-center gap-2">
-          <span id="modalEventHeaderTitle" class="font-serif tracking-wider text-[#dfb559] font-bold text-sm sm:text-base truncate max-w-[200px] sm:max-w-xs">Yulduzli kecha</span>
+          <span id="modalEventHeaderTitle" class="font-serif tracking-wider text-[#dfb559] font-bold text-sm sm:text-base truncate max-w-[200px] sm:max-w-xs">Tadbir</span>
         </div>
-        <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-wider font-medium">
+        <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-wider font-medium mr-6 sm:mr-0">
           <span id="step1-indicator" class="text-[#dfb559] flex items-center gap-1"><span class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#dfb559] text-black font-bold flex items-center justify-center text-[10px]">1</span> Joylar</span>
           <span class="text-zinc-600">&rarr;</span>
           <span id="step2-indicator" class="text-zinc-500 flex items-center gap-1"><span class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-zinc-800 text-zinc-400 font-bold flex items-center justify-center text-[10px]">2</span> To'lov</span>
@@ -112,7 +122,7 @@
       <div id="step-2" class="hidden p-6 md:p-8 max-w-xl mx-auto flex flex-col items-center">
         <div class="w-full text-center mb-5">
           <h2 class="font-serif text-2xl text-[#dfb559] tracking-wider uppercase mb-1">TO'LOV</h2>
-          <p id="payEventSub" class="text-xs text-zinc-400">Yulduzli kecha · Alisher Navoiy nomidagi teatr</p>
+          <p id="payEventSub" class="text-xs text-zinc-400">Tadbir nomi va kartangizni kiriting</p>
         </div>
 
         <!-- TO'LOV TABLARI -->
@@ -167,8 +177,8 @@
         <!-- CHIPTA PREVIEW CARD -->
         <div class="w-full bg-[#181613] border border-[#26241e] rounded-2xl p-5 mb-5 text-left relative">
           <div class="text-center pb-3 border-b border-[#26241e] mb-4">
-            <h3 id="ticketEventTitle" class="font-serif text-lg text-[#dfb559] font-semibold">Yulduzli kecha</h3>
-            <p id="ticketEventDetails" class="text-[11px] text-zinc-400 mt-1">📅 20-Jul, 19:00 · Alisher Navoiy nomidagi teatr</p>
+            <h3 id="ticketEventTitle" class="font-serif text-lg text-[#dfb559] font-semibold">Tadbir Nomi</h3>
+            <p id="ticketEventDetails" class="text-[11px] text-zinc-400 mt-1">📅 Sana va Joy</p>
           </div>
 
           <div class="bg-[#121214] p-3 rounded-xl border border-[#26241e] mb-4">
@@ -184,216 +194,262 @@
           </div>
         </div>
 
-        <!-- TUGMA BLOKI -->
-        <div class="w-full space-y-2.5 pt-2">
-          <a href="../index.html" 
-             onclick="alert('Chiptangiz saqlandi!')" 
-             class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#dfb559] via-[#e2be6e] to-[#a88132] text-black font-extrabold text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg shadow-[#dfb559]/20 hover:brightness-110 hover:shadow-[#dfb559]/30 active:scale-[0.98] transition-all duration-200">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-            </svg>
-            <span>Bosh sahifaga qaytish</span>
+        <div class="w-full space-y-2">
+          <a href="../index.html" onclick="closeModal(); alert('Chiptangiz saqlandi!')" class="w-full py-3 rounded-xl bg-gold-gradient text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all">
+            Yopish va Bosh sahifaga qaytish
           </a>
         </div>
       </div>
 
     </div>
   </div>
-  
 
+
+  <!-- JAVASCRIPT MANTIQLARI -->
   <script>
-  let selectedSeats = [];
-  let currentZoom = 1;
-  let currentEvent = null;
+    // 1. 8 TA TADBIRO’RINDIQ MA’LUMOTLAR BAZASI
+   const products = [
+  { id: 1, title: "Yulduzli kecha", date: "20-Jul, 19:00", venue: "Alisher Navoiy nomidagi teatr", image: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=600&auto=format&fit=crop", tickets: "644 / 750", revenue: "76.4 mln", status: "Jonli", statusType: "success" },
+  { id: 2, title: "Simfoniya Bahori", date: "22-Jul, 18:30", venue: "Konservatoriya Katta zali", image: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=600&auto=format&fit=crop", tickets: "510 / 600", revenue: "51.0 mln", status: "Jonli", statusType: "success" },
+  { id: 3, title: "Jazz & Wine Night", date: "25-Jul, 20:00", venue: "Tashkent City Park", image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop", tickets: "300 / 300", revenue: "45.0 mln", status: "Sotildi", statusType: "danger" },
+  { id: 4, title: "Otabek va Kumush (Drama)", date: "28-Jul, 18:00", venue: "O'zbek Milliy Akademik Teatri", image: "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?q=80&w=600&auto=format&fit=crop", tickets: "420 / 500", revenue: "33.6 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 5, title: "Retro Cinema Premier", date: "01-Aug, 21:00", venue: "Panorama Kinoteatri", image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=600&auto=format&fit=crop", tickets: "180 / 400", revenue: "14.4 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 6, title: "Klassik Organ Musiqasi", date: "03-Aug, 19:00", venue: "Organ Zali", image: "https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=600&auto=format&fit=crop", tickets: "120 / 250", revenue: "9.6 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 7, title: "Rok Fest Tashkent", date: "08-Aug, 17:00", venue: "Humo Arena", image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600&auto=format&fit=crop", tickets: "3200 / 5000", revenue: "480.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 8, title: "Zamonaviy Raqs Shousi", date: "12-Aug, 19:30", venue: "Turkiston San'at Saroyi", image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=600&auto=format&fit=crop", tickets: "750 / 800", revenue: "90.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 9, title: "Stand Up Night Tashkent", date: "15-Aug, 20:00", venue: "Xalqlar Do'stligi Saroyi", image: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?q=80&w=600&auto=format&fit=crop", tickets: "450 / 500", revenue: "40.5 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 10, title: "Sharq Taronalari Simfoniyasi", date: "18-Aug, 19:00", venue: "Alisher Navoiy nomidagi teatr", image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop", tickets: "600 / 750", revenue: "72.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 11, title: "Oqqush Ko'li (Balet)", date: "22-Aug, 18:00", venue: "Alisher Navoiy nomidagi teatr", image: "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=600&auto=format&fit=crop", tickets: "750 / 750", revenue: "112.5 mln", status: "Sotildi", statusType: "danger" },
+  { id: 12, title: "Indie Music Night", date: "25-Aug, 21:00", venue: "Tashkent City Park", image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?q=80&w=600&auto=format&fit=crop", tickets: "210 / 300", revenue: "25.2 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 13, title: "Toshkent Yumor Shousi", date: "28-Aug, 19:30", venue: "Turkiston San'at Saroyi", image: "https://images.unsplash.com/photo-1527261834078-9b37d35a4a32?q=80&w=600&auto=format&fit=crop", tickets: "780 / 800", revenue: "93.6 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 14, title: "Mustaqillik Gala Konserti", date: "01-Sep, 19:00", venue: "Humo Arena", image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop", tickets: "4800 / 5000", revenue: "720.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 15, title: "Mavsumiy Operetta Fest", date: "05-Sep, 18:30", venue: "O'zbekiston Davlat Operetta Teatri", image: "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?q=80&w=600&auto=format&fit=crop", tickets: "310 / 400", revenue: "31.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 16, title: "Akustik Gitara Kechasi", date: "10-Sep, 20:00", venue: "Konservatoriya Katta zali", image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600&auto=format&fit=crop", tickets: "550 / 600", revenue: "55.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 17, title: "Sehrli Qo'g'irchoqlar (Bolalar uchun)", date: "12-Sep, 12:00", venue: "O'zbekiston Davlat Qo'g'irchoq Teatri", image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=600&auto=format&fit=crop", tickets: "280 / 300", revenue: "14.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 18, title: "Beats of Tashkent (EDM)", date: "15-Sep, 22:00", venue: "Central Park", image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600&auto=format&fit=crop", tickets: "1200 / 1500", revenue: "180.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 19, title: "Xalq Cholg'ulari Ansambli", date: "20-Sep, 18:00", venue: "Turkiston San'at Saroyi", image: "https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=600&auto=format&fit=crop", tickets: "600 / 800", revenue: "48.0 mln", status: "Kutilmoqda", statusType: "warning" },
+  { id: 20, title: "Sharq Yulduzlari Shou-Konserti", date: "25-Sep, 19:30", venue: "Humo Arena", image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=600&auto=format&fit=crop", tickets: "5000 / 5000", revenue: "600.0 mln", status: "Sotildi", statusType: "danger" }
+];
+    let activeProduct = null;
+    let selectedSeats = [];
+    let currentZoom = 1;
 
-  // 1. SAHIFA YUKLANGANDA LOCALSTORAGE'DAN EVENT MA'LUMOTLARINI O'QISH
-  function loadEventData() {
-    const savedEvent = localStorage.getItem('selectedEvent');
-    if (savedEvent) {
-      currentEvent = JSON.parse(savedEvent);
-      
-      // Sarlavha va ma'lumotlarni sahifaga joylash
-      document.getElementById('modalEventHeaderTitle').textContent = currentEvent.title || 'Yulduzli kecha';
-      document.getElementById('payEventSub').textContent = `${currentEvent.title} · ${currentEvent.venue || "Alisher Navoiy nomidagi teatr"}`;
-      document.getElementById('ticketEventTitle').textContent = currentEvent.title || 'Yulduzli kecha';
-      document.getElementById('ticketEventDetails').textContent = `📅 ${currentEvent.date || '20-Jul, 19:00'} · ${currentEvent.venue || "Alisher Navoiy nomidagi teatr"}`;
-    }
-  }
-
-  // ZAL SXEMASI MA'LUMOTLARI
-  const SEAT_TYPES = {
-    VIP: { price: 450000, class: 'bg-gold-gradient border-transparent' },
-    PREMIUM: { price: 320000, class: 'bg-[#8a7238] border-transparent' },
-    STANDART: { price: 180000, class: 'border border-[#555] bg-transparent' },
-    SOLD: { price: 0, class: 'bg-[#1e1e1e] border border-[#2a2a2a] cursor-not-allowed opacity-40' }
-  };
-
-  const balkonData = Array.from({ length: 8 }, (_, i) => ({
-    id: `balkon-1-${i + 1}`, section: 'BALKON', row: 1, seat: i + 1, type: 'STANDART', price: 180000
-  }));
-
-  const parterRowsConfig = [
-    { row: 1, seats: 12, type: 'VIP', price: 450000 },
-    { row: 2, seats: 14, type: 'VIP', price: 450000 },
-    { row: 3, seats: 14, type: 'PREMIUM', price: 320000 },
-    { row: 4, seats: 16, type: 'PREMIUM', price: 280000 },
-    { row: 5, seats: 17, type: 'STANDART', price: 180000 },
-  ];
-  const soldSeatIds = ['parter-3-1', 'parter-3-2', 'parter-5-10'];
-
-  // BOSQICH LIK LOGIKA
-  function goToStep(step) {
-    document.getElementById('step-1').classList.add('hidden');
-    document.getElementById('step-2').classList.add('hidden');
-    document.getElementById('step-3').classList.add('hidden');
-
-    document.getElementById(`step-${step}`).classList.remove('hidden');
-
-    [1, 2, 3].forEach(s => {
-      const ind = document.getElementById(`step${s}-indicator`);
-      if (s === step) {
-        ind.className = 'text-[#dfb559] flex items-center gap-1';
-        ind.children[0].className = 'w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#dfb559] text-black font-bold flex items-center justify-center text-[10px]';
-      } else if (s < step) {
-        ind.className = 'text-emerald-400 flex items-center gap-1';
-        ind.children[0].className = 'w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-500 text-black font-bold flex items-center justify-center text-[10px]';
-      } else {
-        ind.className = 'text-zinc-500 flex items-center gap-1';
-        ind.children[0].className = 'w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-zinc-800 text-zinc-400 font-bold flex items-center justify-center text-[10px]';
-      }
-    });
-  }
-
-  document.getElementById('goToPaymentBtn').addEventListener('click', () => {
-    if (selectedSeats.length > 0) {
-      const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
-      document.getElementById('payAmount').textContent = total.toLocaleString('ru-RU');
-      goToStep(2);
-    }
-  });
-
-  // 2. TO'LOV MUVAFFAQIYATLI BO'LGANDA CHIPTANI LOCALSTORAGE'GA SAQLASH
-  function handlePaymentSubmit(e) {
-    e.preventDefault();
-    const summaryContainer = document.getElementById('finalSeatsSummary');
-    summaryContainer.innerHTML = '';
+    // 2. SAHIFADAGI 8 TA KARTOCHKANU RENDERING QILISH
+    const cardsContainer = document.getElementById('heroCards');
     
-    selectedSeats.forEach(s => {
-      summaryContainer.innerHTML += `<div>• ${s.section}, Qator ${s.row}, O'rindiq ${s.seat} (${s.price.toLocaleString('ru-RU')} so'm)</div>`;
-    });
+    function renderProducts() {
+      cardsContainer.innerHTML = '';
+      products.forEach(p => {
+        const cardHtml = `
+          <div class="group relative overflow-hidden rounded-[30px] border border-zinc-900 bg-gradient-to-br from-zinc-950 via-black to-zinc-950 p-5 shadow-2xl transition-all hover:border-[#D4AF37]/40 flex flex-col justify-between">
+            <div>
+              <div class="relative h-48 rounded-[20px] overflow-hidden mb-4">
+                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase ${
+                  p.statusType === 'success' ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
+                  p.statusType === 'danger' ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' :
+                  'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                }">${p.status}</span>
+              </div>
+              <h3 class="text-lg font-serif font-bold text-white mb-1 line-clamp-1">${p.title}</h3>
+              <p class="text-xs text-zinc-400 mb-1">${p.venue}</p>
+              <p class="text-xs text-[#dfb559] font-medium mb-4">${p.date}</p>
+            </div>
 
-    const ticketCode = '#SHN-' + Math.floor(10000 + Math.random() * 90000);
-    document.getElementById('ticketCode').textContent = ticketCode;
-
-    // LocalStorage-ga saqlanadigan chipta obyekti
-    const purchasedTicket = {
-      id: ticketCode,
-      event: currentEvent || { title: "Yulduzli kecha", venue: "Alisher Navoiy nomidagi teatr", date: "20-Jul, 19:00" },
-      seats: selectedSeats,
-      totalPrice: selectedSeats.reduce((sum, item) => sum + item.price, 0),
-      createdAt: new Date().toISOString()
-    };
-
-    // Avvalgi saqlangan chiptalar ro'yxatiga yangisini qo'shish
-    const existingTickets = JSON.parse(localStorage.getItem('myTickets')) || [];
-    existingTickets.push(purchasedTicket);
-    localStorage.setItem('myTickets', JSON.stringify(existingTickets));
-
-    goToStep(3);
-  }
-
-  // MAP RENDER VA UPDATE
-  function renderMap() {
-    const balkonContainer = document.getElementById('balkonRows');
-    const parterContainer = document.getElementById('parterRows');
-
-    balkonContainer.innerHTML = '';
-    balkonData.forEach(seat => balkonContainer.appendChild(createSeatElement(seat)));
-
-    parterContainer.innerHTML = '';
-    parterRowsConfig.forEach(rowConfig => {
-      const rowDiv = document.createElement('div');
-      rowDiv.className = 'flex gap-1.5 justify-center';
-      for (let i = 1; i <= rowConfig.seats; i++) {
-        const seatId = `parter-${rowConfig.row}-${i}`;
-        const isSold = soldSeatIds.includes(seatId);
-        rowDiv.appendChild(createSeatElement({
-          id: seatId, section: 'PARTER', row: rowConfig.row, seat: i,
-          type: isSold ? 'SOLD' : rowConfig.type, price: rowConfig.price
-        }));
-      }
-      parterContainer.appendChild(rowDiv);
-    });
-  }
-
-  function createSeatElement(seat) {
-    const btn = document.createElement('button');
-    const isSelected = selectedSeats.some(s => s.id === seat.id);
-    const isSold = seat.type === 'SOLD';
-
-    btn.className = `w-5 h-5 md:w-6 md:h-6 rounded-[3px] flex items-center justify-center transition-all duration-150 text-[10px] font-bold ${
-      isSold ? SEAT_TYPES.SOLD.class : 
-      isSelected ? 'bg-gold-gradient border-amber-300 text-black ring-2 ring-amber-400 scale-105' : 
-      SEAT_TYPES[seat.type].class + ' hover:scale-110'
-    }`;
-
-    if (isSelected) btn.innerHTML = '✓';
-    if (!isSold) btn.onclick = () => toggleSeatSelection(seat);
-    else btn.disabled = true;
-
-    return btn;
-  }
-
-  function toggleSeatSelection(seat) {
-    const index = selectedSeats.findIndex(s => s.id === seat.id);
-    if (index > -1) selectedSeats.splice(index, 1);
-    else selectedSeats.push(seat);
-    updateUI();
-  }
-
-  function removeSeat(seatId) {
-    selectedSeats = selectedSeats.filter(s => s.id !== seatId);
-    updateUI();
-  }
-
-  function updateUI() {
-    renderMap();
-    const selectedListContainer = document.getElementById('selectedList');
-    selectedListContainer.innerHTML = '';
-
-    if (selectedSeats.length === 0) {
-      selectedListContainer.innerHTML = `<div class="text-center py-8 text-zinc-600 text-xs">Hali hech qanday joy tanlanmadi</div>`;
-    } else {
-      selectedSeats.forEach(seat => {
-        const card = document.createElement('div');
-        card.className = 'bg-[#1f1d19] border border-[#2d2922] rounded-xl p-3 flex items-center justify-between text-xs';
-        card.innerHTML = `
-          <div>
-            <div class="text-[9px] text-zinc-400 uppercase font-semibold">${seat.section} • QATOR ${seat.row}</div>
-            <div class="text-zinc-200 font-bold">O'rindiq ${seat.seat}</div>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="font-semibold text-zinc-300">${seat.price.toLocaleString('ru-RU')}</span>
-            <button onclick="removeSeat('${seat.id}')" class="text-rose-500 hover:text-rose-400 font-bold text-base">&times;</button>
+            <div class="pt-3 border-t border-zinc-900/80 flex items-center justify-between gap-2">
+              <div>
+                <span class="text-[9px] text-zinc-500 uppercase block">Chiptalar</span>
+                <span class="text-xs text-zinc-300 font-bold">${p.tickets}</span>
+              </div>
+              <!-- AYNAN USHBU TADBIR UCHUN SOTIB OLISH TUGMASI -->
+              <button onclick="startBooking(${p.id})" class="py-2.5 px-4 rounded-full bg-gold-gradient text-black font-extrabold text-xs tracking-wider uppercase hover:brightness-110 transition-all">
+                Sotib olish
+              </button>
+            </div>
           </div>
         `;
-        selectedListContainer.appendChild(card);
+        cardsContainer.insertAdjacentHTML('beforeend', cardHtml);
       });
     }
 
-    const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
-    document.getElementById('totalPrice').textContent = total.toLocaleString('ru-RU');
-    document.getElementById('goToPaymentBtn').disabled = selectedSeats.length === 0;
-  }
+    // 3. QAYSI CARD BOSILSA, O'SHA TADBIRNI OCHISH
+    function startBooking(productId) {
+      activeProduct = products.find(p => p.id === productId);
+      if (!activeProduct) return;
 
-  // ZOOM VA RESET
-  document.getElementById('resetBtn').addEventListener('click', () => { selectedSeats = []; updateUI(); });
-  document.getElementById('zoomIn').addEventListener('click', () => { if (currentZoom < 1.3) document.getElementById('seatMap').style.transform = `scale(${currentZoom += 0.1})`; });
-  document.getElementById('zoomOut').addEventListener('click', () => { if (currentZoom > 0.7) document.getElementById('seatMap').style.transform = `scale(${currentZoom -= 0.1})`; });
+      selectedSeats = [];
+      updateUI();
 
-  // DASTLABKI ISHGA TUSHIRISH
-  loadEventData();
-  updateUI();
-</script>
+      // Modal sarlavhalarini yangilash
+      document.getElementById('modalEventHeaderTitle').textContent = activeProduct.title;
+      document.getElementById('payEventSub').textContent = `${activeProduct.title} · ${activeProduct.venue}`;
+      document.getElementById('ticketEventTitle').textContent = activeProduct.title;
+      document.getElementById('ticketEventDetails').textContent = `📅 ${activeProduct.date} · ${activeProduct.venue}`;
+
+      goToStep(1);
+      document.getElementById('bookingModal').classList.remove('hidden');
+      document.getElementById('bookingModal').classList.add('flex');
+    }
+
+    function closeModal() {
+      document.getElementById('bookingModal').classList.add('hidden');
+      document.getElementById('bookingModal').classList.remove('flex');
+    }
+
+    // 4. ZAL SXEMASI MA'LUMOTLARI
+    const SEAT_TYPES = {
+      VIP: { price: 450000, class: 'bg-gold-gradient border-transparent' },
+      PREMIUM: { price: 320000, class: 'bg-[#8a7238] border-transparent' },
+      STANDART: { price: 180000, class: 'border border-[#555] bg-transparent' },
+      SOLD: { price: 0, class: 'bg-[#1e1e1e] border border-[#2a2a2a] cursor-not-allowed opacity-40' }
+    };
+
+    const balkonData = Array.from({ length: 8 }, (_, i) => ({
+      id: `balkon-1-${i + 1}`, section: 'BALKON', row: 1, seat: i + 1, type: 'STANDART', price: 180000
+    }));
+
+    const parterRowsConfig = [
+      { row: 1, seats: 12, type: 'VIP', price: 450000 },
+      { row: 2, seats: 14, type: 'VIP', price: 450000 },
+      { row: 3, seats: 14, type: 'PREMIUM', price: 320000 },
+      { row: 4, seats: 16, type: 'PREMIUM', price: 280000 },
+      { row: 5, seats: 17, type: 'STANDART', price: 180000 },
+    ];
+    const soldSeatIds = ['parter-3-1', 'parter-3-2', 'parter-5-10'];
+
+    // 5. MODAL ICHIDAGI 3 BOSQICH LIK LOGIKA
+    function goToStep(step) {
+      document.getElementById('step-1').classList.add('hidden');
+      document.getElementById('step-2').classList.add('hidden');
+      document.getElementById('step-3').classList.add('hidden');
+
+      document.getElementById(`step-${step}`).classList.remove('hidden');
+
+      [1, 2, 3].forEach(s => {
+        const ind = document.getElementById(`step${s}-indicator`);
+        if (s === step) {
+          ind.className = 'text-[#dfb559] flex items-center gap-1';
+          ind.children[0].className = 'w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#dfb559] text-black font-bold flex items-center justify-center text-[10px]';
+        } else if (s < step) {
+          ind.className = 'text-emerald-400 flex items-center gap-1';
+          ind.children[0].className = 'w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-500 text-black font-bold flex items-center justify-center text-[10px]';
+        } else {
+          ind.className = 'text-zinc-500 flex items-center gap-1';
+          ind.children[0].className = 'w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-zinc-800 text-zinc-400 font-bold flex items-center justify-center text-[10px]';
+        }
+      });
+    }
+
+    document.getElementById('goToPaymentBtn').addEventListener('click', () => {
+      if (selectedSeats.length > 0) {
+        const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
+        document.getElementById('payAmount').textContent = total.toLocaleString('ru-RU');
+        goToStep(2);
+      }
+    });
+
+    function handlePaymentSubmit(e) {
+      e.preventDefault();
+      const summaryContainer = document.getElementById('finalSeatsSummary');
+      summaryContainer.innerHTML = '';
+      selectedSeats.forEach(s => {
+        summaryContainer.innerHTML += `<div>• ${s.section}, Qator ${s.row}, O'rindiq ${s.seat} (${s.price.toLocaleString('ru-RU')} so'm)</div>`;
+      });
+      document.getElementById('ticketCode').textContent = '#SHN-' + Math.floor(10000 + Math.random() * 90000);
+      goToStep(3);
+    }
+
+    // 6. MAP RENDER VA UPDATE
+    function renderMap() {
+      const balkonContainer = document.getElementById('balkonRows');
+      const parterContainer = document.getElementById('parterRows');
+
+      balkonContainer.innerHTML = '';
+      balkonData.forEach(seat => balkonContainer.appendChild(createSeatElement(seat)));
+
+      parterContainer.innerHTML = '';
+      parterRowsConfig.forEach(rowConfig => {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'flex gap-1.5 justify-center';
+        for (let i = 1; i <= rowConfig.seats; i++) {
+          const seatId = `parter-${rowConfig.row}-${i}`;
+          const isSold = soldSeatIds.includes(seatId);
+          rowDiv.appendChild(createSeatElement({
+            id: seatId, section: 'PARTER', row: rowConfig.row, seat: i,
+            type: isSold ? 'SOLD' : rowConfig.type, price: rowConfig.price
+          }));
+        }
+        parterContainer.appendChild(rowDiv);
+      });
+    }
+
+    function createSeatElement(seat) {
+      const btn = document.createElement('button');
+      const isSelected = selectedSeats.some(s => s.id === seat.id);
+      const isSold = seat.type === 'SOLD';
+
+      btn.className = `w-5 h-5 md:w-6 md:h-6 rounded-[3px] flex items-center justify-center transition-all duration-150 text-[10px] font-bold ${
+        isSold ? SEAT_TYPES.SOLD.class : 
+        isSelected ? 'bg-gold-gradient border-amber-300 text-black ring-2 ring-amber-400 scale-105' : 
+        SEAT_TYPES[seat.type].class + ' hover:scale-110'
+      }`;
+
+      if (isSelected) btn.innerHTML = '✓';
+      if (!isSold) btn.onclick = () => toggleSeatSelection(seat);
+      else btn.disabled = true;
+
+      return btn;
+    }
+
+    function toggleSeatSelection(seat) {
+      const index = selectedSeats.findIndex(s => s.id === seat.id);
+      if (index > -1) selectedSeats.splice(index, 1);
+      else selectedSeats.push(seat);
+      updateUI();
+    }
+
+    function removeSeat(seatId) {
+      selectedSeats = selectedSeats.filter(s => s.id !== seatId);
+      updateUI();
+    }
+
+    function updateUI() {
+      renderMap();
+      const selectedListContainer = document.getElementById('selectedList');
+      selectedListContainer.innerHTML = '';
+
+      if (selectedSeats.length === 0) {
+        selectedListContainer.innerHTML = `<div class="text-center py-8 text-zinc-600 text-xs">Hali hech qanday joy tanlanmadi</div>`;
+      } else {
+        selectedSeats.forEach(seat => {
+          const card = document.createElement('div');
+          card.className = 'bg-[#1f1d19] border border-[#2d2922] rounded-xl p-3 flex items-center justify-between text-xs';
+          card.innerHTML = `
+            <div>
+              <div class="text-[9px] text-zinc-400 uppercase font-semibold">${seat.section} • QATOR ${seat.row}</div>
+              <div class="text-zinc-200 font-bold">O'rindiq ${seat.seat}</div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-semibold text-zinc-300">${seat.price.toLocaleString('ru-RU')}</span>
+              <button onclick="removeSeat('${seat.id}')" class="text-rose-500 hover:text-rose-400 font-bold text-base">&times;</button>
+            </div>
+          `;
+          selectedListContainer.appendChild(card);
+        });
+      }
+
+      const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
+      document.getElementById('totalPrice').textContent = total.toLocaleString('ru-RU');
+      document.getElementById('goToPaymentBtn').disabled = selectedSeats.length === 0;
+    }
+
+    // ZOOM VA RESET
+    document.getElementById('resetBtn').addEventListener('click', () => { selectedSeats = []; updateUI(); });
+    document.getElementById('zoomIn').addEventListener('click', () => { if (currentZoom < 1.3) document.getElementById('seatMap').style.transform = `scale(${currentZoom += 0.1})`; });
+    document.getElementById('zoomOut').addEventListener('click', () => { if (currentZoom > 0.7) document.getElementById('seatMap').style.transform = `scale(${currentZoom -= 0.1})`; });
+
+    // Sahifa yuklanganda 8 ta cardni chiqarish
+    renderProducts();
+  </script>
 </body>
 </html>

@@ -240,7 +240,6 @@ let products = [
 
 
 
-
 // LocalStorage va Savat holati
 let savat = JSON.parse(localStorage.getItem("savat")) || [];
 
@@ -313,19 +312,13 @@ function createCardHTML(el, isCart = false) {
                       : `<button onclick="addToCart(${el.id})" class="w-12 h-12 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center hover:border-rose-500/50 hover:text-rose-500">
                            <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" class="fill-zinc-500 hover:fill-rose-500"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/></path></svg>
                          </button>
-                         <a href="./pages/joy.html"  class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium flex items-center justify-center hover:bg-[#D4AF37] hover:text-black">Sotib olish</a>`
+                         <a href="./pages/joy.html" class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium flex items-center justify-center hover:bg-[#D4AF37] hover:text-black">Sotib olish</a>`
                   }
               </div>
           </div>
       </div>
     </div>
   `;
-}
-// Bosh sahifadagi (index.html) "Sotib olish" tugmasiga ulash uchun funksiya:
-function openBooking(eventData) {
-  // Masalan: { title: "Yulduzli kecha", venue: "Alisher Navoiy nomidagi teatr", date: "20-Jul, 19:00" }
-  localStorage.setItem('selectedEvent', JSON.stringify(eventData));
-  window.location.href = 'pages/booking.html'; // joy tanlash sahifangiz yo'li
 }
 
 // Dynamic Video Interaktivlik Interfeysi (Hover, Unmute & Drag-and-Drop)
@@ -496,7 +489,6 @@ function filterAndRender() {
 
   showProducts(heroCards, filtered);
 }
-
 
 // Boshlang'ich yuklash
 showProducts(heroCards, products);
