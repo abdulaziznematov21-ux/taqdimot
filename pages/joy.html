@@ -18,8 +18,160 @@
     }
   </style>
 </head>
-<body class="bg-[#0a0908] text-[#d1ccc4] font-sans min-h-screen p-4 sm:p-8">
+<body class="bg-[#0a0908] text-[#d1ccc4] font-sans ">
+   <header class=" w-full max-w-full bg-[#15110d] border-b border-[#c9b07b] shadow-xl ">
+    
+    <!-- Top Bar -->
+    <div class="w-full bg-[#0b0b0b] border-b border-white/10 text-[#b8b8b8] text-[11px] sm:text-xs py-2 sm:py-0 sm:h-10">
+        <div class="max-w-7xl mx-auto h-full px-3 sm:px-6 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 sm:gap-0">
 
+            <!-- Left -->
+            <div class="flex items-center gap-3 sm:gap-8">
+                <div class="flex items-center gap-1.5 uppercase tracking-[1.5px] sm:tracking-[3px] text-[9px] sm:text-[11px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-[#d4af37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z" />
+                    </svg>
+                    <span class="whitespace-nowrap">TASDIQLANGAN CHIPTALAR</span>
+                </div>
+
+                <div class="hidden md:flex items-center gap-2 uppercase tracking-[3px] text-[11px] text-[#e8c56b]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 shrink-0" viewBox="0 -960 960 960" fill="currentColor">
+                        <path d="M440-120v-80h320v-284q0-117-81.5-198.5T480-764q-117 0-198.5 81.5T200-484v244h-40q-33 0-56.5-23.5T80-320v-80q0-21 10.5-39.5T120-469l3-53q8-68 39.5-126t79-101q47.5-43 109-67T480-840q68 0 129 24t109 66.5Q766-707 797-649t40 126l3 52q19 9 29.5 27t10.5 38v92q0 20-10.5 38T840-249v49q0 33-23.5 56.5T760-120H440ZM331.5-411.5Q320-423 320-440t11.5-28.5Q343-480 360-480t28.5 11.5Q400-457 400-440t-11.5 28.5Q377-400 360-400t-28.5-11.5Zm240 0Q560-423 560-440t11.5-28.5Q583-480 600-480t28.5 11.5Q640-457 640-440t-11.5 28.5Q617-400 600-400t-28.5-11.5ZM241-462q-7-106 64-182t177-76q89 0 156.5 56.5T720-519q-91-1-167.5-49T435-698q-16 80-67.5 142.5T241-462Z" />
+                    </svg>
+                    <span class="text-[#b8b8b8] whitespace-nowrap">24/7 QO'LLAB-QUVVATLASH</span>
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="flex items-center gap-3 sm:gap-6 text-[11px] sm:text-[13px]">
+                <a href="#" class="flex items-center gap-1 hover:text-white transition whitespace-nowrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z" />
+                        <circle cx="12" cy="10" r="2" />
+                    </svg>
+                    Toshkent
+                </a>
+
+                <a href="#" class="hover:text-white transition whitespace-nowrap">Yordam</a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="max-w-7xl mx-auto h-16 sm:h-20 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-4 xl:gap-6">
+
+        <!-- Logo -->
+        <a href="../index.html" class="text-[26px] min-[360px]:text-[32px] sm:text-[40px] xl:text-[52px] font-serif text-[#e8c56b] leading-none shrink-0 tracking-tight">
+            SAHNA
+        </a>
+
+        <!-- Desktop Menu -->
+<nav class="hidden xl:flex items-center gap-5 2xl:gap-8 ml-2">
+    <a href="../pages/tadbirlar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tadbirlar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    <a href="../pages/chiptalarim.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Kategoriyalar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+    
+    <a href="../pages/tashkilotchilar.html" class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
+        Tashkilotchilar
+        <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
+    </a>
+</nav>
+
+        <!-- Search Container (Desktop) -->
+        <div id="search-btn" class="relative hidden min-[480px]:block w-full max-w-[200px] sm:max-w-xs md:max-w-md xl:max-w-xl">
+            <div class="w-full flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 shadow-md hover:border-[#D4AF37]/50 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 ml-1 mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16 10.5A5.5 5.5 0 115 10.5a5.5 5.5 0 0111 0z" />
+                </svg>
+                <input type="text" class="search-input w-full bg-transparent outline-none text-white placeholder:text-zinc-500 text-xs sm:text-sm py-1.5" placeholder="Qidiring..." />
+                <button class="micro w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-amber-500 to-[#D4AF37] flex justify-center items-center text-black shadow hover:scale-105 transition-all shrink-0 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a1 1 0 112 0 7 7 0 01-6 6.92V21h3a1 1 0 110 2H8a1 1 0 010-2h3v-2.08A7 7 0 015 12a1 1 0 112 0 5 5 0 0010 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-cards hidden absolute top-full mt-2 left-0 w-full bg-zinc-900/95 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl z-50 max-h-[350px] overflow-y-auto p-2 divide-y divide-zinc-800/60"></div>
+        </div>
+
+        <!-- Desktop Action Buttons -->
+        <div class="hidden xl:flex items-center gap-3 2xl:gap-5 shrink-0">
+            <a href="../pages/cart.html" class="relative w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-[#D4AF37] hover:text-[#D4AF37] flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e3e3e3"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+                <span class="count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D4AF37] text-black text-[9px] font-bold flex items-center justify-center border border-black shadow-md">0</span>
+            </a>
+
+        
+
+            <a href="../pages/profile.html" id="login-btn-desktop" class="flex items-center px-4 h-9 rounded-full border border-[#d5b971] text-white text-xs 2xl:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition whitespace-nowrap cursor-pointer">Kirish</a>
+            <a href="../pages/cart.html" class="flex items-center px-4 h-9 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs 2xl:text-sm font-bold shadow hover:scale-105 transition whitespace-nowrap shrink-0">+Tadbir </a>
+        </div>
+
+        <!-- Mobile & Tablet Controls -->
+        <div class="flex xl:hidden items-center gap-1.5 sm:gap-3 shrink-0">
+            <a href="../pages/cart.html" class="relative w-10 h-10 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-[#D4AF37] hover:text-[#D4AF37] flex items-center justify-center transition-all duration-300 group cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#e3e3e3"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg>
+                <span class="count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#D4AF37] text-black text-[9px] font-bold flex items-center justify-center border border-black shadow-md">0</span>
+            </a>
+
+            <!-- Menu Toggle Button -->
+            <button id="menu-toggle-btn" class="text-white p-1 focus:outline-none">
+                <!-- Hamburger Icon -->
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <!-- Close Icon -->
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Mobile / Tablet Dropdown Menu -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-[#15110d] border-b border-[#c9b07b] px-4 pt-3 pb-6 space-y-4 shadow-2xl transition-all duration-300">
+
+        <!-- Mobile Search -->
+        <div class="relative min-[480px]:hidden w-full">
+            <div class="w-full flex items-center bg-zinc-900/80 backdrop-blur-2xl border border-zinc-800 rounded-full px-2.5 sm:px-3 py-0.5 sm:py-1 shadow-md hover:border-[#D4AF37]/50 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 ml-1 mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M16 10.5A5.5 5.5 0 115 10.5a5.5 5.5 0 0111 0z" />
+                </svg>
+                <input type="text" class="search-input w-full bg-transparent outline-none text-white placeholder:text-zinc-500 text-xs sm:text-sm py-1.5" placeholder="Qidiring..." />
+                <button class="micro w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-amber-500 to-[#D4AF37] flex justify-center items-center text-black shadow hover:scale-105 transition-all shrink-0 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a1 1 0 112 0 7 7 0 01-6 6.92V21h3a1 1 0 110 2H8a1 1 0 010-2h3v-2.08A7 7 0 015 12a1 1 0 112 0 5 5 0 0010 0z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="search-cards hidden absolute top-full mt-2 left-0 w-full bg-zinc-900/95 backdrop-blur-xl border border-zinc-800 rounded-xl shadow-2xl z-50 max-h-[350px] overflow-y-auto p-2 divide-y divide-zinc-800/60"></div>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-col gap-2.5 pt-1 text-sm sm:text-base">
+            <a href="../pages/tadbirlar.html" class="text-[#e8c56b] font-semibold py-1">Tadbirlar</a>
+            <a href="../pages/chiptalarim.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Kategoriyalar</a>
+         
+            <a href="../pages/tashkilotchilar.html" class="text-white/80 hover:text-[#e8c56b] transition py-1">Tashkilotchilar</a>
+        </div>
+
+        <!-- Buttons -->
+        <div class="pt-3 border-t border-white/10 flex flex-col sm:flex-row gap-2.5">
+            <a href="./profile.html" id="login-btn-mobile" class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full border border-[#d5b971] text-white text-xs sm:text-sm font-semibold hover:bg-[#d5b971] hover:text-black transition  flex justify-center  items-center">
+                Kirish
+            </a>
+            <button class="w-full sm:w-1/2 h-9 sm:h-10 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs sm:text-sm font-bold shadow-lg">
+                + Tadbir 
+            </button>
+        </div>
+    </div>
+</header>
   <!-- ASOSIY SAHIFA: 8 TA KARTOCHKA RO'YXATI -->
 <div class="max-w-7xl mx-auto">
   <header class="text-center my-8">
@@ -184,7 +336,130 @@
   </div>
 </div>
 
+<footer class="w-full bg-[#070604] text-[#8c8273] pt-16 pb-12 px-4 sm:px-6 lg:px-8 border-t border-[#1a1612] font-sans">
+    <div class="max-w-7xl mx-auto">
 
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-12">
+
+            <!-- Col 1: Brand Info (4 cols) -->
+            <div class="lg:col-span-4 space-y-6">
+                <!-- Logo -->
+                <h1 class="text-3xl font-serif font-bold text-[#edd38d] tracking-widest uppercase">
+                    SAHNA
+                </h1>
+
+                <!-- Description -->
+                <p class="text-sm text-[#8c8273] leading-relaxed max-w-sm">
+                    Sizning premium tadbirlar olamiga yo'llanmangiz. Har bir chipta — yangi sarguzasht.
+                </p>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-3 pt-2">
+                    <!-- Website / Veb sayt -->
+                    <a href="https://sahna.uz" target="_blank" rel="noopener noreferrer" title="Veb-sayt"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                            <path d="M324-111.5Q251-143 197-197t-85.5-127Q80-397 80-480t31.5-156Q143-709 197-763t127-85.5Q397-880 480-880t156 31.5Q709-817 763-763t85.5 127Q880-563 880-480t-31.5 156Q817-251 763-197t-127 85.5Q563-80 480-80t-156-31.5ZM440-162v-78q-33 0-56.5-23.5T360-320v-40L168-552q-3 18-5.5 36t-2.5 36q0 121 79.5 212T440-162Zm276-102q41-45 62.5-100.5T800-480q0-98-54.5-179T600-776v16q0 33-23.5 56.5T520-680h-80v80q0 17-11.5 28.5T400-560h-80v80h240q17 0 28.5 11.5T600-440v120h40q26 0 47 15.5t29 40.5Z" />
+                        </svg>
+                    </a>
+
+                    <!-- Telegram -->
+                    <a href="https://t.me/sahna_uz" target="_blank" rel="noopener noreferrer" title="Telegram"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 6.63 5.37 12 12 12s12-5.37 12-12C24 5.37 18.63 0 12 0zm5.56 8.16l-1.92 9.06c-.14.65-.53.81-1.08.5l-2.96-2.18-1.43 1.38c-.16.16-.29.29-.6.29l.21-3.02 5.5-4.97c.24-.21-.05-.33-.37-.12l-6.8 4.28-2.93-.92c-.64-.2-.65-.64.13-.95l11.45-4.41c.53-.19 1 .13.8 1.06z" />
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/sahna_uz" target="_blank" rel="noopener noreferrer" title="Instagram"
+                        class="w-10 h-10 rounded-full border border-[#2e261f] bg-[#120e0a] text-[#d1ccc4] flex items-center justify-center hover:border-[#edd38d] hover:text-[#edd38d] transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                            <path d="M480-260q75 0 127.5-52.5T660-440q0-5-.5-10t-1.5-10h-80q2 5 2 10v10q0 42-29 71t-71 29H330q24 36 63.5 58t86.5 22ZM302-420h80q-2-5-2-10v-10q0-42 29-71t71-29h150q-24-36-63.5-58T480-620q-75 0-127.5 52.5T300-440q0 5 .5 10t1.5 10ZM160-120q-33 0-56.5-23.5T80-200v-480q0-33 23.5-56.5T160-760h126l74-80h240l74 80h126q33 0 56.5 23.5T880-680v480q0 33-23.5 56.5T800-120H160Zm0-80h640v-480H638l-73-80H395l-73 80H160v480Zm320-240Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Kategoriyalar (2.5 cols) -->
+            <div class="lg:col-span-2 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Kategoriyalar
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#concerts" class="hover:text-[#edd38d] transition-colors">Konsertlar</a></li>
+                    <li><a href="#theaters" class="hover:text-[#edd38d] transition-colors">Teatrlar</a></li>
+                    <li><a href="#cinema" class="hover:text-[#edd38d] transition-colors">Kino</a></li>
+                    <li><a href="#sports" class="hover:text-[#edd38d] transition-colors">Sport</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Yordam (2.5 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Yordam
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#faqAccordion" class="hover:text-[#edd38d] transition-colors">Tez-tez beriladigan savollar</a></li>
+                    <li><a href="#oferta" class="hover:text-[#edd38d] transition-colors">Ommaviy oferta</a></li>
+                    <li><a href="#privacy" class="hover:text-[#edd38d] transition-colors">Maxfiylik siyosati</a></li>
+                    <li><a href="#contact" class="hover:text-[#edd38d] transition-colors">Bog'lanish</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: App Download Buttons (3 cols) -->
+            <div class="lg:col-span-3 space-y-4">
+                <h3 class="text-sm font-serif font-medium text-[#f3efe6] tracking-wide">
+                    Ilovani yuklang
+                </h3>
+                <div class="space-y-3">
+                    <!-- App Store Button (Ishtirok etadi va Ochiladi) -->
+                    <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] active:scale-95 text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.62-.75 1.04-1.8 0.93-2.85-.9.04-2 .6-2.65 1.37-.58.67-.99 1.74-.85 2.77 1.01.08 2.05-.54 2.57-1.29z" />
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">AVAILABLE ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">App Store</span>
+                        </div>
+                    </a>
+
+                    <!-- Google Play Button (Ishtirok etadi va Ochiladi) -->
+                    <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer"
+                        class="flex items-center gap-3 px-5 py-3 rounded-2xl bg-[#171310] border border-[#2e261f] hover:border-[#edd38d] active:scale-95 text-[#f3efe6] transition-all group">
+                        <svg class="w-7 h-7 fill-current shrink-0" viewBox="0 0 24 24">
+                            <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734c0-.396.23-.746.609-.92zm11.3 9.072l2.609-2.608-11.83-6.83 9.221 9.438zm0 2.228l-9.221 9.438 11.83-6.83-2.609-2.608zm1.414-1.414l3.18 1.836c.646.373.646 1.127 0 1.5l-3.18 1.836-2.316-2.316 2.316-2.856z" />
+                        </svg>
+                        <div class="text-left">
+                            <span class="block text-[10px] uppercase text-[#8c8273] font-mono leading-none">GET IT ON</span>
+                            <span class="block text-sm font-semibold tracking-wide">Google Play</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Row: Copyright & Payment Badges -->
+        <div class="pt-8 border-t border-[#1a1612] flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+            <!-- Copyright -->
+            <p class="text-[#73685a]">
+                © 2026 SAHNA. Barcha huquqlar himoyalangan.
+            </p>
+
+            <!-- Payment Methods Badges -->
+            <div class="flex items-center gap-2">
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">CLICK</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">PAYME</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">UZUM</span>
+                <span class="px-3 py-1.5 rounded bg-[#14110e] border border-[#26201a] font-mono text-[11px] font-semibold text-[#8c8273] tracking-wider uppercase">VISA</span>
+            </div>
+        </div>
+
+    </div>
+</footer>
 <!-- JAVASCRIPT MANTIQLARI -->
 <script>
   // 1. 8 TA TADBIRO’RINDIQ MA’LUMOTLAR BAZASI
