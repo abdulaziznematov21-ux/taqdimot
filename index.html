@@ -78,7 +78,7 @@
                     <span
                         class="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#e8c56b] rounded-full transition-all duration-300 ease-out group-hover:w-full"></span>
                 </a>
-                
+
                 <a href="./pages/tashkilotchilar.html"
                     class="relative text-white/80 text-sm 2xl:text-base whitespace-nowrap py-1 group transition-colors duration-300 hover:text-[#e8c56b]">
                     Tashkilotchilar
@@ -187,7 +187,7 @@
                     class="nav-link-mobile text-[#e8c56b] font-semibold py-1.5 border-b border-zinc-800/40">Tadbirlar</a>
                 <a href="./pages/chiptalarim.html"
                     class="nav-link-mobile text-white/80 hover:text-[#e8c56b] transition py-1.5 border-b border-zinc-800/40">Kategoriyalar</a>
-               
+
                 <a href="./pages/tashkilotchilar.html"
                     class="nav-link-mobile text-white/80 hover:text-[#e8c56b] transition py-1.5">Tashkilotchilar</a>
             </div>
@@ -200,7 +200,7 @@
                 </button>
                 <a href="./pages/chiptalarim.html"
                     class="w-full sm:w-1/2 h-10 rounded-full bg-gradient-to-r from-[#c69b2c] to-[#f2d67d] text-black text-xs sm:text-sm font-bold shadow-lg flex items-center justify-center">
-                    + Tadbir 
+                    + Tadbir
                 </a>
             </div>
         </div>
@@ -517,46 +517,46 @@
                                 class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10 [color-scheme:dark]" />
                         </div>
 
-                       <!-- JavaScript skripti -->
-        <script>
-           document.addEventListener('DOMContentLoaded', () => {
-    const dateInput = document.getElementById('date-input');
-    const dateValue = document.getElementById('date-value');
-    const dateTrigger = document.getElementById('date-trigger');
+                        <!-- JavaScript skripti -->
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const dateInput = document.getElementById('date-input');
+                                const dateValue = document.getElementById('date-value');
+                                const dateTrigger = document.getElementById('date-trigger');
 
-    // Blok ustiga bosilganda date picker-ni ochish
-    dateTrigger.addEventListener('click', () => {
-        if ('showPicker' in HTMLInputElement.prototype) {
-            dateInput.showPicker();
-        }
-    });
+                                // Blok ustiga bosilganda date picker-ni ochish
+                                dateTrigger.addEventListener('click', () => {
+                                    if ('showPicker' in HTMLInputElement.prototype) {
+                                        dateInput.showPicker();
+                                    }
+                                });
 
-    // Sana tanlanganda ishlaydigan funksiya
-    dateInput.addEventListener('change', (e) => {
-        const val = e.target.value;
-        if (val) {
-            const date = new Date(val);
-            
-            // Sanani chiroyli ko'rinishda formatlash
-            const formattedDate = date.toLocaleDateString('uz-UZ', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
+                                // Sana tanlanganda ishlaydigan funksiya
+                                dateInput.addEventListener('change', (e) => {
+                                    const val = e.target.value;
+                                    if (val) {
+                                        const date = new Date(val);
 
-            // Matnni o'zgartirish
-            dateValue.textContent = formattedDate;
+                                        // Sanani chiroyli ko'rinishda formatlash
+                                        const formattedDate = date.toLocaleDateString('uz-UZ', {
+                                            day: 'numeric',
+                                            month: 'long',
+                                            year: 'numeric'
+                                        });
 
-            // Sana tanlanganda yorqin Oltin/Qora (Gold & Dark) uslubini qo'llash
-            dateValue.className = "text-transparent bg-clip-text bg-gradient-to-r from-[#ffe599] via-[#d4b15a] to-[#997a15] font-bold text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] transition-all duration-300";
-        } else {
-            dateValue.textContent = 'Sana tanlang';
-            // Boshlang'ich holatdagi xira matn uslubi
-            dateValue.className = "text-white/60 text-lg font-medium";
-        }
-    });
-});
-        </script>
+                                        // Matnni o'zgartirish
+                                        dateValue.textContent = formattedDate;
+
+                                        // Sana tanlanganda yorqin Oltin/Qora (Gold & Dark) uslubini qo'llash
+                                        dateValue.className = "text-transparent bg-clip-text bg-gradient-to-r from-[#ffe599] via-[#d4b15a] to-[#997a15] font-bold text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] transition-all duration-300";
+                                    } else {
+                                        dateValue.textContent = 'Sana tanlang';
+                                        // Boshlang'ich holatdagi xira matn uslubi
+                                        dateValue.className = "text-white/60 text-lg font-medium";
+                                    }
+                                });
+                            });
+                        </script>
 
                         <!-- Category -->
                         <div id="category-trigger"
@@ -937,7 +937,7 @@
                 <div class="grid grid-cols-1 hero-cards sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <!-- Kartochkalar dinamik ravishda shu yerga joylashadi -->
                 </div>
-                
+
 
             </div>
         </section>
