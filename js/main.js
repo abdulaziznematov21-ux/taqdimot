@@ -247,6 +247,44 @@ function updateCount() {
   if (count) count.innerHTML = savat.length;
 }
 
+// Yoqtirilganlar (Like) holati
+let likedIds = JSON.parse(localStorage.getItem("sahna_likes")) || [];
+
+function isLiked(id) {
+  return likedIds.includes(id);
+}
+
+function toggleLike(id, btn) {
+  if (likedIds.includes(id)) {
+    likedIds = likedIds.filter((likeId) => likeId !== id);
+  } else {
+    likedIds.push(id);
+  }
+  localStorage.setItem("sahna_likes", JSON.stringify(likedIds));
+  if (btn) setLikeBtnState(btn, likedIds.includes(id));
+}
+
+function setLikeBtnState(btn, liked) {
+  const icon = btn.querySelector(".like-icon");
+  if (liked) {
+    btn.classList.add("border-rose-500/60", "bg-rose-500/10");
+    if (icon) icon.classList.replace("fill-zinc-500", "fill-rose-500");
+    btn.title = "Yoqtirilganlardan olib tashlash";
+  } else {
+    btn.classList.remove("border-rose-500/60", "bg-rose-500/10");
+    if (icon) icon.classList.replace("fill-rose-500", "fill-zinc-500");
+    btn.title = "Yoqtirish";
+  }
+}
+
+function applyLikedStates(container) {
+  if (!container) return;
+  container.querySelectorAll(".like-btn[data-like-id]").forEach((btn) => {
+    const id = Number(btn.getAttribute("data-like-id"));
+    setLikeBtnState(btn, isLiked(id));
+  });
+}
+
 // Card shabloni (HTML)
 function createCardHTML(el, isCart = false) {
   return `
@@ -267,21 +305,21 @@ function createCardHTML(el, isCart = false) {
       <!-- Rasm va Drag-able Dumaloq Video Konteyneri -->
       <div class="card-media-wrapper relative z-10 overflow-hidden rounded-[30px] bg-zinc-900/40 border border-zinc-900/80 p-2 flex items-center justify-center h-[236px] select-none">
           <img src="${el.image}" alt="${el.title}" class="w-full h-full object-cover rounded-[22px] transition-all duration-500 group-hover:scale-105 group-hover:brightness-50 pointer-events-none" />
-          
+
           <!-- Drag-able Dumaloq Video Box -->
-          <div class="video-container absolute w-36 h-36 rounded-full border-2 border-[#D4AF37]/80 shadow-[0_0_30px_rgba(212,175,55,0.4)] opacity-0 scale-50 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 cursor-grab active:cursor-grabbing overflow-hidden z-20 flex items-center justify-center">
-              <video src="${el.video}" loop muted playsinline class="w-full h-full object-cover pointer-events-none"></video>
-              
+          <div class="video-container absolute w-36 h-36 rounded-full border-2 border-[#D4AF37]/80 shadow-[0_0_30px_rgba(212,175,55,0.4)] opacity-0 scale-50 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 cursor-grab active:cursor-grabbing overflow-hidden z-20 flex items-center justify-center bg-black">
+              <video src="${el.video}" loop muted playsinline preload="none" class="w-full h-full object-cover pointer-events-none"></video>
+
               <!-- Mute / Unmute Tugmasi -->
-              <button class="mute-btn absolute top-2 right-2 w-8 h-8 rounded-full   flex items-center justify-center transition-transform active:scale-95  z-30 cursor-pointer">
-                
+              <button class="mute-btn absolute bottom-2 right-2 w-8 h-8 rounded-full bg-black/70 border border-[#D4AF37]/60 text-[#D4AF37] flex items-center justify-center backdrop-blur-sm transition-colors duration-200 z-30 cursor-pointer" title="Ovozni yoqish">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="16" height="16" fill="currentColor"><path d="M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm-40 320v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-280q83 0 141.5-58.5T680-480h80q0 105-68 184t-172 93v123h-80Z"/></svg>
               </button>
           </div>
       </div>
 
       <div class="relative z-10 pt-5 flex-1 flex flex-col justify-between">
           <div>
-              <a href="../pages/single.html?eventId=${el.id}" class="text-xl font-serif font-bold text-white tracking-wide transition-colors duration-300 hover:text-[#D4AF37] line-clamp-1">
+              <a href="${isCart ? '../pages/single.html' : './pages/single.html'}?eventId=${el.id}" class="text-xl font-serif font-bold text-white tracking-wide transition-colors duration-300 hover:text-[#D4AF37] line-clamp-1">
                   ${el.title}
               </a>
               <div class="space-y-1.5 mb-4 mt-2">
@@ -303,16 +341,16 @@ function createCardHTML(el, isCart = false) {
               </div>
 
               <div class="mt-5 flex items-center gap-3">
+                  <button onclick="toggleLike(${el.id}, this)" data-like-id="${el.id}" title="Yoqtirish" class="like-btn w-12 h-12 shrink-0 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center transition-all duration-300 hover:border-rose-500/50 hover:bg-rose-500/10 active:scale-90 cursor-pointer shadow-lg">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" class="like-icon fill-zinc-500 transition-all duration-300"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/></svg>
+                  </button>
                   ${
                     isCart
-                      ? `<a href="../pages/joy.html" class="flex-1 py-3.5 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium flex items-center justify-center hover:bg-[#D4AF37] hover:text-black">Chipta Olish</a>
+                      ? `<a href="../pages/single.html?eventId=${el.id}" class="flex-1 py-3.5 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium flex items-center justify-center hover:bg-[#D4AF37] hover:text-black">Chipta Olish</a>
                          <button onclick="removeFromCart(${el.id})" class="w-12 h-12 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center hover:border-rose-500/50 hover:text-rose-500">
                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360Z"/></svg>
                          </button>`
-                      : `<button onclick="addToCart(${el.id})" class="w-12 h-12 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center hover:border-rose-500/50 hover:text-rose-500">
-                           <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" class="fill-zinc-500 hover:fill-rose-500"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/></path></svg>
-                         </button>
-                         <a href="./pages/joy.html" class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium flex items-center justify-center hover:bg-[#D4AF37] hover:text-black">Sotib olish</a>`
+                      : `<a href="./pages/single.html?eventId=${el.id}" class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium flex items-center justify-center hover:bg-[#D4AF37] hover:text-black">Sotib olish</a>`
                   }
               </div>
           </div>
@@ -331,11 +369,10 @@ function attachMediaInteractions(container) {
     const videoContainer = card.querySelector(".video-container");
     const video = card.querySelector("video");
     const muteBtn = card.querySelector(".mute-btn");
-    const micOff = card.querySelector(".mic-icon-off");
-    const micOn = card.querySelector(".mic-icon-on");
     const wrapper = card.querySelector(".card-media-wrapper");
+    if (!videoContainer || !video || !muteBtn || !wrapper) return;
 
-    // 1. HOVER EVENTLARI
+    // 1. HOVER EVENTLARI (video har doim ovozsiz boshlanadi)
     card.addEventListener("mouseenter", () => {
       video.play().catch(() => {});
     });
@@ -344,20 +381,24 @@ function attachMediaInteractions(container) {
       video.pause();
       video.currentTime = 0;
       video.muted = true;
-      micOff.classList.remove("hidden");
-      micOn.classList.add("hidden");
+      muteBtn.classList.remove("bg-[#D4AF37]", "text-black");
+      muteBtn.classList.add("bg-black/70", "text-[#D4AF37]");
+      muteBtn.title = "Ovozni yoqish";
     });
 
-    // 2. UNMUTE / MUTE TOGGLE
+    // 2. UNMUTE / MUTE TOGGLE (bosilganda ovoz yoqiladi, yana bosilsa o'chadi)
     muteBtn.addEventListener("click", (e) => {
       e.stopPropagation(); // Drag-and-drop bilan to'qnash kelmaslik uchun
       video.muted = !video.muted;
       if (video.muted) {
-        micOff.classList.remove("hidden");
-        micOn.classList.add("hidden");
+        muteBtn.classList.remove("bg-[#D4AF37]", "text-black");
+        muteBtn.classList.add("bg-black/70", "text-[#D4AF37]");
+        muteBtn.title = "Ovozni yoqish";
       } else {
-        micOff.classList.add("hidden");
-        micOn.classList.remove("hidden");
+        muteBtn.classList.remove("bg-black/70", "text-[#D4AF37]");
+        muteBtn.classList.add("bg-[#D4AF37]", "text-black");
+        muteBtn.title = "Ovozni o'chirish";
+        video.play().catch(() => {});
       }
     });
 
@@ -442,6 +483,7 @@ function showProducts(container, list) {
   });
 
   attachMediaInteractions(container);
+  applyLikedStates(container);
 }
 
 // Savat bo'limida ko'rsatish
@@ -459,6 +501,7 @@ function showCartProducts() {
   });
 
   attachMediaInteractions(heroCardss);
+  applyLikedStates(heroCardss);
 }
 
 // Savat operatsiyalari

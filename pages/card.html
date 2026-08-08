@@ -392,6 +392,37 @@
   let activeDateFilter = "all";
   let activeCategoryFilter = "all";
 
+  // Yoqtirilganlar (Like) holati - bosilganda qizaradi, yana bosilsa asl holiga qaytadi
+  let likedIds = JSON.parse(localStorage.getItem("sahna_likes")) || [];
+
+  function toggleLike(id, btn) {
+    const liked = likedIds.includes(id);
+    likedIds = liked ? likedIds.filter((likeId) => likeId !== id) : [...likedIds, id];
+    localStorage.setItem("sahna_likes", JSON.stringify(likedIds));
+    setLikeBtnState(btn, !liked);
+  }
+
+  function setLikeBtnState(btn, liked) {
+    const icon = btn.querySelector(".like-icon");
+    if (liked) {
+      btn.classList.add("border-rose-500/60", "bg-rose-500/10");
+      if (icon) icon.classList.replace("fill-zinc-500", "fill-rose-500");
+      btn.title = "Yoqtirilganlardan olib tashlash";
+    } else {
+      btn.classList.remove("border-rose-500/60", "bg-rose-500/10");
+      if (icon) icon.classList.replace("fill-rose-500", "fill-zinc-500");
+      btn.title = "Yoqtirish";
+    }
+  }
+
+  function applyLikedStates(targetContainer) {
+    if (!targetContainer) return;
+    targetContainer.querySelectorAll(".like-btn[data-like-id]").forEach((btn) => {
+      const id = Number(btn.getAttribute("data-like-id"));
+      setLikeBtnState(btn, likedIds.includes(id));
+    });
+  }
+
   // 20 TA TADBIR MA'LUMOTLARI
   const products = [
     {
@@ -794,16 +825,17 @@
 
                     <div class="mt-5 flex items-center gap-3">
                         <button
-                            onclick="addToCart(${el.id})"
-                            title="Tanlanganlarga qo'shish"
-                            class="group/heart w-12 h-12 shrink-0 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center transition-all duration-300 hover:border-rose-500/50 hover:bg-rose-500/10 active:scale-90 cursor-pointer shadow-lg"
+                            onclick="toggleLike(${el.id}, this)"
+                            data-like-id="${el.id}"
+                            title="Yoqtirish"
+                            class="like-btn group/heart w-12 h-12 shrink-0 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-400 flex items-center justify-center transition-all duration-300 hover:border-rose-500/50 hover:bg-rose-500/10 active:scale-90 cursor-pointer shadow-lg"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" class="fill-zinc-500 transition-all duration-300 group-hover/heart:fill-rose-500 group-hover/heart:scale-110">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" class="like-icon fill-zinc-500 transition-all duration-300 group-hover/heart:scale-110">
                                 <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/>
                             </svg>
                         </button>
 
-                        <a href="./pages/joy.html" class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium tracking-wider flex items-center justify-center gap-2 transition duration-300 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:font-bold transform active:scale-95 shadow-lg cursor-pointer">
+                        <a href="./single.html?eventId=${el.id}" class="flex-1 py-3.5 px-4 rounded-full border border-zinc-800 bg-zinc-900 text-zinc-300 text-sm font-medium tracking-wider flex items-center justify-center gap-2 transition duration-300 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:font-bold transform active:scale-95 shadow-lg cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t-1 41.5L706-492q-14 24-37.5 38T616-440H310l-40 72q-6 11-1 24.5t18 13.5h473v80H280q-50 0-77-41t-5-83l48-87-142-300H40v-80h114l54 113Z"/></svg>
                             <span>Sotib olish</span>
                         </a>
@@ -815,6 +847,7 @@
       targetContainer.insertAdjacentHTML("beforeend", cardHTML);
       initCardVideoBehavior(el.id);
     });
+    applyLikedStates(targetContainer);
   }
 
   // Hover & Drag video doira mantiqi

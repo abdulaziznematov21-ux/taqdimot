@@ -394,7 +394,7 @@ function renderHeroBanner(d) {
                         </div>
                     </div>
 
-                    <a href="./joy.html?eventId=${d.id}"
+                    <a href="#seat-section" onclick="document.getElementById('seat-section').scrollIntoView({behavior:'smooth'}); return false;"
                         class="mt-6 w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 bg-[length:200%_auto] hover:bg-right text-black font-extrabold tracking-wide text-sm shadow-xl shadow-amber-500/20 hover:scale-[1.02] active:scale-95 transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="currentColor">
                             <path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t-1 41.5L706-492q-14 24-37.5 38T616-440H310l-40 72q-6 11-1 24.5t18 13.5h473v80H280q-50 0-77-41t-5-83l48-87-142-300H40v-80h114l54 113Z"/>
@@ -453,6 +453,144 @@ function renderKeyDetails(d) {
 }
 
 /* ------------------------------------------------------------
+   2b. JOY TANLASH + TO'LOV + CHIPTA (QR) BOSQICHLARI
+------------------------------------------------------------ */
+function renderSeatSection(d) {
+    return `
+    <section id="seat-section">
+        <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
+            <h2 class="text-2xl md:text-3xl font-serif font-bold text-white">Joy tanlang</h2>
+            <div class="flex items-center gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-wider font-medium">
+                <span id="seatstep-indicator-1" class="text-amber-400 flex items-center gap-1"><span class="w-5 h-5 rounded-full bg-amber-500 text-black font-bold flex items-center justify-center text-[10px]">1</span> Joylar</span>
+                <span class="text-zinc-600">&rarr;</span>
+                <span id="seatstep-indicator-2" class="text-zinc-500 flex items-center gap-1"><span class="w-5 h-5 rounded-full bg-zinc-800 text-zinc-400 font-bold flex items-center justify-center text-[10px]">2</span> To'lov</span>
+                <span class="text-zinc-600">&rarr;</span>
+                <span id="seatstep-indicator-3" class="text-zinc-500 flex items-center gap-1"><span class="w-5 h-5 rounded-full bg-zinc-800 text-zinc-400 font-bold flex items-center justify-center text-[10px]">3</span> Chipta</span>
+            </div>
+        </div>
+
+        <!-- BOSQICH 1: ZAL SXEMASI + TANLANGAN JOYLAR -->
+        <div id="seat-step-1" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+            <div class="lg:col-span-2 bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-6">
+                <div class="text-center pb-4">
+                    <div class="relative w-48 mx-auto mb-2">
+                        <div class="h-[2px] bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+                    </div>
+                    <h3 class="font-serif tracking-[0.35em] text-amber-400 text-sm font-semibold uppercase">SAHNA</h3>
+                </div>
+
+                <div class="overflow-auto py-2">
+                    <div id="seatMap" class="transition-transform duration-200 origin-top flex flex-col items-center gap-6 min-w-max mx-auto">
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-gray-500">BALKON</span>
+                            <div id="balkonRows" class="flex gap-2 justify-center"></div>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-gray-500">PARTER</span>
+                            <div id="parterRows" class="flex flex-col gap-2 items-center"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 mt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-400">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-gradient-to-br from-amber-400 to-amber-600 block"></span><span>VIP 450k</span></div>
+                        <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-[#8a7238] block"></span><span>Premium 320k</span></div>
+                        <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm border border-gray-500 block"></span><span>Standart 180k</span></div>
+                        <div class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-zinc-800 border border-zinc-700 block"></span><span class="text-gray-500">Sotilgan</span></div>
+                    </div>
+                    <div class="flex items-center gap-2 ml-auto">
+                        <button id="seatResetBtn" class="hover:text-amber-400 font-medium text-xs tracking-wider uppercase">Qayta tiklash</button>
+                        <div class="flex items-center bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden p-0.5">
+                            <button id="seatZoomIn" class="px-2.5 py-0.5 hover:bg-zinc-800 hover:text-amber-400 font-bold border-r border-zinc-800">+</button>
+                            <button id="seatZoomOut" class="px-2.5 py-0.5 hover:bg-zinc-800 hover:text-amber-400 font-bold">&minus;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col justify-between lg:sticky lg:top-6">
+                <div>
+                    <h3 class="font-serif text-xl text-amber-200 tracking-wide mb-4 pb-3 border-b border-white/10">Tanlangan joylar</h3>
+                    <div id="selectedSeatsList" class="flex flex-col gap-2.5 max-h-[280px] overflow-y-auto pr-1 text-xs"></div>
+                </div>
+                <div class="pt-4 border-t border-white/10 flex flex-col gap-4 mt-4">
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <span class="text-[11px] text-gray-400 block uppercase tracking-wider">Umumiy narx</span>
+                            <span class="text-[9px] text-gray-600 font-mono uppercase">O'ZBEK SO'MI</span>
+                        </div>
+                        <span id="seatTotalPrice" class="font-serif text-2xl font-semibold text-amber-400">0</span>
+                    </div>
+                    <button id="finalizeBtn" disabled class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-black font-extrabold text-xs uppercase tracking-wider disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 transition-all shadow-lg shadow-amber-500/10">
+                        Rasmiylashtirish
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOSQICH 2: TO'LOV -->
+        <div id="seat-step-2" class="hidden max-w-xl mx-auto bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col items-center">
+            <div class="w-full text-center mb-5">
+                <h3 class="font-serif text-2xl text-amber-400 tracking-wider uppercase mb-1">TO'LOV</h3>
+                <p class="text-xs text-gray-400">${d.title} &middot; ${d.venue}</p>
+            </div>
+
+            <div class="w-full bg-zinc-900 p-1 rounded-2xl border border-zinc-800 flex mb-5 text-xs font-semibold">
+                <button type="button" onclick="switchPayMethod('karta')" id="tab-karta" class="pay-tab flex-1 py-2 rounded-xl transition-all">Karta</button>
+                <button type="button" onclick="switchPayMethod('payme')" id="tab-payme" class="pay-tab flex-1 py-2 rounded-xl text-zinc-400 hover:text-white transition-all">Payme</button>
+                <button type="button" onclick="switchPayMethod('click')" id="tab-click" class="pay-tab flex-1 py-2 rounded-xl text-zinc-400 hover:text-white transition-all">Click</button>
+                <button type="button" onclick="switchPayMethod('muddatli')" id="tab-muddatli" class="pay-tab flex-1 py-2 rounded-xl text-zinc-400 hover:text-white transition-all">Muddatli</button>
+            </div>
+
+            <form id="paymentForm" class="w-full space-y-3.5 text-xs">
+                <div id="payContent"></div>
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+                    <button type="button" id="seatBackBtn" class="py-3 px-6 rounded-xl border border-zinc-800 text-zinc-400 hover:text-white transition-all">Orqaga</button>
+                    <button type="submit" class="flex-1 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-black font-extrabold uppercase tracking-wider hover:brightness-110 transition-all">
+                        To'lash (<span id="payAmount">0</span> SO'M)
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- BOSQICH 3: CHIPTA TAYYOR (QR) -->
+        <div id="seat-step-3" class="hidden max-w-lg mx-auto bg-neutral-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center text-black font-bold text-xl mb-3 shadow-lg shadow-amber-500/20">&#10003;</div>
+            <h3 class="font-serif text-2xl text-amber-100 tracking-wide mb-1">Chiptangiz tayyor!</h3>
+            <p class="text-xs text-gray-400 mb-5">QR kod "Chiptalarim" bo'limiga ham qo'shildi.</p>
+
+            <div class="w-full bg-black/40 border border-white/10 rounded-2xl p-5 mb-5 text-left relative">
+                <div class="text-center pb-3 border-b border-white/10 mb-4">
+                    <h4 id="ticketEventTitle" class="font-serif text-lg text-amber-400 font-semibold">${d.title}</h4>
+                    <p id="ticketEventDetails" class="text-[11px] text-gray-400 mt-1">${d.date} &middot; ${d.venue}</p>
+                </div>
+
+                <div class="flex flex-col items-center justify-center gap-3">
+                    <div class="bg-white p-2 rounded-xl w-40 h-40 flex items-center justify-center shadow-lg">
+                        <img id="ticketQrImg" src="" alt="QR" class="w-full h-full">
+                    </div>
+                    <div class="bg-black/40 p-3 rounded-xl border border-white/10 w-full">
+                        <span class="text-[10px] text-gray-500 uppercase tracking-widest block mb-1">Xarid qilingan joylar:</span>
+                        <div id="finalSeatsSummary" class="text-xs text-gray-200 font-medium space-y-1"></div>
+                    </div>
+                    <span id="ticketCode" class="text-[11px] font-mono text-amber-400 tracking-widest">#SHN-00000</span>
+                </div>
+            </div>
+
+            <div class="w-full space-y-2">
+                <a href="./profile.html" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-black font-extrabold text-xs uppercase tracking-wider hover:brightness-110 transition-all block text-center">
+                    Chiptalarimga o'tish
+                </a>
+                <button id="seatAgainBtn" class="w-full py-3 rounded-xl border border-zinc-800 text-zinc-400 hover:text-white text-xs uppercase tracking-wider transition-all">
+                    Yana joy tanlash
+                </button>
+            </div>
+        </div>
+    </section>`;
+}
+
+/* ------------------------------------------------------------
    3. SAHIFANI RENDERING QILISH
 ------------------------------------------------------------ */
 if (!singleData) {
@@ -468,12 +606,13 @@ if (!singleData) {
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 md:space-y-16 text-gray-100 font-sans">
             ${renderHeroBanner(singleData)}
             ${renderKeyDetails(singleData)}
+            ${renderSeatSection(singleData)}
         </main>
     `;
 
     // Sanoq taymerini ishga tushirish
     initCountdownTimer(singleData);
-    initTicketLogic(singleData.ticketTiers || DEFAULTS.ticketTiers, DEFAULTS.feeRate);
+    initSeatBooking(singleData);
 }
 
 /* ------------------------------------------------------------
@@ -540,80 +679,288 @@ function initCountdownTimer(data) {
 }
 
 /* ------------------------------------------------------------
-   5. CHIPTA HISOB-KITOB LOGIKASI
+   5. JOY TANLASH + TO'LOV + CHIPTA (QR) LOGIKASI
 ------------------------------------------------------------ */
-function initTicketLogic(ticketTiers, feeRate) {
-    let selectedTier = ticketTiers[0]?.tier ?? "";
-    let unitPrice = ticketTiers[0]?.price ?? 0;
-    let ticketQuantity = 1;
+function initSeatBooking(d) {
+    const SEAT_TYPES = {
+        VIP: { price: 450000, class: 'bg-gradient-to-br from-amber-400 to-amber-600 border-transparent' },
+        PREMIUM: { price: 320000, class: 'bg-[#8a7238] border-transparent' },
+        STANDART: { price: 180000, class: 'border border-gray-500 bg-transparent' },
+        SOLD: { price: 0, class: 'bg-zinc-800 border border-zinc-700 cursor-not-allowed opacity-40' }
+    };
 
-    const tierCards = document.querySelectorAll('.ticket-tier');
-    const countEl = document.getElementById('ticket-count');
-    const btnDecrease = document.getElementById('btn-decrease');
-    const btnIncrease = document.getElementById('btn-increase');
+    const balkonData = Array.from({ length: 8 }, (_, i) => ({
+        id: `balkon-1-${i + 1}`, section: 'BALKON', row: 1, seat: i + 1, type: 'STANDART', price: 180000
+    }));
 
-    const summaryTierText = document.getElementById('summary-tier-text');
-    const summaryBasePrice = document.getElementById('summary-base-price');
-    const summaryFee = document.getElementById('summary-fee');
-    const summaryTotal = document.getElementById('summary-total');
+    const parterRowsConfig = [
+        { row: 1, seats: 12, type: 'VIP', price: 450000 },
+        { row: 2, seats: 14, type: 'VIP', price: 450000 },
+        { row: 3, seats: 14, type: 'PREMIUM', price: 320000 },
+        { row: 4, seats: 16, type: 'PREMIUM', price: 280000 },
+        { row: 5, seats: 17, type: 'STANDART', price: 180000 },
+    ];
+    const soldSeatIds = ['parter-3-1', 'parter-3-2', 'parter-5-10'];
 
-    if (!countEl || !summaryTotal) return;
+    let selectedSeats = [];
+    let currentZoom = 1;
+    let currentPayMethod = 'karta';
+
+    const balkonContainer = document.getElementById('balkonRows');
+    const parterContainer = document.getElementById('parterRows');
+    const selectedListContainer = document.getElementById('selectedSeatsList');
+    const totalPriceEl = document.getElementById('seatTotalPrice');
+    const finalizeBtn = document.getElementById('finalizeBtn');
+
+    if (!balkonContainer || !parterContainer) return;
 
     function formatPrice(num) {
-        return num.toLocaleString('uz-UZ').replace(/,/g, ' ');
+        return num.toLocaleString('ru-RU');
     }
 
-    function recalculateTotals() {
-        const baseTotal = unitPrice * ticketQuantity;
-        const feeTotal = Math.round(baseTotal * feeRate);
-        const grandTotal = baseTotal + feeTotal;
+    function createSeatElement(seat) {
+        const btn = document.createElement('button');
+        const isSelected = selectedSeats.some(s => s.id === seat.id);
+        const isSold = seat.type === 'SOLD';
 
-        if (summaryTierText) summaryTierText.innerText = `Chipta (${ticketQuantity}x ${selectedTier})`;
-        if (summaryBasePrice) summaryBasePrice.innerText = `${formatPrice(baseTotal)} so'm`;
-        if (summaryFee) summaryFee.innerText = `${formatPrice(feeTotal)} so'm`;
-        summaryTotal.innerText = formatPrice(grandTotal);
-        countEl.innerText = ticketQuantity;
+        btn.className = `w-5 h-5 md:w-6 md:h-6 rounded-[3px] flex items-center justify-center transition-all duration-150 text-[10px] font-bold ${
+            isSold ? SEAT_TYPES.SOLD.class :
+            isSelected ? 'bg-gradient-to-br from-amber-400 to-amber-600 border-amber-300 text-black ring-2 ring-amber-400 scale-105' :
+            SEAT_TYPES[seat.type].class + ' hover:scale-110'
+        }`;
+
+        if (isSelected) btn.innerHTML = '&#10003;';
+        if (!isSold) btn.onclick = () => toggleSeatSelection(seat);
+        else btn.disabled = true;
+
+        return btn;
     }
 
-    tierCards.forEach(card => {
-        card.addEventListener('click', () => {
-            tierCards.forEach(c => {
-                c.classList.remove('border-amber-500/50', 'bg-amber-500/10');
-                c.classList.add('border-white/5', 'bg-white/5');
-                const p = c.querySelector('p');
-                if (p && p.classList.contains('text-amber-400')) {
-                    p.classList.remove('text-amber-400');
-                    p.classList.add('text-white');
-                }
-            });
+    function renderMap() {
+        balkonContainer.innerHTML = '';
+        balkonData.forEach(seat => balkonContainer.appendChild(createSeatElement(seat)));
 
-            card.classList.remove('border-white/5', 'bg-white/5');
-            card.classList.add('border-amber-500/50', 'bg-amber-500/10');
-            const titleP = card.querySelector('p');
-            if (titleP) {
-                titleP.classList.remove('text-white');
-                titleP.classList.add('text-amber-400');
+        parterContainer.innerHTML = '';
+        parterRowsConfig.forEach(rowConfig => {
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'flex gap-1.5 justify-center';
+            for (let i = 1; i <= rowConfig.seats; i++) {
+                const seatId = `parter-${rowConfig.row}-${i}`;
+                const isSold = soldSeatIds.includes(seatId);
+                rowDiv.appendChild(createSeatElement({
+                    id: seatId, section: 'PARTER', row: rowConfig.row, seat: i,
+                    type: isSold ? 'SOLD' : rowConfig.type, price: rowConfig.price
+                }));
             }
-
-            selectedTier = card.getAttribute('data-tier');
-            unitPrice = parseInt(card.getAttribute('data-price'), 10);
-            recalculateTotals();
+            parterContainer.appendChild(rowDiv);
         });
-    });
+    }
 
-    btnIncrease?.addEventListener('click', () => {
-        if (ticketQuantity < 10) {
-            ticketQuantity++;
-            recalculateTotals();
+    function toggleSeatSelection(seat) {
+        const index = selectedSeats.findIndex(s => s.id === seat.id);
+        if (index > -1) selectedSeats.splice(index, 1);
+        else selectedSeats.push(seat);
+        updateUI();
+    }
+
+    function removeSeat(seatId) {
+        selectedSeats = selectedSeats.filter(s => s.id !== seatId);
+        updateUI();
+    }
+    window.removeSeat = removeSeat;
+
+    function updateUI() {
+        renderMap();
+        selectedListContainer.innerHTML = '';
+
+        if (selectedSeats.length === 0) {
+            selectedListContainer.innerHTML = `<div class="text-center py-8 text-gray-600 text-xs">Hali hech qanday joy tanlanmadi</div>`;
+        } else {
+            selectedSeats.forEach(seat => {
+                const card = document.createElement('div');
+                card.className = 'bg-black/40 border border-white/10 rounded-xl p-3 flex items-center justify-between text-xs';
+                card.innerHTML = `
+                    <div>
+                        <div class="text-[9px] text-gray-400 uppercase font-semibold">${seat.section} &bull; QATOR ${seat.row}</div>
+                        <div class="text-gray-100 font-bold">O'rindiq ${seat.seat}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-semibold text-gray-300">${formatPrice(seat.price)}</span>
+                        <button onclick="removeSeat('${seat.id}')" class="text-rose-500 hover:text-rose-400 font-bold text-base">&times;</button>
+                    </div>
+                `;
+                selectedListContainer.appendChild(card);
+            });
         }
-    });
 
-    btnDecrease?.addEventListener('click', () => {
-        if (ticketQuantity > 1) {
-            ticketQuantity--;
-            recalculateTotals();
+        const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
+        totalPriceEl.innerText = formatPrice(total);
+        finalizeBtn.disabled = selectedSeats.length === 0;
+    }
+
+    function goToSeatStep(step) {
+        document.getElementById('seat-step-1').classList.toggle('hidden', step !== 1);
+        document.getElementById('seat-step-2').classList.toggle('hidden', step !== 2);
+        document.getElementById('seat-step-3').classList.toggle('hidden', step !== 3);
+
+        [1, 2, 3].forEach(s => {
+            const ind = document.getElementById(`seatstep-indicator-${s}`);
+            if (!ind) return;
+            if (s === step) {
+                ind.className = 'text-amber-400 flex items-center gap-1';
+                ind.children[0].className = 'w-5 h-5 rounded-full bg-amber-500 text-black font-bold flex items-center justify-center text-[10px]';
+            } else if (s < step) {
+                ind.className = 'text-emerald-400 flex items-center gap-1';
+                ind.children[0].className = 'w-5 h-5 rounded-full bg-emerald-500 text-black font-bold flex items-center justify-center text-[10px]';
+            } else {
+                ind.className = 'text-zinc-500 flex items-center gap-1';
+                ind.children[0].className = 'w-5 h-5 rounded-full bg-zinc-800 text-zinc-400 font-bold flex items-center justify-center text-[10px]';
+            }
+        });
+
+        document.getElementById('seat-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function switchPayMethod(method) {
+        currentPayMethod = method;
+        ['karta', 'payme', 'click', 'muddatli'].forEach(m => {
+            const tabBtn = document.getElementById(`tab-${m}`);
+            if (!tabBtn) return;
+            tabBtn.className = m === method
+                ? 'pay-tab flex-1 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-black transition-all font-bold'
+                : 'pay-tab flex-1 py-2 rounded-xl text-zinc-400 hover:text-white transition-all';
+        });
+
+        const payContentDiv = document.getElementById('payContent');
+        if (!payContentDiv) return;
+
+        if (method === 'karta') {
+            payContentDiv.innerHTML = `
+                <div>
+                    <label class="block text-[10px] text-zinc-400 uppercase tracking-wider mb-1">Karta raqami</label>
+                    <input type="text" maxlength="19" placeholder="8600 0000 0000 0000" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-200 outline-none focus:border-amber-400 transition-all font-mono tracking-wider">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] text-zinc-400 uppercase tracking-wider mb-1">Amal qilish muddati</label>
+                        <input type="text" placeholder="MM/YY" maxlength="5" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-200 outline-none focus:border-amber-400 transition-all font-mono text-center">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-zinc-400 uppercase tracking-wider mb-1">CVV / CVC</label>
+                        <input type="password" maxlength="3" placeholder="&bull;&bull;&bull;" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-200 outline-none focus:border-amber-400 transition-all font-mono text-center">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] text-zinc-400 uppercase tracking-wider mb-1">Karta egasi</label>
+                    <input type="text" placeholder="ISM SHARIF" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-200 outline-none focus:border-amber-400 transition-all uppercase">
+                </div>
+            `;
+        } else if (method === 'payme') {
+            payContentDiv.innerHTML = `
+                <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-center">
+                    <div class="inline-block px-3 py-1 bg-cyan-500/10 text-cyan-400 rounded-lg text-xs font-bold mb-2">PAYME QUICK PAY</div>
+                    <p class="text-zinc-400 text-xs mb-4">Payme ilovasi orqali to'lovni tasdiqlash uchun telefon raqamingizni kiriting:</p>
+                    <input type="tel" placeholder="+998 (90) 123-45-67" required class="w-full max-w-xs mx-auto block bg-black/40 border border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-200 outline-none focus:border-cyan-400 font-mono text-center">
+                </div>
+            `;
+        } else if (method === 'click') {
+            payContentDiv.innerHTML = `
+                <div class="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl text-center">
+                    <div class="inline-block px-3 py-1 bg-blue-500/10 text-blue-400 rounded-lg text-xs font-bold mb-2">CLICK PASS</div>
+                    <p class="text-zinc-400 text-xs mb-4">Click ilovasiga ulangan telefon raqam yoki Click ID kiriting:</p>
+                    <input type="text" placeholder="Raqam yoki Click ID" required class="w-full max-w-xs mx-auto block bg-black/40 border border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-200 outline-none focus:border-blue-400 font-mono text-center">
+                </div>
+            `;
+        } else if (method === 'muddatli') {
+            const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
+            const m3 = Math.round(total / 3).toLocaleString('ru-RU');
+            const m6 = Math.round(total / 6).toLocaleString('ru-RU');
+
+            payContentDiv.innerHTML = `
+                <div class="space-y-3">
+                    <p class="text-zinc-400 text-xs text-center">Bo'lib to'lash muddatini tanlang (0% ustama):</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="border border-zinc-800 bg-zinc-900 p-3 rounded-xl flex flex-col items-center cursor-pointer hover:border-amber-400">
+                            <input type="radio" name="muddat" value="3" checked class="accent-amber-400 mb-1">
+                            <span class="text-xs text-zinc-300 font-bold">3 oyga</span>
+                            <span class="text-[11px] text-amber-400 font-mono mt-1">${m3} so'm/oy</span>
+                        </label>
+                        <label class="border border-zinc-800 bg-zinc-900 p-3 rounded-xl flex flex-col items-center cursor-pointer hover:border-amber-400">
+                            <input type="radio" name="muddat" value="6" class="accent-amber-400 mb-1">
+                            <span class="text-xs text-zinc-300 font-bold">6 oyga</span>
+                            <span class="text-[11px] text-amber-400 font-mono mt-1">${m6} so'm/oy</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-zinc-400 uppercase tracking-wider mb-1">Passport / JSHSHIR raqami</label>
+                        <input type="text" placeholder="AA 1234567" required class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-2.5 text-zinc-200 outline-none focus:border-amber-400 uppercase">
+                    </div>
+                </div>
+            `;
         }
+    }
+    window.switchPayMethod = switchPayMethod;
+
+    function generateTicketCode() {
+        return `SHN-${d.id}-${Date.now().toString(36).toUpperCase()}${Math.floor(Math.random() * 90 + 10)}`;
+    }
+
+    function saveTicket(code) {
+        const tickets = JSON.parse(localStorage.getItem('sahna_tickets')) || [];
+        const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
+        tickets.push({
+            code,
+            eventId: d.id,
+            title: d.title,
+            image: d.image,
+            date: d.date,
+            venue: d.venue,
+            category: d.category,
+            seats: selectedSeats.map(s => ({ section: s.section, row: s.row, seat: s.seat, price: s.price })),
+            totalPrice: total,
+            purchasedAt: new Date().toISOString()
+        });
+        localStorage.setItem('sahna_tickets', JSON.stringify(tickets));
+    }
+
+    // Tugmalar
+    document.getElementById('seatResetBtn').addEventListener('click', () => { selectedSeats = []; updateUI(); });
+    document.getElementById('seatZoomIn').addEventListener('click', () => { if (currentZoom < 1.3) document.getElementById('seatMap').style.transform = `scale(${currentZoom += 0.1})`; });
+    document.getElementById('seatZoomOut').addEventListener('click', () => { if (currentZoom > 0.7) document.getElementById('seatMap').style.transform = `scale(${currentZoom -= 0.1})`; });
+
+    finalizeBtn.addEventListener('click', () => {
+        if (selectedSeats.length === 0) return;
+        const total = selectedSeats.reduce((sum, item) => sum + item.price, 0);
+        document.getElementById('payAmount').innerText = formatPrice(total);
+        switchPayMethod(currentPayMethod);
+        goToSeatStep(2);
     });
 
-    recalculateTotals();
+    document.getElementById('seatBackBtn').addEventListener('click', () => goToSeatStep(1));
+
+    document.getElementById('paymentForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const code = generateTicketCode();
+        saveTicket(code);
+
+        const summaryContainer = document.getElementById('finalSeatsSummary');
+        summaryContainer.innerHTML = '';
+        selectedSeats.forEach(s => {
+            summaryContainer.innerHTML += `<div>&bull; ${s.section}, Qator ${s.row}, O'rindiq ${s.seat} (${formatPrice(s.price)} so'm)</div>`;
+        });
+
+        document.getElementById('ticketCode').innerText = '#' + code;
+        document.getElementById('ticketQrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(code)}`;
+
+        goToSeatStep(3);
+    });
+
+    document.getElementById('seatAgainBtn').addEventListener('click', () => {
+        selectedSeats = [];
+        updateUI();
+        goToSeatStep(1);
+    });
+
+    // Boshlang'ich holat
+    updateUI();
 }
