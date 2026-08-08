@@ -463,40 +463,40 @@
           </div>
 
           <!-- Featured Ticket Card -->
-          <div class="relative bg-[#141414] border border-amber-500/20 rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl">
+          <div id="featured-ticket-card" class="relative bg-[#141414] border border-amber-500/20 rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-              
+
               <div class="bg-black/60 border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center text-center space-y-3">
                 <div class="w-32 h-32 bg-white p-2 rounded-xl flex items-center justify-center shadow-lg">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=3HN-48210" alt="QR Code" class="w-full h-full">
+                  <img id="featured-qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=3HN-48210" alt="QR Code" class="w-full h-full">
                 </div>
                 <div class="space-y-1">
                   <p class="text-[10px] text-gray-400 tracking-wider uppercase">Chipta raqami</p>
-                  <p class="text-xs font-mono font-bold text-amber-400">#3HN-48210</p>
-                  <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 text-[10px] font-semibold">12 KUN QOLDI</span>
+                  <p id="featured-code" class="text-xs font-mono font-bold text-amber-400">#3HN-48210</p>
+                  <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-400 text-[10px] font-semibold">FAOL</span>
                 </div>
-                <button data-code="3HN-48210" data-title="Yulduzli kecha" class="btn-show-ticket w-full py-2 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl transition cursor-pointer">
+                <button id="featured-show-btn" data-code="3HN-48210" data-title="Yulduzli kecha" class="btn-show-ticket w-full py-2 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl transition cursor-pointer">
                   Chiptani ko'rsatish
                 </button>
               </div>
 
               <div class="md:col-span-2 space-y-4">
-                <span class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-semibold border border-amber-500/30">
+                <span id="featured-category" class="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-semibold border border-amber-500/30">
                   OPERA VA BALET
                 </span>
-                <h2 class="text-2xl font-serif font-bold text-white">Yulduzli kecha</h2>
+                <h2 id="featured-title" class="text-2xl font-serif font-bold text-white">Yulduzli kecha</h2>
                 <div class="space-y-2 text-xs text-gray-300">
                   <div class="flex items-center space-x-2">
                     <i class="fa-regular fa-calendar text-amber-400"></i>
-                    <span>18 avgust, 19:00</span>
+                    <span id="featured-date">18 avgust, 19:00</span>
                   </div>
                   <div class="flex items-center space-x-2">
                     <i class="fa-solid fa-location-dot text-amber-400"></i>
-                    <span>Alisher Navoiy nomidagi teatr</span>
+                    <span id="featured-venue">Alisher Navoiy nomidagi teatr</span>
                   </div>
                 </div>
 
-                <div class="flex gap-4 pt-2 border-t border-white/5 text-xs">
+                <div id="featured-seats" class="flex gap-4 pt-2 border-t border-white/5 text-xs">
                   <div>
                     <span class="text-gray-400 block text-[10px]">SEKTOR</span>
                     <span class="font-bold text-white">B</span>
@@ -701,6 +701,79 @@
         { id: '3HN-00921', title: 'Simfonik Garmoniya', date: '02 aprel, 19:00', type: 'past', category: 'KONSERT', status: 'YAKUNLANGAN' },
         { id: '3HN-55412', title: 'Jaz Kechasi', date: '15 mart, 20:00', type: 'canceled', category: 'KONSERT', status: 'BEKOR QILINGAN' }
       ];
+
+      // --- REAL SOTIB OLINGAN CHIPTALAR (single.html'dagi joy tanlash + to'lov orqali) ---
+      const purchasedTickets = JSON.parse(localStorage.getItem('sahna_tickets')) || [];
+      const realTickets = purchasedTickets.slice().reverse().map((t) => {
+        const seatsLabel = (t.seats || []).map(s => `${s.section} Q${s.row}/${s.seat}`).join(', ');
+        return {
+          id: t.code,
+          title: t.title,
+          date: seatsLabel ? `${t.date} • ${seatsLabel}` : t.date,
+          type: 'upcoming',
+          category: (t.category || 'CHIPTA').toString().toUpperCase(),
+          status: 'FAOL',
+          raw: t
+        };
+      });
+      ticketsData.unshift(...realTickets);
+
+      // Filter tab sanoqlarini haqiqiy ma'lumotlar bilan yangilash
+      ['upcoming', 'past', 'canceled'].forEach((type) => {
+        const tabBtn = document.querySelector(`.tab-filter[data-filter="${type}"]`);
+        if (!tabBtn) return;
+        const count = ticketsData.filter(t => t.type === type).length;
+        const label = type === 'upcoming' ? 'Kelayotgan' : type === 'past' ? "O'tgan" : 'Bekor qilingan';
+        tabBtn.innerText = `${label} (${count})`;
+      });
+
+      const upcomingCount = ticketsData.filter(t => t.type === 'upcoming').length;
+      const badgeTicketsCountEl = document.getElementById('badge-tickets-count');
+      if (badgeTicketsCountEl) badgeTicketsCountEl.innerText = upcomingCount;
+      document.querySelectorAll('.active-tickets-count').forEach(el => el.innerText = upcomingCount);
+
+      // Eng so'nggi xarid qilingan chiptani "Featured" kartaga chiqarish
+      if (realTickets.length > 0) {
+        const latest = realTickets[0].raw;
+        const featuredQrImg = document.getElementById('featured-qr-img');
+        const featuredCode = document.getElementById('featured-code');
+        const featuredShowBtn = document.getElementById('featured-show-btn');
+        const featuredCategory = document.getElementById('featured-category');
+        const featuredTitle = document.getElementById('featured-title');
+        const featuredDate = document.getElementById('featured-date');
+        const featuredVenue = document.getElementById('featured-venue');
+        const featuredSeats = document.getElementById('featured-seats');
+
+        if (featuredQrImg) featuredQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(latest.code)}`;
+        if (featuredCode) featuredCode.innerText = '#' + latest.code;
+        if (featuredShowBtn) {
+          featuredShowBtn.setAttribute('data-code', latest.code);
+          featuredShowBtn.setAttribute('data-title', latest.title);
+        }
+        if (featuredCategory) featuredCategory.innerText = (latest.category || 'CHIPTA').toString().toUpperCase();
+        if (featuredTitle) featuredTitle.innerText = latest.title;
+        if (featuredDate) featuredDate.innerText = latest.date;
+        if (featuredVenue) featuredVenue.innerText = latest.venue;
+        if (featuredSeats && latest.seats && latest.seats.length) {
+          const sectors = [...new Set(latest.seats.map(s => s.section))].join(', ');
+          const rows = [...new Set(latest.seats.map(s => s.row))].join(', ');
+          const seatNums = latest.seats.map(s => s.seat).join(', ');
+          featuredSeats.innerHTML = `
+            <div>
+              <span class="text-gray-400 block text-[10px]">SEKTOR</span>
+              <span class="font-bold text-white">${sectors}</span>
+            </div>
+            <div>
+              <span class="text-gray-400 block text-[10px]">QATOR</span>
+              <span class="font-bold text-white">${rows}</span>
+            </div>
+            <div>
+              <span class="text-gray-400 block text-[10px]">O'RINDIQ</span>
+              <span class="font-bold text-amber-400">${seatNums}</span>
+            </div>
+          `;
+        }
+      }
 
       // --- 0. LOAD SAVED PROFILE (login modaldan kelgan ism/familya/gmail/rasm) ---
       const userAvatarEl = document.getElementById('user-avatar');
